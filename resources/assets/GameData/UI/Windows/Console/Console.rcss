@@ -1,0 +1,371 @@
+@spritesheet checkbox_sprites {
+    src: interface/checkbox.rttex;
+    resolution: 1x;
+    checkbox_off_icon: 0px 0px 32px 32px;
+    checkbox_on_icon: 32px 0px 32px 32px;
+}
+
+.chat_region {
+    position: absolute;
+    right: 110dp;
+    top: 80dp;
+    padding: 0dp;
+    z-index: 10;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 0dp;
+
+    width: 30vw;
+    height: 180dp;
+
+    min-width: 350dp;
+    max-width: 80vw;
+    min-height: 120dp;
+    max-height: 80vh;
+}
+
+.top-panel {
+
+}
+
+    #filter {
+        display: flex;
+        flex-direction: row;
+        gap: 4dp;
+        position: absolute;
+        left: 4dp;
+        top: -41dp;
+    }
+
+    #move_handle {
+        min-width: 44dp;
+        min-height: 42dp;
+        max-width: 44dp;
+        max-height: 42dp;
+        align-self: center;
+        position: relative;
+        background-color: rgba(39,125,159,170);
+        top:-3dp;
+        left: 0dp;
+        decorator: image(interface/large/gui_chat_move_handle.rttex);
+    }
+
+
+.hide #chat_window {
+    display: none;
+}
+
+.full-hide #chat_window {
+    display: none;
+}
+
+#filter input[type="radio"] {
+    display: none; /* Hide default radio circles */
+}
+
+.filter_name {
+    position: relative;
+    padding: 4dp;
+    top: -2dp;
+    font-size: 0.833rem;
+	font-effect: shadow(1dp 1dp #000);
+}
+
+.filter_all_clr {
+	background-color: rgba(135, 184, 204, 128)
+}
+.filter_world_clr {
+	background-color: rgba(254, 186, 70, 128)
+}
+.filter_private_clr {
+	background-color: rgba(75,255,255, 128)
+}
+.filter_system_clr {
+	background-color: rgba(166,166,166, 128)
+}
+.filter_custom_clr {
+	background-color: rgba(210, 154, 212, 128)
+}
+
+.filter_all     { decorator: image(interface/large/gui_chat_all.rttex); }
+.filter_world   { decorator: image(interface/large/gui_chat_world.rttex); }
+.filter_private { decorator: image(interface/large/gui_chat_private.rttex); }
+.filter_system  { decorator: image(interface/large/gui_chat_system.rttex); }
+.filter_custom  { decorator: image(interface/large/gui_chat_custom.rttex); }
+
+#filter label.filter_btn {
+    display: block;
+    opacity: 0.85;
+    sound-on-click: true;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4dp;
+
+    border-radius: 6dp 6dp 0dp 0dp;
+    border: 1dp rgb(136,184,203);
+}
+
+/* The inner icon node: fixed box; the decorator paints the icon */
+#filter .icon {
+    width: 32dp;   /* scale as needed */
+    height: 32dp;
+    display: block;
+}
+
+
+
+/* Radio checked => brighten */
+#filter input[type="radio"]:checked + label {
+    opacity: 1.0;
+}
+
+.debug_bg {
+    background-color: rgba(255, 0, 0, 64);
+}
+
+.chat_settings {
+    background-color: rgba(210, 154, 212, 128);
+    padding: 4dp;
+    border-radius: 6dp 6dp 0dp 0dp;
+    border: 1dp rgb(136,184,203);
+}
+
+.chat_settings:active {
+		filter: brightness(0.85);
+		transform: scale(0.95);
+	}
+
+
+    #chat_image {
+        width: 32dp;
+        height: 32dp;
+        decorator: image(interface/large/chat_settings.rttex);
+        align-self: center;
+        position: relative;
+    }
+
+.crazy_jim_panel {
+    display: flex;
+    flex-direction: row;
+    gap: 4dp;
+    align-items: flex-start;
+    width: 100%;
+}
+
+    #image {
+        min-width: 48dp;
+        width: 48dp;
+        height: 48dp;
+        decorator: image(interface/tutorial/tut_npc.rttex);
+    }
+
+    #text {
+    }
+
+
+.input-panel {
+    decorator: tiled-box( window_border_sprite_tl, window_border_sprite_t, window_border_sprite_tr, window_border_sprite_cl, window_border_sprite_c, window_border_sprite_cr, window_border_sprite_bl, window_border_sprite_b, window_border_sprite_br );
+    image-color: rgba(135, 184, 204, 170);
+    width: 100%;
+    padding: 0dp 10dp 0dp 5dp;
+    display: flex;
+    flex-direction: row;
+	position: absolute;
+	top:2dp;
+}
+
+    #input-content {
+        padding: 0dp;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        background-color: rgba(39,125,159,170);
+        margin: 5dp 0dp 10dp 0dp;
+    }
+
+    #input-text {
+	    display: block;
+	    vertical-align: middle;
+        border-radius: 7dp;
+        font-size: 24dp;
+        font-weight: bold;
+        line-height: 30dp;
+	    width: 100%;
+	    color: #fff;
+        padding: 6dp 10dp 3dp 10dp;
+        font-size: 0.85rem;
+    }
+
+    #input-info {
+        display: block;
+	    vertical-align: middle;
+        text-align: center;
+        line-height: 38dp;
+        background-color: rgba(135, 184, 204, 164);
+        min-width: 80dp;
+        margin-top: 1dp;
+        margin-bottom: 3dp;
+        margin-right: 4dp;
+        font-size: 0.833rem;
+        border-radius: 7dp;
+        top: 2dp;
+        position: relative;
+    }
+	
+.message-hint-panel {
+    width: 100%;
+    padding: 0dp;
+    display: block;
+    position: absolute;
+    top: 18dp;
+    left: 14dp;
+    z-index: 20;
+	font-size: 0.833rem;
+	color: rgba(255,255,255,170);
+	pointer-events: none; /* <- click-through */
+}
+
+.preview-panel {
+    border-radius: 4pt;
+    border: 2dp rgba(135, 184, 204, 104);
+    width: 100%;
+    padding: 0dp;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(39,125,159,224);
+    margin-bottom: 2dp;
+    margin-top: -4dp;
+
+    position: absolute;
+    top: 60dp;
+    left: 3dp;
+    z-index: 20;
+}
+
+    #preview-content {
+        padding: 0dp;
+        position: relative;
+    }
+
+    #preview-text {
+	    display: block;
+	    vertical-align: middle;
+        border-radius: 7dp;
+        font-size: 24dp;
+        font-weight: bold;
+        line-height: 30dp;
+	    width: 100%;
+	    color: #fff;
+        font-size: 0.833rem;
+        padding: 3dp;
+    }
+
+.log-panel {
+     decorator: tiled-box( window_border_sprite_tl, window_border_sprite_t, window_border_sprite_tr, window_border_sprite_cl, window_border_sprite_c, window_border_sprite_cr, window_border_sprite_bl, window_border_sprite_b, window_border_sprite_br );
+     image-color: rgba(135, 184, 204, 170);
+     height: 100%;
+     width: 100%;
+     padding: 56dp 10dp 10dp 5dp;
+}
+
+    #log-content {
+        background-color: rgba(39,125,159,170);
+
+        width: 100%;
+        height: 100%;
+        
+        overflow-y: auto;  /* show vertical scrollbar when needed */
+        font-size: 0.833rem;
+        padding-left: 2dp;
+    }
+
+    #text-line {
+        padding: 0dp 2dp 2dp 2dp;
+        margin-top: -1dp;
+    }
+
+.resize_handle {
+    width: 48dp;
+    height: 48dp;
+    decorator: image(interface/large/gui_resize_handle.rttex);
+    padding: 0dp;
+}
+
+/* Bottom-right corner */
+.handle_br {
+    cursor: se-resize;
+}
+
+/* Bottom-left corner */
+.handle_bl {
+    cursor: sw-resize;
+    position: absolute;
+    bottom: 5dp;
+    left: 0dp;
+}
+
+.popup {
+  position: absolute;
+  top: 0dp;
+  left: 68dp;
+  width: 280dp;
+  background-color: rgba(60,137,166, 204);
+  border-radius: 4pt;
+  border: 2dp rgb(136,184,203);
+  padding: 0dp;
+  z-index: 100;
+  font-size: 20dp;
+  font-size: 0.833rem;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap:5dp;
+    padding: 10dp;
+}
+.checkbox-group .label {
+    padding-left: 0dp;
+    vertical-align: middle;
+    text-align: left;
+}
+
+
+/* Each row aligns checkbox and label left in a line */
+.checkbox-row {
+  display: flex;
+  align-items: center;   /* vertically centers checkbox + text */
+  gap: 8dp;              /* space between checkbox and label */
+  sound-on-click: true;
+}
+
+.checkbox {
+    height: 16dp;
+    width: 16dp;
+    display: inline-block;
+    padding: 5dp;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    sound-on-click: true;
+    decorator: image(checkbox_off_icon);
+    sound-on-click: true;
+}
+    .checkbox:checked {
+        decorator: image(checkbox_on_icon);
+    }
+
+.chat_padding {
+    padding: 0dp 1dp;
+    background-color: rgba(255,255,255, 16);
+}
+
+    .chat_padding.alternate {
+        display: block;
+        background-color: rgba(0, 0, 0, 16);
+    }

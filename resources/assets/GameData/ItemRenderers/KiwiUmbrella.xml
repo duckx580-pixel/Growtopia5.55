@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer item="ITEM_ID_LACE_PARASOL">
+  <Data>
+    <Sprite name="s_umbrella" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="13,8"/>
+    <Sprite name="s_juiceDrops" fileName="game/particles10.rttex" textureSize="32" frame="17,25"/>
+
+    <Animations>
+      <SpriteAnimation name="a_umbrellaClosed" isLoop="true" animTime="1000" sprite="s_umbrella" playOnState="Motion.OnGround">
+        <Frame>13,8</Frame>
+      </SpriteAnimation>
+      <SpriteAnimation name="a_umbrellaOpen" isLoop="true" animTime="1000" sprite="s_umbrella" playOnState="Motion.InAir">
+        <Frame>14,8</Frame>
+      </SpriteAnimation>
+    </Animations>
+
+    <ParticleSystems>
+      <ParticleSystem name="ps_doubleJump">
+        <Emitter>
+          <Set name="offset">0, -36</Set>
+          <Set name="lifeTime">0.75</Set>
+          <Set name="particlesPerEmission">16</Set>
+          <Set name="particlesToEmit">1</Set>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_juiceDrops</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="isBackgroundParticle">true</Set>
+          <Set name="rotateWithVelocity">true</Set>
+          <Set name="relativeToEmitter">true</Set>
+          <Set name="lifeTime">0.75</Set>
+          <Random name="initialScale" min="0.5" max="1"/>
+          <RandomRadial name="initialVelocity" angleRange="0,360" radiusRange="75,125"/>
+          <Set name="useGravity">true</Set>
+          <Set name="gravityVector">0, 45</Set>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>0.5, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+
+    <RenderOptions>
+      <Default>
+        <Set name="IgnorePunchTypeCheck">true</Set>
+        <Set name="RenderFrontArmInTheFront">true</Set>
+      </Default>
+    </RenderOptions>
+
+    <StateMachines>
+      <StateMachine name="Motion">
+        <States>
+          <State name="OnGround" />
+          <State name="InAir" />
+        </States>
+        <Transitions>
+          <Transition to="OnGround" from="InAir">
+            <Condition>
+              <IsVariableBool name="onGround">true</IsVariableBool>
+            </Condition>
+          </Transition>
+          <Transition to="InAir" from="OnGround">
+            <Condition>
+              <IsVariableBool name="onGround">false</IsVariableBool>
+            </Condition>
+          </Transition>
+        </Transitions>
+      </StateMachine>
+    </StateMachines>
+
+  </Data>
+
+  <RenderRules>
+    <Update>
+      <AvatarTransform class="ArmAngle" onState="Motion.InAir">
+        <Set name="armName">arm2Angle</Set>
+        <Set name="armAngle">-140</Set>
+      </AvatarTransform>
+    </Update>
+    <RenderHandItem>
+      <SpriteRender name="s_umbrella" offset="3,17" rotateOffset="true" blend="PREMULTIPLIED_ALPHA" onState="Motion.OnGround"/>
+      <SpriteRender name="s_umbrella" offset="6,16" useFixedRotation="true" fixedRotation="0" rotateOffset="true" blend="PREMULTIPLIED_ALPHA" onState="Motion.InAir"/>
+    </RenderHandItem>
+    <AddClothingParticles>
+      <ParticleSystemUpdate name="ps_doubleJump" onAction="JUMPDOUBLE"/>
+    </AddClothingParticles>
+  </RenderRules>
+</ItemRenderer>

@@ -1,0 +1,93 @@
+###### Class com.google.android.gms.internal.ads.zzadc (com.google.android.gms.internal.ads.zzadc)
+.class public interface abstract Lcom/google/android/gms/internal/ads/zzadc;
+.super Ljava/lang/Object;
+.source "com.google.android.gms:play-services-ads@@23.4.0"
+
+# interfaces
+.implements Lcom/google/android/gms/internal/ads/zzp;
+
+
+# virtual methods
+.method public abstract zza([BII)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+.end method
+
+.method public abstract zzb([BII)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+.end method
+
+.method public abstract zzc(I)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+.end method
+
+.method public abstract zzd()J
+.end method
+
+.method public abstract zze()J
+.end method
+
+.method public abstract zzf()J
+.end method
+
+.method public abstract zzg(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+.end method
+
+.method public abstract zzh([BII)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+.end method
+
+.method public abstract zzi([BII)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+.end method
+
+.method public abstract zzj()V
+.end method
+
+.method public abstract zzk(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+.end method
+
+.method public abstract zzm([BIIZ)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+.end method
+
+.method public abstract zzn([BIIZ)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+.end method

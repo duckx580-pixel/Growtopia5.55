@@ -1,0 +1,3793 @@
+###### Class com.json.mediationsdk.utils.IronSourceUtils (com.ironsource.mediationsdk.utils.IronSourceUtils)
+.class public Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# static fields
+.field private static final DEFAULT_IS_EVENTS_FORMATTER_TYPE:Ljava/lang/String; = "default_is_events_formatter_type"
+
+.field private static final DEFAULT_IS_EVENTS_URL:Ljava/lang/String; = "default_is_events_url"
+
+.field private static final DEFAULT_IS_NON_CONNECTIVITY_EVENTS:Ljava/lang/String; = "default_is_non_connectivity_events"
+
+.field private static final DEFAULT_IS_OPT_IN_EVENTS:Ljava/lang/String; = "default_is_opt_in_events"
+
+.field private static final DEFAULT_IS_OPT_OUT_EVENTS:Ljava/lang/String; = "default_is_opt_out_events"
+
+.field private static final DEFAULT_IS_TRIGGER_EVENTS:Ljava/lang/String; = "default_is_trigger_events"
+
+.field private static final DEFAULT_PXL_EVENTS_URL:Ljava/lang/String; = "default_pxl_events_url"
+
+.field private static final DEFAULT_PXL_TRIGGER_EVENTS:Ljava/lang/String; = "default_pxl_trigger_events"
+
+.field private static final DEFAULT_RV_EVENTS_FORMATTER_TYPE:Ljava/lang/String; = "default_rv_events_formatter_type"
+
+.field private static final DEFAULT_RV_EVENTS_URL:Ljava/lang/String; = "default_rv_events_url"
+
+.field private static final DEFAULT_RV_NON_CONNECTIVITY_EVENTS:Ljava/lang/String; = "default_rv_non_connectivity_events"
+
+.field private static final DEFAULT_RV_OPT_IN_EVENTS:Ljava/lang/String; = "default_rv_opt_in_events"
+
+.field private static final DEFAULT_RV_OPT_OUT_EVENTS:Ljava/lang/String; = "default_rv_opt_out_events"
+
+.field private static final DEFAULT_RV_TRIGGER_EVENTS:Ljava/lang/String; = "default_rv_trigger_events"
+
+.field private static final FIRST_SESSION_TIMESTAMP:Ljava/lang/String; = "firstSessionTimestamp"
+
+.field private static final GENERAL_PROPERTIES:Ljava/lang/String; = "general_properties"
+
+.field private static final LAST_RESPONSE:Ljava/lang/String; = "last_response"
+
+.field private static final PROVIDER_PRIORITY:Ljava/lang/String; = "providerPriority"
+
+.field private static final SDK_VERSION:Ljava/lang/String; = "8.4.0"
+
+.field private static final SHARED_PREFERENCES_NAME:Ljava/lang/String; = "Mediation_Shared_Preferences"
+
+.field private static instance:Lcom/ironsource/mediationsdk/utils/IronSourceUtils; = null
+
+.field private static mDidCreateSessionID:Ljava/util/concurrent/atomic/AtomicBoolean; = null
+
+.field private static mFirstSession:Ljava/lang/Boolean; = null
+
+.field private static mSessionId:Ljava/lang/String; = null
+
+.field private static serr:I = 0x1
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .registers 2
+
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    const/4 v1, 0x0
+
+    invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
+
+    sput-object v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mDidCreateSessionID:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    const/4 v0, 0x0
+
+    sput-object v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mSessionId:Ljava/lang/String;
+
+    sput-object v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mFirstSession:Ljava/lang/Boolean;
+
+    new-instance v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    invoke-direct {v0}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;-><init>()V
+
+    sput-object v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->instance:Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static createAndStartWorker(Ljava/lang/Runnable;Ljava/lang/String;)V
+    .registers 3
+
+    new-instance v0, Ljava/lang/Thread;
+
+    invoke-direct {v0, p0, p1}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;Ljava/lang/String;)V
+
+    new-instance p0, Lcom/ironsource/mediationsdk/logger/d;
+
+    invoke-direct {p0}, Lcom/ironsource/mediationsdk/logger/d;-><init>()V
+
+    invoke-virtual {v0, p0}, Ljava/lang/Thread;->setUncaughtExceptionHandler(Ljava/lang/Thread$UncaughtExceptionHandler;)V
+
+    invoke-virtual {v0}, Ljava/lang/Thread;->start()V
+
+    return-void
+.end method
+
+.method public static deepMergeJSONObjects(Lorg/json/JSONObject;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    .registers 6
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lorg/json/JSONException;
+        }
+    .end annotation
+
+    new-instance v0, Lorg/json/JSONObject;
+
+    invoke-virtual {p0}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-direct {v0, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {p1}, Lorg/json/JSONObject;->keys()Ljava/util/Iterator;
+
+    move-result-object p0
+
+    :goto_d
+    invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_35
+
+    invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/String;
+
+    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->get(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v2
+
+    instance-of v3, v2, Lorg/json/JSONObject;
+
+    if-eqz v3, :cond_31
+
+    invoke-virtual {v0, v1}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    move-result-object v3
+
+    if-eqz v3, :cond_31
+
+    invoke-virtual {v0, v1}, Lorg/json/JSONObject;->getJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    move-result-object v3
+
+    check-cast v2, Lorg/json/JSONObject;
+
+    invoke-static {v3, v2}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->deepMergeJSONObjects(Lorg/json/JSONObject;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+
+    move-result-object v2
+
+    :cond_31
+    invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    goto :goto_d
+
+    :cond_35
+    return-object v0
+.end method
+
+.method public static doesClassExist(Ljava/lang/String;)Z
+    .registers 1
+
+    :try_start_0
+    invoke-static {p0}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+    :try_end_3
+    .catchall {:try_start_0 .. :try_end_3} :catchall_5
+
+    const/4 p0, 0x1
+
+    return p0
+
+    :catchall_5
+    const/4 p0, 0x0
+
+    return p0
+.end method
+
+.method private static getAdUnitIds()Ljava/util/Map;
+    .registers 9
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Lcom/unity3d/mediation/LevelPlay$AdFormat;",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Lorg/json/JSONObject;",
+            ">;>;"
+        }
+    .end annotation
+
+    new-instance v0, Ljava/util/HashMap;
+
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    :try_start_5
+    invoke-static {}, Lcom/ironsource/el;->N()Lcom/ironsource/me;
+
+    move-result-object v1
+
+    invoke-interface {v1}, Lcom/ironsource/me;->r()Lcom/ironsource/ig;
+
+    move-result-object v1
+
+    invoke-interface {v1}, Lcom/ironsource/ig;->a()Lcom/ironsource/ak;
+
+    move-result-object v1
+
+    if-nez v1, :cond_14
+
+    goto :goto_4e
+
+    :cond_14
+    invoke-static {}, Lcom/unity3d/mediation/LevelPlay$AdFormat;->values()[Lcom/unity3d/mediation/LevelPlay$AdFormat;
+
+    move-result-object v2
+
+    array-length v3, v2
+
+    const/4 v4, 0x0
+
+    :goto_1a
+    if-ge v4, v3, :cond_4e
+
+    aget-object v5, v2, v4
+
+    new-instance v6, Ljava/util/HashMap;
+
+    invoke-direct {v6}, Ljava/util/HashMap;-><init>()V
+
+    invoke-interface {v0, v5, v6}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    invoke-virtual {v1, v5}, Lcom/ironsource/ak;->a(Lcom/unity3d/mediation/LevelPlay$AdFormat;)Ljava/util/List;
+
+    move-result-object v5
+
+    invoke-interface {v5}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v5
+
+    :cond_2e
+    :goto_2e
+    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v7
+
+    if-eqz v7, :cond_4b
+
+    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v7
+
+    check-cast v7, Ljava/lang/String;
+
+    const-string v8, "external"
+
+    invoke-virtual {v7, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v8
+
+    if-nez v8, :cond_2e
+
+    new-instance v8, Lorg/json/JSONObject;
+
+    invoke-direct {v8}, Lorg/json/JSONObject;-><init>()V
+
+    invoke-interface {v6, v7, v8}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    :try_end_4a
+    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_4a} :catch_4f
+
+    goto :goto_2e
+
+    :cond_4b
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_1a
+
+    :cond_4e
+    :goto_4e
+    return-object v0
+
+    :catch_4f
+    move-exception v1
+
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v1}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    sget-object v2, Lcom/ironsource/mediationsdk/logger/IronLog;->INTERNAL:Lcom/ironsource/mediationsdk/logger/IronLog;
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    const-string v4, "failed to get ad unit ids - exception = "
+
+    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v2, v1}, Lcom/ironsource/mediationsdk/logger/IronLog;->error(Ljava/lang/String;)V
+
+    return-object v0
+.end method
+
+.method public static getBase64Auth(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .registers 3
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    const-string v0, ":"
+
+    invoke-virtual {p0, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    invoke-virtual {p0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    new-instance p1, Ljava/lang/StringBuilder;
+
+    const-string v0, "Basic "
+
+    invoke-direct {p1, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {p0}, Ljava/lang/String;->getBytes()[B
+
+    move-result-object p0
+
+    const/16 v0, 0xa
+
+    invoke-static {p0, v0}, Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-virtual {p1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static getBooleanFromSharedPrefs(Landroid/content/Context;Ljava/lang/String;Z)Z
+    .registers 5
+
+    const-string v0, "Mediation_Shared_Preferences"
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1, p2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static getConnectionType(Landroid/content/Context;)Ljava/lang/String;
+    .registers 5
+
+    const-string v0, "none"
+
+    if-nez p0, :cond_5
+
+    return-object v0
+
+    :cond_5
+    const-string v1, "connectivity"
+
+    invoke-virtual {p0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    check-cast p0, Landroid/net/ConnectivityManager;
+
+    if-nez p0, :cond_10
+
+    return-object v0
+
+    :cond_10
+    :try_start_10
+    invoke-virtual {p0}, Landroid/net/ConnectivityManager;->getActiveNetwork()Landroid/net/Network;
+
+    move-result-object v1
+
+    invoke-virtual {p0, v1}, Landroid/net/ConnectivityManager;->getNetworkCapabilities(Landroid/net/Network;)Landroid/net/NetworkCapabilities;
+
+    move-result-object p0
+
+    if-nez p0, :cond_1b
+
+    return-object v0
+
+    :cond_1b
+    const/4 v1, 0x1
+
+    invoke-virtual {p0, v1}, Landroid/net/NetworkCapabilities;->hasTransport(I)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_25
+
+    const-string p0, "wifi"
+
+    return-object p0
+
+    :cond_25
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v1}, Landroid/net/NetworkCapabilities;->hasTransport(I)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_2f
+
+    const-string p0, "cellular"
+    :try_end_2e
+    .catch Ljava/lang/Exception; {:try_start_10 .. :try_end_2e} :catch_30
+
+    return-object p0
+
+    :cond_2f
+    return-object v0
+
+    :catch_30
+    move-exception p0
+
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    sget-object v1, Lcom/ironsource/mediationsdk/logger/IronLog;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronLog;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    const-string v3, "failed to connection type - exception = "
+
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/mediationsdk/logger/IronLog;->error(Ljava/lang/String;)V
+
+    return-object v0
+.end method
+
+.method public static getCurrentMethodName()Ljava/lang/String;
+    .registers 2
+
+    :try_start_0
+    new-instance v0, Ljava/lang/Throwable;
+
+    invoke-direct {v0}, Ljava/lang/Throwable;-><init>()V
+
+    invoke-virtual {v0}, Ljava/lang/Throwable;->getStackTrace()[Ljava/lang/StackTraceElement;
+
+    move-result-object v0
+
+    const/4 v1, 0x1
+
+    aget-object v0, v0, v1
+
+    invoke-virtual {v0}, Ljava/lang/StackTraceElement;->getMethodName()Ljava/lang/String;
+
+    move-result-object v0
+    :try_end_10
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_10} :catch_11
+
+    return-object v0
+
+    :catch_11
+    move-exception v0
+
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    const-string v0, ""
+
+    return-object v0
+.end method
+
+.method public static getCurrentTimestamp()I
+    .registers 4
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v0
+
+    const-wide/16 v2, 0x3e8
+
+    div-long/2addr v0, v2
+
+    long-to-int v0, v0
+
+    return v0
+.end method
+
+.method public static declared-synchronized getDefaultEventsFormatterType(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .registers 8
+
+    const-string v0, "IronSourceUtils:getDefaultEventsFormatterType(eventType: "
+
+    const-class v1, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v1
+
+    :try_start_5
+    const-string v2, "Mediation_Shared_Preferences"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p0, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-static {p1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getDefaultFormatterTypeByEventType(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {p0, v2, p2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p2
+    :try_end_14
+    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_14} :catch_17
+    .catchall {:try_start_5 .. :try_end_14} :catchall_15
+
+    goto :goto_45
+
+    :catchall_15
+    move-exception p0
+
+    goto :goto_47
+
+    :catch_17
+    move-exception p0
+
+    :try_start_18
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v2
+
+    sget-object v3, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v0, ", defaultFormatterType:"
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v0, ")"
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v2, v3, p1, p0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_45
+    .catchall {:try_start_18 .. :try_end_45} :catchall_15
+
+    :goto_45
+    monitor-exit v1
+
+    return-object p2
+
+    :goto_47
+    :try_start_47
+    monitor-exit v1
+    :try_end_48
+    .catchall {:try_start_47 .. :try_end_48} :catchall_15
+
+    throw p0
+.end method
+
+.method public static declared-synchronized getDefaultEventsURL(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .registers 8
+
+    const-string v0, "IronSourceUtils:getDefaultEventsURL(eventType: "
+
+    const-class v1, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v1
+
+    :try_start_5
+    const-string v2, "Mediation_Shared_Preferences"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p0, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-static {p1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getDefaultEventsUrlByEventType(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {p0, v2, p2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p2
+    :try_end_14
+    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_14} :catch_17
+    .catchall {:try_start_5 .. :try_end_14} :catchall_15
+
+    goto :goto_45
+
+    :catchall_15
+    move-exception p0
+
+    goto :goto_47
+
+    :catch_17
+    move-exception p0
+
+    :try_start_18
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v2
+
+    sget-object v3, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v0, ", defaultEventsURL:"
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v0, ")"
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v2, v3, p1, p0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_45
+    .catchall {:try_start_18 .. :try_end_45} :catchall_15
+
+    :goto_45
+    monitor-exit v1
+
+    return-object p2
+
+    :goto_47
+    :try_start_47
+    monitor-exit v1
+    :try_end_48
+    .catchall {:try_start_47 .. :try_end_48} :catchall_15
+
+    throw p0
+.end method
+
+.method private static getDefaultEventsUrlByEventType(Ljava/lang/String;)Ljava/lang/String;
+    .registers 2
+
+    const-string v0, "IS"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_b
+
+    const-string p0, "default_is_events_url"
+
+    return-object p0
+
+    :cond_b
+    const-string v0, "RV"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_16
+
+    const-string p0, "default_rv_events_url"
+
+    return-object p0
+
+    :cond_16
+    const-string v0, "PXL"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_21
+
+    const-string p0, "default_pxl_events_url"
+
+    return-object p0
+
+    :cond_21
+    const-string p0, ""
+
+    return-object p0
+.end method
+
+.method private static getDefaultFormatterTypeByEventType(Ljava/lang/String;)Ljava/lang/String;
+    .registers 3
+
+    const-string v0, "IS"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_b
+
+    const-string p0, "default_is_events_formatter_type"
+
+    return-object p0
+
+    :cond_b
+    const-string v0, "RV"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    const-string v1, "default_rv_events_formatter_type"
+
+    if-eqz v0, :cond_16
+
+    return-object v1
+
+    :cond_16
+    const-string v0, "PXL"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_1f
+
+    return-object v1
+
+    :cond_1f
+    const-string p0, ""
+
+    return-object p0
+.end method
+
+.method public static declared-synchronized getDefaultNonConnectivityEvents(Landroid/content/Context;Ljava/lang/String;)[I
+    .registers 8
+
+    const-class v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v0
+
+    const/4 v1, 0x0
+
+    :try_start_4
+    const-string v2, "Mediation_Shared_Preferences"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p0, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-static {p1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getDefaultNonConnectivityEventsByEventType(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {p0, v2, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_7e
+
+    new-instance v2, Ljava/util/StringTokenizer;
+
+    const-string v4, ","
+
+    invoke-direct {v2, p0, v4}, Ljava/util/StringTokenizer;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    new-instance p0, Ljava/util/ArrayList;
+
+    invoke-direct {p0}, Ljava/util/ArrayList;-><init>()V
+
+    :goto_25
+    invoke-virtual {v2}, Ljava/util/StringTokenizer;->hasMoreTokens()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_3b
+
+    invoke-virtual {v2}, Ljava/util/StringTokenizer;->nextToken()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v4}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v4
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v4
+
+    invoke-virtual {p0, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    goto :goto_25
+
+    :cond_3b
+    invoke-virtual {p0}, Ljava/util/ArrayList;->size()I
+
+    move-result v2
+
+    new-array v1, v2, [I
+
+    :goto_41
+    if-ge v3, v2, :cond_7e
+
+    invoke-virtual {p0, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/Integer;
+
+    invoke-virtual {v4}, Ljava/lang/Integer;->intValue()I
+
+    move-result v4
+
+    aput v4, v1, v3
+    :try_end_4f
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4f} :catch_54
+    .catchall {:try_start_4 .. :try_end_4f} :catchall_52
+
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_41
+
+    :catchall_52
+    move-exception p0
+
+    goto :goto_80
+
+    :catch_54
+    move-exception p0
+
+    :try_start_55
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v2
+
+    sget-object v3, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "IronSourceUtils:getDefaultNonConnectivityEvents(eventType: "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v4, ")"
+
+    invoke-virtual {p1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v2, v3, p1, p0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_7e
+    .catchall {:try_start_55 .. :try_end_7e} :catchall_52
+
+    :cond_7e
+    monitor-exit v0
+
+    return-object v1
+
+    :goto_80
+    :try_start_80
+    monitor-exit v0
+    :try_end_81
+    .catchall {:try_start_80 .. :try_end_81} :catchall_52
+
+    throw p0
+.end method
+
+.method private static getDefaultNonConnectivityEventsByEventType(Ljava/lang/String;)Ljava/lang/String;
+    .registers 2
+
+    const-string v0, "IS"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_b
+
+    const-string p0, "default_is_non_connectivity_events"
+
+    return-object p0
+
+    :cond_b
+    const-string v0, "RV"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_16
+
+    const-string p0, "default_rv_non_connectivity_events"
+
+    return-object p0
+
+    :cond_16
+    const-string p0, ""
+
+    return-object p0
+.end method
+
+.method public static declared-synchronized getDefaultOptInEvents(Landroid/content/Context;Ljava/lang/String;)[I
+    .registers 8
+
+    const-class v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v0
+
+    const/4 v1, 0x0
+
+    :try_start_4
+    const-string v2, "Mediation_Shared_Preferences"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p0, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-static {p1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getDefaultOptInEventsByEventType(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {p0, v2, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_7e
+
+    new-instance v2, Ljava/util/StringTokenizer;
+
+    const-string v4, ","
+
+    invoke-direct {v2, p0, v4}, Ljava/util/StringTokenizer;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    new-instance p0, Ljava/util/ArrayList;
+
+    invoke-direct {p0}, Ljava/util/ArrayList;-><init>()V
+
+    :goto_25
+    invoke-virtual {v2}, Ljava/util/StringTokenizer;->hasMoreTokens()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_3b
+
+    invoke-virtual {v2}, Ljava/util/StringTokenizer;->nextToken()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v4}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v4
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v4
+
+    invoke-virtual {p0, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    goto :goto_25
+
+    :cond_3b
+    invoke-virtual {p0}, Ljava/util/ArrayList;->size()I
+
+    move-result v2
+
+    new-array v1, v2, [I
+
+    :goto_41
+    if-ge v3, v2, :cond_7e
+
+    invoke-virtual {p0, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/Integer;
+
+    invoke-virtual {v4}, Ljava/lang/Integer;->intValue()I
+
+    move-result v4
+
+    aput v4, v1, v3
+    :try_end_4f
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4f} :catch_54
+    .catchall {:try_start_4 .. :try_end_4f} :catchall_52
+
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_41
+
+    :catchall_52
+    move-exception p0
+
+    goto :goto_80
+
+    :catch_54
+    move-exception p0
+
+    :try_start_55
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v2
+
+    sget-object v3, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "IronSourceUtils:getDefaultOptInEvents(eventType: "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v4, ")"
+
+    invoke-virtual {p1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v2, v3, p1, p0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_7e
+    .catchall {:try_start_55 .. :try_end_7e} :catchall_52
+
+    :cond_7e
+    monitor-exit v0
+
+    return-object v1
+
+    :goto_80
+    :try_start_80
+    monitor-exit v0
+    :try_end_81
+    .catchall {:try_start_80 .. :try_end_81} :catchall_52
+
+    throw p0
+.end method
+
+.method private static getDefaultOptInEventsByEventType(Ljava/lang/String;)Ljava/lang/String;
+    .registers 2
+
+    const-string v0, "IS"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_b
+
+    const-string p0, "default_is_opt_in_events"
+
+    return-object p0
+
+    :cond_b
+    const-string v0, "RV"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_16
+
+    const-string p0, "default_rv_opt_in_events"
+
+    return-object p0
+
+    :cond_16
+    const-string p0, ""
+
+    return-object p0
+.end method
+
+.method public static declared-synchronized getDefaultOptOutEvents(Landroid/content/Context;Ljava/lang/String;)[I
+    .registers 8
+
+    const-class v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v0
+
+    const/4 v1, 0x0
+
+    :try_start_4
+    const-string v2, "Mediation_Shared_Preferences"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p0, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-static {p1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getDefaultOptOutEventsByEventType(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {p0, v2, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_7e
+
+    new-instance v2, Ljava/util/StringTokenizer;
+
+    const-string v4, ","
+
+    invoke-direct {v2, p0, v4}, Ljava/util/StringTokenizer;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    new-instance p0, Ljava/util/ArrayList;
+
+    invoke-direct {p0}, Ljava/util/ArrayList;-><init>()V
+
+    :goto_25
+    invoke-virtual {v2}, Ljava/util/StringTokenizer;->hasMoreTokens()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_3b
+
+    invoke-virtual {v2}, Ljava/util/StringTokenizer;->nextToken()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v4}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v4
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v4
+
+    invoke-virtual {p0, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    goto :goto_25
+
+    :cond_3b
+    invoke-virtual {p0}, Ljava/util/ArrayList;->size()I
+
+    move-result v2
+
+    new-array v1, v2, [I
+
+    :goto_41
+    if-ge v3, v2, :cond_7e
+
+    invoke-virtual {p0, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/Integer;
+
+    invoke-virtual {v4}, Ljava/lang/Integer;->intValue()I
+
+    move-result v4
+
+    aput v4, v1, v3
+    :try_end_4f
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4f} :catch_54
+    .catchall {:try_start_4 .. :try_end_4f} :catchall_52
+
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_41
+
+    :catchall_52
+    move-exception p0
+
+    goto :goto_80
+
+    :catch_54
+    move-exception p0
+
+    :try_start_55
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v2
+
+    sget-object v3, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "IronSourceUtils:getDefaultOptOutEvents(eventType: "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v4, ")"
+
+    invoke-virtual {p1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v2, v3, p1, p0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_7e
+    .catchall {:try_start_55 .. :try_end_7e} :catchall_52
+
+    :cond_7e
+    monitor-exit v0
+
+    return-object v1
+
+    :goto_80
+    :try_start_80
+    monitor-exit v0
+    :try_end_81
+    .catchall {:try_start_80 .. :try_end_81} :catchall_52
+
+    throw p0
+.end method
+
+.method private static getDefaultOptOutEventsByEventType(Ljava/lang/String;)Ljava/lang/String;
+    .registers 2
+
+    const-string v0, "IS"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_b
+
+    const-string p0, "default_is_opt_out_events"
+
+    return-object p0
+
+    :cond_b
+    const-string v0, "RV"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_16
+
+    const-string p0, "default_rv_opt_out_events"
+
+    return-object p0
+
+    :cond_16
+    const-string p0, ""
+
+    return-object p0
+.end method
+
+.method public static declared-synchronized getDefaultTriggerEvents(Landroid/content/Context;Ljava/lang/String;)[I
+    .registers 8
+
+    const-class v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v0
+
+    const/4 v1, 0x0
+
+    :try_start_4
+    const-string v2, "Mediation_Shared_Preferences"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p0, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-static {p1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getDefaultTriggerEventsByEventType(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {p0, v2, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_7e
+
+    new-instance v2, Ljava/util/StringTokenizer;
+
+    const-string v4, ","
+
+    invoke-direct {v2, p0, v4}, Ljava/util/StringTokenizer;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    new-instance p0, Ljava/util/ArrayList;
+
+    invoke-direct {p0}, Ljava/util/ArrayList;-><init>()V
+
+    :goto_25
+    invoke-virtual {v2}, Ljava/util/StringTokenizer;->hasMoreTokens()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_3b
+
+    invoke-virtual {v2}, Ljava/util/StringTokenizer;->nextToken()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v4}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v4
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v4
+
+    invoke-virtual {p0, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    goto :goto_25
+
+    :cond_3b
+    invoke-virtual {p0}, Ljava/util/ArrayList;->size()I
+
+    move-result v2
+
+    new-array v1, v2, [I
+
+    :goto_41
+    if-ge v3, v2, :cond_7e
+
+    invoke-virtual {p0, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/Integer;
+
+    invoke-virtual {v4}, Ljava/lang/Integer;->intValue()I
+
+    move-result v4
+
+    aput v4, v1, v3
+    :try_end_4f
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4f} :catch_54
+    .catchall {:try_start_4 .. :try_end_4f} :catchall_52
+
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_41
+
+    :catchall_52
+    move-exception p0
+
+    goto :goto_80
+
+    :catch_54
+    move-exception p0
+
+    :try_start_55
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v2
+
+    sget-object v3, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "IronSourceUtils:getDefaultTriggerEvents(eventType: "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v4, ")"
+
+    invoke-virtual {p1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v2, v3, p1, p0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_7e
+    .catchall {:try_start_55 .. :try_end_7e} :catchall_52
+
+    :cond_7e
+    monitor-exit v0
+
+    return-object v1
+
+    :goto_80
+    :try_start_80
+    monitor-exit v0
+    :try_end_81
+    .catchall {:try_start_80 .. :try_end_81} :catchall_52
+
+    throw p0
+.end method
+
+.method private static getDefaultTriggerEventsByEventType(Ljava/lang/String;)Ljava/lang/String;
+    .registers 2
+
+    const-string v0, "IS"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_b
+
+    const-string p0, "default_is_trigger_events"
+
+    return-object p0
+
+    :cond_b
+    const-string v0, "RV"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_16
+
+    const-string p0, "default_rv_trigger_events"
+
+    return-object p0
+
+    :cond_16
+    const-string v0, "PXL"
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_21
+
+    const-string p0, "default_pxl_trigger_events"
+
+    return-object p0
+
+    :cond_21
+    const-string p0, ""
+
+    return-object p0
+.end method
+
+.method public static getDeviceType(Landroid/content/Context;)Ljava/lang/String;
+    .registers 2
+
+    invoke-static {}, Lcom/ironsource/el;->N()Lcom/ironsource/me;
+
+    move-result-object v0
+
+    invoke-interface {v0}, Lcom/ironsource/me;->f()Lcom/ironsource/ce;
+
+    move-result-object v0
+
+    invoke-interface {v0, p0}, Lcom/ironsource/ce;->r(Landroid/content/Context;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_11
+
+    const-string p0, "Tablet"
+
+    return-object p0
+
+    :cond_11
+    const-string p0, "Phone"
+
+    return-object p0
+.end method
+
+.method public static getFirstSession(Landroid/content/Context;)Z
+    .registers 2
+
+    sget-object v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mFirstSession:Ljava/lang/Boolean;
+
+    if-nez v0, :cond_10
+
+    invoke-static {p0}, Lcom/ironsource/ch;->a(Landroid/content/Context;)Z
+
+    move-result p0
+
+    xor-int/lit8 p0, p0, 0x1
+
+    invoke-static {p0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object p0
+
+    sput-object p0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mFirstSession:Ljava/lang/Boolean;
+
+    :cond_10
+    sget-object p0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mFirstSession:Ljava/lang/Boolean;
+
+    invoke-virtual {p0}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static getInstance()Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+    .registers 1
+
+    sget-object v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->instance:Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    return-object v0
+.end method
+
+.method public static getIntFromSharedPrefs(Landroid/content/Context;Ljava/lang/String;I)I
+    .registers 5
+
+    const-string v0, "Mediation_Shared_Preferences"
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1, p2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static getIronSourceAdvId(Landroid/content/Context;)Lcom/ironsource/ri;
+    .registers 5
+
+    invoke-static {}, Lcom/ironsource/el;->N()Lcom/ironsource/me;
+
+    move-result-object v0
+
+    invoke-interface {v0}, Lcom/ironsource/me;->f()Lcom/ironsource/ce;
+
+    move-result-object v0
+
+    if-eqz p0, :cond_33
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/p;->m()Lcom/ironsource/mediationsdk/p;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/mediationsdk/p;->b(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2b
+
+    invoke-interface {v0, p0}, Lcom/ironsource/ce;->J(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object p0
+
+    sget-object v0, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->INTERNAL:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    const-string v2, "using custom identifier"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p0, v0, v2, v3}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->log(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;I)V
+
+    const-string p0, "UUID"
+
+    goto :goto_2d
+
+    :cond_2b
+    const-string p0, "GAID"
+
+    :goto_2d
+    new-instance v0, Lcom/ironsource/ri;
+
+    invoke-direct {v0, v1, p0}, Lcom/ironsource/ri;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    return-object v0
+
+    :cond_33
+    const/4 p0, 0x0
+
+    return-object p0
+.end method
+
+.method public static getJsonForMetaData(Ljava/lang/String;Ljava/util/List;Ljava/util/List;)Lorg/json/JSONObject;
+    .registers 11
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            "Ljava/util/List<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/List<",
+            "Ljava/lang/String;",
+            ">;)",
+            "Lorg/json/JSONObject;"
+        }
+    .end annotation
+
+    new-instance v0, Lorg/json/JSONObject;
+
+    invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V
+
+    :try_start_5
+    const-string v1, "provider"
+
+    const-string v2, "Mediation"
+
+    invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    new-instance v1, Ljava/util/ArrayList;
+
+    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
+
+    const/4 v2, 0x0
+
+    move v3, v2
+
+    :goto_13
+    invoke-interface {p1}, Ljava/util/List;->size()I
+
+    move-result v4
+    :try_end_17
+    .catch Lorg/json/JSONException; {:try_start_5 .. :try_end_17} :catch_77
+
+    const-string v5, ";"
+
+    if-ge v2, v4, :cond_56
+
+    :try_start_1b
+    invoke-interface {p2}, Ljava/util/List;->size()I
+
+    move-result v4
+
+    if-ge v3, v4, :cond_56
+
+    invoke-interface {p1, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/String;
+
+    invoke-interface {p2, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Ljava/lang/String;
+
+    invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v7
+
+    if-nez v7, :cond_4e
+
+    invoke-virtual {v4, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v7
+
+    if-nez v7, :cond_4e
+
+    new-instance v7, Ljava/lang/StringBuilder;
+
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v7, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    :cond_4e
+    invoke-interface {v1, v4}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    add-int/lit8 v2, v2, 0x1
+
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_13
+
+    :cond_56
+    new-instance p1, Ljava/lang/StringBuilder;
+
+    invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {p1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    invoke-virtual {p0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    const-string p1, ","
+
+    invoke-static {p1, v1}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {p0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    const-string p1, "ext1"
+
+    invoke-virtual {v0, p1, p0}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    :try_end_76
+    .catch Lorg/json/JSONException; {:try_start_1b .. :try_end_76} :catch_77
+
+    return-object v0
+
+    :catch_77
+    move-exception p0
+
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object p1
+
+    invoke-virtual {p1, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    return-object v0
+.end method
+
+.method public static getJsonForUserId(Z)Lorg/json/JSONObject;
+    .registers 4
+
+    new-instance v0, Lorg/json/JSONObject;
+
+    invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V
+
+    :try_start_5
+    const-string v1, "provider"
+
+    const-string v2, "Mediation"
+
+    invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    if-eqz p0, :cond_15
+
+    const-string p0, "ext1"
+
+    const-string v1, "dynamic"
+
+    invoke-virtual {v0, p0, v1}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    :try_end_15
+    .catch Lorg/json/JSONException; {:try_start_5 .. :try_end_15} :catch_16
+
+    :cond_15
+    return-object v0
+
+    :catch_16
+    move-exception p0
+
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    return-object v0
+.end method
+
+.method public static getLastResponse(Landroid/content/Context;)Ljava/lang/String;
+    .registers 3
+
+    const-string v0, "Mediation_Shared_Preferences"
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    const-string v0, "last_response"
+
+    const-string v1, ""
+
+    invoke-interface {p0, v0, v1}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static getLongFromSharedPrefs(Landroid/content/Context;Ljava/lang/String;J)J
+    .registers 6
+
+    const-string v0, "Mediation_Shared_Preferences"
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1, p2, p3}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J
+
+    move-result-wide p0
+
+    return-wide p0
+.end method
+
+.method public static getMD5(Ljava/lang/String;)Ljava/lang/String;
+    .registers 6
+
+    :try_start_0
+    const-string v0, "MD5"
+
+    invoke-static {v0}, Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;
+
+    move-result-object v0
+
+    invoke-virtual {p0}, Ljava/lang/String;->getBytes()[B
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/security/MessageDigest;->digest([B)[B
+
+    move-result-object v0
+
+    new-instance v1, Ljava/math/BigInteger;
+
+    const/4 v2, 0x1
+
+    invoke-direct {v1, v2, v0}, Ljava/math/BigInteger;-><init>(I[B)V
+
+    const/16 v0, 0x10
+
+    invoke-virtual {v1, v0}, Ljava/math/BigInteger;->toString(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    :goto_1a
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    move-result v1
+
+    const/16 v2, 0x20
+
+    if-ge v1, v2, :cond_36
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "0"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+    :try_end_35
+    .catchall {:try_start_0 .. :try_end_35} :catchall_37
+
+    goto :goto_1a
+
+    :cond_36
+    return-object v0
+
+    :catchall_37
+    move-exception v0
+
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    if-nez p0, :cond_4d
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object p0
+
+    sget-object v1, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    const-string v2, "getMD5(input:null)"
+
+    invoke-virtual {p0, v1, v2, v0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    goto :goto_6b
+
+    :cond_4d
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v1
+
+    sget-object v2, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    const-string v4, "getMD5(input:"
+
+    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v3, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    const-string v3, ")"
+
+    invoke-virtual {p0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-virtual {v1, v2, p0, v0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    :goto_6b
+    const-string p0, ""
+
+    return-object p0
+.end method
+
+.method public static getMediationAdditionalData(Z)Lorg/json/JSONObject;
+    .registers 3
+
+    const/4 v0, 0x0
+
+    const/4 v1, 0x1
+
+    invoke-static {p0, v0, v1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getMediationAdditionalData(ZZI)Lorg/json/JSONObject;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static getMediationAdditionalData(ZZI)Lorg/json/JSONObject;
+    .registers 6
+
+    new-instance v0, Lorg/json/JSONObject;
+
+    invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V
+
+    :try_start_5
+    const-string v1, "provider"
+
+    const-string v2, "Mediation"
+
+    invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    if-eqz p0, :cond_14
+
+    const-string p0, "isDemandOnly"
+
+    const/4 v1, 0x1
+
+    invoke-virtual {v0, p0, v1}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;
+
+    :cond_14
+    if-eqz p1, :cond_1e
+
+    const/4 p0, -0x1
+
+    if-eq p2, p0, :cond_1e
+
+    const-string p0, "programmatic"
+
+    invoke-virtual {v0, p0, p2}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;
+    :try_end_1e
+    .catch Lorg/json/JSONException; {:try_start_5 .. :try_end_1e} :catch_1f
+
+    :cond_1e
+    return-object v0
+
+    :catch_1f
+    move-exception p0
+
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object p1
+
+    invoke-virtual {p1, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    return-object v0
+.end method
+
+.method public static getMediationUserId()Ljava/lang/String;
+    .registers 2
+
+    invoke-static {}, Lcom/ironsource/xc;->a()Lcom/ironsource/xc;
+
+    move-result-object v0
+
+    const-string v1, "userId"
+
+    invoke-virtual {v0, v1}, Lcom/ironsource/xc;->a(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public static getSDKVersion()Ljava/lang/String;
+    .registers 1
+
+    const-string v0, "8.4.0"
+
+    return-object v0
+.end method
+
+.method public static getSHA256(Ljava/lang/String;)Ljava/lang/String;
+    .registers 6
+
+    :try_start_0
+    const-string v0, "SHA-256"
+
+    invoke-static {v0}, Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;
+
+    move-result-object v0
+
+    invoke-virtual {p0}, Ljava/lang/String;->getBytes()[B
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/security/MessageDigest;->digest([B)[B
+
+    move-result-object v0
+
+    new-instance v1, Ljava/math/BigInteger;
+
+    const/4 v2, 0x1
+
+    invoke-direct {v1, v2, v0}, Ljava/math/BigInteger;-><init>(I[B)V
+
+    const-string v0, "%064x"
+
+    filled-new-array {v1}, [Ljava/lang/Object;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object p0
+    :try_end_1e
+    .catch Ljava/security/NoSuchAlgorithmException; {:try_start_0 .. :try_end_1e} :catch_1f
+
+    return-object p0
+
+    :catch_1f
+    move-exception v0
+
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    if-nez p0, :cond_35
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object p0
+
+    sget-object v1, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    const-string v2, "getSHA256(input:null)"
+
+    invoke-virtual {p0, v1, v2, v0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    goto :goto_53
+
+    :cond_35
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v1
+
+    sget-object v2, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    const-string v4, "getSHA256(input:"
+
+    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v3, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    const-string v3, ")"
+
+    invoke-virtual {p0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-virtual {v1, v2, p0, v0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    :goto_53
+    const-string p0, ""
+
+    return-object p0
+.end method
+
+.method public static getSerr()I
+    .registers 1
+
+    sget v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->serr:I
+
+    return v0
+.end method
+
+.method public static declared-synchronized getSessionId()Ljava/lang/String;
+    .registers 4
+
+    const-class v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v0
+
+    :try_start_3
+    sget-object v1, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mDidCreateSessionID:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x1
+
+    invoke-virtual {v1, v2, v3}, Ljava/util/concurrent/atomic/AtomicBoolean;->compareAndSet(ZZ)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_17
+
+    invoke-static {}, Ljava/util/UUID;->randomUUID()Ljava/util/UUID;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/util/UUID;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    sput-object v1, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mSessionId:Ljava/lang/String;
+
+    :cond_17
+    sget-object v1, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mSessionId:Ljava/lang/String;
+    :try_end_19
+    .catchall {:try_start_3 .. :try_end_19} :catchall_1b
+
+    monitor-exit v0
+
+    return-object v1
+
+    :catchall_1b
+    move-exception v1
+
+    :try_start_1c
+    monitor-exit v0
+    :try_end_1d
+    .catchall {:try_start_1c .. :try_end_1d} :catchall_1b
+
+    throw v1
+.end method
+
+.method public static getStringFromSharedPrefs(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .registers 5
+
+    const-string v0, "Mediation_Shared_Preferences"
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1, p2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static getTimestamp()J
+    .registers 2
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v0
+
+    return-wide v0
+.end method
+
+.method public static getTransId(JLjava/lang/String;)Ljava/lang/String;
+    .registers 3
+
+    invoke-static {p0, p1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object p0
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/p;->m()Lcom/ironsource/mediationsdk/p;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Lcom/ironsource/mediationsdk/p;->n()Ljava/lang/String;
+
+    move-result-object p1
+
+    filled-new-array {p0, p1, p2}, [Ljava/lang/Object;
+
+    move-result-object p0
+
+    const-string p1, "%s%s%s"
+
+    invoke-static {p1, p0}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-static {p0}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getSHA256(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static getUserIdForNetworks()Ljava/lang/String;
+    .registers 2
+
+    invoke-static {}, Lcom/ironsource/xc;->a()Lcom/ironsource/xc;
+
+    move-result-object v0
+
+    const-string v1, "userId"
+
+    invoke-virtual {v0, v1}, Lcom/ironsource/xc;->a(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_11
+
+    return-object v0
+
+    :cond_11
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public static isEncryptedResponse()Z
+    .registers 2
+
+    sget v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->serr:I
+
+    const/4 v1, 0x1
+
+    if-ne v0, v1, :cond_6
+
+    return v1
+
+    :cond_6
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public static isGooglePlayInstalled(Landroid/content/Context;)Z
+    .registers 1
+
+    invoke-static {p0}, Lcom/ironsource/un;->d(Landroid/content/Context;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static isNetworkConnected(Landroid/content/Context;)Z
+    .registers 5
+
+    const/4 v0, 0x0
+
+    if-nez p0, :cond_4
+
+    return v0
+
+    :cond_4
+    const-string v1, "connectivity"
+
+    invoke-virtual {p0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    check-cast p0, Landroid/net/ConnectivityManager;
+
+    if-nez p0, :cond_f
+
+    return v0
+
+    :cond_f
+    :try_start_f
+    invoke-virtual {p0}, Landroid/net/ConnectivityManager;->getActiveNetworkInfo()Landroid/net/NetworkInfo;
+
+    move-result-object p0
+
+    if-nez p0, :cond_16
+
+    return v0
+
+    :cond_16
+    invoke-virtual {p0}, Landroid/net/NetworkInfo;->isConnected()Z
+
+    move-result p0
+    :try_end_1a
+    .catch Ljava/lang/Exception; {:try_start_f .. :try_end_1a} :catch_1b
+
+    return p0
+
+    :catch_1b
+    move-exception p0
+
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    sget-object v1, Lcom/ironsource/mediationsdk/logger/IronLog;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronLog;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    const-string v3, "failed to check if network is connected - exception = "
+
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/mediationsdk/logger/IronLog;->error(Ljava/lang/String;)V
+
+    return v0
+.end method
+
+.method public static mergeJsons(Lorg/json/JSONObject;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+    .registers 5
+
+    if-nez p0, :cond_c
+
+    if-nez p1, :cond_c
+
+    :try_start_4
+    new-instance p1, Lorg/json/JSONObject;
+
+    invoke-direct {p1}, Lorg/json/JSONObject;-><init>()V
+
+    return-object p1
+
+    :catch_a
+    move-exception p1
+
+    goto :goto_31
+
+    :cond_c
+    if-nez p0, :cond_f
+
+    return-object p1
+
+    :cond_f
+    if-nez p1, :cond_12
+
+    goto :goto_30
+
+    :cond_12
+    invoke-virtual {p1}, Lorg/json/JSONObject;->keys()Ljava/util/Iterator;
+
+    move-result-object v0
+
+    :cond_16
+    :goto_16
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_30
+
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/String;
+
+    invoke-virtual {p0, v1}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_16
+
+    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->get(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v2
+
+    invoke-virtual {p0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    :try_end_2f
+    .catch Lorg/json/JSONException; {:try_start_4 .. :try_end_2f} :catch_a
+
+    goto :goto_16
+
+    :cond_30
+    :goto_30
+    return-object p0
+
+    :goto_31
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    sget-object v0, Lcom/ironsource/mediationsdk/logger/IronLog;->INTERNAL:Lcom/ironsource/mediationsdk/logger/IronLog;
+
+    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v0, p1}, Lcom/ironsource/mediationsdk/logger/IronLog;->error(Ljava/lang/String;)V
+
+    return-object p0
+.end method
+
+.method public static parseJsonToPairList(Lorg/json/JSONObject;)Ljava/util/List;
+    .registers 6
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lorg/json/JSONObject;",
+            ")",
+            "Ljava/util/List<",
+            "Landroid/util/Pair<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;>;"
+        }
+    .end annotation
+
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    :try_start_5
+    sget-object v1, Lorg/json/JSONObject;->NULL:Ljava/lang/Object;
+
+    if-eq p0, v1, :cond_38
+
+    invoke-virtual {p0}, Lorg/json/JSONObject;->keys()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    :cond_d
+    :goto_d
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_38
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Ljava/lang/String;
+
+    invoke-virtual {p0, v2}, Lorg/json/JSONObject;->get(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/String;->isEmpty()Z
+
+    move-result v3
+
+    if-nez v3, :cond_d
+
+    new-instance v3, Landroid/util/Pair;
+
+    invoke-virtual {p0, v2}, Lorg/json/JSONObject;->get(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-direct {v3, v2, v4}, Landroid/util/Pair;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    invoke-interface {v0, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    :try_end_37
+    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_37} :catch_39
+
+    goto :goto_d
+
+    :cond_38
+    return-object v0
+
+    :catch_39
+    move-exception p0
+
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    sget-object v1, Lcom/ironsource/mediationsdk/logger/IronLog;->INTERNAL:Lcom/ironsource/mediationsdk/logger/IronLog;
+
+    invoke-virtual {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/mediationsdk/logger/IronLog;->error(Ljava/lang/String;)V
+
+    return-object v0
+.end method
+
+.method public static parseJsonToStringMap(Lorg/json/JSONObject;)Ljava/util/Map;
+    .registers 5
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lorg/json/JSONObject;",
+            ")",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    new-instance v0, Ljava/util/HashMap;
+
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    :try_start_5
+    sget-object v1, Lorg/json/JSONObject;->NULL:Ljava/lang/Object;
+
+    if-eq p0, v1, :cond_33
+
+    invoke-virtual {p0}, Lorg/json/JSONObject;->keys()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    :cond_d
+    :goto_d
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_33
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Ljava/lang/String;
+
+    invoke-virtual {p0, v2}, Lorg/json/JSONObject;->get(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/String;->isEmpty()Z
+
+    move-result v3
+
+    if-nez v3, :cond_d
+
+    invoke-virtual {p0, v2}, Lorg/json/JSONObject;->get(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-interface {v0, v2, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    :try_end_32
+    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_32} :catch_34
+
+    goto :goto_d
+
+    :cond_33
+    return-object v0
+
+    :catch_34
+    move-exception p0
+
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    sget-object v1, Lcom/ironsource/mediationsdk/logger/IronLog;->INTERNAL:Lcom/ironsource/mediationsdk/logger/IronLog;
+
+    invoke-virtual {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/mediationsdk/logger/IronLog;->error(Ljava/lang/String;)V
+
+    return-object v0
+.end method
+
+.method public static saveBooleanToSharedPrefs(Landroid/content/Context;Ljava/lang/String;Z)V
+    .registers 5
+
+    const-string v0, "Mediation_Shared_Preferences"
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1, p2}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    return-void
+.end method
+
+.method public static declared-synchronized saveDefaultEventsFormatterType(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 8
+
+    const-string v0, "IronSourceUtils:saveDefaultEventsFormatterType(eventType: "
+
+    const-class v1, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v1
+
+    :try_start_5
+    const-string v2, "Mediation_Shared_Preferences"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p0, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    invoke-static {p1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getDefaultFormatterTypeByEventType(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {p0, v2, p2}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+    :try_end_1a
+    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_1a} :catch_1d
+    .catchall {:try_start_5 .. :try_end_1a} :catchall_1b
+
+    goto :goto_4b
+
+    :catchall_1b
+    move-exception p0
+
+    goto :goto_4d
+
+    :catch_1d
+    move-exception p0
+
+    :try_start_1e
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v2
+
+    sget-object v3, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v0, ", formatterType:"
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string p2, ")"
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v2, v3, p1, p0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_4b
+    .catchall {:try_start_1e .. :try_end_4b} :catchall_1b
+
+    :goto_4b
+    monitor-exit v1
+
+    return-void
+
+    :goto_4d
+    :try_start_4d
+    monitor-exit v1
+    :try_end_4e
+    .catchall {:try_start_4d .. :try_end_4e} :catchall_1b
+
+    throw p0
+.end method
+
+.method public static declared-synchronized saveDefaultEventsURL(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 8
+
+    const-string v0, "IronSourceUtils:saveDefaultEventsURL(eventType: "
+
+    const-class v1, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v1
+
+    :try_start_5
+    const-string v2, "Mediation_Shared_Preferences"
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p0, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    invoke-static {p1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getDefaultEventsUrlByEventType(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {p0, v2, p2}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+    :try_end_1a
+    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_1a} :catch_1d
+    .catchall {:try_start_5 .. :try_end_1a} :catchall_1b
+
+    goto :goto_4b
+
+    :catchall_1b
+    move-exception p0
+
+    goto :goto_4d
+
+    :catch_1d
+    move-exception p0
+
+    :try_start_1e
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v2
+
+    sget-object v3, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v0, ", eventsUrl:"
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string p2, ")"
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v2, v3, p1, p0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_4b
+    .catchall {:try_start_1e .. :try_end_4b} :catchall_1b
+
+    :goto_4b
+    monitor-exit v1
+
+    return-void
+
+    :goto_4d
+    :try_start_4d
+    monitor-exit v1
+    :try_end_4e
+    .catchall {:try_start_4d .. :try_end_4e} :catchall_1b
+
+    throw p0
+.end method
+
+.method public static declared-synchronized saveDefaultNonConnectivityEvents(Landroid/content/Context;Ljava/lang/String;[I)V
+    .registers 8
+
+    const-class v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v0
+
+    :try_start_3
+    const-string v1, "Mediation_Shared_Preferences"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {p0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    if-eqz p2, :cond_2b
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    :goto_15
+    array-length v3, p2
+
+    if-ge v2, v3, :cond_26
+
+    aget v3, p2, v2
+
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v4, ","
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_15
+
+    :cond_26
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    goto :goto_2c
+
+    :cond_2b
+    const/4 v1, 0x0
+
+    :goto_2c
+    invoke-static {p1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getDefaultNonConnectivityEventsByEventType(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {p0, v2, v1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+    :try_end_36
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_36} :catch_39
+    .catchall {:try_start_3 .. :try_end_36} :catchall_37
+
+    goto :goto_6d
+
+    :catchall_37
+    move-exception p0
+
+    goto :goto_6f
+
+    :catch_39
+    move-exception p0
+
+    :try_start_3a
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v1
+
+    sget-object v2, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "IronSourceUtils:saveDefaultNonConnectivityEvents(eventType: "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v3, ", nonConnectivityEvents:"
+
+    invoke-virtual {p1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string p2, ")"
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v1, v2, p1, p0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_6d
+    .catchall {:try_start_3a .. :try_end_6d} :catchall_37
+
+    :goto_6d
+    monitor-exit v0
+
+    return-void
+
+    :goto_6f
+    :try_start_6f
+    monitor-exit v0
+    :try_end_70
+    .catchall {:try_start_6f .. :try_end_70} :catchall_37
+
+    throw p0
+.end method
+
+.method public static declared-synchronized saveDefaultOptInEvents(Landroid/content/Context;Ljava/lang/String;[I)V
+    .registers 8
+
+    const-class v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v0
+
+    :try_start_3
+    const-string v1, "Mediation_Shared_Preferences"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {p0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    if-eqz p2, :cond_2b
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    :goto_15
+    array-length v3, p2
+
+    if-ge v2, v3, :cond_26
+
+    aget v3, p2, v2
+
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v4, ","
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_15
+
+    :cond_26
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    goto :goto_2c
+
+    :cond_2b
+    const/4 v1, 0x0
+
+    :goto_2c
+    invoke-static {p1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getDefaultOptInEventsByEventType(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {p0, v2, v1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+    :try_end_36
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_36} :catch_39
+    .catchall {:try_start_3 .. :try_end_36} :catchall_37
+
+    goto :goto_6d
+
+    :catchall_37
+    move-exception p0
+
+    goto :goto_6f
+
+    :catch_39
+    move-exception p0
+
+    :try_start_3a
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v1
+
+    sget-object v2, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "IronSourceUtils:saveDefaultOptInEvents(eventType: "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v3, ", optInEvents:"
+
+    invoke-virtual {p1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string p2, ")"
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v1, v2, p1, p0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_6d
+    .catchall {:try_start_3a .. :try_end_6d} :catchall_37
+
+    :goto_6d
+    monitor-exit v0
+
+    return-void
+
+    :goto_6f
+    :try_start_6f
+    monitor-exit v0
+    :try_end_70
+    .catchall {:try_start_6f .. :try_end_70} :catchall_37
+
+    throw p0
+.end method
+
+.method public static declared-synchronized saveDefaultOptOutEvents(Landroid/content/Context;Ljava/lang/String;[I)V
+    .registers 8
+
+    const-class v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v0
+
+    :try_start_3
+    const-string v1, "Mediation_Shared_Preferences"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {p0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    if-eqz p2, :cond_2b
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    :goto_15
+    array-length v3, p2
+
+    if-ge v2, v3, :cond_26
+
+    aget v3, p2, v2
+
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v4, ","
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_15
+
+    :cond_26
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    goto :goto_2c
+
+    :cond_2b
+    const/4 v1, 0x0
+
+    :goto_2c
+    invoke-static {p1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getDefaultOptOutEventsByEventType(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {p0, v2, v1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+    :try_end_36
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_36} :catch_39
+    .catchall {:try_start_3 .. :try_end_36} :catchall_37
+
+    goto :goto_6d
+
+    :catchall_37
+    move-exception p0
+
+    goto :goto_6f
+
+    :catch_39
+    move-exception p0
+
+    :try_start_3a
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v1
+
+    sget-object v2, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "IronSourceUtils:saveDefaultOptOutEvents(eventType: "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v3, ", optOutEvents:"
+
+    invoke-virtual {p1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string p2, ")"
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v1, v2, p1, p0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_6d
+    .catchall {:try_start_3a .. :try_end_6d} :catchall_37
+
+    :goto_6d
+    monitor-exit v0
+
+    return-void
+
+    :goto_6f
+    :try_start_6f
+    monitor-exit v0
+    :try_end_70
+    .catchall {:try_start_6f .. :try_end_70} :catchall_37
+
+    throw p0
+.end method
+
+.method public static declared-synchronized saveDefaultTriggerEvents(Landroid/content/Context;Ljava/lang/String;[I)V
+    .registers 8
+
+    const-class v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v0
+
+    :try_start_3
+    const-string v1, "Mediation_Shared_Preferences"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {p0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    if-eqz p2, :cond_2b
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    :goto_15
+    array-length v3, p2
+
+    if-ge v2, v3, :cond_26
+
+    aget v3, p2, v2
+
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v4, ","
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_15
+
+    :cond_26
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    goto :goto_2c
+
+    :cond_2b
+    const/4 v1, 0x0
+
+    :goto_2c
+    invoke-static {p1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->getDefaultTriggerEventsByEventType(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {p0, v2, v1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+    :try_end_36
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_36} :catch_39
+    .catchall {:try_start_3 .. :try_end_36} :catchall_37
+
+    goto :goto_6d
+
+    :catchall_37
+    move-exception p0
+
+    goto :goto_6f
+
+    :catch_39
+    move-exception p0
+
+    :try_start_3a
+    invoke-static {}, Lcom/ironsource/i9;->d()Lcom/ironsource/i9;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p0}, Lcom/ironsource/i9;->a(Ljava/lang/Throwable;)V
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v1
+
+    sget-object v2, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->NATIVE:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "IronSourceUtils:saveDefaultTriggerEvents(eventType: "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string v3, ", triggerEvents:"
+
+    invoke-virtual {p1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string p2, ")"
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v1, v2, p1, p0}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->logException(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_6d
+    .catchall {:try_start_3a .. :try_end_6d} :catchall_37
+
+    :goto_6d
+    monitor-exit v0
+
+    return-void
+
+    :goto_6f
+    :try_start_6f
+    monitor-exit v0
+    :try_end_70
+    .catchall {:try_start_6f .. :try_end_70} :catchall_37
+
+    throw p0
+.end method
+
+.method public static saveIntToSharedPrefs(Landroid/content/Context;Ljava/lang/String;I)V
+    .registers 5
+
+    const-string v0, "Mediation_Shared_Preferences"
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1, p2}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    return-void
+.end method
+
+.method public static declared-synchronized saveLastResponse(Landroid/content/Context;Ljava/lang/String;)V
+    .registers 5
+
+    const-class v0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v0
+
+    :try_start_3
+    const-string v1, "Mediation_Shared_Preferences"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {p0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    const-string v1, "last_response"
+
+    invoke-interface {p0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+    :try_end_16
+    .catchall {:try_start_3 .. :try_end_16} :catchall_18
+
+    monitor-exit v0
+
+    return-void
+
+    :catchall_18
+    move-exception p0
+
+    :try_start_19
+    monitor-exit v0
+    :try_end_1a
+    .catchall {:try_start_19 .. :try_end_1a} :catchall_18
+
+    throw p0
+.end method
+
+.method public static saveLongToSharedPrefs(Landroid/content/Context;Ljava/lang/String;J)V
+    .registers 6
+
+    const-string v0, "Mediation_Shared_Preferences"
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1, p2, p3}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    return-void
+.end method
+
+.method public static saveStringToSharedPrefs(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 5
+
+    const-string v0, "Mediation_Shared_Preferences"
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v0, v1}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1, p2}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    return-void
+.end method
+
+.method public static declared-synchronized sendAutomationLog(Ljava/lang/String;)V
+    .registers 6
+
+    const-string v0, "automation_log:"
+
+    const-class v1, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;
+
+    monitor-enter v1
+
+    :try_start_5
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v3
+
+    invoke-static {v3, v4}, Ljava/lang/Long;->toString(J)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v2, " text: "
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-static {}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->getLogger()Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;
+
+    move-result-object v0
+
+    sget-object v2, Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;->INTERNAL:Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;
+
+    const/4 v3, 0x0
+
+    invoke-virtual {v0, v2, p0, v3}, Lcom/ironsource/mediationsdk/logger/IronSourceLoggerManager;->log(Lcom/ironsource/mediationsdk/logger/IronSourceLogger$IronSourceTag;Ljava/lang/String;I)V
+    :try_end_2e
+    .catchall {:try_start_5 .. :try_end_2e} :catchall_30
+
+    monitor-exit v1
+
+    return-void
+
+    :catchall_30
+    move-exception p0
+
+    :try_start_31
+    monitor-exit v1
+    :try_end_32
+    .catchall {:try_start_31 .. :try_end_32} :catchall_30
+
+    throw p0
+.end method
+
+.method private static setSerr(I)V
+    .registers 1
+
+    sput p0, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->serr:I
+
+    return-void
+.end method

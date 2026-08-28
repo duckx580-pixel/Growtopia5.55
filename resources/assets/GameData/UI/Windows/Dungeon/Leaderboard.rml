@@ -1,0 +1,146 @@
+<rml>
+	<head>
+		<title>DungeonleaderboardBlock</title>
+		<link type="text/template" href="../Base/BasePopup.rml" />
+		<link type="text/rcss" href="../Base/WindowTitle.rcss" />
+		<link type="text/rcss" href="Leaderboard.rcss" />
+		<link type="text/template" href="../Templates/DungeonRankBanner.rml" />
+	</head>
+	<body template="BasePopup" class="show-scrollbar ">
+		<div data-model="DungeonLeaderboardModel" id="dungeonleaderboard-popup" class="font-content">
+			<div class="font-contentnormal">
+				<div style="font-size: 46dp; padding-bottom: 20dp;">{{DungeonLeaderboardModel.Title}}</div>
+				<div class="top-panel">
+					<div class="top-inner-left">
+						<div class="league-banner" data-alias-file_path="DungeonLeaderboardModel.BannerPath" data-alias-tier="DungeonLeaderboardModel.LeagueTier">
+							<template src="DungeonRankBanner"/>
+						</div>
+						<div class="font-contentnormal color_white ">
+							<Timer data-attr-seconds="DungeonLeaderboardModel.EndTime" sec-post-1m="true">
+								<active class="timer-font">
+									<span class="color_dreamsicle" data-rml="ToRMLText(Localize('[DUNGEON_LEADERBOARD_TIMER_PREFIX]'))"/>
+									<timertext class="color_pinky_purple"/>
+								</active>
+								<expired data-rml="ToRMLText(Localize('[DUNGEON_LEADERBOARD_TIMER_EXPIRED]'))"/>
+							</Timer>
+							<div data-rml="ToRMLText(Localize('[DUNGEON_LEADERBOARD_DESCRIPTION_1]', DungeonLeaderboardModel.PromotionPerc, DungeonLeaderboardModel.DemotionPerc))" data-class-hidden="DungeonLeaderboardModel.DemotionPerc <= 0"/>
+							<div data-rml="ToRMLText(Localize('[DUNGEON_LEADERBOARD_DESCRIPTION_2]', DungeonLeaderboardModel.PromotionPerc))" data-class-hidden="DungeonLeaderboardModel.DemotionPerc > 0"/>
+						</div>
+					</div>
+					<div class="top-inner-right color_dreamsicle">
+						<div>
+							<Span>Your Position: </Span>
+							<Span>{{DungeonLeaderboardModel.PositionInfo}}</Span>
+						</div>
+						<div data-class-hidden="DungeonLeaderboardModel.Position <= DungeonLeaderboardModel.PromotionPosition">
+							<Span>Next Promotion: </Span>
+							<Span>{{NumWithSeparator(DungeonLeaderboardModel.PromotionInfo)}}</Span>
+						</div>
+						<div style="height:100%;" data-class-hidden="DungeonLeaderboardModel.Position > DungeonLeaderboardModel.PromotionPosition"/>
+						<div>
+							<Span>Your Points: </Span>
+							<Span>{{NumWithSeparator(DungeonLeaderboardModel.Points)}}</Span>
+						</div>
+						<div onclick="OnEvent(event, 'DungeonLeaderboard.GotoPlayer')" class="img-button button-default-color">
+							<span class="label"  style="font-size: 20dp;">Go To Your Rank</span>
+						</div>
+					</div>
+				</div>
+				<div class="leaderboard-actions">
+					<div class="info-panel">
+						<input type="checkbox" onchange="OnEvent(event, 'DungeonLeaderboard.OnInfoChanged')"/>
+						<div class="button button-purple-color" style="padding: 3dp 15dp 5dp 10dp;">
+							<div class="horizontal-panel">
+								<class class="title" data-rml="ToRMLText(Localize('[DUNGEON_LEADERBOARD_LEAGUE_INFO_TITLE]'))"/>
+								<class class="arrow"/>
+							</div>
+						</div>
+						<div class="info-popup">
+							<div class="more-info-banner-border">
+								<div class="more-info-banner"/>
+								<div class="font-contentnormal color_dreamsicle" data-rml="ToRMLText(Localize('[DUNGEON_LEADERBOARD_LEAGUE_INFO_TEXT]'))"/>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="scroll-header-top-padding">
+					<div class="scroll-header">
+						<div class="horizontal-panel color_dreamsicle leader-board-header-font">
+							<span style="width:95dp;"></span>
+							<span style="width:278dp;" data-rml="ToRMLText(Localize('[DUNGEON_LEADERBOARD_NAME]'))"/>
+							<span style="width:170dp;" data-rml="ToRMLText(Localize('[DUNGEON_LEADERBOARD_POINTS]'))"/>
+							<span data-rml="ToRMLText(Localize('[DUNGEON_LEADERBOARD_REWARDS]'))"/>
+						</div>
+					</div>
+				</div>
+				<div class="loading-popup" data-class-hidden="DungeonLeaderboardModel.RequestState != 1 || DungeonLeaderboardModel.Entries.size > 0">
+					<div class="font-contentnormal" data-rml="ToRMLText(Localize('[DUNGEON_LEADERBOARD_LOADING]'))"/>
+				</div>
+				<div class="loading-popup" data-class-hidden="DungeonLeaderboardModel.RequestState != 0 || DungeonLeaderboardModel.Entries.size > 0">
+					<div class="font-contentnormal" data-rml="ToRMLText(Localize('[DUNGEON_LEADERBOARD_EMPTY]'))"/>
+				</div>
+				<div id="results-list" class="scroll-container show-scrollbar" onscroll="OnEvent(event, 'DungeonLeaderboard.OnScroll')">
+					<div class="results-table" id="results-table">
+						<div id="entry-list" data-for="entry : DungeonLeaderboardModel.Entries">
+							<div class="entry-padding">
+								<div class="entry-panel" 
+									data-class-selected-promoted="entry.Position <= DungeonLeaderboardModel.PromotionPosition && DungeonLeaderboardModel.Position == entry.Position"
+									data-class-unselected-promoted="entry.Position <= DungeonLeaderboardModel.PromotionPosition && DungeonLeaderboardModel.Position != entry.Position"
+									data-class-selected-demoted="entry.Position > DungeonLeaderboardModel.DemotionPosition && DungeonLeaderboardModel.Position == entry.Position"
+									data-class-unselected-demoted="entry.Position > DungeonLeaderboardModel.DemotionPosition && DungeonLeaderboardModel.Position != entry.Position"
+									data-class-selected="DungeonLeaderboardModel.Position == entry.Position"
+									data-class-unselected="DungeonLeaderboardModel.Position != entry.Position">
+										 <div class="horizontal-panel">
+										<div class="default-text" style="padding-left: 20dp; width:60dp;"
+											 data-class-selected="DungeonLeaderboardModel.Position == entry.Position">
+											{{entry.Position}}
+										</div>
+										<div class="default-text" style="width:264dp;"
+											 data-class-selected="DungeonLeaderboardModel.Position == entry.Position">
+											{{entry.PlayerName}}
+										</div>
+										<div class="default-text" style="width:160dp;">
+											{{NumWithSeparator(entry.Points)}}
+										</div>
+										<div class ="reward-horizontal-panel">
+											<div data-for="reward : entry.Rewards">
+												<div class="reward-bkgnd">
+													<div class="reward-image" data-style-decorator="'itemidimage('+reward.ItemID+')'"/>
+													<div class="reward-text" data-rml="NumWithSeparator(reward.Number)" data-class-hidden="reward.Number <= 1"/>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="banner-center">
+								<div data-class-hidden="DungeonLeaderboardModel.PromotionPosition != entry.Position || DungeonLeaderboardModel.PlayerCount <= 1">
+									<div class="promotion-banner"/>
+									<!--<div class="promotion-banner-label">
+										<Span>Top </Span>
+										<Span>{{DungeonLeaderboardModel.PromotionPerc}}</Span>
+										<Span>%</Span>
+									</div>-->
+								</div>
+								<div data-class-hidden="DungeonLeaderboardModel.DemotionPosition != entry.Position || DungeonLeaderboardModel.PlayerCount <= 2">
+									<div class="demotion-banner"/>
+									<!--<div class="demotion-banner-label">
+										<Span>Bottom </Span>
+										<Span>{{DungeonLeaderboardModel.DemotionPerc}}</Span>
+										<Span>%</Span>
+									</div>-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="bottom-panel">
+					<div id="back-button" onclick="OnEvent(event, 'DungeonLeaderboard.OnBack')" class="img-button button-default-color">
+						<span class="label">Back</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</rml>

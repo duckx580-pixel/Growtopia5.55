@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer>
+	<Data>
+		<Sprite name="s_strap" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="11,9"/>
+		<Sprite name="s_robot" fileName="game/particles_large18.rttex" textureSize="64" frame="0,8"/>
+		<Sprite name="s_robotPunch" fileName="game/particles_large18.rttex" textureSize="64" frame="8,9"/>
+		<Sprite name="s_line" fileName="game/particles12.rttex" textureSize="32" frame="22,21"/>
+		<Sprite name="s_jumpSmoke" fileName="game/mi_minbot.rttex" textureSize="64" frame="3,0"/>
+		<Sprite name="s_jumpFlame" fileName="game/particles12.rttex" textureSize="32" frame="20,21"/>
+
+		<Animations>
+			<SpriteAnimation name="a_robot_idle" sprite="s_robot" isLoop="true" animTime="2600" playOnState="Movement.Idle">
+				<Frame>0,8</Frame>
+				<Frame>1,8</Frame>
+				<Frame>2,8</Frame>
+				<Frame>3,8</Frame>
+				<Frame>4,8</Frame>
+				<Frame>5,8</Frame>
+				<Frame>6,8</Frame>
+				<Frame>7,8</Frame>
+				<Frame>8,8</Frame>
+				<Frame>9,8</Frame>
+				<Frame>10,8</Frame>
+				<Frame>11,8</Frame>
+				<Frame>12,8</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_robot_move" sprite="s_robot" isLoop="true" animTime="400" playOnState="Movement.Move">
+				<Frame>0,9</Frame>
+				<Frame>1,9</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_robot_jump" sprite="s_robot" isLoop="true" animTime="400" playOnState="Movement.Jump">
+				<Frame>2,9</Frame>
+				<Frame>3,9</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_robot_fall" sprite="s_robot" isLoop="true" animTime="400" playOnState="Movement.Fall">
+				<Frame>4,9</Frame>
+				<Frame>5,9</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_robot_slowFall" sprite="s_robot" isLoop="true" animTime="400" playOnState="Movement.SlowFall">
+				<Frame>6,9</Frame>
+				<Frame>7,9</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_robotPunch" sprite="s_robotPunch" isLoop="true" animTime="400" playOnState="Punch.Yes">
+				<Frame>8,9</Frame>
+				<Frame>9,9</Frame>
+			</SpriteAnimation>
+		</Animations>
+		<StateMachines>
+			<StateMachine name="Movement">
+				<States>
+					<State name="Idle" />
+					<State name="Move" />
+					<State name="Jump" />
+					<State name="Fall" />
+					<State name="SlowFall" />
+				</States>
+				<Transitions>
+					<Transition to="Idle" from="Fall|Move|SlowFall">
+						<Condition type="and">
+							<IsVariableBool name="onGround">true</IsVariableBool>
+							<IsVariableFloat name="speed.length" operator="Less" abs="true">0.1</IsVariableFloat>
+						</Condition>
+					</Transition>
+					<Transition to="Move" from="Jump|Fall|Idle|SlowFall">
+						<Condition type="and">
+							<IsVariableBool name="onGround">true</IsVariableBool>
+							<IsVariableFloat name="speed.length" operator="Greater" abs="true">0.1</IsVariableFloat>
+						</Condition>
+					</Transition>
+					<Transition to="Jump" from="Idle|Move|Fall|SlowFall">
+						<Condition type="and">
+							<IsVariableBool name="onGround">false</IsVariableBool>
+							<IsVariableFloat name="speed.y" operator="Less">-0.1</IsVariableFloat>
+						</Condition>
+					</Transition>
+					<Transition to="Fall" from="Jump|Idle|Move|SlowFall">
+						<Condition type="and">
+							<IsVariableBool name="onGround">false</IsVariableBool>
+							<IsVariableFloat name="speed.y" operator="Greater">0.1</IsVariableFloat>
+							<IsHoldingJumpKey>false</IsHoldingJumpKey>
+						</Condition>
+					</Transition>
+					<Transition to="SlowFall" from="Jump|Idle|Move|Fall">
+						<Condition type="and">
+							<IsVariableBool name="onGround">false</IsVariableBool>
+							<IsVariableFloat name="speed.y" operator="Greater">0.1</IsVariableFloat>
+							<IsHoldingJumpKey>true</IsHoldingJumpKey>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+			<StateMachine name="Punch">
+				<States>
+					<State name="No"/>
+					<State name="Yes"/>
+				</States>
+				<Transitions>
+					<Transition to="No" from="Yes">
+						<Condition>
+							<IsAction operatorType="NotEqual">PUNCH</IsAction>
+						</Condition>
+					</Transition>
+					<Transition to="Yes" from="No">
+						<Condition>
+							<IsAction>PUNCH</IsAction>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+			<StateMachine name="Facing">
+				<States>
+					<State name="Left"/>
+					<State name="Right"/>
+				</States>
+				<Transitions>
+					<Transition to="Left" from="Right">
+						<Condition>
+							<IsFacingLeft>true</IsFacingLeft>
+						</Condition>
+					</Transition>
+					<Transition to="Right" from="Left">
+						<Condition>
+							<IsFacingLeft>false</IsFacingLeft>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+		</StateMachines>
+
+		<ParticleSystems>
+			<ParticleSystem name="ps_jumpSmokeL">
+				<Emitter>
+					<Set name="particlesPerEmission">3</Set>
+					<Set name="particlesToEmit">1</Set>
+					<Set name="offset">-18,16</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_jumpSmoke</Set>
+					<Set name="blendingMode">ADDITIVE</Set>
+					<Set name="lifeTime">0.75</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Set name="useGravity">true</Set>
+					<Set name="gravityVector">0, 50</Set>
+					<Set name="interpolateScale">true</Set>
+					<Set name="initialScale">0.2,0.1</Set>
+					<Increment name="initialScale" source="particleIndex" multiplier="0.1,0.1"/>
+					<Set name="finalScale">0.3,0.2</Set>
+					<Increment name="finalScale" source="particleIndex" multiplier="0.1,0.1"/>
+					<Set name="offset">0,-30</Set>
+					<Increment name="worldPos" source="particleIndex" multiplier="0,8"/>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_jumpSmokeR">
+				<Emitter>
+					<Set name="particlesPerEmission">3</Set>
+					<Set name="particlesToEmit">1</Set>
+					<Set name="offset">0,16</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_jumpSmoke</Set>
+					<Set name="blendingMode">ADDITIVE</Set>
+					<Set name="lifeTime">0.75</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Set name="useGravity">true</Set>
+					<Set name="gravityVector">0, 50</Set>
+					<Set name="interpolateScale">true</Set>
+					<Set name="initialScale">0.2,0.1</Set>
+					<Increment name="initialScale" source="particleIndex" multiplier="0.1,0.1"/>
+					<Set name="finalScale">0.3,0.2</Set>
+					<Increment name="finalScale" source="particleIndex" multiplier="0.1,0.1"/>
+					<Set name="offset">0,-30</Set>
+					<Increment name="worldPos" source="particleIndex" multiplier="0,8"/>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_jumpFlameR">
+				<Emitter>
+					<Set name="offset">0, -6</Set>
+					<Random name="emissionInterval" min="0.1" max="0.2" />
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_jumpFlame</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 0.9</KeyFrame>
+						<KeyFrame>0.5, 0.5</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Set name="inSpecificOrder">false</Set>
+					<Set name="lifeTime">0.75</Set>
+					<Random name="initialScale" min="0.8,0.9" max="0.9,1.1" />
+					<Set name="relativeToEmitter">true</Set>
+					<Set name="renderAlignment">UPPER_CENTER</Set>
+					<Set name="offset" source="FacingOffset"/>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_jumpFlameL">
+				<Emitter>
+					<Set name="offset">-16, -6</Set>
+					<Random name="emissionInterval" min="0.1" max="0.2" />
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_jumpFlame</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 0.9</KeyFrame>
+						<KeyFrame>0.5, 0.75</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Set name="inSpecificOrder">false</Set>
+					<Set name="lifeTime">0.5</Set>
+					<Random name="initialScale" min="0.8,0.9" max="0.9,1.1" />
+					<Set name="relativeToEmitter">true</Set>
+					<Set name="renderAlignment">UPPER_CENTER</Set>
+					<Set name="offset" source="FacingOffset"/>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_fallFlameR">
+				<Emitter>
+					<Set name="offset">0, -6</Set>
+					<Random name="emissionInterval" min="0.05" max="0.15" />
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_jumpFlame</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 0</KeyFrame>
+						<KeyFrame>0.25, 0.5</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Set name="inSpecificOrder">false</Set>
+					<Set name="lifeTime">0.5</Set>
+					<Random name="initialScale" min="0.5,0.7" max="1,1" />
+					<Set name="relativeToEmitter">true</Set>
+					<Set name="renderAlignment">UPPER_CENTER</Set>
+					<Set name="offset" source="FacingOffset"/>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_fallFlameL">
+				<Emitter>
+					<Set name="offset">-16, -6</Set>
+					<Random name="emissionInterval" min="0.05" max="0.15" />
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_jumpFlame</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 0</KeyFrame>
+						<KeyFrame>0.25, 0.5</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Set name="inSpecificOrder">false</Set>
+					<Set name="lifeTime">0.5</Set>
+					<Random name="initialScale" min="0.5,0.7" max="1,1" />
+					<Set name="relativeToEmitter">true</Set>
+					<Set name="renderAlignment">UPPER_CENTER</Set>
+					<Set name="offset" source="FacingOffset"/>
+				</Particle>
+			</ParticleSystem>
+		</ParticleSystems>
+
+		<TileStampData>
+			<Set name="FileName">game/particles12.rttex</Set>
+			<Set name="EndFrame">27,21</Set>
+			<Set name="FrameCount">4</Set>
+			<Set name="Offset">0,-22</Set>
+			<Set name="RenderDefaultCracks">true</Set>
+		</TileStampData>
+
+		<RenderOptions>
+			<Default>
+				<Set name="IgnorePunchTypeCheck">true</Set>
+				<Set name="IgnorePunchTypeDamagedTileCheck">true</Set>
+				<Set name="IgnoreDamagedTileForPunchPos">true</Set>
+			</Default>
+		</RenderOptions>
+
+		<VariableMap>
+			<Set name="FacingOffset">0,0</Set>
+		</VariableMap>
+	</Data>
+
+	<RenderRules>
+		<RenderFrontpack>
+			<SpriteRender name="s_strap" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_CENTER"/>
+		</RenderFrontpack>
+		<RenderBackpack>
+			<Translate>1,-32,0</Translate>
+			<SpriteRender name="s_robot" blend="PREMULTIPLIED_ALPHA" onState="Punch.No"/>
+			<SpriteRender name="s_robotPunch" blend="PREMULTIPLIED_ALPHA" onState="Punch.Yes"/>
+			<Group onState="Punch.Yes">
+				<Translate>-12,-5,0</Translate>
+				<SpriteRender name="s_line" blend="PREMULTIPLIED_ALPHA" stretchToTarget="true" alignmentLeft="LEFT_CENTER" alignmentRight="RIGHT_CENTER" drawShadow="false" flip="1,0"/>
+			</Group>
+		</RenderBackpack>
+		<AddClothingParticles>
+			<StopIf>
+				<IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+			</StopIf>
+			<ArithmethicOperation LeftHandVariableName="FacingOffset" RightHandVariableName="-1,0" OperationType="Set" onState="Facing.Left" />
+			<ArithmethicOperation LeftHandVariableName="FacingOffset" RightHandVariableName="0,0" OperationType="Set" onState="Facing.Right" />
+			<ParticleSystemUpdate name="ps_jumpSmokeL" onAction="JUMPSTART|JUMPDOUBLE"/>
+			<ParticleSystemUpdate name="ps_jumpSmokeR" onAction="JUMPSTART|JUMPDOUBLE"/>
+			<ParticleSystemUpdate name="ps_jumpFlameL" onAction="JUMPSTART|JUMPDOUBLE"/>
+			<ParticleSystemUpdate name="ps_jumpFlameR" onAction="JUMPSTART|JUMPDOUBLE"/>
+			<ParticleSystemUpdate name="ps_fallFlameL" onState="Movement.SlowFall"/>
+			<ParticleSystemUpdate name="ps_fallFlameR" onState="Movement.SlowFall"/>
+		</AddClothingParticles>
+	</RenderRules>
+</ItemRenderer>

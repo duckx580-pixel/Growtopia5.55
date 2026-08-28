@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyChips Bridge Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        #response-container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>MyChips Bridge Example</h1>
+<a  href="mychips://GetNetworkInfo?params={}" >Get Network Info</a>
+<br /><br />
+<a  href="mychips://GetDeviceInfo?params={}" >Get Device Info</a>
+<br /><br />
+<a  href="mychips://GetAppInfo?params={}" >Get App Info</a>
+<br /><br />
+<a  href="mychips://GetUserInfo?params={}" >Get User Info</a>
+<div id="response-container">
+    <p>Response will appear here...</p>
+</div>
+
+<script>
+        // Define a function that Android can call
+        window.mychipsNativeCallback = function(method, response) {
+            console.log('Method:', method, 'Response:', response);
+            document.getElementById('response-container').innerHTML = `
+                <h4>Response from ${method}</h4>
+                <pre>${JSON.stringify(response, null, 4)}</pre>
+            `;
+        };
+
+    </script>
+</body>
+</html>

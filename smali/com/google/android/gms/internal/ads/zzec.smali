@@ -1,0 +1,166 @@
+###### Class com.google.android.gms.internal.ads.zzec (com.google.android.gms.internal.ads.zzec)
+.class public final Lcom/google/android/gms/internal/ads/zzec;
+.super Ljava/lang/Object;
+.source "com.google.android.gms:play-services-ads@@23.4.0"
+
+
+# instance fields
+.field private zza:I
+
+.field private zzb:I
+
+.field private zzc:[J
+
+.field private zzd:I
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 2
+
+    const/4 v0, 0x0
+
+    throw v0
+.end method
+
+.method public constructor <init>(I)V
+    .registers 4
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    const/16 p1, 0x10
+
+    invoke-static {p1}, Ljava/lang/Integer;->bitCount(I)I
+
+    move-result v0
+
+    const/4 v1, 0x1
+
+    if-eq v0, v1, :cond_13
+
+    const/16 p1, 0xf
+
+    .line 2
+    invoke-static {p1}, Ljava/lang/Integer;->highestOneBit(I)I
+
+    move-result p1
+
+    add-int/2addr p1, p1
+
+    :cond_13
+    const/4 v0, 0x0
+
+    iput v0, p0, Lcom/google/android/gms/internal/ads/zzec;->zza:I
+
+    iput v0, p0, Lcom/google/android/gms/internal/ads/zzec;->zzb:I
+
+    .line 3
+    new-array p1, p1, [J
+
+    iput-object p1, p0, Lcom/google/android/gms/internal/ads/zzec;->zzc:[J
+
+    .line 4
+    array-length p1, p1
+
+    add-int/lit8 p1, p1, -0x1
+
+    iput p1, p0, Lcom/google/android/gms/internal/ads/zzec;->zzd:I
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final zza()J
+    .registers 4
+
+    .line 1
+    iget v0, p0, Lcom/google/android/gms/internal/ads/zzec;->zzb:I
+
+    if-eqz v0, :cond_b
+
+    iget-object v0, p0, Lcom/google/android/gms/internal/ads/zzec;->zzc:[J
+
+    iget v1, p0, Lcom/google/android/gms/internal/ads/zzec;->zza:I
+
+    .line 2
+    aget-wide v1, v0, v1
+
+    return-wide v1
+
+    .line 1
+    :cond_b
+    new-instance v0, Ljava/util/NoSuchElementException;
+
+    invoke-direct {v0}, Ljava/util/NoSuchElementException;-><init>()V
+
+    throw v0
+.end method
+
+.method public final zzb()J
+    .registers 6
+
+    .line 1
+    iget v0, p0, Lcom/google/android/gms/internal/ads/zzec;->zzb:I
+
+    if-eqz v0, :cond_16
+
+    iget-object v1, p0, Lcom/google/android/gms/internal/ads/zzec;->zzc:[J
+
+    iget v2, p0, Lcom/google/android/gms/internal/ads/zzec;->zza:I
+
+    .line 2
+    aget-wide v3, v1, v2
+
+    add-int/lit8 v2, v2, 0x1
+
+    iget v1, p0, Lcom/google/android/gms/internal/ads/zzec;->zzd:I
+
+    and-int/2addr v1, v2
+
+    iput v1, p0, Lcom/google/android/gms/internal/ads/zzec;->zza:I
+
+    add-int/lit8 v0, v0, -0x1
+
+    iput v0, p0, Lcom/google/android/gms/internal/ads/zzec;->zzb:I
+
+    return-wide v3
+
+    .line 1
+    :cond_16
+    new-instance v0, Ljava/util/NoSuchElementException;
+
+    invoke-direct {v0}, Ljava/util/NoSuchElementException;-><init>()V
+
+    throw v0
+.end method
+
+.method public final zzc()V
+    .registers 2
+
+    const/4 v0, 0x0
+
+    iput v0, p0, Lcom/google/android/gms/internal/ads/zzec;->zza:I
+
+    iput v0, p0, Lcom/google/android/gms/internal/ads/zzec;->zzb:I
+
+    return-void
+.end method
+
+.method public final zzd()Z
+    .registers 2
+
+    iget v0, p0, Lcom/google/android/gms/internal/ads/zzec;->zzb:I
+
+    if-nez v0, :cond_6
+
+    const/4 v0, 0x1
+
+    return v0
+
+    :cond_6
+    const/4 v0, 0x0
+
+    return v0
+.end method

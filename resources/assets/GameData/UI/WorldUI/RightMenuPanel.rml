@@ -1,0 +1,38 @@
+<template name="RightMenuPanel">
+	<head>
+		<title>RightMenuPanel</title>
+		<link type="text/rcss" href="../rml.rcss" />
+		<link type="text/rcss" href="../BaseStyles.rcss" />
+		<link type="text/rcss" href="RightMenuPanel.rcss" />
+		        <script lang="lua">
+function onPhotoModeClick(element, event, document)
+	if (document:IsClassSet("hide")) then
+		document:SetClass("hide", false);
+	else
+		document:SetClass("hide", true);
+	end
+end
+        </script>
+	</head>
+	<body>
+		<div id="right_menu_panel">
+			<FeatureEnableFlag flag-id="EnableProfileHUD">
+				<div id="photoButton" class="menu-button photo-button enabled" onclick="onPhotoModeClick(element, event, document); OnEvent(event, 'on-screenshot'); closeActiveAuctionPanel(document);" />
+			</FeatureEnableFlag>
+			<div id="main_buttons">
+				<div id="MENU" class="menu-button menuopen-button" onclick="OnEvent(event, 'on-menu')"/>
+				<div id="CHAT" class="menu-button chat-button" onclick="OnEvent(event, 'on-chat')" data-model="ConsoleModel">
+					<div class="notification_circle" data-visible="ConsoleModel.NumUnreadMessages > 0">
+						<div class="notification_text">{{ConsoleModel.NumUnreadMessages}}</div>
+					</div>
+				</div>
+				<FeatureEnableFlag flag-id="EnableCommunityButton">
+					<div class="menu-button friend-button" onclick="OnEvent(event, 'on-friend')"/>
+				</FeatureEnableFlag>
+				<FeatureEnableFlag flag-id="EnableStore">
+					<div id="STORE" class="menu-button shop-button" onclick="OnEvent(event, 'on-shop')"/>
+				</FeatureEnableFlag>
+			</div>
+		</div>
+	</body>
+</template>

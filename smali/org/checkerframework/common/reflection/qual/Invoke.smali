@@ -1,0 +1,22 @@
+###### Class org.checkerframework.common.reflection.qual.Invoke (org.checkerframework.common.reflection.qual.Invoke)
+.class public interface abstract annotation Lorg/checkerframework/common/reflection/qual/Invoke;
+.super Ljava/lang/Object;
+.source "Invoke.java"
+
+# interfaces
+.implements Ljava/lang/annotation/Annotation;
+
+
+# annotations
+.annotation runtime Ljava/lang/annotation/Documented;
+.end annotation
+
+.annotation runtime Ljava/lang/annotation/Retention;
+    value = .enum Ljava/lang/annotation/RetentionPolicy;->RUNTIME:Ljava/lang/annotation/RetentionPolicy;
+.end annotation
+
+.annotation runtime Ljava/lang/annotation/Target;
+    value = {
+        .enum Ljava/lang/annotation/ElementType;->METHOD:Ljava/lang/annotation/ElementType;
+    }
+.end annotation

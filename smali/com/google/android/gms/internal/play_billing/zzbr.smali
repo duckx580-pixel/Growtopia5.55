@@ -1,0 +1,4 @@
+###### Class com.google.android.gms.internal.play_billing.zzbr (com.google.android.gms.internal.play_billing.zzbr)
+.class public final synthetic Lcom/google/android/gms/internal/play_billing/zzbr;
+.super Ljava/lang/Object;
+.source "com.android.billingclient:billing@@7.0.0"

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer>
+  <Data>
+    <Sprite name="item_sprite" fileName="game/player_feet16.rttex" textureSize="32" frame="11,26"/>
+    <Sprite name="s_waterDrop" fileName="game/particles12.rttex" textureSize="32" frame="7,20"/>
+
+    <Animations>
+      <SpriteAnimation name="equip_anim" sprite="item_sprite" autoPlay="true" animTime="800" isLoop="true">
+        <Frame>11,26</Frame>
+        <Frame>12,26</Frame>
+        <Frame>13,26</Frame>
+        <Frame>14,26</Frame>
+      </SpriteAnimation>
+      <SpriteAnimation name="a_waterDrop" sprite="s_waterDrop" autoPlay="false" animTime="1000" isLoop="true">
+        <Frame>10,20</Frame>
+        <Frame>7,20</Frame>
+        <Frame>8,20</Frame>
+        <Frame>9,20</Frame>
+      </SpriteAnimation>
+    </Animations>
+
+    <StateMachines>
+      <StateMachine name="Punch">
+        <States>
+          <State name="No" />
+          <State name="Yes" />
+        </States>
+        <Transitions>
+          <Transition to="No" from="Yes">
+            <Condition>
+              <IsAction operatorType="NotEqual">PUNCH</IsAction>
+            </Condition>
+          </Transition>
+          <Transition to="Yes" from="No">
+            <Condition>
+              <IsAction>PUNCH</IsAction>
+            </Condition>
+          </Transition>
+        </Transitions>
+      </StateMachine>
+    </StateMachines>
+
+    <ParticleSystems>
+      <ParticleSystem name="ember_particle_left" updateStage="AddClothingParticles" renderStage="RenderShoes">
+        <Emitter>
+          <Set name="offset">-7, 0</Set>
+          <Set name="offsetFacing">false</Set>
+          <Set name="emissionInterval">0.2</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="useCharacterPos">false</Set>
+          <Set name="particlesPerEmission">1</Set>
+          <Set name="lifeTime">0.3</Set>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_waterDrop</Set>
+          <Set name="relativeToEmitter">true</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="isBackgroundParticle">false</Set>
+          <Set name="useGravity">true</Set>
+          <Set name="lifeTime">1</Set>
+          <Random name="offset" min="0,-7" max="0,0"/>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="rotateWithVelocity">true</Set>
+          <Random name="initialScale" min="0.5" max="1"/>
+          <RandomRadial name="initialVelocity" angleRange="50,0" radiusRange="-30,-80"/>
+          <Set name="gravityVector">0, 45</Set>
+        </Particle>
+      </ParticleSystem>
+      <ParticleSystem name="ember_particle_right" updateStage="AddClothingParticles" renderStage="RenderShoes">
+        <Emitter>
+          <Set name="offset">7, 0</Set>
+          <Set name="offsetFacing">false</Set>
+          <Set name="emissionInterval">0.2</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="useCharacterPos">false</Set>
+          <Set name="particlesPerEmission">1</Set>
+          <Set name="lifeTime">0.3</Set>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_waterDrop</Set>
+          <Set name="relativeToEmitter">true</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="isBackgroundParticle">false</Set>
+          <Set name="useGravity">true</Set>
+          <Set name="lifeTime">1</Set>
+          <Random name="offset" min="0,-7" max="0,0"/>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="rotateWithVelocity">true</Set>
+          <Random name="initialScale" min="0.5" max="1"/>
+          <RandomRadial name="initialVelocity" angleRange="-50,0" radiusRange="30,80"/>
+          <Set name="gravityVector">0, 45</Set>
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+
+    <RenderOptions>
+      <Default>
+        <Set name="IsToRenderPants">false</Set>
+        <Set name="ShoesHidesBodyLegs">true</Set>
+        <Set name="ShoesShouldIgnoreRaptorLegsOffset">true</Set>
+        <Set name="ClothingOffsetFromShoes">-7</Set>
+        <Set name="ShouldHover">true</Set>
+        <Set name="UserNameOffset">8</Set>
+        <Set name="IgnorePunchTypeCheck">true</Set>
+        <Set name="IsSurfboard">true</Set>
+      </Default>
+    </RenderOptions>
+  </Data>
+
+  <RenderRules>
+    <RenderShoes>
+      <SpriteRender name="item_sprite" offset="0,-10"/>
+    </RenderShoes>
+    
+    <Update>
+      <StopIf>
+        <IsZombified>true</IsZombified>
+		  <IsSitting>true</IsSitting>
+      </StopIf>
+      <AvatarTransform class="ArmAngle">
+        <Set name="armName">arm2Angle</Set>
+        <Set name="armAngle">45</Set>
+      </AvatarTransform>
+      <AvatarTransform class="ArmAngle" onState="Punch.No">
+        <Set name="armName">arm1Angle</Set>
+        <Set name="armAngle">310</Set>
+      </AvatarTransform>
+    </Update>
+  </RenderRules>
+</ItemRenderer>

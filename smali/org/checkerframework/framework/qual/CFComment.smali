@@ -1,0 +1,21 @@
+###### Class org.checkerframework.framework.qual.CFComment (org.checkerframework.framework.qual.CFComment)
+.class public interface abstract annotation Lorg/checkerframework/framework/qual/CFComment;
+.super Ljava/lang/Object;
+.source "CFComment.java"
+
+# interfaces
+.implements Ljava/lang/annotation/Annotation;
+
+
+# annotations
+.annotation runtime Ljava/lang/annotation/Documented;
+.end annotation
+
+.annotation runtime Ljava/lang/annotation/Retention;
+    value = .enum Ljava/lang/annotation/RetentionPolicy;->SOURCE:Ljava/lang/annotation/RetentionPolicy;
+.end annotation
+
+
+# virtual methods
+.method public abstract value()[Ljava/lang/String;
+.end method

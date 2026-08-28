@@ -1,0 +1,180 @@
+<?xml version="1.0" ?>
+<ItemRenderer>
+    <Data>
+        <Sprite name="Sprite6" fileName="game/player_cosmetics4.rttex" textureSize="32,32" frame="29,7" />
+        <Sprite name="Sprite12" fileName="game/particles_large17.rttex" textureSize="64,64" frame="0,11" />
+        <Animations>
+            <SpriteAnimation name="Animation13" sprite="Sprite12" isLoop="true" autoPlay="false" playOnState="Punch.No" animTime="1000">
+                <Frame>0,11</Frame>
+                <Frame>1,11</Frame>
+                <Frame>2,11</Frame>
+                <Frame>3,11</Frame>
+                <Frame>4,11</Frame>
+                <Frame>5,11</Frame>
+                <Frame>6,11</Frame>
+                <Frame>7,11</Frame>
+                <Frame>8,11</Frame>
+                <Frame>9,11</Frame>
+            </SpriteAnimation>
+            <SpriteAnimation name="Animation22" sprite="Sprite12" isLoop="true" autoPlay="false" playOnState="Punch.Yes" animTime="250">
+                <Frame>10,11</Frame>
+                <Frame>11,11</Frame>
+                <Frame>12,11</Frame>
+                <Frame>13,11</Frame>
+                <Frame>14,11</Frame>
+            </SpriteAnimation>
+			<InterpolationVec4Animation name="idleProxy" variableName="belt_rotation" targetValue="0, 0, 0, 1" animTime="600" playOnState="Movement.Idle"/>
+			<InterpolationVec4Animation name="fallProxy" variableName="belt_rotation" targetValue="55, 0, 0, 1" animTime="1200" playOnState="Movement.Fall"/>
+			<InterpolationVec4Animation name="jumpProxy" variableName="belt_rotation" targetValue="-25, 0, 0, 1" animTime="600" playOnState="Movement.Jump"/>
+        </Animations>
+        <ParticleSystems />
+        <VariableMap>
+			<Set name="belt_rotation">0, 0, 0, 1</Set>
+		</VariableMap>
+        <StateMachines>
+			<StateMachine name="Facing">
+				<States>
+					<State name="Left"/>
+					<State name="Right"/>
+				</States>
+				<Transitions>
+					<Transition to="Left" from="Right">
+						<Condition>
+							<IsFacingLeft>true</IsFacingLeft>
+						</Condition>
+					</Transition>
+					<Transition to="Right" from="Left">
+						<Condition>
+							<IsFacingLeft>false</IsFacingLeft>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+            <StateMachine name="Punch">
+                <States>
+                    <State name="No" />
+                    <State name="Yes" />
+                </States>
+                <Transitions>
+                    <Transition to="No" from="Yes">
+                        <Condition>
+                            <IsAction operatorType="NotEqual">PUNCH</IsAction>
+                        </Condition>
+                    </Transition>
+                    <Transition to="Yes" from="No">
+                        <Condition>
+                            <IsAction>PUNCH</IsAction>
+                        </Condition>
+                    </Transition>
+                </Transitions>
+            </StateMachine>
+			<StateMachine name="Movement">
+				<States>
+					<State name="Idle" />
+					<State name="Jump" />
+					<State name="Fall" />
+				</States>
+				<Transitions>
+					<Transition to="Idle" from="Fall|Jump">
+						<Condition type="and">
+							<IsVariableBool name="onGround">true</IsVariableBool>
+						</Condition>
+					</Transition>
+					<Transition to="Jump" from="Idle|Fall">
+						<Condition type="and">
+							<IsVariableBool name="onGround">false</IsVariableBool>
+							<IsVariableFloat name="speed.y" operator="Less">-0.1</IsVariableFloat>
+						</Condition>
+					</Transition>
+					<Transition to="Fall" from="Jump|Idle">
+						<Condition type="and">
+							<IsVariableBool name="onGround">false</IsVariableBool>
+							<IsVariableFloat name="speed.y" operator="Greater">0.1</IsVariableFloat>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+        </StateMachines>
+        <RenderOptions>
+            <Default>
+                <Set name="AdditionalClothingOffset">0</Set>
+                <Set name="AllowChangePunchType">false</Set>
+                <Set name="CarCastSmokeParticle">true</Set>
+                <Set name="ClothingOffsetFromShoes">0</Set>
+                <Set name="DefaultPunchSound" />
+                <Set name="DefaultRenderMannequinHandItem">true</Set>
+                <Set name="DisableDefaultAncestralParticleEffects">false</Set>
+                <Set name="DisableWalkAnimation">false</Set>
+                <Set name="EnableBobbingOffset">false</Set>
+                <Set name="HasDeathParticles">false</Set>
+                <Set name="Head.Sprite" />
+                <Set name="Head.Sprite.Sit" />
+                <Set name="Head.Sprite.Sleep" />
+                <Set name="HideAngelOnDeath">false</Set>
+                <Set name="HideAvatarOnDeath">false</Set>
+                <Set name="HideParticlesOnSleepingInBed">false</Set>
+                <Set name="HideParticlesOnTheaterSeat">false</Set>
+                <Set name="HideParticlesOnTransform">false</Set>
+                <Set name="IgnoreDefaultDamagedTileEffect">false</Set>
+                <Set name="IgnoreDefaultDestroyedTileEffect">false</Set>
+                <Set name="IgnoreParticlesInShadowMods">true</Set>
+                <Set name="IgnorePunchTypeCheck">true</Set>
+                <Set name="IgnorePunchTypeCheckForNormalPunchOnly">false</Set>
+                <Set name="IgnorePunchTypeDamagedTileCheck">false</Set>
+                <Set name="IncludeAllActions">false</Set>
+                <Set name="IsBed">false</Set>
+                <Set name="IsCar">false</Set>
+                <Set name="IsFacingChangeDisabled">false</Set>
+                <Set name="IsHorse">false</Set>
+                <Set name="IsNightVision">false</Set>
+                <Set name="IsPetWithLight">false</Set>
+                <Set name="IsPulseShoes">false</Set>
+                <Set name="IsRidingBird">false</Set>
+                <Set name="IsRv">false</Set>
+                <Set name="IsSkateboard">false</Set>
+                <Set name="IsSurfboard">false</Set>
+                <Set name="IsToRenderPants">true</Set>
+                <Set name="IsToRenderParticlesWhenShrunken">false</Set>
+                <Set name="IsVehicle">false</Set>
+                <Set name="JumpEndStateRange">0</Set>
+                <Set name="NeedRenderBareFeetWithShoesItem">false</Set>
+                <Set name="NeedRenderPet">false</Set>
+                <Set name="PetOffsetDuplication">32,0</Set>
+                <Set name="PlayDefaultPunchAudio">true</Set>
+                <Set name="PunchSoundOverride" />
+                <Set name="RenderBackArmAfterItem">false</Set>
+                <Set name="RenderBackArmBuild">true</Set>
+                <Set name="RenderBackArmInTheFront">false</Set>
+                <Set name="RenderBackArmInfected">false</Set>
+                <Set name="RenderFrontArmInTheFront">false</Set>
+                <Set name="RenderFrontArmInfected">false</Set>
+                <Set name="RenderShoesWithMermaidTail">true</Set>
+                <Set name="RenderWhenZombie">true</Set>
+                <Set name="ShoesHidesBodyLegs">false</Set>
+                <Set name="ShoesShouldIgnoreRaptorLegsOffset">false</Set>
+                <Set name="ShouldHover">false</Set>
+                <Set name="SleepHidesPlayer">false</Set>
+                <Set name="UseActionsWithStates">false</Set>
+                <Set name="UsePetForceFaceTime">true</Set>
+                <Set name="UseRecoilAnim">false</Set>
+                <Set name="UserNameOffset">0</Set>
+            </Default>
+        </RenderOptions>
+    </Data>
+    <RenderRules>
+        <RenderChestItem>
+            <SpriteRender name="Sprite6" blend="NORMAL" alignment="DOWN_CENTER" drawShadow="true" />
+        </RenderChestItem>
+        <RenderChestBackItem>
+			<Translate>-4,-10,0</Translate>
+			<Rotate>belt_rotation</Rotate>
+			<Group onState="Facing.Right">
+                <SpriteRender name="Sprite12" blend="NORMAL" alignment="RIGHT_CENTER" drawShadow="true" />
+			</Group>
+			<Group onState="Facing.Left">
+				<SpriteRender name="Sprite12" blend="NORMAL" alignment="LEFT_CENTER" drawShadow="true" />
+			</Group>
+        </RenderChestBackItem>
+    </RenderRules>
+</ItemRenderer>
+

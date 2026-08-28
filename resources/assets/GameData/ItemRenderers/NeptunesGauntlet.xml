@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<ItemRenderer>
+	<Data>
+		<Sprite name="s_gaunlet" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="3,9" />
+		<Sprite name="s_necklace" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="4,9" />
+		
+		<Sprite name="s_water" fileName="game/particles4.rttex" textureSize="32" frame="8,15" />
+		<Sprite name="s_waterhit" fileName="game/particles12.rttex" textureSize="32" frame="0,19" />
+		<Sprite name="s_waterdrop" fileName="game/particles.rttex" textureSize="32" frame="4,14" />
+
+		<Sprite name="s_whale" fileName="game/fish_page1.rttex" textureSize="32" frame="8,1" />
+		<Sprite name="s_goldfish" fileName="game/fish_page1.rttex" textureSize="32" frame="0,0" />
+		<Sprite name="s_catfish" fileName="game/fish_page1.rttex" textureSize="32" frame="8,0" />
+		<Sprite name="s_dogfish" fileName="game/fish_page1.rttex" textureSize="32" frame="4,1" />
+		<Sprite name="s_sandshark" fileName="game/fish_page1.rttex" textureSize="32" frame="12,1" />
+		<Sprite name="s_stonefish" fileName="game/fish_page1.rttex" textureSize="32" frame="0,2" />
+		<Sprite name="s_gar" fileName="game/fish_page1.rttex" textureSize="32" frame="0,3" />
+
+		<Animations>
+			<SpriteAnimation name="a_water" sprite="s_water" animTime="400">
+				<Frame>11, 15</Frame>
+				<Frame>8, 15</Frame>
+				<Frame>9, 15</Frame>
+				<Frame>10, 15</Frame>
+				
+			</SpriteAnimation>
+		</Animations>
+
+		<StateMachines>
+			<StateMachine name="Action">
+				<States>
+					<State name="None"/>
+					<State name="PunchL"/>
+					<State name="PunchR"/>
+				</States>
+				<Transitions>
+					<Transition to="None" from="PunchL|PunchR">
+						<Condition>
+							<IsAction operatorType="NotEqual">PUNCH</IsAction>
+						</Condition>
+					</Transition>
+					<Transition to="PunchL" from="None">
+						<Condition type="and">
+							<IsAction>PUNCH</IsAction>
+							<IsFacingLeft>true</IsFacingLeft>
+						</Condition>
+					</Transition>
+					<Transition to="PunchR" from="None">
+						<Condition type="and">
+							<IsAction>PUNCH</IsAction>
+							<IsFacingLeft>false</IsFacingLeft>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+		</StateMachines>
+		<VariableMap>
+			<Set name="Player.GetSittingOffset">0,0,0</Set>
+			<Set name="Player.GetFacing">0</Set>
+			<Set name="offset_fish">-60,-10</Set>
+			<Set name="offset_water">-52,-24</Set>
+			<Set name="ps_offset_fish">0,0</Set>
+			<Set name="ps_offset_water">0,0</Set>
+		</VariableMap>
+		<ParticleSystems>
+			<ParticleSystem name="ps_fishR" updateStage="AddClothingParticles" updateState="Action.PunchR">
+				<Emitter>
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Random name="emissionInterval" min="0.2" max="0.5" />
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="offset" source="ps_offset_fish"/>
+				</Emitter>
+				<Particle randomSpriteFrame="true">
+					<Random name="variantId" min="0" max="7" />
+					<Select name="sprite" input="variantId">
+						<Item>"s_whale"</Item>
+						<Item>"s_goldfish"</Item>
+						<Item>"s_catfish"</Item>
+						<Item>"s_dogfish"</Item>
+						<Item>"s_sandshark"</Item>
+						<Item>"s_stonefish"</Item>
+						<Item>"s_gar"</Item>
+					</Select>
+					<Select name="initialScale" input="variantId">
+						<Item>1,1</Item>
+						<Item>0.4,0.4</Item>
+						<Item>0.6,0.6</Item>
+						<Item>0.6,0.6</Item>
+						<Item>0.75,0.75</Item>
+						<Item>0.75,0.75</Item>
+						<Item>0.75,0.75</Item>
+					</Select>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 0</KeyFrame>
+						<KeyFrame>0.3, 1</KeyFrame>
+						<KeyFrame>0.7, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Set name="lifeTime">0.4</Set>
+					<Set name="interpolateVelocity">true</Set>
+					<VectorTo name="initialVelocity" source="targetPos" duration="lifeTime" x="1" angle="30"/>
+					<VectorTo name="finalVelocity" source="targetPos" duration="lifeTime" x="1" angle="-30"/>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_fishL" updateStage="AddClothingParticles" updateState="Action.PunchL">
+				<Emitter>
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Random name="emissionInterval" min="0.2" max="0.5" />
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="offset" source="ps_offset_fish"/>
+				</Emitter>
+				<Particle randomSpriteFrame="true">
+					<Random name="variantId" min="0" max="7" />
+					<Select name="sprite" input="variantId">
+						<Item>"s_whale"</Item>
+						<Item>"s_goldfish"</Item>
+						<Item>"s_catfish"</Item>
+						<Item>"s_dogfish"</Item>
+						<Item>"s_sandshark"</Item>
+						<Item>"s_stonefish"</Item>
+						<Item>"s_gar"</Item>
+					</Select>
+					<Select name="initialScale" input="variantId">
+						<Item>1,1</Item>
+						<Item>0.4,0.4</Item>
+						<Item>0.6,0.6</Item>
+						<Item>0.6,0.6</Item>
+						<Item>0.75,0.75</Item>
+						<Item>0.75,0.75</Item>
+						<Item>0.75,0.75</Item>
+					</Select>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 0</KeyFrame>
+						<KeyFrame>0.3, 1</KeyFrame>
+						<KeyFrame>0.7, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Set name="lifeTime">0.4</Set>
+					<Set name="interpolateVelocity">true</Set>
+					<VectorTo name="initialVelocity" source="targetPos" duration="lifeTime" x="1" angle="30"/>
+					<VectorTo name="finalVelocity" source="targetPos" duration="lifeTime" x="1" angle="-30"/>
+					<Set name="flipX">true</Set>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_WaterR" updateStage="AddClothingParticles" updateState="Action.PunchR">
+				<Emitter>
+					<Set name="offset" source="ps_offset_water"/>
+					<Set name="lifeTime">0.4</Set>
+					<Set name="emissionInterval">0.4</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_water</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Set name="lifeTime">0.42</Set>
+					<Set name="initialScale">1.5,1.5</Set>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_WaterL" updateStage="AddClothingParticles" updateState="Action.PunchL">
+				<Emitter>
+					<Set name="offset" source="ps_offset_water"/>
+					<Set name="lifeTime">0.4</Set>
+					<Set name="emissionInterval">0.4</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_water</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Set name="lifeTime">0.42</Set>
+					<Set name="initialScale">1.5,1.5</Set>
+					<Set name="flipX">true</Set>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_WaterHitImpact" updateStage="OnDamagedTile">
+				<Emitter>
+					<Set name="lifeTime">0.4</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="offset">0,0</Set>
+					<Set name="particlesToEmit">1</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_waterhit</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Set name="lifeTime">0.5</Set>
+					<Curve name="initialScale">
+						<KeyFrame>0, 0.75,0.75</KeyFrame>
+						<KeyFrame>1, 1.75,1.75</KeyFrame>
+					</Curve>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 1</KeyFrame>
+						<KeyFrame>0.8, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Random name="initialAngle" min="0" max="360" />
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_WaterHitSpray" updateStage="OnDamagedTile">
+				<Emitter>
+					<Set name="lifeTime">1</Set>
+					<Set name="emissionInterval">0.5</Set>
+					<Random name="particlesPerEmission" min="6" max="10"/>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_waterdrop</Set>
+					<Set name="rotateWithVelocity">true</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 1</KeyFrame>
+						<KeyFrame>0.7, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Set name="useGravity">true</Set>
+					<Curve name="initialScale">
+						<KeyFrame>0, 1, 1</KeyFrame>
+						<KeyFrame>1, 0.5, 0.5</KeyFrame>
+					</Curve>
+					<Set name="lifeTime">1</Set>
+					<RandomRadial name="initialVelocity" angleRange="0,360" radiusRange="25,75" baseAnglePosition="targetPos" baseOffset="0,16"/>
+					<Set name="gravityVector">0, 45</Set>
+				</Particle>
+			</ParticleSystem>
+		</ParticleSystems>
+		
+		<RenderOptions>
+			<Default>
+				<Set name="IsToRenderParticlesWhenShrunken">true</Set>
+				<Set name="DefaultRenderMannequinHandItem">false</Set>
+				<Set name="RenderFrontArmInfected">true</Set>
+				<Set name="RenderBackArmInfected">true</Set>
+				<Set name="HideParticlesOnTransform">false</Set>
+			</Default>
+		</RenderOptions>
+	</Data>
+	<RenderRules>
+		<Update>
+			<ArithmethicOperation LeftHandVariableName="ps_offset_fish" RightHandVariableName="offset_fish" OperationType="Set"/>
+			<ArithmethicOperation LeftHandVariableName="ps_offset_fish.y" RightHandVariableName="Player.GetSittingOffset.y" OperationType="Add"/>
+			<ArithmethicOperation LeftHandVariableName="ps_offset_water" RightHandVariableName="offset_water" OperationType="Set"/>
+			<ArithmethicOperation LeftHandVariableName="ps_offset_water.y" RightHandVariableName="Player.GetSittingOffset.y" OperationType="Add"/>
+		</Update>
+		<OnPunchUpdate>
+			<AvatarTransform class="Face">
+				<Set name="face">MAD</Set>
+			</AvatarTransform>
+			<AvatarTransform class="ArmAngle">
+				<Set name="armName">arm2Angle</Set>
+				<Set name="pointTowardsPunchTarget">true</Set>
+			</AvatarTransform>
+		</OnPunchUpdate>
+		<RenderHandItem>
+			<SpriteRender name="s_gaunlet" alignment="CENTER" blend="PREMULTIPLIED_ALPHA" rotateOffset="true" />
+		</RenderHandItem>
+		<RenderFrontArm>
+			<SpriteRender name="s_necklace" alignment="DOWN_CENTER" useFixedRotation="true" fixedRotation="0"/>
+		</RenderFrontArm>
+	</RenderRules>
+</ItemRenderer>

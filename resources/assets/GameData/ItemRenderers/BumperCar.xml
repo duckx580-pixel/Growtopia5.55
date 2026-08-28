@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer>
+  <Data>
+    <StateMachines>
+      <StateMachine name="Motion">
+        <States>
+          <State name="Idle"/>
+          <State name="Move"/>
+        </States>
+        <Transitions>
+          <Transition from="Move" to="Idle" >
+            <Condition>
+              <IsVariableFloat name="speed.length" operator="Less" abs="true">0.1</IsVariableFloat>
+            </Condition>
+          </Transition>
+          <Transition from="Idle" to="Move">
+            <Condition>
+              <IsVariableFloat name="speed.length" operator="Greater" abs="true">0.1</IsVariableFloat>
+            </Condition>
+          </Transition>
+        </Transitions>
+      </StateMachine>
+    </StateMachines>
+
+    <Sprite name="s_cartFront" fileName="game/player_feet_large1.rttex" textureSize="64" frame="0,12"/>
+    <Sprite name="s_cartBack" fileName="game/player_feet_large1.rttex" textureSize="64" frame="2,12"/>
+
+	<Sprite name="s_cartFront_Glow" fileName="game/player_feet_large1.rttex" textureSize="64" frame="1,12"/>
+    <Sprite name="s_cartBack_Glow" fileName="game/player_feet_large1.rttex" textureSize="64" frame="3,12"/>
+	  
+    <Sprite name="s_trailSpark" fileName="game/particles2.rttex" textureSize="32" frame="9,8"/>
+	  
+    <Sprite name="s_trailSparks" fileName="game/particles12.rttex" textureSize="32" frame="4,14"/>
+    <Sprite name="s_trailSparksMannequin" fileName="game/particles12.rttex" textureSize="32" frame="4,14"/>
+    <Sprite name="s_trailSparksMannequin2" fileName="game/particles12.rttex" textureSize="32" frame="4,14"/>
+    
+    <Animations>
+	    <SpriteCurveAnimation name="cartFront_glow_anim" isLoop="true" autoPlay="true" sprite="s_cartFront_Glow" animTime="5000">
+		    <Curve name="alpha">
+			    <KeyFrame>0.f, 0.f</KeyFrame>
+			    <KeyFrame>0.2f, 0.f </KeyFrame>
+			    <KeyFrame>0.4f, 1.f</KeyFrame>
+			    <KeyFrame>0.8f, 1.f</KeyFrame>
+			    <KeyFrame>1.f, 0.f</KeyFrame>
+		    </Curve>
+	    </SpriteCurveAnimation>	    
+		<SpriteCurveAnimation name="cartBack_glow_anim" isLoop="true" autoPlay="true" sprite="s_cartBack_Glow" animTime="5000">
+		    <Curve name="alpha">
+			    <KeyFrame>0.f, 0.f</KeyFrame>
+			    <KeyFrame>0.2f, 0.f </KeyFrame>
+			    <KeyFrame>0.4f, 1.f</KeyFrame>
+			    <KeyFrame>0.8f, 1.f</KeyFrame>
+			    <KeyFrame>1.f, 0.f</KeyFrame>
+		    </Curve>
+	    </SpriteCurveAnimation>
+		
+      <SpriteAnimation name="a_trailSpark" sprite="s_trailSpark">
+        <Frame>9,8</Frame>
+        <Frame>10,8</Frame>
+      </SpriteAnimation>      
+	<SpriteAnimation name="a_trailSparks" sprite="s_trailSparks" animTime="600">
+        <Frame>4,14</Frame>
+        <Frame>5,14</Frame>
+        <Frame>6,14</Frame>        
+		<Frame>7,14</Frame>
+        <Frame>8,14</Frame>
+        <Frame>9,14</Frame>
+      </SpriteAnimation>	
+		
+	<SpriteAnimation name="a_trailSparksMan" sprite="s_trailSparksMannequin" animTime="400" isLoop="true" autoPlay="true">
+        <Frame>4,14</Frame>
+        <Frame>5,14</Frame>
+        <Frame>6,14</Frame>        
+		<Frame>7,14</Frame>
+        <Frame>8,14</Frame>
+        <Frame>9,14</Frame>
+      </SpriteAnimation>	
+	<SpriteAnimation name="a_trailSparksMan2" sprite="s_trailSparksMannequin2" animTime="400" isLoop="true" autoPlay="true">
+		<Frame>8,14</Frame>
+        <Frame>6,14</Frame>
+		<Frame>4,14</Frame>
+		<Frame>7,14</Frame>
+		<Frame>5,14</Frame>
+        <Frame>9,14</Frame>
+      </SpriteAnimation>
+    </Animations>
+
+    <ParticleSystems>
+      <ParticleSystem name="ps_trailFlash" updateStage="AddClothingParticles" renderStage="RenderShoes">
+        <Emitter>
+          <Set name="offset">-12.8, -44</Set>
+          <Set name="particlesPerEmission">1</Set>
+          <Set name="particlesToEmit">1</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="checkParticleNumToEmit">true</Set>
+          <Set name="lifeTime">0.3</Set>
+        </Emitter>
+        <Particle usePlayerFacing="true">
+          <Set name="sprite">s_trailSparks</Set>
+	      <Set name="relativeToEmitter">true</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 0.75</KeyFrame>
+            <KeyFrame>0.6, 0.75</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Curve name="initialScale">
+            <KeyFrame>0, 0.1, 0.1</KeyFrame>
+            <KeyFrame>1, 0.6, 0.6</KeyFrame>
+          </Curve>
+          <Set name="lifeTime">0.55</Set>
+          <Random name="initialAngle" min="-15" max="15" />
+        </Particle>
+      </ParticleSystem>
+
+      <ParticleSystem name="ps_trailSparks" updateStage="AddClothingParticles" renderStage="RenderShoes">
+        <Emitter>
+		  <Set name="offset">-12.5, -46</Set>
+          <Set name="emissionInterval">0.04</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="infLifeTime">true</Set>
+          <Set name="particlesPerEmission">1</Set>
+        </Emitter>
+        <Particle randomSpriteFrame="true">
+          <Set name="sprite">s_trailSpark</Set>
+	        <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+	        <Set name="useGravity">true</Set>
+	        <Set name="inSpecificOrder">true</Set>
+	        <Random name="initialScale" min="0.1" max="0.3"/>
+	        <Random name="lifeTime" min="0.2" max="0.5"/>
+	        <RandomRadial name="initialVelocity" angleRange="180,360" radiusRange="20,50"/>
+	        <Set name="gravityVector">0, 100</Set>
+	        <Random name="initialRotationRate" min="-300" max="300"/>
+	        <Random name="posOffset" min="0.1, 0" max="16.1, 16.3"/>
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+    <RenderOptions>
+      <Default>
+        <Set name="PlayDefaultPunchAudio">true</Set>
+        <Set name="ClothingOffsetFromShoes">2</Set>
+        <Set name="UserNameOffset">11</Set>
+        <Set name="RenderShoesWithMermaidTail">true</Set>
+        <Set name="ShoesHidesBodyLegs">true</Set>
+        <Set name="ShoesShouldIgnoreRaptorLegsOffset">true</Set>
+        <Set name="IsToRenderPants">false</Set>
+        <Set name="IsRidingBird">true</Set>
+	    <Set name="IsVehicle">true</Set>
+      </Default>
+    </RenderOptions>
+  </Data>
+  <RenderRules>
+	  <Update>
+
+	  </Update>
+    <RenderBehind value="playerCenter">
+      <StopIf>
+        <IsZombified>true</IsZombified>
+        <IsTrnsformed>true</IsTrnsformed>
+        <IsSitting>true</IsSitting>
+        <IsSleepingOnaBed>true</IsSleepingOnaBed>
+        <IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+      </StopIf>
+      <SpriteRender name="s_cartFront" blend="PREMULTIPLIED_ALPHA" offset="2,-31" />
+      <SpriteRender name="s_cartFront_Glow" blend="PREMULTIPLIED_ALPHA" offset="2,-31" drawShadow="false"/>
+      <StopIf>
+	      <IsVariableBool name="isMannequin">false</IsVariableBool>
+      </StopIf>
+      <SpriteRender name="s_trailSparksMannequin" offset="-12.8, -44" scale="0.4,0.4" drawShadow="false" blend="PREMULTIPLIED_ALPHA" tintOverride="255,255,255,155"/>
+      <SpriteRender name="s_trailSparksMannequin2" offset="-12.8, -44" scale="0.4,0.4" drawShadow="false" blend="PREMULTIPLIED_ALPHA" tintOverride="255,255,255,155"/>
+    </RenderBehind>
+    <RenderShoes>
+	    <SpriteRender name="s_cartBack" blend="PREMULTIPLIED_ALPHA" offset="2,1" alignment="DOWN_CENTER" drawShadow="false"/>
+	    <SpriteRender name="s_cartBack_Glow" offset="2,1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_CENTER" drawShadow="false"/>
+      <StopIf type="or">
+	      <IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+	      <IsRenderMod>RENDER_MOD_SPIRIT_GUIDE</IsRenderMod>
+	      <IsRenderMod>RENDER_MOD_RAINBOW_GUY</IsRenderMod>
+	      <IsSitting>true</IsSitting>
+	      <IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+      </StopIf>
+    </RenderShoes>
+    <OnPunchUpdate>
+      <AvatarTransform class="Face">
+        <Set name="face">MAD</Set>
+      </AvatarTransform>
+    </OnPunchUpdate>
+  </RenderRules>
+</ItemRenderer>

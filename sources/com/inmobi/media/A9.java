@@ -1,0 +1,10 @@
+package com.inmobi.media;
+
+/* JADX INFO: loaded from: classes3.dex */
+public interface A9 {
+    void a(String str);
+
+    boolean d();
+
+    long getViewTouchTimestamp();
+}

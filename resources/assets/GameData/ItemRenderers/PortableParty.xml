@@ -1,0 +1,159 @@
+<?xml version="1.0" ?>
+<ItemRenderer>
+  <Data>
+    <Sprite name="s_straps" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="27,5" />
+    <Sprite name="s_speaker" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="23,5" />
+    <Sprite name="s_jumpRing" fileName="game/particles9.rttex" textureSize="32" frame="12,5" />
+
+    <Animations>
+      <SpriteAnimation name="a_speaker" sprite="s_speaker" isLoop="true" animTime="1000" autoPlay="false" playOnState="PlayerAction.Idle">
+        <Frame>23,5</Frame>
+      </SpriteAnimation>
+      <SpriteAnimation name="a_speakerPunch" sprite="s_speaker" isLoop="true" animTime="1200" autoPlay="false" playOnState="PlayerAction.Punch|PlayerAction.Dance">
+        <Frame>23,5</Frame>
+        <Frame>24,5</Frame>
+        <Frame>25,5</Frame>
+        <Frame>26,5</Frame>
+        <Frame>24,5</Frame>
+        <Frame>25,5</Frame>
+      </SpriteAnimation>
+      <SpriteAnimation name="a_speakerJump" sprite="s_speaker" isLoop="false" animTime="1200" autoPlay="false" playOnState="PlayerAction.Jump|PlayerAction.DJump">
+        <Frame>23,5</Frame>
+        <Frame>24,5</Frame>
+        <Frame>25,5</Frame>
+        <Frame>26,5</Frame>
+        <Frame>24,5</Frame>
+        <Frame>25,5</Frame>
+      </SpriteAnimation>
+    </Animations>
+    <StateMachines>
+      <StateMachine name="PlayerAction">
+        <States>
+          <State name="Idle" />
+          <State name="Punch" />
+          <State name="Dance" />
+          <State name="Jump" />
+          <State name="DJump" />
+        </States>
+        <Transitions>
+          <Transition from="Punch|Dance|Jump|DJump" to="Idle">
+            <Condition type="and">
+              <IsAction operatorType="NotEqual">PUNCH</IsAction>
+              <IsVariableBool name="onGround">true</IsVariableBool>
+              <IsDancing>false</IsDancing>
+            </Condition>
+          </Transition>
+          <Transition from="Idle|Dance|Jump|DJump" to="Punch">
+            <Condition>
+              <IsAction>PUNCH</IsAction>
+            </Condition>
+          </Transition>
+          <Transition from="Idle|Punch|Jump|DJump" to="Dance">
+            <Condition type="and">
+              <IsAction operatorType="NotEqual">PUNCH</IsAction>
+              <IsDancing>true</IsDancing>
+              <IsVariableBool name="onGround">true</IsVariableBool>
+            </Condition>
+          </Transition>
+          <Transition from="Idle|Punch|Dance" to="Jump">
+            <Condition type="and">
+              <IsAction operatorType="NotEqual">PUNCH</IsAction>
+              <IsAction>JUMPSTART</IsAction>
+            </Condition>
+          </Transition>
+          <Transition from="Jump" to="DJump">
+            <Condition type="and">
+              <IsAction operatorType="NotEqual">PUNCH</IsAction>
+              <IsAction>JUMPDOUBLE</IsAction>
+            </Condition>
+          </Transition>
+        </Transitions>
+      </StateMachine>
+    </StateMachines>
+
+    <ParticleSystems>
+      <ParticleSystem name="ps_jumpHeartsLeft" renderStage="RenderChestItem">
+        <Emitter>
+          <Set name="particlesPerEmission">3</Set>
+          <Set name="particlesToEmit">1</Set>
+          <Set name="offset">-18,30</Set>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_jumpRing</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="lifeTime">0.75</Set>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>0.5, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Set name="useGravity">true</Set>
+          <Set name="gravityVector">0, 50</Set>
+          <Set name="interpolateScale">true</Set>
+          <Set name="initialScale">0.4,0.2</Set>
+          <Increment name="initialScale" source="particleIndex" multiplier="0.2,0.1"/>
+          <Set name="finalScale">1.2,0.6</Set>
+          <Increment name="finalScale" source="particleIndex" multiplier="0.4,0.2"/>
+          <Set name="offset">0,-25</Set>
+          <Increment name="worldPos" source="particleIndex" multiplier="0,12"/>
+        </Particle>
+      </ParticleSystem>
+      <ParticleSystem name="ps_jumpHeartsRight" renderStage="RenderChestItem">
+        <Emitter>
+          <Set name="particlesPerEmission">3</Set>
+          <Set name="particlesToEmit">1</Set>
+          <Set name="offset">18,30</Set>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_jumpRing</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="lifeTime">0.75</Set>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>0.5, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Set name="useGravity">true</Set>
+          <Set name="gravityVector">0, 50</Set>
+          <Set name="interpolateScale">true</Set>
+          <Set name="initialScale">0.4,0.2</Set>
+          <Increment name="initialScale" source="particleIndex" multiplier="0.2,0.1"/>
+          <Set name="finalScale">1.2,0.6</Set>
+          <Increment name="finalScale" source="particleIndex" multiplier="0.4,0.2"/>
+          <Set name="offset">0,-25</Set>
+          <Increment name="worldPos" source="particleIndex" multiplier="0,12"/>
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+
+    <RenderOptions>
+      <Default>
+        <Set name="IgnorePunchTypeCheck">true</Set>
+        <Set name="PlayDefaultPunchAudio">false</Set>
+      </Default>
+    </RenderOptions>
+    
+  </Data>
+  <RenderRules>
+    <Update>
+      <MusicSource onState="PlayerAction.Punch|PlayerAction.Dance">
+        <Set name="ItemID">ITEM_ID_PORTABLE_PARTY</Set>
+        <Set name="FadeOutTimeMs">500</Set>
+      </MusicSource>
+    </Update>
+    <RenderChestItem>
+      <SpriteRender name="s_straps" blend="NORMAL" alignment="DOWN_CENTER" drawShadow="true" />
+    </RenderChestItem>
+    <AddClothingParticles>
+      <ParticleSystemUpdate name="ps_jumpHeartsLeft" onAction="JUMPSTART|JUMPDOUBLE"/>
+      <ParticleSystemUpdate name="ps_jumpHeartsRight" onAction="JUMPSTART|JUMPDOUBLE"/>
+    </AddClothingParticles>
+    <RenderChestBackItem>
+      <SpriteRender name="s_speaker" blend="NORMAL" offset="-16,0" alignment="DOWN_CENTER" drawShadow="true" />
+      <SpriteRender name="s_speaker" blend="NORMAL" offset="16,0" alignment="DOWN_CENTER" drawShadow="true" />
+    </RenderChestBackItem>
+  </RenderRules>
+</ItemRenderer>
+

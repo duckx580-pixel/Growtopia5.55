@@ -1,0 +1,66 @@
+<rml>
+    <head>
+        <title>Questline</title>
+        <link type="text/template" href="../Base/BasePopup.rml" />
+        <link type="text/rcss" href="../Base/WindowTitle.rcss" />
+        <link type="text/rcss" href="ConcertLights.rcss" />
+    </head>
+    <body template="BasePopup" class="show-scrollbar wondow-content-full wondow-content-horizontal">
+		<div data-model="ConcertLightsModel" id="concertlights-popup" class="font-content">
+			<div class="font-contentnormal">
+				<div class="top-panel">
+					<div id="window-title">
+						<div class="title-icon" data-style-decorator="'itemidimage(' + ConcertLightsModel.Icon +')'"/>
+						<div class="title-text font-title label">
+							Concert Lights
+						</div>
+					</div>
+				</div>
+				<div class="font-contentnormal color_dreamsicle">
+					<div class="font-body1 top-padding">Light Rays:</div>
+					<div class="top-padding">Colour Shift 1</div>
+					<div class="horizontal-panel">
+						<div>Colour - R,G,B</div>
+						<input class="input" type="text" maxlength="13" data-value="ConcertLightsModel.RayColorShift1"/>
+					</div>
+					<div class="top-padding">Colour Shift 2</div>
+					<div class="horizontal-panel">
+						<div>Colour - R,G,B</div>
+						<input class="input" type="text" maxlength="13" data-value="ConcertLightsModel.RayColorShift2"/>
+					</div>
+					<div class="font-body1 top-padding">Dots:</div>
+					<div class="horizontal-panel">
+						<div>Colour - R,G,B</div>
+						<input class="input" type="text" maxlength="13" data-value="ConcertLightsModel.DotsColor"/>
+					</div>
+					<div class="font-body1 top-padding">Background Sky:</div>
+					<div class="top-padding">Gradient 1</div>
+					<div class="horizontal-panel">
+						<div>Colour - R,G,B</div>
+						<input class="input" type="text" maxlength="13" data-value="ConcertLightsModel.GradientColor1"/>
+					</div>
+					<div class="top-padding">Gradient 2</div>
+					<div class="horizontal-panel">
+						<div>Colour - R,G,B</div>
+						<input class="input" type="text" maxlength="13" data-value="ConcertLightsModel.GradientColor2"/>
+					</div>
+					<div class="top-padding vertical-panel" style="width: 280dp;">
+						<div class="horizontal-panel">
+							<div onclick="OnEvent(event, 'concertLights.OnDefault')" class="img-button button-default-color action-button">
+								<span class="label" style="color: rgb(252, 230, 186);">Restore to Default</span>
+							</div>
+						</div>
+						<div class="horizontal-panel">
+							<div onclick="OnEvent(event, 'concertLights.OnClose')" class="img-button button-yellow-color action-button">
+								<span class="label">Cancel</span>
+							</div>
+							<div onclick="OnEvent(event, 'concertLights.OnOkay')" class="img-button button-default-color action-button">
+								<span class="label">Okay</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </body>
+</rml>

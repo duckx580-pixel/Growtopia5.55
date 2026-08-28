@@ -1,0 +1,271 @@
+Hints:
+- Id: wolf
+  DisplayName: Wolf Worlds
+  Icon: ITEM_ID_WOLF_WHISTLE
+  Banner: interface/large/gui_event_wolfworld.rttex
+  Info: |
+    - Get a `2Wolf Whistle``.
+    - Consume the `2Wolf Whistle`` to face the wolf world parkour challenge.
+    - Reach the Great Wolf Totem at the end of the parkour challenge within the time limit to get your prize.
+- Id: fishing
+  Icon: ITEM_ID_FISHING_ROD
+  DisplayName: Fishing
+  Banner: interface/large/gui_event_fishing.rttex
+  Info: |
+    - Get a `2Fishing Rod``, some `2Bait`` and a `2Water Bucket``.
+    - Dig a hole in the ground and fill it with water.
+    - Equip the `2Fishing Rod`` and then stand beside the water and consume the `2Bait`` on the `2Water``.
+    - Wait for a fish to bite (indicated by a splash).
+    - Punch the water tile as soon as you see the splash to catch a fish.
+- Id: surgery
+  Icon: ITEM_ID_SURG_E
+  DisplayName: Surgery
+  Banner: interface/large/gui_event_surgery_info.rttex
+  Info: |
+    - Buy `2Surgery Tools`` from the store in the `5Surgical Kit`` or `5Master Surgeon's Tool Bag`` packs.
+    - Wrench a `2Growtopian`` that is sleeping on a `2Hospital Bed`` or a `2Surg-E`` bot.
+    - Perform surgery on them.
+    - Successfully fix the illness they have to get your prize.
+- Id: crime
+  Icon: ITEM_ID_HENCHMAN
+  DisplayName: Crime Fighting
+  Banner: interface/large/gui_event_crimewave.rttex
+  Info: |
+    - Buy `2Superpower Cards`` from the store in the `5Crime Wave`` pack.
+    - Consume the `2Crime Wave`` to spawn villains to fight.
+    - Punch a villain to start a Card Battle with them.
+    - Successfully defeat the villain to get your prize.
+- Id: startopia
+  Icon: ITEM_ID_STARSHIP_BLAST_CLASS_1
+  DisplayName: Startopia
+  Banner: interface/large/gui_event_imperialstarship.rttex
+  Info: |
+    - Buy an `2Imperial Starship Blast`` from the store and consume it to make a starship world.
+    - Buy an `2Startools`` from the store in the `2Galactic Goodies`` pack.
+    - Wrench the `2Helm`` of your starship to start a star mission.
+    - Successfully complete the mission to get your prize.
+- Id: mines
+  Icon: ITEM_ID_CAVE_BLAST
+  DisplayName: Mines
+  Banner: interface/large/gui_event_mining.rttex
+  Info: |
+    - Buy a `2Cave Blast`` from the store and consume it to make a cave world.
+    - Search the cave for a hidden entrance to the ancient mine.
+    - Use the Mining Explosives to break the Magic Infused Veins.
+    - Find the Pure Magic Ore inside the Magic Infused Veins to get your prize.
+- Id: geiger
+  Icon: ITEM_ID_GEIGER_COUNTER
+  DisplayName: Geiger Hunting
+  Banner: interface/large/gui_event_geigar.rttex
+  Info: |
+    - Buy a `2Geiger Counter`` from the store and equip it.
+    - Hunt around the world until the pulses turn green and increase in speed.
+    - Slowly move around the area until you find your prize.
+- Id: Winter_Wish
+  Icon: ITEM_ID_WINTER_WISH_BOX
+  Info: |
+    - Earn a `2Winter Wish`` from the Winter Wish List.
+    - Consume the `2Winter Wish`` to get your prize.
+- Id: Special_Winter_Wish
+  Icon: ITEM_ID_SUPER_CRACKER
+  Info: |
+    - Buy a `2Special Winter Wish`` from the Winter Wish List.
+    - Consume the `2Special Winter Wish`` to get your prize.
+- Id: Winterfest_Cracker
+  Icon: ITEM_ID_WINTERFEST_CRACKER
+  Info: |
+    - Buy a `2Winterfest Cracker`` from the store.
+    - Find a friend.
+    - Consume the `2Winterfest Cracker`` with your friend to get your prize.
+- Id: Deluxe_Cracker
+  Icon: ITEM_ID_DELUXE_WINTERFEST_CRACKER
+  Info: |
+    - Buy a `2Deluxe Winterfest Cracker`` from the store.
+    - Find a friend.
+    - Consume the `2Deluxe Winterfest Cracker`` with your friend to get your prize.
+- Id: Calendar
+  Icon: ITEM_ID_WINTERFEST_CALENDAR_2025
+  Info: |
+    - Buy a `2Winterfest Calendar - 2025`` from the store.
+    - Build the `2Winterfest Calendar - 2025`` in your world.
+    - Punch the `2Winterfest Calendar - 2025`` to retrieve your prize.
+
+    - `6NOTE: The Winterfest Calendar - 2025 is currently sold out!``
+- Id: Diamond_Provider
+  Icon: ITEM_ID_DIAMOND_BLOCKS_MACHINE
+  Info: |
+    - Buy a `2Diamond Builders Bonanza`` from the store on Saturdays.
+    - Build the `2Diamond Builders Bonanza`` in your world.
+    - Punch the `2Diamond Builders Bonanza`` to retrieve your prize.
+- Id: Giving_Tree
+  Icon: ITEM_ID_GIVING_TREE
+  Info: |
+    - Cut down a `2Giving Tree`` with a `5Lumber Axe`` in the world GROWCH.
+    - Plant the `2Giving Tree`` in your own world and decorate it with `5Tree Decorations``.
+    - Wait for a present to appear under the `2Giving Tree``.
+    - Punch the `2Giving Tree`` to retrieve your prize.
+- Id: Splice_1
+  Icon: ITEM_ID_SNOWY_ROCKS
+  Info: |
+    - Splice together a `5Rock Seed`` and an `5Ice Seed``.
+    - Wait until the tree is fully grown and then punch the tree to Harvest it.
+- Id: Splice_2
+  Icon: ITEM_ID_ICICLES
+  Info: |
+    - Splice together a `5Snowy Rocks Seed`` and a `5Death Spikes Seed``.
+    - Wait until the tree is fully grown and then punch the tree to Harvest it.
+- Id: Splice_3
+  Icon: ITEM_ID_TANGYUAN
+  Info: |
+    - Splice together a `5Water Bucket Seed`` and a `5Wheat Seed``.
+    - Wait until the tree is fully grown and then punch the tree to Harvest it.
+- Id: Splice_4
+  Icon: ITEM_ID_SNOWY_ROCK_PLATFORM
+  Info: |
+    - Splice together a `5Snow Crust Block Seed`` and a `5Snowy Rocks Seed``.
+    - Wait until the tree is fully grown and then punch the tree to Harvest it.
+- Id: Splice_5
+  Icon: ITEM_ID_CANDY_CANE_BLOCK
+  Info: |
+    - Splice together a `5White Block Seed`` and a `5Red Wood Wall Seed``.
+    - Wait until the tree is fully grown and then punch the tree to Harvest it.
+- Id: Splice_6
+  Icon: ITEM_ID_LUMBER_AXE
+  Info: |
+    - Splice together a `5Dark Brown Block Seed`` and a `5Dark Grey Block Seed``.
+    - Wait until the tree is fully grown and then punch the tree to Harvest it.
+- Id: Splice_7
+  Icon: ITEM_ID_SNOW_CRUST_BLOCK
+  Info: |
+    - Splice together a `5Snowy Rocks Seed`` and an `5Ice Seed``.
+    - Wait until the tree is fully grown and then punch the tree to Harvest it.
+- Id: Splice_8
+  Icon: ITEM_ID_YETI_HAT
+  Info: |
+    - Splice together a `5Twisted Spikes Seed`` and an `5Ice Seed``.
+    - Wait until the tree is fully grown and then punch the tree to Harvest it.
+- Id: Splice_9
+  Icon: ITEM_ID_FESTIVUS_POLE
+  Info: |
+    - Splice together a `5Checkpoint Seed`` and a `5Wooden Platform Seed``.
+    - Wait until the tree is fully grown and then punch the tree to Harvest it.
+- Id: Splice_10
+  Icon: ITEM_ID_WINTERFEST_CHECKPOINT
+  Info: |
+    - Splice together an `5Ice Seed`` and a `5Checkpoint Seed``.
+    - Wait until the tree is fully grown and then punch the tree to Harvest it.
+- Id: Splice_11
+  Icon: ITEM_ID_SNOWBALL
+  Info: |
+    - Splice together an `5Ice Seed`` and a `5Water Bucket Seed``.
+    - Wait until the tree is fully grown and then punch the tree to Harvest it.
+- Id: set_home
+  DisplayName: Set Home
+  Icon: ITEM_ID_WORLD_LOCK
+  Info: |
+    You can set any world you own as your `2Home World`` by wrenching the world lock.
+
+    - Wrench the world lock.
+    - Press the "Set as Home World" button.
+- Id: return_home
+  DisplayName: Return Home
+  Icon: ITEM_ID_CAMERA_LOG_ENTER
+  Info: |
+    You can return to your `2Home World`` at any time:
+
+    - From the world select screen by pressing the HOME button.
+    - From the chat console by typing the command "/home".
+- Id: welcome
+  Info: |
+    Welcome to Growtopia, a place where you can be anyone and do anything you could imagine.
+- Id: punch
+  DisplayName: Punch
+  Icon: ITEM_ID_FIST
+  Info: |
+    In Growtopia you can break almost anything with your `2Fist``!
+
+    - Select your `2Fist`` from the inventory at the bottom of the screen.
+    - With the `2Fist``, tap on any tile to punch it.
+    - Punch a tile repeatedly to break it.
+
+    By breaking blocks you can get all sorts of goodies including seeds, blocks and even gems.
+- Id: build
+  DisplayName: Build
+  Icon: ITEM_ID_DIRT
+  Info: |
+    In Growtopia you can build with the blocks you find and grow to be creative!
+
+    - Select a `2Block`` from the inventory at the bottom of the screen.
+    - With the `2Block`` selected, tap on any empty tile to build it in the world.
+
+    By breaking blocks you can collect seeds to grow more of the same block or to splice those seeds with other seeds to create new things.
+- Id: grow
+  DisplayName: Grow
+  Icon: ITEM_ID_DIRT_SEED
+  Info: |
+    In Growtopia almost everything grows from `2Seeds``! Seeds can be found by breaking blocks.
+
+    - Select a `2Seed`` from the inventory at the bottom of the screen.
+    - With the `2Seed`` selected, tap on any empty tile to plant it in the world.
+
+    Remeber that seeds can't grow in mid air so you need to plant them on top of another block.
+- Id: seed_diary_discover
+  DisplayName: Discovered
+  Icon: ITEM_ID_MYSTERY_BLOCK
+  Info: |
+    - Every time you collect a block or seed the item will be logged in your Seed Diary as discovered.
+
+    You can use the blocks that you have already discovered to see what possible seed combinations you might be able to use to create even more new blocks.
+- Id: seed_diary_plant
+  DisplayName: Planted
+  Icon: ITEM_ID_UNKNOWN_SEED_ICON
+  Info: |
+    - An item will only be logged as planted after you plant or splice the seed for the item.
+- Id: splice
+  DisplayName: Splicing
+  Icon: ITEM_ID_UNKNOWN_SEED_ICON
+  Info: |
+    New `2Seeds`` can be discovered by `2Splicing`` 2 Seeds together!
+
+    - Select a `2Seed`` from the inventory.
+    - With the `2Seed`` selected, tap on any empty tile to plant it in the world.
+    - Select second `2Seed`` from the inventory.
+    - With the `2Seed`` selected, tap on the previously planted seed to splice the 2 seeds together.
+- Id: farming
+  DisplayName: Farming
+  Icon: ITEM_ID_PEPPER_TREE
+  Info: |
+    You can get more seeds for an item by `2Farming`` the seeds.
+
+    1. Planting the seeds.
+    2. Harvest the blocks from the tree once its fully grown.
+    3. Build the blocks into the world.
+    4. Break the blocks to get more seeds.
+
+    Repeat the previous 4 steps.
+
+    Not every seed will give enough blocks to get more seeds by farming the seeds directly. If a tree can give 6 or more blocks then it is considered `2farmable`` and you will be able to get more seeds by repeating this loop.
+    If the block is not farmable you may need to farm other blocks and splice their seeds to get more of the block or seed that you want.
+- Id: shop
+  DisplayName: The Shop
+  Icon: ITEM_ID_FOR_SALE_SIGN
+  Info: |
+    In Growtopia many things can be purchased in the shop with the `2Gems`` you find as well and `2Growtokens`` and `2GrowVouchers``.
+
+    Player Items - Cosmetic itmes and upgrades to you backpack.
+    World Building - Items for building and decorating your world.
+    Activities - Everything you need to be anything you like.
+    Creativity - Express yourself with items your creative flair.
+- Id: wrench
+  DisplayName: Wrench
+  Icon: ITEM_ID_WRENCH
+  Info: |
+    The wrench can be used to change the settings and parameters of many blocks in the game.
+
+    - Select a `2Wrench`` from the inventory.
+    - With the `2Wrench`` selected, tap on any block that displays the wrench icon over the tile.
+
+    You can also use the wrench to view the information about other players.
+
+    - Select a `2Wrench`` from the inventory.
+    - With the `2Wrench`` selected, tap on the wrench icon beside a players name.

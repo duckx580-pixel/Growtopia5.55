@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<ItemRenderer>
+	<Data>
+		<Sprite name="s_Crown" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="1,10" />
+		<Sprite name="s_CrystalSpike" fileName="game/particles_large17.rttex" textureSize="64" frame="0,15" />
+		<Sprite name="s_Punch" fileName="game/particles_large17.rttex" textureSize="64" frame="9,15"/>
+		<Sprite name="s_Flash" fileName="game/particles_large17.rttex" textureSize="64" frame="10,15"/>
+		<Sprite name="s_Shard" fileName="game/particles8.rttex" textureSize="32" frame="8,1" />
+		<Animations>
+			<SequenceAnimation name="a_Crown" autoPlay="true" isLoop="true">
+				<SpriteAnimation sprite="s_Crown" animTime="1000">
+					<Frame>1,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="50">
+					<Frame>2,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="200">
+					<Frame>1,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="50">
+					<Frame>3,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="50">
+					<Frame>4,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="100">
+					<Frame>1,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="50">
+					<Frame>5,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="200">
+					<Frame>1,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="50">
+					<Frame>6,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="50">
+					<Frame>7,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="50">
+					<Frame>5,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="200">
+					<Frame>1,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="50">
+					<Frame>2,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="100">
+					<Frame>1,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="50">
+					<Frame>3,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="100">
+					<Frame>1,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="50">
+					<Frame>2,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="50">
+					<Frame>1,10</Frame>
+				</SpriteAnimation>
+				<SpriteAnimation sprite="s_Crown" animTime="50">
+					<Frame>6,10</Frame>
+				</SpriteAnimation>
+			</SequenceAnimation>
+			<SpriteAnimation name="a_CrystalSpike" sprite="s_CrystalSpike" animTime="600" playOnState="HideBody.Yes" isLoop="true">
+				<Frame>0,15</Frame>
+				<Frame>1,15</Frame>
+				<Frame>2,15</Frame>
+				<Frame>3,15</Frame>
+				<Frame>4,15</Frame>
+				<Frame>5,15</Frame>
+				<Frame>6,15</Frame>
+				<Frame>7,15</Frame>
+				<Frame>8,15</Frame>
+				<Frame>9,15</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_Shard" sprite="s_Shard" animTime="300">
+				<Frame>8,1</Frame>
+				<Frame>10,1</Frame>
+			</SpriteAnimation>
+		</Animations>
+		<StateMachines>
+			<StateMachine name="HideBody">
+				<States>
+					<State name="No"/>
+					<State name="Yes"/>
+				</States>
+				<Transitions>
+					<Transition to="No" from="Yes">
+						<Condition type="or">
+							<IsAction operatorType="NotEqual">PUNCH</IsAction>
+							<IsZombified>true</IsZombified>
+						</Condition>
+					</Transition>
+					<Transition to="Yes" from="No">
+						<Condition type="and">
+							<IsAction>PUNCH</IsAction>
+							<IsZombified>false</IsZombified>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+		</StateMachines>
+		<ParticleSystems>
+			<ParticleSystem name="ps_Flash" updateStage="OnPunchBegin">
+				<Emitter>
+					<Set name="offset">0, -28</Set>
+					<Set name="particlesPerEmission">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_Flash</Set>
+					<Set name="useGravity">true</Set>
+					<Set name="lifeTime">0.25</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 1</KeyFrame>
+						<KeyFrame>0.6, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Curve name="initialScale">
+						<KeyFrame>0, 0.2, 0.2</KeyFrame>
+						<KeyFrame>1, 1.2, 1.2</KeyFrame>
+					</Curve>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_Punch" updateStage="OnPunchStart">
+				<Emitter>
+					<Set name="offset">0, -16</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="lifeTime">0.3</Set>
+					<Set name="emissionInterval">0.05</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_Punch</Set>
+					<Set name="rotateWithVelocity">false</Set>
+					<Set name="useGravity">true</Set>
+					<Set name="lifeTime">0.5</Set>
+					<VectorTo name="initialVelocity" source="targetPos" duration="lifeTime" x="1" upSpeed="-600"/>
+					<Set name="gravityVector">0, 2400</Set>
+					<Random name="initialRotationRate" min="400" max="800"/>
+					<Set name="initialScale">0.5,0.5</Set>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_Shard">
+				<Emitter>
+					<Set name="offset">0,0</Set>
+					<Set name="lifeTime">0</Set>
+					<Set name="particlesPerEmission">10</Set>
+					<Set name="delayTimer">0.0</Set>
+				</Emitter>
+				<Particle randomSpriteFrame="true">
+					<Set name="sprite">s_Shard</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Set name="lifeTime">0.6</Set>
+					<Set name="rotateWithVelocity">true</Set>
+					<Random name="initialAngle" min="0" max="360"/>
+					<Random name="initialRotationRate" min="400" max="800"/>
+					<Set name="initialScale">0.5,0.5</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 1</KeyFrame>
+						<KeyFrame>0.5, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<RandomRadial name="initialVelocity" angleRange="0,360" radiusRange="50,150"/>
+				</Particle>
+			</ParticleSystem>
+		</ParticleSystems>
+		<RenderOptions>
+			<Default>
+				<Set name="UserNameOffset">6</Set>
+				<Set name="TransformOnPunch">true</Set>
+			</Default>
+		</RenderOptions>
+	</Data>
+	<RenderRules>
+		<RenderHat>
+			<SpriteRender name="s_Crown" blend="PREMULTIPLIED_ALPHA" drawShadow="true" alignment="DOWN_CENTER" offset="0,-16" />
+		</RenderHat>
+		<RenderTransform>
+			<Group>
+				<Scale>0.8,0.8,1</Scale>
+				<SpriteRender name="s_CrystalSpike" blend="PREMULTIPLIED_ALPHA" drawShadow="true" alignment="CENTER" onState="HideBody.Yes"/>
+			</Group>
+		</RenderTransform>
+		<OnDamagedTile>
+			<ParticleSystemUpdate name="ps_Shard"/>
+		</OnDamagedTile>
+		<OnDestroyedTile>
+			<ParticleSystemUpdate name="ps_Shard"/>
+		</OnDestroyedTile>
+	</RenderRules>
+</ItemRenderer>
+

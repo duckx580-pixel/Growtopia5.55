@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer>
+	<Data>
+		<Sprite name="s_front_hair" fileName="game/particles_large17.rttex" textureSize="64"/>
+		<Sprite name="s_back_hair" fileName="game/particles_large17.rttex" textureSize="64"/>
+		<Animations>
+			<SpriteAnimation name="a_front_hair" autoPlay="true" sprite="s_front_hair" isLoop="true" animTime="1200">
+				<Frame>8,4</Frame>
+				<Frame>9,4</Frame>
+				<Frame>10,4</Frame>
+				<Frame>11,4</Frame>
+				<Frame>12,4</Frame>
+				<Frame>13,4</Frame>
+				<Frame>14,4</Frame>
+				<Frame>15,4</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_back_hair" autoPlay="true" sprite="s_back_hair" isLoop="true" animTime="1200">
+				<Frame>8,5</Frame>
+				<Frame>9,5</Frame>
+				<Frame>10,5</Frame>
+				<Frame>11,5</Frame>
+				<Frame>12,5</Frame>
+				<Frame>13,5</Frame>
+				<Frame>14,5</Frame>
+				<Frame>15,5</Frame>
+			</SpriteAnimation>
+		</Animations>
+		
+	</Data>
+
+	<RenderRules>
+		<RenderBackHair>
+			<StopIf>
+				<IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+				<IsRenderMod>RENDER_MOD_SPIRIT_GUIDE</IsRenderMod>
+				<IsRenderMod>RENDER_MOD_RAINBOW_GUY</IsRenderMod>
+				<IsSitting ItemID="ITEM_ID_THEATER_SEAT">true</IsSitting>
+			</StopIf>
+			<SpriteRender name="s_back_hair" alignment="DOWN_CENTER" blend="PREMULTIPLIED_ALPHA"/>
+		</RenderBackHair>
+		<RenderHair>
+			<SpriteRender name="s_front_hair" alignment="DOWN_CENTER" blend="PREMULTIPLIED_ALPHA"/>
+		</RenderHair>
+	</RenderRules>
+</ItemRenderer>

@@ -1,0 +1,30 @@
+.window .bg {
+    overflow-y: auto;
+}
+
+.horizontal-panel {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+        gap:15dp;
+        align-items: center;
+    }
+
+.vertical-panel {
+        display: flex;
+        flex-direction: col;
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+        gap:15dp;
+        align-items: center;
+        
+    }
+
+.action-button {
+    min-width: 60dp;
+    flex: 1 1 0;
+    text-align: center;
+}

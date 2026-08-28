@@ -1,0 +1,46 @@
+<rml>
+    <head>
+        <title>GenericPopup</title>
+        <link type="text/template" href="Base/BasePopup.rml" />
+        <link type="text/template" href="Base/WindowTitle.rml" />
+        <link type="text/rcss" href="GenericPopup.rcss" />
+        <link type="text/rcss" href="Base/WindowTitle.rcss" />
+    </head>
+    <body template="BasePopup">
+        <div data-model="PopupModel" id="generic-popup" data-attr-class="'font-content color_dreamsicle ' + PopupModel.PopupId ">
+          <div>
+            <div data-alias-TitleInfo="PopupModel.Title">
+              <template src="WindowTitle" />
+            </div>
+          </div>
+
+          <div class="content font-content">
+            <div data-rml="ToRMLText(PopupModel.Text)"/>
+            <div data-rml="PopupModel.RmlContent"/>
+          </div>
+          <div class="buttons-panel">
+           <div onclick="OnEvent(event, 'dialog.OnCancel')"
+                           data-attr-class="'button '
+                               + (len(PopupModel.ButtonCancel.Style) == 0 ? ' button-yellow-color ' : PopupModel.ButtonCancel.Style)
+                               + (len(PopupModel.ButtonCancel.Text) == 0 ? ' hidden ' : '')"
+                               >
+                        <span class="label">{{PopupModel.ButtonCancel.Text}}</span>
+            </div>
+            <div onclick="OnEvent(event, 'dialog.OnButton1')"
+                 data-attr-class="'button '
+                      + (len(PopupModel.Button1.Style) == 0 ? ' button-default-color ' : PopupModel.Button1.Style)
+                      + (len(PopupModel.Button1.Text) == 0 ? ' hidden ' : '')"
+                    >
+              <span class="label">{{PopupModel.Button1.Text}}</span>
+            </div>
+            <div onclick="OnEvent(event, 'dialog.OnButton2')"
+                 data-attr-class="button '
+                     + (len(PopupModel.Button2.Style) == 0 ? ' button-default-color ' : PopupModel.Button2.Style)
+                     + (len(PopupModel.Button2.Text) == 0 ? ' hidden ' : '')"
+                     >
+              <span class="label">{{PopupModel.Button2.Text}}</span>
+            </div>
+          </div>
+        </div>
+    </body>
+</rml>

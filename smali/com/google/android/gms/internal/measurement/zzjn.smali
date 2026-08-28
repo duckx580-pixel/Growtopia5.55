@@ -1,0 +1,9 @@
+###### Class com.google.android.gms.internal.measurement.zzjn (com.google.android.gms.internal.measurement.zzjn)
+.class public interface abstract Lcom/google/android/gms/internal/measurement/zzjn;
+.super Ljava/lang/Object;
+.source "com.google.android.gms:play-services-measurement-impl@@22.4.0"
+
+
+# virtual methods
+.method public abstract zza()V
+.end method

@@ -1,0 +1,184 @@
+###### Class com.android.billingclient.api.zzbe (com.android.billingclient.api.zzbe)
+.class final Lcom/android/billingclient/api/zzbe;
+.super Lcom/google/android/gms/internal/play_billing/zzc;
+.source "com.android.billingclient:billing@@7.0.0"
+
+
+# instance fields
+.field final zza:Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetailsListener;
+
+.field final zzb:Lcom/android/billingclient/api/zzcc;
+
+.field final zzc:I
+
+
+# direct methods
+.method synthetic constructor <init>(Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetailsListener;Lcom/android/billingclient/api/zzcc;ILcom/android/billingclient/api/zzbd;)V
+    .registers 5
+
+    .line 1
+    invoke-direct {p0}, Lcom/google/android/gms/internal/play_billing/zzc;-><init>()V
+
+    iput-object p1, p0, Lcom/android/billingclient/api/zzbe;->zza:Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetailsListener;
+
+    iput-object p2, p0, Lcom/android/billingclient/api/zzbe;->zzb:Lcom/android/billingclient/api/zzcc;
+
+    iput p3, p0, Lcom/android/billingclient/api/zzbe;->zzc:I
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final zza(Landroid/os/Bundle;)V
+    .registers 8
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    const/4 v0, 0x0
+
+    const/16 v1, 0xf
+
+    if-nez p1, :cond_1c
+
+    .line 1
+    iget-object p1, p0, Lcom/android/billingclient/api/zzbe;->zzb:Lcom/android/billingclient/api/zzcc;
+
+    const/16 v2, 0x47
+
+    sget-object v3, Lcom/android/billingclient/api/zzce;->zzj:Lcom/android/billingclient/api/BillingResult;
+
+    .line 2
+    invoke-static {v2, v1, v3}, Lcom/android/billingclient/api/zzcb;->zza(IILcom/android/billingclient/api/BillingResult;)Lcom/google/android/gms/internal/play_billing/zzga;
+
+    move-result-object v1
+
+    iget v2, p0, Lcom/android/billingclient/api/zzbe;->zzc:I
+
+    .line 1
+    invoke-interface {p1, v1, v2}, Lcom/android/billingclient/api/zzcc;->zzb(Lcom/google/android/gms/internal/play_billing/zzga;I)V
+
+    iget-object p1, p0, Lcom/android/billingclient/api/zzbe;->zza:Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetailsListener;
+
+    sget-object v1, Lcom/android/billingclient/api/zzce;->zzj:Lcom/android/billingclient/api/BillingResult;
+
+    .line 3
+    invoke-interface {p1, v1, v0}, Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetailsListener;->onAlternativeBillingOnlyTokenResponse(Lcom/android/billingclient/api/BillingResult;Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetails;)V
+
+    return-void
+
+    .line 4
+    :cond_1c
+    const-string v2, "BillingClient"
+
+    invoke-static {p1, v2}, Lcom/google/android/gms/internal/play_billing/zzb;->zzb(Landroid/os/Bundle;Ljava/lang/String;)I
+
+    move-result v3
+
+    .line 5
+    invoke-static {p1, v2}, Lcom/google/android/gms/internal/play_billing/zzb;->zzg(Landroid/os/Bundle;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 6
+    invoke-static {v3, v4}, Lcom/android/billingclient/api/zzce;->zza(ILjava/lang/String;)Lcom/android/billingclient/api/BillingResult;
+
+    move-result-object v4
+
+    if-eqz v3, :cond_50
+
+    new-instance p1, Ljava/lang/StringBuilder;
+
+    const-string v5, "createAlternativeBillingOnlyReportingDetailsAsync() failed. Response code: "
+
+    .line 7
+    invoke-direct {p1, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {p1, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-static {v2, p1}, Lcom/google/android/gms/internal/play_billing/zzb;->zzk(Ljava/lang/String;Ljava/lang/String;)V
+
+    iget-object p1, p0, Lcom/android/billingclient/api/zzbe;->zzb:Lcom/android/billingclient/api/zzcc;
+
+    const/16 v2, 0x17
+
+    .line 8
+    invoke-static {v2, v1, v4}, Lcom/android/billingclient/api/zzcb;->zza(IILcom/android/billingclient/api/BillingResult;)Lcom/google/android/gms/internal/play_billing/zzga;
+
+    move-result-object v1
+
+    iget v2, p0, Lcom/android/billingclient/api/zzbe;->zzc:I
+
+    .line 9
+    invoke-interface {p1, v1, v2}, Lcom/android/billingclient/api/zzcc;->zzb(Lcom/google/android/gms/internal/play_billing/zzga;I)V
+
+    iget-object p1, p0, Lcom/android/billingclient/api/zzbe;->zza:Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetailsListener;
+
+    .line 10
+    invoke-interface {p1, v4, v0}, Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetailsListener;->onAlternativeBillingOnlyTokenResponse(Lcom/android/billingclient/api/BillingResult;Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetails;)V
+
+    return-void
+
+    :cond_50
+    const-string v3, "CREATE_ALTERNATIVE_BILLING_ONLY_REPORTING_DETAILS"
+
+    .line 11
+    invoke-virtual {p1, v3}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    :try_start_56
+    new-instance v3, Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetails;
+
+    .line 12
+    invoke-direct {v3, p1}, Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetails;-><init>(Ljava/lang/String;)V
+    :try_end_5b
+    .catch Lorg/json/JSONException; {:try_start_56 .. :try_end_5b} :catch_61
+
+    iget-object p1, p0, Lcom/android/billingclient/api/zzbe;->zza:Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetailsListener;
+
+    .line 17
+    invoke-interface {p1, v4, v3}, Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetailsListener;->onAlternativeBillingOnlyTokenResponse(Lcom/android/billingclient/api/BillingResult;Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetails;)V
+
+    return-void
+
+    :catch_61
+    move-exception p1
+
+    const-string v3, "Error when parsing invalid alternative billing only reporting details. \n Exception: "
+
+    .line 13
+    invoke-static {v2, v3, p1}, Lcom/google/android/gms/internal/play_billing/zzb;->zzl(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    iget-object p1, p0, Lcom/android/billingclient/api/zzbe;->zzb:Lcom/android/billingclient/api/zzcc;
+
+    const/16 v2, 0x48
+
+    sget-object v3, Lcom/android/billingclient/api/zzce;->zzj:Lcom/android/billingclient/api/BillingResult;
+
+    .line 14
+    invoke-static {v2, v1, v3}, Lcom/android/billingclient/api/zzcb;->zza(IILcom/android/billingclient/api/BillingResult;)Lcom/google/android/gms/internal/play_billing/zzga;
+
+    move-result-object v1
+
+    iget v2, p0, Lcom/android/billingclient/api/zzbe;->zzc:I
+
+    .line 15
+    invoke-interface {p1, v1, v2}, Lcom/android/billingclient/api/zzcc;->zzb(Lcom/google/android/gms/internal/play_billing/zzga;I)V
+
+    iget-object p1, p0, Lcom/android/billingclient/api/zzbe;->zza:Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetailsListener;
+
+    sget-object v1, Lcom/android/billingclient/api/zzce;->zzj:Lcom/android/billingclient/api/BillingResult;
+
+    .line 16
+    invoke-interface {p1, v1, v0}, Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetailsListener;->onAlternativeBillingOnlyTokenResponse(Lcom/android/billingclient/api/BillingResult;Lcom/android/billingclient/api/AlternativeBillingOnlyReportingDetails;)V
+
+    return-void
+.end method

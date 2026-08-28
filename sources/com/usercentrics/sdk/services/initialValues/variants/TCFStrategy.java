@@ -1,0 +1,13 @@
+package com.usercentrics.sdk.services.initialValues.variants;
+
+import com.usercentrics.sdk.models.common.InitialView;
+import kotlin.Metadata;
+
+/* JADX INFO: compiled from: TCFStrategy.kt */
+/* JADX INFO: loaded from: classes4.dex */
+@Metadata(d1 = {"\u0000\u001e\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0002\b\u0002\b`\u0018\u00002\u00020\u0001J\u0010\u0010\u0002\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H&J\u0010\u0010\u0006\u001a\u00020\u00072\u0006\u0010\b\u001a\u00020\u0007H&¨\u0006\t"}, d2 = {"Lcom/usercentrics/sdk/services/initialValues/variants/TCFStrategy;", "", "getInitialView", "Lcom/usercentrics/sdk/models/common/InitialView;", "tcfInitialViewOptions", "Lcom/usercentrics/sdk/services/initialValues/variants/TCFInitialViewOptions;", "shouldAcceptAllImplicitlyOnInit", "", "gdprAppliesOnTCF", "usercentrics_release"}, k = 1, mv = {1, 9, 0}, xi = 48)
+public interface TCFStrategy {
+    InitialView getInitialView(TCFInitialViewOptions tcfInitialViewOptions);
+
+    boolean shouldAcceptAllImplicitlyOnInit(boolean gdprAppliesOnTCF);
+}

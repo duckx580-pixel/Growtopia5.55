@@ -1,0 +1,312 @@
+###### Class com.google.android.material.transition.platform.MaterialSharedAxis (com.google.android.material.transition.platform.MaterialSharedAxis)
+.class public final Lcom/google/android/material/transition/platform/MaterialSharedAxis;
+.super Lcom/google/android/material/transition/platform/MaterialVisibility;
+.source "MaterialSharedAxis.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/google/android/material/transition/platform/MaterialSharedAxis$Axis;
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/google/android/material/transition/platform/MaterialVisibility<",
+        "Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;",
+        ">;"
+    }
+.end annotation
+
+
+# static fields
+.field private static final DEFAULT_THEMED_DURATION_ATTR:I
+
+.field private static final DEFAULT_THEMED_EASING_ATTR:I
+
+.field public static final X:I = 0x0
+
+.field public static final Y:I = 0x1
+
+.field public static final Z:I = 0x2
+
+
+# instance fields
+.field private final axis:I
+
+.field private final forward:Z
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .registers 1
+
+    .line 91
+    sget v0, Lcom/google/android/material/R$attr;->motionDurationLong1:I
+
+    sput v0, Lcom/google/android/material/transition/platform/MaterialSharedAxis;->DEFAULT_THEMED_DURATION_ATTR:I
+
+    .line 94
+    sget v0, Lcom/google/android/material/R$attr;->motionEasingEmphasizedInterpolator:I
+
+    sput v0, Lcom/google/android/material/transition/platform/MaterialSharedAxis;->DEFAULT_THEMED_EASING_ATTR:I
+
+    return-void
+.end method
+
+.method public constructor <init>(IZ)V
+    .registers 5
+
+    .line 97
+    invoke-static {p1, p2}, Lcom/google/android/material/transition/platform/MaterialSharedAxis;->createPrimaryAnimatorProvider(IZ)Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;
+
+    move-result-object v0
+
+    invoke-static {}, Lcom/google/android/material/transition/platform/MaterialSharedAxis;->createSecondaryAnimatorProvider()Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;
+
+    move-result-object v1
+
+    invoke-direct {p0, v0, v1}, Lcom/google/android/material/transition/platform/MaterialVisibility;-><init>(Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;)V
+
+    .line 98
+    iput p1, p0, Lcom/google/android/material/transition/platform/MaterialSharedAxis;->axis:I
+
+    .line 99
+    iput-boolean p2, p0, Lcom/google/android/material/transition/platform/MaterialSharedAxis;->forward:Z
+
+    return-void
+.end method
+
+.method private static createPrimaryAnimatorProvider(IZ)Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;
+    .registers 4
+
+    if-eqz p0, :cond_30
+
+    const/4 v0, 0x1
+
+    if-eq p0, v0, :cond_23
+
+    const/4 v0, 0x2
+
+    if-ne p0, v0, :cond_e
+
+    .line 119
+    new-instance p0, Lcom/google/android/material/transition/platform/ScaleProvider;
+
+    invoke-direct {p0, p1}, Lcom/google/android/material/transition/platform/ScaleProvider;-><init>(Z)V
+
+    return-object p0
+
+    .line 121
+    :cond_e
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    const-string v1, "Invalid axis: "
+
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object p0
+
+    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-direct {p1, p0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+
+    .line 117
+    :cond_23
+    new-instance p0, Lcom/google/android/material/transition/platform/SlideDistanceProvider;
+
+    if-eqz p1, :cond_2a
+
+    const/16 p1, 0x50
+
+    goto :goto_2c
+
+    :cond_2a
+    const/16 p1, 0x30
+
+    :goto_2c
+    invoke-direct {p0, p1}, Lcom/google/android/material/transition/platform/SlideDistanceProvider;-><init>(I)V
+
+    return-object p0
+
+    .line 115
+    :cond_30
+    new-instance p0, Lcom/google/android/material/transition/platform/SlideDistanceProvider;
+
+    if-eqz p1, :cond_38
+
+    const p1, 0x800005
+
+    goto :goto_3b
+
+    :cond_38
+    const p1, 0x800003
+
+    :goto_3b
+    invoke-direct {p0, p1}, Lcom/google/android/material/transition/platform/SlideDistanceProvider;-><init>(I)V
+
+    return-object p0
+.end method
+
+.method private static createSecondaryAnimatorProvider()Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;
+    .registers 1
+
+    .line 126
+    new-instance v0, Lcom/google/android/material/transition/platform/FadeThroughProvider;
+
+    invoke-direct {v0}, Lcom/google/android/material/transition/platform/FadeThroughProvider;-><init>()V
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public bridge synthetic addAdditionalAnimatorProvider(Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;)V
+    .registers 2
+
+    .line 55
+    invoke-super {p0, p1}, Lcom/google/android/material/transition/platform/MaterialVisibility;->addAdditionalAnimatorProvider(Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;)V
+
+    return-void
+.end method
+
+.method public bridge synthetic clearAdditionalAnimatorProvider()V
+    .registers 1
+
+    .line 55
+    invoke-super {p0}, Lcom/google/android/material/transition/platform/MaterialVisibility;->clearAdditionalAnimatorProvider()V
+
+    return-void
+.end method
+
+.method public getAxis()I
+    .registers 2
+
+    .line 104
+    iget v0, p0, Lcom/google/android/material/transition/platform/MaterialSharedAxis;->axis:I
+
+    return v0
+.end method
+
+.method getDurationThemeAttrResId(Z)I
+    .registers 2
+
+    .line 132
+    sget p1, Lcom/google/android/material/transition/platform/MaterialSharedAxis;->DEFAULT_THEMED_DURATION_ATTR:I
+
+    return p1
+.end method
+
+.method getEasingThemeAttrResId(Z)I
+    .registers 2
+
+    .line 138
+    sget p1, Lcom/google/android/material/transition/platform/MaterialSharedAxis;->DEFAULT_THEMED_EASING_ATTR:I
+
+    return p1
+.end method
+
+.method public bridge synthetic getPrimaryAnimatorProvider()Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;
+    .registers 2
+
+    .line 55
+    invoke-super {p0}, Lcom/google/android/material/transition/platform/MaterialVisibility;->getPrimaryAnimatorProvider()Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public bridge synthetic getSecondaryAnimatorProvider()Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;
+    .registers 2
+
+    .line 55
+    invoke-super {p0}, Lcom/google/android/material/transition/platform/MaterialVisibility;->getSecondaryAnimatorProvider()Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public isForward()Z
+    .registers 2
+
+    .line 108
+    iget-boolean v0, p0, Lcom/google/android/material/transition/platform/MaterialSharedAxis;->forward:Z
+
+    return v0
+.end method
+
+.method public bridge synthetic onAppear(Landroid/view/ViewGroup;Landroid/view/View;Landroid/transition/TransitionValues;Landroid/transition/TransitionValues;)Landroid/animation/Animator;
+    .registers 5
+
+    .line 55
+    invoke-super {p0, p1, p2, p3, p4}, Lcom/google/android/material/transition/platform/MaterialVisibility;->onAppear(Landroid/view/ViewGroup;Landroid/view/View;Landroid/transition/TransitionValues;Landroid/transition/TransitionValues;)Landroid/animation/Animator;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public bridge synthetic onDisappear(Landroid/view/ViewGroup;Landroid/view/View;Landroid/transition/TransitionValues;Landroid/transition/TransitionValues;)Landroid/animation/Animator;
+    .registers 5
+
+    .line 55
+    invoke-super {p0, p1, p2, p3, p4}, Lcom/google/android/material/transition/platform/MaterialVisibility;->onDisappear(Landroid/view/ViewGroup;Landroid/view/View;Landroid/transition/TransitionValues;Landroid/transition/TransitionValues;)Landroid/animation/Animator;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public bridge synthetic removeAdditionalAnimatorProvider(Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;)Z
+    .registers 2
+
+    .line 55
+    invoke-super {p0, p1}, Lcom/google/android/material/transition/platform/MaterialVisibility;->removeAdditionalAnimatorProvider(Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;)Z
+
+    move-result p1
+
+    return p1
+.end method
+
+.method public bridge synthetic setSecondaryAnimatorProvider(Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;)V
+    .registers 2
+
+    .line 55
+    invoke-super {p0, p1}, Lcom/google/android/material/transition/platform/MaterialVisibility;->setSecondaryAnimatorProvider(Lcom/google/android/material/transition/platform/VisibilityAnimatorProvider;)V
+
+    return-void
+.end method
+
+###### Class com.google.android.material.transition.platform.MaterialSharedAxis.Axis (com.google.android.material.transition.platform.MaterialSharedAxis$Axis)
+.class public interface abstract annotation Lcom/google/android/material/transition/platform/MaterialSharedAxis$Axis;
+.super Ljava/lang/Object;
+.source "MaterialSharedAxis.java"
+
+# interfaces
+.implements Ljava/lang/annotation/Annotation;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/material/transition/platform/MaterialSharedAxis;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x2609
+    name = "Axis"
+.end annotation
+
+.annotation runtime Ljava/lang/annotation/Retention;
+    value = .enum Ljava/lang/annotation/RetentionPolicy;->SOURCE:Ljava/lang/annotation/RetentionPolicy;
+.end annotation

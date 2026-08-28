@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ItemRenderer>
+	<Data>
+		<StateMachines>
+			<StateMachine name="ClothingType">
+				<States>
+					<State name="NoneOnGround" />
+					<State name="NoneOnHover" />
+				</States>
+				<Transitions>
+					<Transition to="NoneOnGround" from="NoneOnHover">
+						<Condition>
+							<ItemHasTag operatorType="NotEqual">Hovering_Cloak</ItemHasTag>
+						</Condition>
+					</Transition>
+					<Transition to="NoneOnHover" from="NoneOnGround">
+						<Condition>
+							<ItemHasTag>Hovering_Cloak</ItemHasTag>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+			<StateMachine name="HoveringType">
+				<States>
+					<State name="NoneOnGround" />
+					<State name="NoneOnHover" />
+				</States>
+				<Transitions>
+					<Transition to="NoneOnGround" from="NoneOnHover">
+						<Condition type="or">
+							<ItemHasTag operatorType="NotEqual">Hovering_Cloak</ItemHasTag>
+							<IsRenderObjectFlag>RENDER_OBJECT_FLAG_HOVER</IsRenderObjectFlag>
+						</Condition>
+					</Transition>
+					<Transition to="NoneOnHover" from="NoneOnGround">
+						<Condition type="and">
+							<ItemHasTag>Hovering_Cloak</ItemHasTag>
+							<IsRenderObjectFlag operatorType="NotEqual">RENDER_OBJECT_FLAG_HOVER</IsRenderObjectFlag>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+		</StateMachines>
+
+		<Sprite name="s_backPiece" fileName="game/particles_large18.rttex" textureSize="64" frame="7,3" />
+		<Sprite name="s_backPiece_ground" fileName="game/particles_large18.rttex" textureSize="64" frame="7,3" />
+		<Sprite name="s_strap" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="1,9" />
+		<Sprite name="s_mist" fileName="game/particles.rttex" textureSize="32" frame="0,0" />
+
+		<Animations>
+
+			<SpriteAnimation name="a_wing_closed" sprite="s_backPiece_ground" animTime="1200" isLoop="true"
+			                 playOnState="ClothingType.NoneOnGround">
+				<Frame>7,3</Frame>
+				<Frame>8,3</Frame>
+				<Frame>9,3</Frame>
+				<Frame>10,3</Frame>
+				<Frame>11,3</Frame>
+				<Frame>12,3</Frame>
+				<Frame>13,3</Frame>
+				<Frame>14,3</Frame>
+			</SpriteAnimation>
+
+			<SpriteAnimation name="a_wing_open" sprite="s_backPiece" animTime="1200" isLoop="true"
+			                 playOnState="ClothingType.NoneOnHover">
+				<Frame>0,3</Frame>
+				<Frame>1,3</Frame>
+				<Frame>2,3</Frame>
+				<Frame>3,3</Frame>
+				<Frame>4,3</Frame>
+				<Frame>5,3</Frame>
+				<Frame>6,3</Frame>
+			</SpriteAnimation>
+
+			<SpriteAnimation name="a_MistParticle" sprite="s_mist">
+				<Frame>0,0</Frame>
+				<Frame>0,0</Frame>
+				<Frame>0,0</Frame>
+				<Frame>0,0</Frame>
+				<Frame>1,0</Frame>
+			</SpriteAnimation>
+
+			<CurveAnimationFloat name="a_Offset" isLoop="true" animTime="1000" playOnState="HoveringType.NoneOnHover">
+				<Curve name="AdditionalClothingOffset">
+					<KeyFrame>0, 0</KeyFrame>
+					<KeyFrame>0.5, -6.8</KeyFrame>
+					<KeyFrame>1, 0</KeyFrame>
+				</Curve>
+			</CurveAnimationFloat>			
+			
+			<CurveAnimationFloat name="a_ground_Offset" isLoop="true" animTime="700" playOnState="HoveringType.NoneOnGround">
+				<Curve name="AdditionalClothingOffset">
+					<KeyFrame>0, 0</KeyFrame>
+					<KeyFrame>1, 0</KeyFrame>
+				</Curve>
+			</CurveAnimationFloat>
+		</Animations>
+		<ParticleSystems>
+			<ParticleSystem name="MistParticle">
+				<Emitter>
+					<Set name="offset">0, -10</Set>
+					<Set name="emissionInterval">0.05</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+				</Emitter>
+				<Particle randomSpriteFrame="true">
+					<Set name="sprite">s_mist</Set>
+					<Set name="relativeToEmitter">true</Set>
+					<Set name="orbitStart">0</Set>
+
+					<Set name="orbitPeriod">3</Set>
+					<Set name="initialRotationRate">200</Set>
+					<Set name="applyOrbit">true</Set>
+
+					<Set name="orbitScaleVariation">0.08</Set>
+					<Set name="initialAlpha">1</Set>
+					<Set name="inSpecificOrder">true</Set>
+					<Set name="blendingMode">ADDITIVE</Set>
+
+					<Curve name="orbit">
+						<KeyFrame>0, -24, 24</KeyFrame>
+						<KeyFrame>0.25, -24, -24</KeyFrame>
+						<KeyFrame>0.5, -24, 8</KeyFrame>
+						<KeyFrame>1, -24, -24</KeyFrame>
+					</Curve>
+		
+
+					<Random name="initialAngle" min="0" max="360" />
+					<Random name="finalAngle" min="0" max="360" />
+					<Random name="lifeTime" min="5.8" max="6" />
+					<Random name="initialScale" min="0.15,0.15" max="0.4, 0.5" />
+					<Set name="interpolateScale">true</Set>
+
+					<Set name="initalRGB">0.486, 0.168, 0.835</Set>
+				</Particle>
+			</ParticleSystem>
+		</ParticleSystems>
+		<RenderOptions>
+			<Default>
+				<Set name="OnEquipTag">Hovering_Cloak</Set>
+				<Set name="ShouldHover">false</Set>
+				<Set name="IncludeAllActions">true</Set>
+				<Set name="IgnorePunchTypeCheck">true</Set>
+				<Set name="AdditionalClothingOffset">0</Set>
+			</Default>
+		</RenderOptions>
+		<VariableMap>
+			<Set name="AdditionalClothingOffset">0</Set>
+			<Set name="ShouldHover">false</Set>
+		</VariableMap>
+	</Data>
+
+	<RenderRules>		
+		<RenderInFront value="playerCenter">
+			<StopIf type="or">
+				<IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+				<IsZombified>true</IsZombified>
+				<IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+			</StopIf>
+			<ParticleSystemRender name="MistParticle" />
+		</RenderInFront>
+		<OnPunchUpdate>
+			<AvatarTransform class="Face">
+				<Set name="face">MAD</Set>
+			</AvatarTransform>
+		</OnPunchUpdate>		
+		
+		<Update>
+			<StopIf type="or">
+				<IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+				<IsZombified>true</IsZombified>
+				<IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+			</StopIf>
+			<AvatarTransform class="FootPosition" onState="ClothingType.NoneOnHover">
+				<Set name="foot1dy">0</Set>
+				<Set name="foot2dy">0</Set>
+				<Set name="foot1y">0</Set>
+				<Set name="foot2y">0</Set>
+			</AvatarTransform>
+
+			<AvatarTransform class="ArmAngle" onState="ClothingType.NoneOnHover">
+				<Set name="armName">arm2Angle</Set>
+				<Set name="armAngle">45</Set>
+			</AvatarTransform>
+			<StopIf>
+				<IsAction>PUNCH</IsAction>
+			</StopIf>
+			<AvatarTransform class="ArmAngle" onState="ClothingType.NoneOnHover">
+				<Set name="armName">arm1Angle</Set>
+				<Set name="armAngle">-45</Set>
+			</AvatarTransform>
+		</Update>
+		<AddClothingParticles>
+			<StopIf type="or">
+				<IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+				<IsZombified>true</IsZombified>
+				<IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+			</StopIf>
+			<ParticleSystemUpdate name="MistParticle" />
+		</AddClothingParticles>
+		<RenderBackpack>
+			<SpriteRender name="s_backPiece" scale="1,1" offset="0,16" flip="0,0" alignment="DOWN_CENTER"
+			              onState="ClothingType.NoneOnHover" />
+			<SpriteRender name="s_backPiece_ground" scale="1,1" offset="0,0" flip="0,0" alignment="DOWN_CENTER"
+			              onState="ClothingType.NoneOnGround" />
+
+			<StopIf>
+				<IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+			</StopIf>
+		</RenderBackpack>
+
+
+		<RenderFrontpack value="playerCenter">
+			<SpriteRender name="s_strap" offset="0,0" alignment="DOWN_CENTER" />
+
+	
+		</RenderFrontpack>
+
+	</RenderRules>
+</ItemRenderer>

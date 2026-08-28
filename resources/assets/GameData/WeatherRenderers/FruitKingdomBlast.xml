@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer name="FRUIT_KINGDOM">
+  <Data>
+    <Sprite name="s_bg" fileName="game/bg_fk_sky.rttex"/>
+    <Sprite name="s_frontLayer" fileName="game/bg_FK_fg.rttex"/>
+    <Sprite name="s_midLayer" fileName="game/bg_FK_mg.rttex"/>
+    <Sprite name="s_backLayer" fileName="game/bg_FK_bg.rttex"/>
+    <Sprite name="s_cloud" fileName="game/cloud.rttex" textureSize="197,111" frame="0,0"/>
+
+	  <ParticleSystems>
+		  <ParticleSystem name="ps_clouds" updateStage="RenderBackground">
+			  <Emitter>
+				  <Random name="emissionInterval" min="120" max="240"/>
+				  <Set name="infParticles">true</Set>
+				  <Set name="infLifeTime">true</Set>
+				  <Set name="particlesPerEmission">1</Set>
+				  <Set name="maxParticleInstanceAtOnce">5</Set>
+			  </Emitter>
+			  <Particle moveConstraint="Horizontal" autoLifeTimeToTarget="true">
+				  <Set name="inScreenSpace">true</Set>
+				  <Set name="renderAlignment">LEFT_CENTER</Set>
+				  <Set name="inSpecificOrder">true</Set>
+				  <Set name="sprite">s_cloud</Set>
+				  <Random name="offset" min="1.5, 0.05" max="1.5, 0.5"/>
+				  <Set name="targetPos">-1.5, 0</Set>
+				  <Curve name="initialAlpha">
+					  <KeyFrame>0, 0</KeyFrame>
+					  <KeyFrame>0.001, 1</KeyFrame>
+					  <KeyFrame>9.999, 1</KeyFrame>
+					  <KeyFrame>1, 0</KeyFrame>
+				  </Curve>
+				  <Random name="initialVelocity" min="-0.001, 0" max="-0.01, 0"/>
+				  <Random name="initialScale" min="0.1" max="1"/>
+			  </Particle>
+		  </ParticleSystem>
+		  <ParticleSystem name="ps_cloudsFG" updateStage="RenderBackground">
+			  <Emitter>
+				  <Random name="emissionInterval" min="120" max="240"/>
+				  <Set name="infParticles">true</Set>
+				  <Set name="infLifeTime">true</Set>
+				  <Set name="particlesPerEmission">1</Set>
+				  <Set name="maxParticleInstanceAtOnce">5</Set>
+			  </Emitter>
+			  <Particle moveConstraint="Horizontal" autoLifeTimeToTarget="true">
+				  <Set name="inScreenSpace">true</Set>
+				  <Set name="renderAlignment">LEFT_CENTER</Set>
+				  <Set name="inSpecificOrder">true</Set>
+				  <Set name="sprite">s_cloud</Set>
+				  <Random name="offset" min="1.5, 0.05" max="1.5, 0.5"/>
+				  <Curve name="initialAlpha">
+					  <KeyFrame>0, 0</KeyFrame>
+					  <KeyFrame>0.001, 1</KeyFrame>
+					  <KeyFrame>9.999, 1</KeyFrame>
+					  <KeyFrame>1, 0</KeyFrame>
+				  </Curve>
+				  <Set name="targetPos">-1.5, 0</Set>
+				  <Random name="initialVelocity" min="-0.001, 0" max="-0.01, 0"/>
+				  <Random name="initialScale" min="0.1" max="1"/>
+			  </Particle>
+		  </ParticleSystem>
+	  </ParticleSystems>
+  </Data>
+  <RenderRules>
+    <RenderBackground>
+
+      <ContextUpdate type="ScaleScreenHeight">
+        <Set name="sprite">s_bg</Set>
+      </ContextUpdate>
+
+      <ContextUpdate type="PositionParallax">
+        <Set name="scale">0</Set>
+      </ContextUpdate>
+      <SpriteRender name="s_bg" offset="0, 0.85" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+      <ParticleSystemRender name="ps_clouds"/>
+		
+      <ContextUpdate type="ScaleScreenHeight">
+        <Set name="sprite">s_backLayer</Set>
+        <Set name="padding">100</Set>
+      </ContextUpdate>
+
+      <ContextUpdate type="PositionParallax">
+        <Set name="scale">0.05</Set>
+      </ContextUpdate>
+      <SpriteRender name="s_backLayer" offset="0, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+
+      <ContextUpdate type="ScaleScreenHeight">
+        <Set name="sprite">s_backLayer</Set>
+        <Set name="padding">300</Set>
+      </ContextUpdate>
+      
+      <ContextUpdate type="PositionParallax">
+        <Set name="scale">0.1</Set>
+      </ContextUpdate>
+      <SpriteRender name="s_midLayer" offset="0, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+
+      <ContextUpdate type="ScaleScreenHeight">
+        <Set name="sprite">s_backLayer</Set>
+        <Set name="padding">700</Set>
+      </ContextUpdate>
+      
+      <ContextUpdate type="PositionParallax">
+        <Set name="scale">0.15</Set>
+      </ContextUpdate>
+      <SpriteRender name="s_frontLayer" offset="0, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+
+	<ParticleSystemRender name="ps_cloudsFG"/>
+    </RenderBackground>
+  </RenderRules>
+</ItemRenderer>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer name="LATIUM_AND_ALBION">
+	<Data>
+		<Sprite name="s_bg" fileName="game/bg_PR_sky.rttex"/>
+		<Sprite name="s_bg_temp" fileName="game/bg_NWM_bg.rttex"/>
+		<Sprite name="s_lightening" fileName="game/bg_PR_lightning.rttex" textureSize="1920,1080" frame="0,0" cullingDisabled="true"/>
+		<Sprite name="s_sunshine" fileName="game/bg_PR_sunshine.rttex"/>
+		<Sprite name="s_clouds" fileName="game/bg_PR_clouds.rttex"/>
+		<Sprite name="s_clouds_right" fileName="game/bg_PR_clouds.rttex"/>
+		<Sprite name="s_mountain" fileName="game/bg_PR_background.rttex"/>
+		<Sprite name="s_mountain_extension" fileName="game/bg_PR_background_right.rttex" cullingDisabled="true"/>
+		<Sprite name="s_castle" fileName="game/bg_PR_midground.rttex"/>
+		<Sprite name="s_castle_left" fileName="game/bg_PR_midground_left.rttex" cullingDisabled="true"/>
+		<Sprite name="s_castle_right" fileName="game/bg_PR_midground_right.rttex" cullingDisabled="true"/>
+		<Sprite name="s_loopingFG" fileName="game/bg_PR_foregound.rttex"/>
+		<Sprite name="s_loopingFGLeft" fileName="game/bg_PR_foregound_left.rttex"/>
+		<Sprite name="s_loopingFGRight" fileName="game/bg_PR_foregound_right.rttex"/>
+
+		<Animations>
+
+		</Animations>
+		<ParticleSystems>
+			<ParticleSystem name="ps_lightening">
+				<Emitter>
+					<Random name="emissionInterval" min="0.8" max="3"/>
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+				
+				</Emitter>
+				<Particle>
+					<Set name="inScreenSpace">true</Set>
+					<Set name="renderAlignment">UPPER_LEFT</Set>
+					<Random name="lifeTime" min="0.8" max="1.5" />
+					<Set name="inSpecificOrder">true</Set>
+					<Set name="initialScale">1,1</Set>
+		
+					<Random name="offset" min="0.75, 0" max="0.84, 0"/>
+					<Set name="sprite">s_lightening</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 0.0</KeyFrame>
+						<KeyFrame>0.1, 1</KeyFrame>
+						<KeyFrame>0.4, 1</KeyFrame>
+						<KeyFrame>1, 0.0</KeyFrame>
+					</Curve>
+				</Particle>
+			</ParticleSystem>
+		</ParticleSystems>
+	</Data>
+	<RenderRules>
+		<RenderBackground>
+			<ContextUpdate type="ScaleScreenSize">
+				<Set name="sprite">s_bg</Set>
+			</ContextUpdate>
+
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0</Set>
+				<Set name="wrapHorizontal">false</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_bg" offset="0, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+
+			<ContextUpdate type="ScaleScreenHeight">
+				<Set name="sprite">s_bg_temp</Set>
+			</ContextUpdate>
+			<ParticleSystemUpdate name="ps_lightening"/>
+			<ParticleSystemRender name="ps_lightening"/>
+
+			<SpriteRender name="s_sunshine" scale="1,1" offset="0, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_clouds" scale="1,1"  offset="0, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_clouds_right" scale="1,1" flip="1,0" offset="0.9995, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+		
+			
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0.1</Set>
+				<Set name="wrapHorizontal">false</Set>
+			</ContextUpdate>
+
+			<SpriteRender name="s_mountain" flip="1.1,0" offset="-1, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_mountain" offset="-0.1, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_mountain_extension" offset="0.9, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0.15</Set>
+				<Set name="wrapHorizontal">false</Set>
+			</ContextUpdate>
+
+
+			<SpriteRender name="s_castle" scale="1,1" offset="0.4, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_CENTER" />
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0.15</Set>
+				<Set name="wrapHorizontal">false</Set>
+				<Set name="worldAttachmentType">Left</Set>
+				  
+			</ContextUpdate>
+			<SpriteRender name="s_castle_right" offset="0.25, 0.96" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0.15</Set>
+				<Set name="wrapHorizontal">false</Set>
+				<Set name="worldAttachmentType">Left</Set>
+				  
+			</ContextUpdate>
+			<SpriteRender name="s_castle_left" offset="0, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0.7</Set>
+				<Set name="wrapHorizontal">false</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_loopingFG" offset="0, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_loopingFGLeft" offset="-0.98, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_loopingFGLeft" offset="-1.98, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_loopingFGLeft" offset="-2.98, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_loopingFGRight" offset="0.98, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_loopingFGRight" offset="1.98, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_loopingFGRight" offset="2.98, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+
+
+
+		</RenderBackground>
+	
+	</RenderRules>
+</ItemRenderer>

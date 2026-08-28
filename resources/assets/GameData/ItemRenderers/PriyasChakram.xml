@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer>
+  <Data>
+    <Sprite name="s_discBack" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="24,8"/>
+    <Sprite name="s_discFront" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="23,8"/>
+    <Sprite name="s_projectile" fileName="game/particles12.rttex" textureSize="32" frame="22,16"/>
+    <Sprite name="s_trail" fileName="game/particles12.rttex" textureSize="32" frame="21,16"/>
+
+    <VariableMap>
+      <Set name="context.pos.3f">0, 0, 0</Set>
+      <Set name="target.pos.3f">0, 0, 0</Set>
+      <Set name="calculatedPos3f">0, 0, 0</Set>
+      <Set name="finalPos3f">0, 0, 0</Set>
+      <Set name="chakramAngle4f">0,0,0,1</Set>
+      <Set name="chakramAngle">0</Set>
+      <Set name="chakramAngle1">0</Set>
+      <Set name="Player.GetFacing">0</Set>
+      <Set name="chakram.Offset">0, 0, 0</Set>
+      <Set name="chakram.velocity.original">50, 50</Set>
+      <Set name="chakram.velocity.final">50, 50</Set>
+    </VariableMap>
+
+    <Animations>
+      
+      <InterpolationVec3Animation name="a_punchStart3f" variableName="calculatedPos3f" targetVariableName="target.pos.3f" animTime="500" playOnState="PunchAnim.Start"/>
+      <InterpolationVec3Animation name="a_punchContinue3f" variableName="calculatedPos3f" targetVariableName="target.pos.3f" animTime="30" isLoop="true" playOnState="PunchAnim.Continue"/>
+      <InterpolationVec3Animation name="a_punchEnd3f" variableName="calculatedPos3f" targetVariableName="context.pos.3f" animTime="250" playOnState="PunchAnim.End"/>
+
+      <InterpolationVec3Animation name="a_asdfStart" variableName="chakram.Offset" targetValue="0,0,0" animTime="500" playOnState="PunchAnim.Start"/>
+      <InterpolationVec3Animation name="a_dfyjrtEnd" variableName="chakram.Offset" targetValue="0,-8,0" animTime="250" playOnState="PunchAnim.End"/>
+
+      <CurveAnimationVec4 name="a_chakramRotationRight4f" playOnState="PunchAnim.Start|PunchAnim.Continue|PunchAnim.End" isLoop="true" useFacing="RIGHT" animTime="250">
+        <Curve name="chakramAngle4f">
+          <KeyFrame>0, 0,0,0,1</KeyFrame>
+          <KeyFrame>1, 360,0,0,1</KeyFrame>
+        </Curve>
+      </CurveAnimationVec4>
+      <CurveAnimationVec4 name="a_chakramRotationLeft4f" playOnState="PunchAnim.Start|PunchAnim.Continue|PunchAnim.End" isLoop="true" useFacing="LEFT" animTime="250">
+        <Curve name="chakramAngle4f">
+          <KeyFrame>0, 0,0,0,1</KeyFrame>
+          <KeyFrame>1, -360,0,0,1</KeyFrame>
+        </Curve>
+      </CurveAnimationVec4>
+    </Animations>
+
+    <StateMachines>
+      <StateMachine name="PunchAnim">
+        <States>
+          <State name="Off"/>
+          <State name="Start" ExitTime="0.5" />
+          <State name="Continue"/>
+          <State name="End" ExitTime="0.25" />
+        </States>
+        <Transitions>
+          <Transition from="Off" to="Start">
+            <Condition type="and">
+              <IsAction>PUNCH</IsAction>
+              <IsZombified>false</IsZombified>
+            </Condition>
+          </Transition>
+          <Transition from="Start" to="Continue"/>
+          <Transition from="Continue" to="End">
+            <Condition>
+              <IsAction operatorType="NotEqual">PUNCH</IsAction>
+            </Condition>
+          </Transition>
+          <Transition from="End" to="Off"/>
+        </Transitions>
+      </StateMachine>
+    </StateMachines>
+
+    <ParticleSystems>
+      <ParticleSystem name="punch_particle" renderStage="RenderHandItem">
+        <Emitter>
+          <Set name="lifeTime">0.02</Set>
+          <Set name="particlesPerEmission">1</Set>
+          <Set name="particlesToEmit">1</Set>
+          <Set name="emissionInterval">0.02</Set>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_projectile</Set>
+          <Set name="relativeToEmitter">false</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="lifeTime">0.04</Set>
+          <Set name="initialScale">1,1</Set>
+          <Set name="initialAngle" source="chakramAngle"/>
+        </Particle>
+      </ParticleSystem>
+      <ParticleSystem name="punch_particle1" renderStage="RenderHandItem">
+        <Emitter>
+          <Set name="lifeTime">0.1</Set>
+          <Set name="particlesPerEmission">1</Set>
+          <Set name="particlesToEmit">100</Set>
+          <Set name="emissionInterval">0.01</Set>
+        </Emitter>
+        <Particle VelocityRelativeToParticleAngle="true">
+          <Set name="sprite">s_trail</Set>
+          <Set name="relativeToEmitter">false</Set>
+          <Set name="angRelativeToEmitter">true</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="lifeTime">0.5</Set>
+          <Set name="initialScale">1,1</Set>
+          <Set name="initialAngle" source="chakramAngle"/>
+          <Set name="initialVelocity" source="chakram.velocity.final"/>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+        </Particle>
+      </ParticleSystem>
+      <ParticleSystem name="punch_particle2" renderStage="RenderHandItem">
+        <Emitter>
+          <Set name="lifeTime">0.1</Set>
+          <Set name="particlesPerEmission">1</Set>
+          <Set name="particlesToEmit">100</Set>
+          <Set name="emissionInterval">0.01</Set>
+        </Emitter>
+        <Particle VelocityRelativeToParticleAngle="true">
+          <Set name="sprite">s_trail</Set>
+          <Set name="angRelativeToEmitter">true</Set>
+          <Set name="relativeToEmitter">false</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="lifeTime">0.5</Set>
+          <Set name="initialScale">1,1</Set>
+          <Set name="initialAngle" source="chakramAngle1"/>
+          <Set name="initialVelocity" source="chakram.velocity.final"/>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+
+    <RenderOptions>
+      <Default>
+        <Set name="RenderBackArmInfected">true</Set>
+        <Set name="RenderFrontArmInfected">true</Set>
+        <Set name="RenderBackArmBuild">true</Set>
+        <Set name="IncludeAllActions">true</Set>
+        <Set name="DefaultRenderMannequinHandItem">false</Set>
+        <Set name="RenderFrontArmInTheFront">true</Set>
+        <Set name="RenderBackArmAfterItem">true</Set>
+      </Default>
+    </RenderOptions>
+  </Data>
+
+  <RenderRules>
+    <OnPunchUpdate>
+      <AvatarTransform class="Face">
+        <Set name="face">MAD</Set>
+      </AvatarTransform>
+      <AvatarTransform class="ArmAngle">
+        <Set name="armName">arm2Angle</Set>
+        <Set name="pointTowardsPunchTarget">true</Set>
+      </AvatarTransform>
+      <AvatarTransform class="ArmAngle">
+        <Set name="armName">arm1Angle</Set>
+        <Set name="armAngle">0</Set>
+      </AvatarTransform>
+    </OnPunchUpdate>
+    <Update>
+      <ArithmethicOperation LeftHandVariableName="calculatedPos3f" RightHandVariableName="context.pos.3f" OperationType="Set" onState="PunchAnim.Off"/>
+
+      <Group onState="PunchAnim.Start|PunchAnim.Continue|PunchAnim.End">
+        <ArithmethicOperation LeftHandVariableName="finalPos3f" RightHandVariableName="calculatedPos3f" OperationType="Set"/>
+        <ArithmethicOperation LeftHandVariableName="chakramAngle" RightHandVariableName="chakramAngle4f.x" OperationType="Set"/>
+        <ArithmethicOperation LeftHandVariableName="finalPos3f" RightHandVariableName="context.pos.3f" OperationType="Substract"/>
+        <ArithmethicOperation LeftHandVariableName="finalPos3f.x" RightHandVariableName="Player.GetFacing" OperationType="Multiply"/>
+        <Translate>finalPos3f</Translate>
+        <Translate>chakram.Offset</Translate>
+        <Rotate>chakramAngle4f</Rotate>
+        <ArithmethicOperation LeftHandVariableName="chakramAngle1" RightHandVariableName="chakramAngle" OperationType="Set"/>
+        <ArithmethicOperation LeftHandVariableName="chakramAngle1" RightHandVariableName="180" OperationType="Add"/>
+        <ArithmethicOperation LeftHandVariableName="chakramAngle" RightHandVariableName="Player.GetFacing" OperationType="Multiply"/>
+        <ArithmethicOperation LeftHandVariableName="chakramAngle1" RightHandVariableName="Player.GetFacing" OperationType="Multiply"/>
+        <ArithmethicOperation LeftHandVariableName="chakram.velocity.final" RightHandVariableName="chakram.velocity.original" OperationType="Set"/>
+        <ArithmethicOperation LeftHandVariableName="chakram.velocity.final" RightHandVariableName="Player.GetFacing" OperationType="Multiply"/>
+        <ParticleSystemUpdate name="punch_particle"/>
+        <Translate>8, 0, 0</Translate>
+        <ParticleSystemUpdate name="punch_particle1"/>
+        <Translate>-16, 0, 0</Translate>
+        <ParticleSystemUpdate name="punch_particle2"/>
+      </Group>
+    </Update>
+    <RenderHandItem>
+      <SpriteRender name="s_discFront" offset="0.3,16.3" rotateOffset="true" rotationPoint="0,1" blend="NORMAL" alignment="CENTER" drawShadow="true" onState="PunchAnim.Off"/>
+    </RenderHandItem>
+    <RenderBackHandItem>
+      <StopIf>
+        <IsAction>BUILD</IsAction>
+      </StopIf>
+      <StopIf type="and">
+        <IsZombified>true</IsZombified>
+        <IsAction>PUNCH</IsAction>
+      </StopIf>
+      <SpriteRender name="s_discBack" offset="-2.8,11.3" rotateOffset="true" rotationPoint="1,1" blend="NORMAL" alignment="CENTER" drawShadow="true" onState="PunchAnim.Off"/>
+    </RenderBackHandItem>
+  </RenderRules>
+</ItemRenderer>

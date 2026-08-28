@@ -1,0 +1,342 @@
+.window {
+    width: 900dp;
+}
+
+.window .bg {
+    overflow-y: auto;
+}
+
+.leaderboard-actions {
+    padding-top: 10dp;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 15dp;
+    align-items: flex-start;
+    position: relative;
+}
+
+.leaderboard-actions > .info-panel {
+    position: static;
+    flex: 1 1 auto;
+}
+
+.leaderboard-actions > .img-button {
+    flex-shrink: 0;
+}
+
+.horizontal-panel {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: auto;
+        gap:15dp;
+        align-items: center;
+    }
+
+.vertical-panel {
+        display: flex;
+        flex-direction: col;
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+        gap:15dp;
+        align-items: center;
+    }
+
+.info-panel {
+        position: relative;
+    }
+
+.info-panel input {
+        position: absolute;
+        width: 290dp;
+        height: 60dp;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+
+.info-panel > input[type="checkbox"]:checked ~ .button {
+    transform: scale(0.95);
+    transition: transform 0.1s;
+}
+
+.info-panel > .button {
+    transform: scale(1);
+    transition: transform 0.1s;
+}
+
+.arrow {
+        decorator: image(interface/large/gui_ftue_accordion_arrow.rttex);
+        width: 40dp;
+        height: 40dp;
+    }
+
+.info-panel input[type="checkbox"]:checked ~ .button .horizontal-panel .arrow {
+    transform: rotate(180deg);
+}
+
+.info-panel > div:last-child {
+    display: none;
+}
+
+.info-panel > input[type="checkbox"]:checked ~ div:last-child {
+    display: block;
+}
+
+.info-panel .title {
+    font-size: 22dp;
+}
+
+.more-info-banner-border {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        padding: 15dp;
+    }
+
+.more-info-banner {
+        decorator: image(interface/large/all_rank_banner.rttex);
+        width: 705dp;
+        height: 120dp;
+        padding: 0dp;
+        display: block;
+    }
+
+.entry-panel {
+        position: relative;
+        padding: 0;
+        border-radius: 10dp;
+
+        background-color: rgba(104,134,141, 200);
+        border: 1dp rgba(0,0,0,50);
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 64);
+        margin: 0dp;
+
+    }
+
+.entry-panel.unselected {
+    background-color: rgba(104, 134, 141, 200);
+}
+
+.entry-panel.selected {
+    background-color: rgba(171, 224, 235, 250);
+}
+
+.entry-panel.unselected-promoted {
+    background-color: rgba(139, 177, 130, 200);
+}
+
+.entry-panel.selected-promoted {
+    background-color: rgba(58, 170, 53, 250);
+}
+
+.entry-panel.unselected-demoted {
+    background-color: rgba(177, 146, 130, 200);
+}
+
+.entry-panel.selected-demoted {
+    background-color: rgba(254, 87, 65, 250);
+}
+
+.entry-padding {
+	padding-top: 2dp;
+}
+
+.reward-bkgnd {
+    display: block;
+    position: relative;
+    padding: 3dp;
+    border: 2dp white;
+    border-radius: 10dp;
+    background-color: rgba(0,0,0,128);
+}
+
+.reward-image {
+    width: 44dp;
+    height: 44dp;
+}
+
+.reward-text {
+   position: absolute;
+    bottom: -6dp;
+    right: 4dp;
+    font-size: 14dp;
+    font-effect: shadow(1dp 1dp #000);
+    z-index: 2;
+}
+
+.entry-panel .default-text {
+    font-size: 22dp;
+    font-effect: shadow(1dp 1dp #000);
+    padding: 10dp;
+    color: white;
+}
+
+.default-text.promoted {
+    color: #49FC00;
+}
+
+.default-text.demoted {
+    color: #FF9445;
+}
+
+.default-text.selected {
+    color: white;
+}
+
+.leader-board-header-font {
+    font-size: 26dp;
+    color: white;
+    padding:2dp;
+}
+
+.timer-font {
+    font-size: 26dp;
+}
+
+.scroll-header-top-padding {
+    padding-top: 10dp;
+}
+
+.scroll-header {
+    padding: 0dp 4dp 4dp 0dp;
+    background-color: rgba(0, 0, 0, 128);
+    border: 1dp rgba(0,0,0,64);
+    border-radius:8dp;
+}
+
+.reward-horizontal-panel {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: auto;
+        gap:8dp;
+        align-items: center;
+        width: 260dp;
+        padding: 4dp;
+    }
+
+.scroll-container {
+    width: 100%;
+    height:32vh;
+    
+    overflow-y: auto;
+    margin: 0dp;
+}
+
+#dungeonleaderboard-popup #results-list {
+    width: 100%;
+    overflow-y: auto;
+    display: block;
+    margin-bottom: 10dp;
+    min-height: 60dp;
+}
+
+#dungeonleaderboard-popup #results-list #results-table.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promotion-banner {
+        decorator: image(interface/large/promotion_zone.rttex);
+        width: 640dp;
+        height: 64dp;
+        padding: 0dp;
+        display: block;
+    }
+
+.promotion-banner-label {
+	width: 100%;
+	text-align: center;
+    color: rgb(37,171,67);
+    font-size: 24dp;
+}
+
+.demotion-banner {
+        decorator: image(interface/large/demotion_zone.rttex);
+        width: 640dp;
+        height: 64dp;
+        padding: 0dp;
+        display: block;
+    }
+
+.demotion-banner-label {
+	width: 100%;
+	text-align: center;
+    color: rgb(255, 148, 69);
+    font-size: 24dp;
+}
+
+.banner-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.info-popup {
+    
+    background-color: rgba(58,28,84, 224);
+    border-radius: 4pt;
+    border: 2dp #AF08CAFF;
+    padding: 0dp;
+    z-index: 100;
+    font-size: 20dp;
+    width: 100%;
+}
+
+.league-banner{
+    height: 128dp;
+    width: 128dp;
+    flex-shrink: 0;
+}
+
+.loading-popup {
+    position: absolute;
+    top: 386dp;
+    left: 45dp;
+    background-color: rgba(60,137,166, 224);
+    border-radius: 4pt;
+    border: 2dp rgb(136,184,203);
+    padding: 0dp;
+    font-size: 20dp;
+    width: 800dp;
+    height: 60dp;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-panel {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.top-inner-left {
+    flex: 1.6 1 0;
+    display: flex;
+    padding: 8px 16px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 8px;
+    background: rgba(0, 63, 77, 128);
+}
+
+.top-inner-right {
+    flex: 1 1 0;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 1 0 0;
+    border-radius: 8px;
+    background: rgba(0, 63, 77, 128);
+}

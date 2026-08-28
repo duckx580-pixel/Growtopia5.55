@@ -1,0 +1,162 @@
+###### Class com.android.billingclient.api.PendingPurchasesParams (com.android.billingclient.api.PendingPurchasesParams)
+.class public final Lcom/android/billingclient/api/PendingPurchasesParams;
+.super Ljava/lang/Object;
+.source "com.android.billingclient:billing@@7.0.0"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/billingclient/api/PendingPurchasesParams$Builder;
+    }
+.end annotation
+
+
+# instance fields
+.field private final enableOneTimeProducts:Z
+
+.field private final enablePrepaidPlans:Z
+
+
+# direct methods
+.method private constructor <init>(ZZ)V
+    .registers 3
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-boolean p1, p0, Lcom/android/billingclient/api/PendingPurchasesParams;->enableOneTimeProducts:Z
+
+    iput-boolean p2, p0, Lcom/android/billingclient/api/PendingPurchasesParams;->enablePrepaidPlans:Z
+
+    return-void
+.end method
+
+.method synthetic constructor <init>(ZZLcom/android/billingclient/api/zzcp;)V
+    .registers 4
+
+    invoke-direct {p0, p1, p2}, Lcom/android/billingclient/api/PendingPurchasesParams;-><init>(ZZ)V
+
+    return-void
+.end method
+
+.method public static newBuilder()Lcom/android/billingclient/api/PendingPurchasesParams$Builder;
+    .registers 2
+
+    new-instance v0, Lcom/android/billingclient/api/PendingPurchasesParams$Builder;
+
+    const/4 v1, 0x0
+
+    invoke-direct {v0, v1}, Lcom/android/billingclient/api/PendingPurchasesParams$Builder;-><init>(Lcom/android/billingclient/api/zzco;)V
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method isEnabledForOneTimeProducts()Z
+    .registers 2
+
+    iget-boolean v0, p0, Lcom/android/billingclient/api/PendingPurchasesParams;->enableOneTimeProducts:Z
+
+    return v0
+.end method
+
+.method isEnabledForPrepaidPlans()Z
+    .registers 2
+
+    iget-boolean v0, p0, Lcom/android/billingclient/api/PendingPurchasesParams;->enablePrepaidPlans:Z
+
+    return v0
+.end method
+
+###### Class com.android.billingclient.api.PendingPurchasesParams.Builder (com.android.billingclient.api.PendingPurchasesParams$Builder)
+.class public final Lcom/android/billingclient/api/PendingPurchasesParams$Builder;
+.super Ljava/lang/Object;
+.source "com.android.billingclient:billing@@7.0.0"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/android/billingclient/api/PendingPurchasesParams;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "Builder"
+.end annotation
+
+
+# instance fields
+.field private enableOneTimeProducts:Z
+
+.field private enablePrepaidPlans:Z
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method synthetic constructor <init>(Lcom/android/billingclient/api/zzco;)V
+    .registers 2
+
+    invoke-direct {p0}, Lcom/android/billingclient/api/PendingPurchasesParams$Builder;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public build()Lcom/android/billingclient/api/PendingPurchasesParams;
+    .registers 5
+
+    .line 1
+    iget-boolean v0, p0, Lcom/android/billingclient/api/PendingPurchasesParams$Builder;->enableOneTimeProducts:Z
+
+    if-eqz v0, :cond_e
+
+    new-instance v0, Lcom/android/billingclient/api/PendingPurchasesParams;
+
+    iget-boolean v1, p0, Lcom/android/billingclient/api/PendingPurchasesParams$Builder;->enablePrepaidPlans:Z
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x1
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/android/billingclient/api/PendingPurchasesParams;-><init>(ZZLcom/android/billingclient/api/zzcp;)V
+
+    return-object v0
+
+    :cond_e
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "Pending purchases for one-time products must be supported."
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method
+
+.method public enableOneTimeProducts()Lcom/android/billingclient/api/PendingPurchasesParams$Builder;
+    .registers 2
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/billingclient/api/PendingPurchasesParams$Builder;->enableOneTimeProducts:Z
+
+    return-object p0
+.end method
+
+.method public enablePrepaidPlans()Lcom/android/billingclient/api/PendingPurchasesParams$Builder;
+    .registers 2
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/billingclient/api/PendingPurchasesParams$Builder;->enablePrepaidPlans:Z
+
+    return-object p0
+.end method

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer>
+  <Data>
+    <Sprite name="s_Pet" fileName="game/pets/p_nebulafin.rttex" textureSize="32" frame="0,0" />
+    <Sprite name="s_Hand" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="29,9" />
+    <Sprite name="s_sparkle" fileName="game/particles12.rttex" textureSize="32" frame="0,22" />
+    
+    <Animations>
+      <SpriteAnimation name="a_PetIdle" sprite="s_Pet" animTime="600" isLoop="true" playOnState="Punch.No">
+        <Frame>0,0</Frame>
+        <Frame>1,0</Frame>
+        <Frame>2,0</Frame>
+      </SpriteAnimation>
+      <SpriteAnimation name="a_PetPunch" sprite="s_Pet" animTime="1000" isLoop="true" playOnState="Punch.Yes">
+        <Frame>3,0</Frame>
+      </SpriteAnimation>
+    
+      <SpriteAnimation name="a_sparkle" sprite="s_sparkle" animTime="200" autoPlay="true" isLoop="true">
+        <Frame>0,22</Frame>
+        <Frame>1,23</Frame>
+      </SpriteAnimation>
+    </Animations>
+
+    <StateMachines>
+      <StateMachine name="Punch">
+        <States>
+          <State name="No" />
+          <State name="Yes" />
+        </States>
+        <Transitions>
+          <Transition to="No" from="Yes">
+            <Condition>
+              <IsAction operatorType="NotEqual">PUNCH</IsAction>
+            </Condition>
+          </Transition>
+          <Transition to="Yes" from="No">
+            <Condition>
+              <IsAction>PUNCH</IsAction>
+            </Condition>
+          </Transition>
+        </Transitions>
+      </StateMachine>
+    </StateMachines>
+    
+    <ParticleSystems>
+      <ParticleSystem name="ps_sparkle">
+        <Emitter>
+          <Set name="offset">0,-16</Set>
+          <Set name="offsetFacing">true</Set>
+          <Set name="emissionInterval">0.4</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="infLifeTime">true</Set>
+          <Set name="particlesPerEmission">2</Set>
+          <Set name="particlesToEmit">2</Set>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_sparkle</Set>
+          <Random name="offset" min="-16,-16" max="16,16" />
+          <Set name="blendingMode">ADDITIVE</Set>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 0</KeyFrame>
+            <KeyFrame>0.3, 1</KeyFrame>
+            <KeyFrame>0.8, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Set name="lifeTime">0.85</Set>
+          <Random name="initialScale" min="0.5" max="1"/>
+          <Random name="initialRotationRate" min="-180" max="180"/>
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+    
+    <RenderOptions>
+      <Default>
+        <Set name="NeedRenderPet">true</Set>
+        <Set name="PetOffsetDuplication">-48,0</Set>
+        <Set name="IgnorePunchTypeCheck">true</Set>
+      </Default>
+    </RenderOptions>
+  </Data>
+  <RenderRules>
+    <RenderHandItem>
+      <SpriteRender name="s_Hand" blend="PREMULTIPLIED_ALPHA" alignment="UPPER_CENTER" rotateOffset="true" rotationPoint="0,1"/>
+    </RenderHandItem>
+    <RenderPet>
+      <SpriteRender name="s_Pet" alignment="DOWN_CENTER"/>
+    <ParticleSystemUpdate name="ps_sparkle"/>
+    </RenderPet>
+  </RenderRules>
+</ItemRenderer>
+

@@ -1,0 +1,44 @@
+package com.google.firebase.platforminfo;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
+/* JADX INFO: loaded from: classes3.dex */
+public class GlobalLibraryVersionRegistrar {
+    private static volatile GlobalLibraryVersionRegistrar INSTANCE;
+    private final Set<LibraryVersion> infos = new HashSet();
+
+    GlobalLibraryVersionRegistrar() {
+    }
+
+    public void registerVersion(String str, String str2) {
+        synchronized (this.infos) {
+            this.infos.add(LibraryVersion.create(str, str2));
+        }
+    }
+
+    Set<LibraryVersion> getRegisteredVersions() {
+        Set<LibraryVersion> setUnmodifiableSet;
+        synchronized (this.infos) {
+            setUnmodifiableSet = Collections.unmodifiableSet(this.infos);
+        }
+        return setUnmodifiableSet;
+    }
+
+    public static GlobalLibraryVersionRegistrar getInstance() {
+        GlobalLibraryVersionRegistrar globalLibraryVersionRegistrar;
+        GlobalLibraryVersionRegistrar globalLibraryVersionRegistrar2 = INSTANCE;
+        if (globalLibraryVersionRegistrar2 != null) {
+            return globalLibraryVersionRegistrar2;
+        }
+        synchronized (GlobalLibraryVersionRegistrar.class) {
+            globalLibraryVersionRegistrar = INSTANCE;
+            if (globalLibraryVersionRegistrar == null) {
+                globalLibraryVersionRegistrar = new GlobalLibraryVersionRegistrar();
+                INSTANCE = globalLibraryVersionRegistrar;
+            }
+        }
+        return globalLibraryVersionRegistrar;
+    }
+}

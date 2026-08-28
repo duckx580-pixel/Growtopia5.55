@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="com.google.firebase.crashlytics.build_ids_arch">
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>arm</item>
+        <item>arm</item>
+        <item>arm</item>
+        <item>arm</item>
+        <item>arm</item>
+        <item>arm</item>
+        <item>arm</item>
+        <item>arm</item>
+        <item>arm</item>
+        <item>x86</item>
+        <item>x86</item>
+        <item>x86</item>
+        <item>x86</item>
+        <item>x86</item>
+        <item>x86_64</item>
+        <item>x86_64</item>
+        <item>x86_64</item>
+        <item>x86_64</item>
+        <item>x86_64</item>
+    </array>
+    <array name="com.google.firebase.crashlytics.build_ids_build_id">
+        <item>da5f782c45ea14c0cb491c22d0f0e6d66cd5c491</item>
+        <item>7befe631535aa853c4f4ac1293e49dcea34c9b6e</item>
+        <item>114fa206fe963032d541cbcab0bc9374406cfd63</item>
+        <item>9e0518c9ce91d2051d743b2220ae7d61318d55de</item>
+        <item>a0f17680464443cb0467eebb5ed5120983e17321</item>
+        <item>ccde7bae8b4d37c829f55bce1e7df2bda06e16c6</item>
+        <item>17db37bd6770ac00dd2d1d2828839fd23a7959a3</item>
+        <item>3ba6517340ce8acadf7192ad35d495f83ba19d1f</item>
+        <item>fb7336049ca162e90f7e4720980296402b48c993</item>
+        <item>8dced3e02bb8f30601b5c706818fbb013ebc9d64</item>
+        <item>8e97299dcad91f08b141d2c086167c461c289a3f</item>
+        <item>5385a63b71604bd6a379cd110e3b162dad4e73eb</item>
+        <item>c3e778e2c5327b011fe2284f57d2e79eb2e3c73c</item>
+        <item>047f30600056e573ba7b8ad220a8a25df8b046c8</item>
+        <item>dbd34365b14724e41d8d7c74c3d15d2f779c0d71</item>
+        <item>c2c541cc4337a0fc28271329ef238d6bddf6d70d</item>
+        <item>1453e81111c9e53d68c379587345dbefc191cb46</item>
+        <item>6de0f141a65e66bbb98914f144d4481a69ef9455</item>
+        <item>ce02ff23803b6435569493719d87fe2c3133e374</item>
+        <item>84828517ff061fe56fd153cebf581ac438e6ce12</item>
+        <item>d48ebe479fddce1e5eec8087c909710d02f6b3ef</item>
+        <item>72289f67ef4562567f48913dc917c38b120f0c25</item>
+        <item>cf60dc0a5664876a021857e4948f6798ee0ca150</item>
+        <item>dbc59cf2c739ec98edd96bb93bad59fa709c2739</item>
+        <item>470a3f35d4b40aa7f436d4388c79eb2f2ebbe063</item>
+        <item>cb733a319096588783d9b79bbdb2b2493884fa35</item>
+        <item>7bf1e4e08ae33b809596979901acea0795e742d3</item>
+        <item>c6ef0802be059f5f59b23f1205d040dbc5b1ccad</item>
+    </array>
+    <array name="com.google.firebase.crashlytics.build_ids_lib">
+        <item>libanzu.so</item>
+        <item>libc++_shared.so</item>
+        <item>libcrashlytics-common.so</item>
+        <item>libcrashlytics-handler.so</item>
+        <item>libcrashlytics-trampoline.so</item>
+        <item>libcrashlytics.so</item>
+        <item>libdatastore_shared_counter.so</item>
+        <item>libgrowtopia.so</item>
+        <item>libsqliteX.so</item>
+        <item>libanzu.so</item>
+        <item>libc++_shared.so</item>
+        <item>libcrashlytics-common.so</item>
+        <item>libcrashlytics-handler.so</item>
+        <item>libcrashlytics-trampoline.so</item>
+        <item>libcrashlytics.so</item>
+        <item>libdatastore_shared_counter.so</item>
+        <item>libgrowtopia.so</item>
+        <item>libsqliteX.so</item>
+        <item>libcrashlytics-common.so</item>
+        <item>libcrashlytics-handler.so</item>
+        <item>libcrashlytics-trampoline.so</item>
+        <item>libcrashlytics.so</item>
+        <item>libdatastore_shared_counter.so</item>
+        <item>libcrashlytics-common.so</item>
+        <item>libcrashlytics-handler.so</item>
+        <item>libcrashlytics-trampoline.so</item>
+        <item>libcrashlytics.so</item>
+        <item>libdatastore_shared_counter.so</item>
+    </array>
+    <array name="com_google_android_gms_fonts_certs">
+        <item>@array/com_google_android_gms_fonts_certs_dev</item>
+        <item>@array/com_google_android_gms_fonts_certs_prod</item>
+    </array>
+    <array name="com_google_android_gms_fonts_certs_dev">
+        <item>MIIEqDCCA5CgAwIBAgIJANWFuGx90071MA0GCSqGSIb3DQEBBAUAMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbTAeFw0wODA0MTUyMzM2NTZaFw0zNTA5MDEyMzM2NTZaMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbTCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBANbOLggKv+IxTdGNs8/TGFy0PTP6DHThvbbR24kT9ixcOd9W+EaBPWW+wPPKQmsHxajtWjmQwWfna8mZuSeJS48LIgAZlKkpFeVyxW0qMBujb8X8ETrWy550NaFtI6t9+u7hZeTfHwqNvacKhp1RbE6dBRGWynwMVX8XW8N1+UjFaq6GCJukT4qmpN2afb8sCjUigq0GuMwYXrFVee74bQgLHWGJwPmvmLHC69EH6kWr22ijx4OKXlSIx2xT1AsSHee70w5iDBiK4aph27yH3TxkXy9V89TDdexAcKk/cVHYNnDBapcavl7y0RiQ4biu8ymM8Ga/nmzhRKya6G0cGw8CAQOjgfwwgfkwHQYDVR0OBBYEFI0cxb6VTEM8YYY6FbBMvAPyT+CyMIHJBgNVHSMEgcEwgb6AFI0cxb6VTEM8YYY6FbBMvAPyT+CyoYGapIGXMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbYIJANWFuGx90071MAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEEBQADggEBABnTDPEF+3iSP0wNfdIjIz1AlnrPzgAIHVvXxunW7SBrDhEglQZBbKJEk5kT0mtKoOD1JMrSu1xuTKEBahWRbqHsXclaXjoBADb0kkjVEJu/Lh5hgYZnOjvlba8Ld7HCKePCVePoTJBdI4fvugnL8TsgK05aIskyY0hKI9L8KfqfGTl1lzOv2KoWD0KWwtAWPoGChZxmQ+nBli+gwYMzM1vAkP+aayLe0a1EQimlOalO762r0GXO0ks+UeXde2Z4e+8S/pf7pITEI/tP+MxJTALw9QUWEv9lKTk+jkbqxbsh8nfBUapfKqYn0eidpwq2AzVp3juYl7//fKnaPhJD9gs=</item>
+    </array>
+    <array name="com_google_android_gms_fonts_certs_prod">
+        <item>MIIEQzCCAyugAwIBAgIJAMLgh0ZkSjCNMA0GCSqGSIb3DQEBBAUAMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDAeFw0wODA4MjEyMzEzMzRaFw0zNjAxMDcyMzEzMzRaMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBAKtWLgDYO6IIrgqWbxJOKdoR8qtW0I9Y4sypEwPpt1TTcvZApxsdyxMJZ2JORland2qSGT2y5b+3JKkedxiLDmpHpDsz2WCbdxgxRczfey5YZnTJ4VZbH0xqWVW/8lGmPav5xVwnIiJS6HXk+BVKZF+JcWjAsb/GEuq/eFdpuzSqeYTcfi6idkyugwfYwXFU1+5fZKUaRKYCwkkFQVfcAs1fXA5V+++FGfvjJ/CxURaSxaBvGdGDhfXE28LWuT9ozCl5xw4Yq5OGazvV24mZVSoOO0yZ31j7kYvtwYK6NeADwbSxDdJEqO4k//0zOHKrUiGYXtqw/A0LFFtqoZKFjnkCAQOjgdkwgdYwHQYDVR0OBBYEFMd9jMIhF1Ylmn/Tgt9r45jk14alMIGmBgNVHSMEgZ4wgZuAFMd9jMIhF1Ylmn/Tgt9r45jk14aloXikdjB0MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLR29vZ2xlIEluYy4xEDAOBgNVBAsTB0FuZHJvaWQxEDAOBgNVBAMTB0FuZHJvaWSCCQDC4IdGZEowjTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBAUAA4IBAQBt0lLO74UwLDYKqs6Tm8/yzKkEu116FmH4rkaymUIE0P9KaMftGlMexFlaYjzmB2OxZyl6euNXEsQH8gjwyxCUKRJNexBiGcCEyj6z+a1fuHHvkiaai+KL8W1EyNmgjmyy8AW7P+LLlkR+ho5zEHatRbM/YAnqGcFh5iZBqpknHf1SKMXFh4dd239FJ1jWYfbMDMy3NS5CTMQ2XFI1MvcyUTdZPErjQfTbQe3aDQsQcafEQPD+nqActifKZ0Np0IS9L9kR/wbNvyz6ENwPiTrjV2KRkEjH78ZMcUQXg0L3BYHJ3lc69Vs5Ddf9uUGGMYldX3WfMBEmh/9iFBDAaTCK</item>
+    </array>
+    <array name="preloaded_fonts">
+        <item>@font/inter</item>
+    </array>
+</resources>

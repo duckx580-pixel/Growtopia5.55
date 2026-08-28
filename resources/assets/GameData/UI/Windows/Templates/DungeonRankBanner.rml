@@ -1,0 +1,18 @@
+<!--This template must be used only with square-sized (i.e., width == height) elements as the image itself is a square any weird ratio will mess up the remainder of the positioning logic for the stars.-->
+
+<template name="DungeonRankBanner">
+  <head>
+    <link type="text/rcss" href="../../rml.rcss" />
+    <link type="text/rcss" href="../../BaseStyles.rcss" />
+    <link type="text/rcss" href="DungeonRankBanner.rcss" />
+  </head>
+  <body>
+    <div id="banner" data-style-decorator="'image(' + file_path + ')'">
+      <div id="stars-container">
+        <div id="star1" class="star" data-class-hidden="tier < 1"/>
+        <div id="star2" class="star" data-class-hidden="tier < 2"/>
+        <div id="star3" class="star" data-class-hidden="tier < 3"/>
+      </div>
+    </div>
+  </body>
+</template>

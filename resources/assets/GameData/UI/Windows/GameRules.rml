@@ -1,0 +1,44 @@
+<rml>
+    <head>
+        <title>GameRules</title>
+        <link type="text/template" href="Base/BasePopup.rml" />
+        <link type="text/rcss" href="Base/WindowTitle.rcss" />
+        <link type="text/rcss" href="GameRules.rcss" />
+    </head>
+    <body template="BasePopup" class="show-scrollbar wondow-content-full wondow-content-horizontal">
+        <div id="gamerules-popup" class="font-content">
+            <div>
+                <div id="window-title">
+                    <div class="title-text font-title label">
+                        <span class="color_white">Help & Rules</span>
+					</div>
+                </div>
+            </div>
+            <div>
+				<p>
+                    <span class='color_white'><span class='color_green'>Small, Big, and Huge Locks</span> may be deleted after long periods of inactivity if a world is not visited regularly. <span class='color_green'>Item function and prices are subject to change</span> at anytime and without warning as we are constantly trying to balance different aspects of the game.</span>
+                </p>
+                <p>
+                    <span class='color_white'>Protect your worlds and the items by using Doors, Locks, and Blocks wisely, <span class='color_green'>never share your login credentials</span> with anyone, and be aware of <span class='color_green'>fake system messages and phishing websites</span>.</span>
+                </p>
+                <p>
+                    <span class='color_white'><span class='color_green'>Inappropriate behavior</span> (profanity, racist, sexist or sexual content, abusive behavior, and bullying); any form of <span class='color_green'>betting or  gambling</span> (Casino, Drop Game, Dirt Game, etc.); <span class='color_green'>buying, selling, or trading Growtopia accounts, items, or worlds</span> for real money; <span class='color_green'>purchase fraud</span>; and usage of <span class='color_green'>third party software</span>, including, but not limited to, client-side manipulation, auto-clickers, speed hacks, clock manipulation, bots, macroing, and auto-farming, will be sanctioned and may result in a permanent suspension.</span>
+                </p>
+                <p>
+                    <span class='color_white'>You can find more information on game rules on </span>
+                    <span class='color_medium_blue link'
+                          href="https://ubisoft-mobile.helpshift.com/hc/en/26-growtopia/section/337-the-growtopian-code/"
+                          onclick="OnEvent(event, 'gamerules.OnOpenLink')"
+                          >
+                          The Growtopian Code</span>
+                </p>
+                    
+                <div class="top-padding buttons-panel" >
+                        <div onclick="OnEvent(event, 'gamerules.OnAccept')" class="button button-green-color">
+                            <span class="label">I accept these rules!</span>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</rml>

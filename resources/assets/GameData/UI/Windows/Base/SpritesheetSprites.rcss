@@ -1,0 +1,6 @@
+@spritesheet tiles_page17_sprite {
+    src: game/tiles_page17.rttex;
+    resolution: 1x;
+    dungeon_start_ui_title_icon: 128px 960px 32px 32px;
+    dungeon_start_ui_invite_friends_icon: 128px 992px 32px 32px;
+}

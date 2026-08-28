@@ -1,0 +1,24 @@
+###### Class com.iab.omid.library.ironsrc.weakreference.a (com.iab.omid.library.ironsrc.weakreference.a)
+.class public Lcom/iab/omid/library/ironsrc/weakreference/a;
+.super Ljava/lang/ref/WeakReference;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/ref/WeakReference<",
+        "Landroid/view/View;",
+        ">;"
+    }
+.end annotation
+
+
+# direct methods
+.method public constructor <init>(Landroid/view/View;)V
+    .registers 2
+
+    invoke-direct {p0, p1}, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
+
+    return-void
+.end method

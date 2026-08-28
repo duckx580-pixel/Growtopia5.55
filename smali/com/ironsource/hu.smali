@@ -1,0 +1,9 @@
+###### Class com.json.hu (com.ironsource.hu)
+.class public interface abstract Lcom/ironsource/hu;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# virtual methods
+.method public abstract a()V
+.end method

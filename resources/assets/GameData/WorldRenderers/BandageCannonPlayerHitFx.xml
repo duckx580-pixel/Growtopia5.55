@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer name="BandageCannonPlayerHitFx">
+  <Data>
+    <Sprite name="s_bandage" fileName="game/particles12.rttex" textureSize="32" frame="2,18" />
+    
+    <ParticleSystems>
+      <ParticleSystem name="OtherPlayerHit">
+        <Emitter>
+          <Set name="emissionInterval">4</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="lifeTime">3</Set>
+          <Set name="particlesPerEmission">1</Set>
+          <Set name="particlesToEmit">1</Set>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_bandage</Set>
+          <Set name="relativeToEmitter">true</Set>
+          <Set name="lifeTime">3</Set>
+          <Set name="offset">0,-16</Set>
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+  </Data>
+  <RenderRules>
+    <OnOtherPlayerHitStart>
+      <ParticleSystemUpdate name="OtherPlayerHit"/>
+    </OnOtherPlayerHitStart>
+    <OnOtherPlayerHitUpdate>
+      <ParticleSystemUpdate name="OtherPlayerHit"/>
+    </OnOtherPlayerHitUpdate>
+    <OnOtherPlayerHitEnd>
+      <ParticleSystemOff name="OtherPlayerHit"/>
+    </OnOtherPlayerHitEnd>
+  </RenderRules>
+</ItemRenderer>

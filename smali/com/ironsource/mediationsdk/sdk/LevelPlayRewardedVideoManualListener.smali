@@ -1,0 +1,15 @@
+###### Class com.json.mediationsdk.sdk.LevelPlayRewardedVideoManualListener (com.ironsource.mediationsdk.sdk.LevelPlayRewardedVideoManualListener)
+.class public interface abstract Lcom/ironsource/mediationsdk/sdk/LevelPlayRewardedVideoManualListener;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/ironsource/mediationsdk/sdk/LevelPlayRewardedVideoBaseListener;
+
+
+# virtual methods
+.method public abstract onAdLoadFailed(Lcom/ironsource/mediationsdk/logger/IronSourceError;)V
+.end method
+
+.method public abstract onAdReady(Lcom/ironsource/mediationsdk/adunit/adapter/utility/AdInfo;)V
+.end method

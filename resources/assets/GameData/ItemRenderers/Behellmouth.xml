@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer>
+	<Data>
+		<StateMachines>
+			<StateMachine name="Land">
+				<States>
+					<State name="Idle" />
+					<State name="Punch"/>
+					<State name="Move" />
+					<State name="Jump" />
+					<State name="Fall" />
+				</States>
+				<Transitions>
+					<Transition to="Idle" from="Fall|Move|Punch">
+						<Condition type="and">
+							<IsVariableBool name="onGround">true</IsVariableBool>
+							<IsVariableFloat name="speed.length" operator="Less" abs="true">0.1</IsVariableFloat>
+							<IsAction operatorType="NotEqual">PUNCH</IsAction>
+						</Condition>
+					</Transition>
+					<Transition to="Punch" from="Idle|Move|Jump|Fall" >
+						<Condition>
+							<IsAction>PUNCH</IsAction>
+						</Condition>
+					</Transition>
+					<Transition to="Move" from="Jump|Fall|Idle|Punch">
+						<Condition type="and">
+							<IsVariableBool name="onGround">true</IsVariableBool>
+							<IsVariableFloat name="speed.length" operator="Greater" abs="true">0.1</IsVariableFloat>
+							<IsAction operatorType="NotEqual">PUNCH</IsAction>
+						</Condition>
+					</Transition>
+					<Transition to="Jump" from="Idle|Move|Fall|Punch">
+						<Condition type="and">
+							<IsVariableBool name="onGround">false</IsVariableBool>
+							<IsVariableFloat name="speed.y" operator="Less">-0.1</IsVariableFloat>
+							<IsAction operatorType="NotEqual">PUNCH</IsAction>
+						</Condition>
+					</Transition>
+					<Transition to="Fall" from="Jump|Idle|Move|Punch">
+						<Condition type="and">
+							<IsVariableBool name="onGround">false</IsVariableBool>
+							<IsVariableFloat name="speed.y" operator="Greater">0.1</IsVariableFloat>
+							<IsAction operatorType="NotEqual">PUNCH</IsAction>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+			<StateMachine name="trailParticleState">
+				<States>
+					<State name="Idle"/>
+					<State name="Move"/>
+				</States>
+				<Transitions>
+					<Transition from="Idle" to="Move" >
+						<Condition>
+							<IsVariableFloat name="speed.length" operator="Greater" abs="true">0.1</IsVariableFloat>
+						</Condition>
+					</Transition>
+					<Transition from="Move" to="Idle" >
+						<Condition>
+							<IsVariableFloat name="speed.length" operator="Less" abs="true">0.1</IsVariableFloat>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+			<StateMachine name="Swim">
+				<States>
+					<State name="No"/>
+					<State name="Yes"/>
+				</States>
+				<Transitions>
+					<Transition from="No" to="Yes" >
+						<Condition>
+							<IsVariableBool name="onGround">false</IsVariableBool>
+						</Condition>
+					</Transition>
+					<Transition from="Yes" to="No" >
+						<Condition>
+							<IsVariableBool name="onGround">true</IsVariableBool>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+			<StateMachine name="Punch">
+				<States>
+					<State name="No"/>
+					<State name="Yes"/>
+				</States>
+				<Transitions>
+					<Transition from="No" to="Yes" >
+						<Condition>
+							<IsAction>PUNCH</IsAction>
+						</Condition>
+					</Transition>
+					<Transition from="Yes" to="No" >
+						<Condition>
+							<IsAction operatorType="NotEqual">PUNCH</IsAction>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+			<StateMachine name="Health">
+				<States>
+					<State name="Alive"/>
+					<State name="DeathAnim" ExitTime="0.6"/>
+					<State name="Dead" ExitTime="0.1"/>
+					<State name="PreSpawn" ExitTime="0.2"/>
+					<State name="SpawnL" ExitTime="0.55"/>
+					<State name="SpawnR" ExitTime="0.55"/>
+				</States>
+				<Transitions>
+					<Transition from="Alive" to="DeathAnim" >
+						<Condition>
+							<IsAction>DIE</IsAction>
+						</Condition>
+					</Transition>
+					<Transition from="DeathAnim" to="Dead"/>
+					<Transition from="Dead" to="PreSpawn" >
+						<Condition>
+							<IsAction operatorType="NotEqual">DIE</IsAction>
+						</Condition>
+					</Transition>
+					<Transition from="PreSpawn" to="SpawnL">
+						<Condition>
+							<IsFacingLeft>true</IsFacingLeft>
+						</Condition>
+					</Transition>
+					<Transition from="PreSpawn" to="SpawnR">
+						<Condition>
+							<IsFacingLeft>false</IsFacingLeft>
+						</Condition>
+					</Transition>
+					<Transition from="SpawnL" to="Alive" />
+					<Transition from="SpawnR" to="Alive" />
+				</Transitions>
+			</StateMachine>
+			<StateMachine name="Mobility">
+				<States>
+					<State name="Stationary"/>
+					<State name="Moving"/>
+				</States>
+				<Transitions>
+					<Transition to="Stationary" from="Moving">
+						<Condition>
+							<IsVariableFloat name="speed.length" operator="Less" abs="true">0.1</IsVariableFloat>
+						</Condition>
+					</Transition>
+					<Transition to="Moving" from="Stationary">
+						<Condition>
+							<IsVariableFloat name="speed.length" operator="Greater" abs="true">0.1</IsVariableFloat>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+			<StateMachine name="Facing">
+				<States>
+					<State name="Left"/>
+					<State name="Right"/>
+				</States>
+				<Transitions>
+					<Transition to="Left" from="Right">
+						<Condition>
+							<IsFacingLeft>true</IsFacingLeft>
+						</Condition>
+					</Transition>
+					<Transition to="Right" from="Left">
+						<Condition>
+							<IsFacingLeft>false</IsFacingLeft>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+		</StateMachines>
+
+		<Sprite name="s_land_foot1" fileName="game/player_feet_large3.rttex" textureSize="64"/>
+		<Sprite name="s_land_foot2" fileName="game/player_feet_large3.rttex" textureSize="64"/>
+		<Sprite name="s_water_foot1" fileName="game/player_feet_large3.rttex" textureSize="64"/>
+		<Sprite name="s_water_foot2" fileName="game/player_feet_large3.rttex" textureSize="64"/>
+		<Sprite name="s_dead_foot1" fileName="game/player_feet_large3.rttex" textureSize="64"/>
+		<Sprite name="s_dead_foot2" fileName="game/player_feet_large3.rttex" textureSize="64"/>
+		<Sprite name="s_spawn_foot1" fileName="game/player_feet_large3.rttex" textureSize="64"/>
+		<Sprite name="s_spawn_foot2" fileName="game/player_feet_large3.rttex" textureSize="64"/>
+		<Sprite name="s_trail_sprite" fileName="game/particles12.rttex" textureSize="32"/>
+		<Sprite name="s_punch_laser_sprite" fileName="game/particles12.rttex" textureSize="32" frame="19,17"/>
+		<Sprite name="s_plasma_sprite" fileName="game/particles12.rttex" textureSize="32" frame="20,17"/>
+
+		<Animations>
+			<SpriteCurveAnimation name="a_punch_laser_sprite" sprite="s_punch_laser_sprite" animTime="400" isLoop="true" playOnState="Land.Punch">
+				<Curve name="scale">
+					<KeyFrame>0.f, 0.1f, 0.75f</KeyFrame>
+					<KeyFrame>0.5f, 0.75f, 1.f</KeyFrame>
+					<KeyFrame>1.f, 1.25f, 1.25f</KeyFrame>
+				</Curve>
+			</SpriteCurveAnimation>
+			<SpriteAnimation name="a_punch_plasma" sprite="s_plasma_sprite" animTime="200" isLoop="true" playOnState="Punch.Yes">
+				<Frame>20, 17</Frame>
+				<Frame>21, 17</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_land_foot1_idle_anim" sprite="s_land_foot1" animTime="1200" isLoop="true" playOnState="Land.Idle">
+				<Frame>0, 0</Frame>
+				<Frame>1, 0</Frame>
+				<Frame>2, 0</Frame>
+				<Frame>3, 0</Frame>
+				<Frame>4, 0</Frame>
+				<Frame>5, 0</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_land_foot2_idle_anim" sprite="s_land_foot2" animTime="1200" isLoop="true" playOnState="Land.Idle">
+				<Frame>0, 1</Frame>
+				<Frame>1, 1</Frame>
+				<Frame>2, 1</Frame>
+				<Frame>3, 1</Frame>
+				<Frame>4, 1</Frame>
+				<Frame>5, 1</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_water_foot1_idle_anim" sprite="s_water_foot1" animTime="1200" isLoop="true" playOnState="Punch.No">
+				<Frame>6, 2</Frame>
+				<Frame>7, 2</Frame>
+				<Frame>8, 2</Frame>
+				<Frame>9, 2</Frame>
+				<Frame>10, 2</Frame>
+				<Frame>11, 2</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_water_foot2_idle_anim" sprite="s_water_foot2" animTime="1200" isLoop="true" playOnState="Punch.No">
+				<Frame>6, 3</Frame>
+				<Frame>7, 3</Frame>
+				<Frame>8, 3</Frame>
+				<Frame>9, 3</Frame>
+				<Frame>10, 3</Frame>
+				<Frame>11, 3</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_water_foot1_punch_anim" sprite="s_water_foot1" animTime="1200" isLoop="true" playOnState="Punch.Yes">
+				<Frame>6, 4</Frame>
+				<Frame>7, 4</Frame>
+				<Frame>8, 4</Frame>
+				<Frame>9, 4</Frame>
+				<Frame>10, 4</Frame>
+				<Frame>11, 4</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_water_foot2_punch_anim" sprite="s_water_foot2" animTime="1200" isLoop="true" playOnState="Punch.Yes">
+				<Frame>6, 5</Frame>
+				<Frame>7, 5</Frame>
+				<Frame>8, 5</Frame>
+				<Frame>9, 5</Frame>
+				<Frame>10, 5</Frame>
+				<Frame>11, 5</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_dead_foot1_idle_anim" sprite="s_dead_foot1" animTime="600" isLoop="false" playOnState="Health.DeathAnim">
+				<Frame>13, 4</Frame>
+				<Frame>12, 2</Frame>
+				<Frame>13, 2</Frame>
+				<Frame>14, 2</Frame>
+				<Frame>15, 2</Frame>
+				<Frame>12, 4</Frame>
+				
+			</SpriteAnimation>
+			<SpriteAnimation name="a_dead_foot2_idle_anim" sprite="s_dead_foot2" animTime="600" isLoop="false" playOnState="Health.DeathAnim">
+				<Frame>13, 5</Frame>
+				<Frame>12, 3</Frame>
+				<Frame>13, 3</Frame>
+				<Frame>14, 3</Frame>
+				<Frame>15, 3</Frame>
+				<Frame>12, 5</Frame>
+				
+			</SpriteAnimation>
+			<SpriteAnimation name="a_spawn_foot1_idle_anim" sprite="s_spawn_foot1" animTime="600" isLoop="false" playOnState="Health.Spawn">
+				<Frame>15, 0</Frame>
+				<Frame>12, 0</Frame>
+				<Frame>13, 0</Frame>
+				<Frame>14, 0</Frame>
+				
+			</SpriteAnimation>
+			<SpriteAnimation name="a_spawn_foot2_idle_anim" sprite="s_spawn_foot2" animTime="600" isLoop="false" playOnState="Health.Spawn">
+				<Frame>15, 1</Frame>
+				<Frame>12, 1</Frame>
+				<Frame>13, 1</Frame>
+				<Frame>14, 1</Frame>
+				
+			</SpriteAnimation>
+			<SpriteAnimation name="a_land_foot1_move_anim" sprite="s_land_foot1" animTime="600" isLoop="true" playOnState="Land.Move">
+				<Frame>0, 2</Frame>
+				<Frame>1, 2</Frame>
+				<Frame>2, 2</Frame>
+				<Frame>3, 2</Frame>
+				<Frame>4, 2</Frame>
+				<Frame>5, 2</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_land_foot2_move_anim" sprite="s_land_foot2" animTime="600" isLoop="true" playOnState="Land.Move">
+				<Frame>0, 3</Frame>
+				<Frame>1, 3</Frame>
+				<Frame>2, 3</Frame>
+				<Frame>3, 3</Frame>
+				<Frame>4, 3</Frame>
+				<Frame>5, 3</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_land_foot1_jump_anim" sprite="s_land_foot1" animTime="1200" isLoop="true" playOnState="Land.Jump|Land.Fall">
+				<Frame>6, 2</Frame>
+				<Frame>7, 2</Frame>
+				<Frame>8, 2</Frame>
+				<Frame>9, 2</Frame>
+				<Frame>10, 2</Frame>
+				<Frame>11, 2</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_land_foot2_jump_anim" sprite="s_land_foot2" animTime="1200" isLoop="true" playOnState="Land.Jump|Land.Fall">
+				<Frame>6, 3</Frame>
+				<Frame>7, 3</Frame>
+				<Frame>8, 3</Frame>
+				<Frame>9, 3</Frame>
+				<Frame>10, 3</Frame>
+				<Frame>11, 3</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_land_foot1_punch_anim" sprite="s_land_foot1" animTime="1200" isLoop="true" playOnState="Land.Punch">
+				<Frame>0, 4</Frame>
+				<Frame>1, 4</Frame>
+				<Frame>2, 4</Frame>
+				<Frame>3, 4</Frame>
+				<Frame>4, 4</Frame>
+				<Frame>5, 4</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_land_foot2_punch_anim" sprite="s_land_foot2" animTime="1200" isLoop="true" playOnState="Land.Punch">
+				<Frame>0, 5</Frame>
+				<Frame>1, 5</Frame>
+				<Frame>2, 5</Frame>
+				<Frame>3, 5</Frame>
+				<Frame>4, 5</Frame>
+				<Frame>5, 5</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_trail_Sprites" autoPlay="false" sprite="s_trail_sprite">
+				<Frame>22,17</Frame>
+				<Frame>23,17</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_punch_laser_Sprites" autoPlay="false" sprite="s_punch_laser_sprite" animTime="200" isLoop="true" playOnState="Land.Punch">
+				<Frame>18,17</Frame>
+				<Frame>19,17</Frame>
+			</SpriteAnimation>
+		</Animations>
+
+		<ParticleSystems>
+			<ParticleSystem name="ps_trail">
+				<Emitter>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="particlesToEmit">1</Set>
+					<Set name="emissionInterval">0.033</Set>
+					<Set name="checkParticleNumToEmit">false</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Set name="offset">-28,-7</Set>
+					<Set name="lifeTime">0.06</Set>
+				</Emitter>
+				<Particle randomSpriteFrame="true">
+					<Set name="sprite">s_trail_sprite</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Set name="lifeTime">1</Set>
+					<Set name="initialVelocity">0,0</Set>
+					<Random name="offset" min="-10,-8" max="10,8"/>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Curve name="initialScale">
+						<KeyFrame>0, 0.5,0.5</KeyFrame>
+						<KeyFrame>1, 3,3</KeyFrame>
+					</Curve>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="p_punch">
+				<Emitter attachment="contextRotation">
+					<Set name="offset">14,11</Set>
+					<Set name="emissionInterval">0.1</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="lifeTime">0.3</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_punch_laser_sprite</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Set name="rotateWithVelocity">true</Set>
+					<Set name="lifeTime">0.3</Set>
+					<VectorTo name="initialVelocity" source="targetPos" offset="targetPosOffset" duration="lifeTime" x="1" angle="0" />
+					<Set name="relativeToEmitter">true</Set>
+					<Curve name="initialScale">
+						<KeyFrame>0, 1,1</KeyFrame>
+						<KeyFrame>1, 2,2</KeyFrame>
+					</Curve>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 0</KeyFrame>
+						<KeyFrame>0.1, 0</KeyFrame>
+						<KeyFrame>0.2, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="p_death">
+				<Emitter>
+					<Set name="offset">14,13</Set>
+					<Set name="emissionInterval">0.1</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="lifeTime">1</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_punch_laser_sprite</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Set name="rotateWithVelocity">true</Set>
+					<Set name="lifeTime">1</Set>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="p_SpawnParticleR1">
+				<Emitter>
+					<Set name="offset">0, -54</Set>
+					<Set name="lifeTime">1</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_spawn_foot1</Set>
+					<Set name="renderAlignment">RIGHT_CENTER</Set>
+					<Set name="lifeTime">0.6</Set>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="p_SpawnParticleR2">
+				<Emitter>
+					<Set name="offset">0, -54</Set>
+					<Set name="lifeTime">1</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_spawn_foot2</Set>
+					<Set name="renderAlignment">LEFT_CENTER</Set>
+					<Set name="lifeTime">0.6</Set>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="p_SpawnParticleL1">
+				<Emitter>
+					<Set name="offset">0, -54</Set>
+					<Set name="lifeTime">1</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_spawn_foot2</Set>
+					<Set name="renderAlignment">RIGHT_CENTER</Set>
+					<Set name="lifeTime">0.6</Set>
+					<Set name="flipX">true</Set>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="p_SpawnParticleL2">
+				<Emitter>
+					<Set name="offset">0, -54</Set>
+					<Set name="lifeTime">1</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_spawn_foot1</Set>
+					<Set name="renderAlignment">LEFT_CENTER</Set>
+					<Set name="lifeTime">0.6</Set>
+					<Set name="flipX">true</Set>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="p_DeathParticleR1">
+				<Emitter>
+					<Set name="offset">0,-16</Set>
+					<Set name="lifeTime">2</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_dead_foot1</Set>
+					<Set name="renderAlignment">RIGHT_CENTER</Set>
+					<Set name="lifeTime">0.6</Set>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="p_DeathParticleR2">
+				<Emitter>
+					<Set name="offset">0,-16</Set>
+					<Set name="lifeTime">2</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_dead_foot2</Set>
+					<Set name="renderAlignment">LEFT_CENTER</Set>
+					<Set name="lifeTime">0.6</Set>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="p_DeathParticleL1">
+				<Emitter>
+					<Set name="offset">0,-16</Set>
+					<Set name="lifeTime">2</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_dead_foot2</Set>
+					<Set name="renderAlignment">RIGHT_CENTER</Set>
+					<Set name="lifeTime">0.6</Set>
+					<Set name="flipX">true</Set>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="p_DeathParticleL2">
+				<Emitter>
+					<Set name="offset">0,-16</Set>
+					<Set name="lifeTime">2</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="checkParticleNumToEmit">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_dead_foot1</Set>
+					<Set name="renderAlignment">LEFT_CENTER</Set>
+					<Set name="lifeTime">0.6</Set>
+					<Set name="flipX">true</Set>
+				</Particle>
+			</ParticleSystem>
+		</ParticleSystems>
+
+		<RenderOptions>
+			<Default>
+				<Set name="PunchSoundOverride">SHOES</Set>
+				<Set name="PlayDefaultPunchAudio">false</Set>
+				<Set name="ShoesShouldIgnoreRaptorLegsOffset">true</Set>
+				<Set name="IsSurfboard">true</Set>
+				<Set name="IsVehicle">false</Set>
+				<Set name="IsRidingBird">false</Set>
+				<Set name="ClothingOffsetFromShoes">-20</Set>
+				<Set name="UserNameOffset">24</Set>
+				<Set name="IgnoreDefaultDamagedTileEffect">false</Set>
+				<Set name="IgnoreDefaultDestroyedTileEffect">false</Set>
+				<Set name="AllowChangePunchType">true</Set>
+				<Set name="IncludeAllActions">true</Set>
+				<Set name="HideAvatarOnDeath">true</Set>
+				<Set name="HideAngelOnDeath">false</Set>
+				<Set name="HasDeathParticles">true</Set>
+			</Default>
+		</RenderOptions>
+	</Data>
+
+	<RenderRules>
+		<Update>
+			<StopIf>
+				<IsZombified>true</IsZombified>
+			</StopIf>
+			<AvatarTransform class="FootPosition">
+				<Set name="foot1dy">0</Set>
+				<Set name="foot2dy">0</Set>
+				<Set name="foot1y">0</Set>
+				<Set name="foot2y">0</Set>
+			</AvatarTransform>
+			<AvatarTransform class="ArmAngle" onState="Mobility.Moving">
+				<Set name="armName">arm2Angle</Set>
+				<Set name="armAngle">45</Set>
+			</AvatarTransform>
+			<AvatarTransform class="ArmAngle" onState="Mobility.Moving">
+				<Set name="armName">arm1Angle</Set>
+				<Set name="armAngle">-45</Set>
+			</AvatarTransform>
+		</Update>
+		<RenderShoes>
+			<StopIf>
+				<IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+			</StopIf>
+			<ParticleSystemUpdate name="ps_trail" onState="trailParticleState.Move"/>
+			
+		</RenderShoes>
+		<RenderInFront value="playerCenter">
+			<StopIf type="or">
+				<IsZombified>true</IsZombified>
+				<IsSitting>true</IsSitting>
+				<IsSleepingOnaBed>true</IsSleepingOnaBed>
+				<IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+			</StopIf>
+			<Group onState="Health.Alive">
+				<Group onState="Swim.No">
+					<SpriteRender name="s_land_foot1" offset="-0,-12" alignmentLeft="LEFT_CENTER" alignmentRight="RIGHT_CENTER"/>
+					<SpriteRender name="s_land_foot2" offset="-0,-12" alignmentLeft="RIGHT_CENTER" alignmentRight="LEFT_CENTER"/>
+				</Group>
+				<Group onState="Swim.Yes">
+					<SpriteRender name="s_water_foot1" offset="-0,-12" alignmentLeft="LEFT_CENTER" alignmentRight="RIGHT_CENTER"/>
+					<SpriteRender name="s_water_foot2" offset="-0,-12" alignmentLeft="RIGHT_CENTER" alignmentRight="LEFT_CENTER"/>
+				</Group>
+				<StopIf>
+					<IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+				</StopIf>
+				<SpriteRender name="s_plasma_sprite" offset="14,7" onState="Punch.Yes" blend="PREMULTIPLIED_ALPHA" stretchToTarget="true" alignmentLeft="LEFT_CENTER" alignmentRight="RIGHT_CENTER" drawShadow="false" flip="1,0"/>
+			</Group>
+			<Group onState="Health.SpawnR">
+				<ParticleSystemUpdate name="p_SpawnParticleR1"/>
+				<ParticleSystemUpdate name="p_SpawnParticleR2"/>
+			</Group>
+			<Group onState="Health.SpawnL">
+				<ParticleSystemUpdate name="p_SpawnParticleL1"/>
+				<ParticleSystemUpdate name="p_SpawnParticleL2"/>
+			</Group>
+		</RenderInFront>
+		<OnPunchUpdate>
+			<AvatarTransform class="Face">
+				<Set name="face">MAD</Set>
+			</AvatarTransform>
+		</OnPunchUpdate>
+		<OnPunchStart>
+			<ParticleSystemUpdate name="p_punch"/>
+		</OnPunchStart>
+		<OnKilled>
+			<ParticleSystemUpdate name="p_DeathParticleL1" onState="Facing.Left"/>
+			<ParticleSystemUpdate name="p_DeathParticleL2" onState="Facing.Left"/>
+			<ParticleSystemUpdate name="p_DeathParticleR1" onState="Facing.Right"/>
+			<ParticleSystemUpdate name="p_DeathParticleR2" onState="Facing.Right"/>
+		</OnKilled>
+	</RenderRules>
+</ItemRenderer>

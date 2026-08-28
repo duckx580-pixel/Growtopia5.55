@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<ItemRenderer item="ITEM_ID_DIAMOND_SPARKLING_SNEAKERS">
+	<Data>
+		<Sprite name="s_leg1" fileName="game/player_feet16.rttex" textureSize="32" frame="16,26" />
+		<Sprite name="s_leg2" fileName="game/player_feet16.rttex" textureSize="32" frame="16,27" />
+		<Sprite name="s_foot1" fileName="game/player_feet.rttex" textureSize="32" frame="0,0" />
+		<Sprite name="s_foot2" fileName="game/player_feet.rttex" textureSize="32" frame="0,1" />
+		<VariableMap>
+			<Set name="leftFootYPos">0,0,0</Set>
+			<Set name="rightFootYPos">0,0,0</Set>
+		</VariableMap>
+		<RenderOptions>
+			<Default>
+				<Set name="HideParticlesOnTransform">true</Set>
+				<Set name="RenderShoesWithMermaidTail">false</Set>
+			</Default>
+		</RenderOptions>
+	</Data>
+	<RenderRules>
+		<RenderShoes>
+			<StopIf type="or">
+				<IsWearing slot="PANTS">ITEM_ID_RAPTOR_LEGS</IsWearing>
+				<IsRenderObjectFlag>RENDER_OBJECT_FLAG_NO_FEET</IsRenderObjectFlag>
+				<IsVariableBool name="isInvisible">true</IsVariableBool>
+			</StopIf>
+			<Group>
+				<Translate>leftFootYPos</Translate>
+				<SpriteRender name="s_leg1" alignment="DOWN_CENTER" />
+				<SpriteRender name="s_foot1" alignment="DOWN_CENTER"  tintOverride="SKIN"/>
+			</Group>
+			<Group>
+				<Translate>rightFootYPos</Translate>
+				<SpriteRender name="s_leg2" alignment="DOWN_CENTER" />
+				<SpriteRender name="s_foot2" alignment="DOWN_CENTER"  tintOverride="SKIN"/>
+			</Group>
+		</RenderShoes>
+	</RenderRules>
+</ItemRenderer>
+

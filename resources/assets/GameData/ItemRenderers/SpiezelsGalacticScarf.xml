@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer>
+  <Data>
+    <Sprite name="s_scarf" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="27,9" />
+    <Sprite name="s_scarfGlow" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="28,9" />
+    <Sprite name="s_cloak" fileName="game/particles12.rttex" textureSize="32" frame="2,21" />
+    <Sprite name="s_sparkle" fileName="game/particles12.rttex" textureSize="32" frame="0,21" />
+    <Sprite name="s_trail" fileName="game/particles12.rttex" textureSize="32" frame="7,21" />
+
+    <StateMachines>
+      <StateMachine name="TrailState">
+        <States start="On">
+          <State name="On" />
+          <State name="Off" />
+        </States>
+        <Transitions>
+          <Transition to="Off" from="On">
+            <Condition type="or">
+              <CompareCustomVariable VariableNameToCompare="showTrail">false</CompareCustomVariable>
+              <IsVariableFloat name="speed.length" operator="Less" abs="true">0.1</IsVariableFloat>
+            </Condition>
+          </Transition>
+          <Transition to="On" from="Off">
+            <Condition type="and">
+              <CompareCustomVariable VariableNameToCompare="showTrail">true</CompareCustomVariable>
+              <IsVariableFloat name="speed.length" operator="Greater" abs="true">0.1</IsVariableFloat>
+            </Condition>
+          </Transition>
+        </Transitions>
+      </StateMachine>
+      <StateMachine name="CloakState">
+        <States start="On">
+          <State name="On" />
+          <State name="Off" />
+        </States>
+        <Transitions>
+          <Transition to="Off" from="On">
+            <Condition>
+              <CompareCustomVariable VariableNameToCompare="showCloak">false</CompareCustomVariable>
+            </Condition>
+          </Transition>
+          <Transition to="On" from="Off">
+            <Condition>
+              <CompareCustomVariable VariableNameToCompare="showCloak">true</CompareCustomVariable>
+            </Condition>
+          </Transition>
+        </Transitions>
+      </StateMachine>
+    </StateMachines>
+
+    <Animations>
+      <SpriteCurveAnimation name="a_scarfGlow" isLoop="true" autoPlay="true" sprite="s_scarfGlow" animTime="3000">
+        <Curve name="alpha">
+          <KeyFrame>0.f, 0.f</KeyFrame>
+          <KeyFrame>0.5f, 1.f </KeyFrame>
+          <KeyFrame>1.f, 0.f</KeyFrame>
+        </Curve>
+      </SpriteCurveAnimation>
+      <SpriteAnimation name="a_cloak" sprite="s_cloak" animTime="500" isLoop="true" autoPlay="true">
+        <Frame>2,21</Frame>
+        <Frame>3,21</Frame>
+        <Frame>4,21</Frame>
+        <Frame>5,21</Frame>
+        <Frame>6,21</Frame>
+      </SpriteAnimation>
+      <SpriteAnimation name="a_sparkle" sprite="s_sparkle" animTime="200" autoPlay="true" isLoop="true">
+        <Frame>0,21</Frame>
+        <Frame>1,21</Frame>
+      </SpriteAnimation>
+      <SpriteAnimation name="a_trail" sprite="s_trail" animTime="300">
+        <Frame>7,21</Frame>
+        <Frame>8,21</Frame>
+        <Frame>9,21</Frame>
+      </SpriteAnimation>
+    </Animations>
+
+    <ParticleSystems>
+      <ParticleSystem name="ps_sparkle" updateStage="AddClothingParticles" renderStage="RenderChestItem">
+        <Emitter>
+          <Set name="offset">0,-16</Set>
+          <Set name="offsetFacing">true</Set>
+          <Set name="emissionInterval">0.4</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="infLifeTime">true</Set>
+          <Set name="particlesPerEmission">2</Set>
+          <Set name="particlesToEmit">2</Set>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_sparkle</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Random name="offset" min="-8,-16" max="8,16" />
+          <Set name="blendingMode">ADDITIVE</Set>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 0</KeyFrame>
+            <KeyFrame>0.3, 1</KeyFrame>
+            <KeyFrame>0.8, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Set name="lifeTime">0.85</Set>
+          <Random name="initialScale" min="0.3" max="0.8"/>
+          <Random name="initialRotationRate" min="-180" max="180"/>
+        </Particle>
+      </ParticleSystem>
+      <ParticleSystem name="ps_trail">
+        <Emitter>
+          <Set name="offset">0,-8</Set>
+          <Set name="infLifeTime">true</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="particlesPerEmission">4</Set>
+          <Set name="intervalMin">.05</Set>
+          <Set name="intervalMax">.15</Set>
+          <Set name="randomizeInterval">true</Set>
+        </Emitter>
+        <Particle angleRelativeToPlayerSpeed="true" randomSpriteFrame="true">
+          <Set name="sprite">s_trail</Set>
+          <Random name="offset" min="-8,-8" max="8,8"/>
+          <Set name="lifeTime">0.7</Set>
+          <Set name="isBackgroundParticle">true</Set>
+          <Set name="useGravity">false</Set>
+          <Set name="gravityVector">0,25</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 0.8</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Curve name="initialScale">
+            <KeyFrame>0, 0.85, 0.85</KeyFrame>
+            <KeyFrame>1, 1.0, 1.0</KeyFrame>
+          </Curve>
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+
+    <VariableMap>
+      <Set name="showCloak" UIOrder="1" RadioGroup="-1" UIName="Show Cloak">true</Set>
+      <Set name="showTrail" UIOrder="2" RadioGroup="-1" UIName="Show Trail">true</Set>
+    </VariableMap>
+
+  </Data>
+  <RenderRules>
+    <RenderChestItem>
+      <SpriteRender name="s_scarf" offset="0,-14" blend="PREMULTIPLIED_ALPHA"/>
+      <SpriteRender name="s_scarfGlow" drawShadow="false" offset="0,-14" blend="PREMULTIPLIED_ALPHA"/>
+    </RenderChestItem>
+    <AddClothingParticles>
+      <ParticleSystemUpdate name="ps_trail" onState="TrailState.On"/>
+      <AvatarSilhouetteRender color="20,180,255,200" emissionInterval="0.25" onState="TrailState.On"/>
+    </AddClothingParticles>
+    <RenderChestBackItem>
+      <SpriteRender name="s_cloak" offset="0,-14" blend="PREMULTIPLIED_ALPHA" scale="1.3,1" onState="CloakState.On"/>
+    </RenderChestBackItem>
+  </RenderRules>
+</ItemRenderer>
+

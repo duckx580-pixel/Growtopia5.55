@@ -1,0 +1,25 @@
+
+.window {
+    width: 650dp;
+    min-height: 100dp;
+}
+
+#adult-verification-privacy-notice-popup .content,
+#adult-verification-required-popup .content {
+    margin-bottom: 24dp;
+    margin-top: 16dp;
+}
+
+#adult-verification-privacy-notice-popup .button,
+#adult-verification-required-popup .button {
+    margin-left: 5dp;
+    margin-right: 5dp;
+}
+
+#adult-verification-privacy-notice-popup .buttons-panel,
+#adult-verification-required-popup .buttons-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 36dp;
+}

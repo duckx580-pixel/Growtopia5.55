@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer>
+  <Data>
+    <Sprite name="s_hand" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="7,3"/>
+    <Sprite name="s_coin" fileName="game/particles12.rttex" textureSize="32" frame="19,14"/>
+    <Sprite name="s_coinTrail" fileName="game/particles12.rttex" textureSize="32" frame="16,14"/>
+
+    <Animations>
+      <SpriteAnimation name="a_coin" sprite="s_coin" isLoop="true" animTime="1200">
+        <Frame>19,14</Frame>
+        <Frame>20,14</Frame>
+        <Frame>21,14</Frame>
+        <Frame>22,14</Frame>
+        <Frame>23,14</Frame>
+        <Frame>24,14</Frame>
+        <Frame>25,14</Frame>
+      </SpriteAnimation>
+      <SpriteAnimation name="a_luteTrail" sprite="s_coinTrail" isLoop="true" animTime="300">
+        <Frame>16,14</Frame>
+        <Frame>17,14</Frame>
+        <Frame>18,14</Frame>
+      </SpriteAnimation>
+    </Animations>
+
+    <ParticleSystems>
+      <ParticleSystem name="ps_coin">
+        <Emitter>
+          <Set name="offset">0, -16</Set>
+          <Set name="emissionInterval">1.19</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="infLifeTime">true</Set>
+          <Set name="particlesPerEmission">1</Set>
+          <OrbitOffset>
+            <Set name="maxScale">0.7f</Set>
+            <Set name="hasOrbit">true</Set>
+            <Set name="hOrbitPeriod">6000</Set>
+            <Set name="hAmplitude">25</Set>
+            <Set name="hTimeOffset">0</Set>
+            <Set name="vAmplitude">6</Set>
+            <Set name="vOrbitPeriod">4000</Set>
+            <Set name="vTimeOffset">0</Set>
+            <Set name="minScale">0.4</Set>
+          </OrbitOffset>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_coin</Set>
+          <Set name="relativeToEmitter">true</Set>
+          <Set name="inSpecificOrder">false</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="lifeTime">1.2</Set>
+        </Particle>
+      </ParticleSystem>
+
+      <ParticleSystem name="ps_coinTrail">
+        <Emitter>
+          <Set name="offset">0, -16</Set>
+          <Set name="emissionInterval">0.04</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="infLifeTime">true</Set>
+          <Set name="particlesPerEmission">1</Set>
+          <OrbitOffset>
+            <Set name="maxScale">0.7f</Set>
+            <Set name="hasOrbit">true</Set>
+            <Set name="hOrbitPeriod">6000</Set>
+            <Set name="hAmplitude">25</Set>
+            <Set name="hTimeOffset">0</Set>
+            <Set name="vAmplitude">6</Set>
+            <Set name="vOrbitPeriod">4000</Set>
+            <Set name="vTimeOffset">0</Set>
+            <Set name="minScale">0.4</Set>
+          </OrbitOffset>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_coinTrail</Set>
+          <Set name="inSpecificOrder">false</Set>
+          <Set name="blendingMode">ADDITIVE</Set>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Curve name="initialRotationRate">
+            <KeyFrame>0, 15</KeyFrame>
+            <KeyFrame>1, 5</KeyFrame>
+          </Curve>
+          <Random name="initialAngle" min="0" max="360" />
+          <Random name="finalAngle" min="0" max="360" />
+          <Set name="interpolateAngle">true</Set>
+          <Set name="initialScale">1,1</Set>
+          <Random name="finalScale" min="0.3" max="0.6" />
+          <Set name="interpolateScale">true</Set>
+          <Random name="offset" min="-2,-3" max="2,3" />
+          <Set name="lifeTime">1</Set>
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+
+    <RenderOptions>
+      <Default>
+        <Set name="IgnorePunchTypeCheck">true</Set>
+      </Default>
+    </RenderOptions>
+  </Data>
+
+  <RenderRules>
+    <RenderInFront>
+      <StopIf>
+        <IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+      </StopIf>
+      <ParticleSystemRender name="ps_coin"/>
+      <ParticleSystemRender name="ps_coinTrail"/>
+    </RenderInFront>
+    <AddClothingParticles>
+      <StopIf>
+        <IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+      </StopIf>
+      <ParticleSystemUpdate name="ps_coinTrail"/>
+      <ParticleSystemUpdate name="ps_coin"/>
+    </AddClothingParticles>
+    <RenderHandItem>
+      <SpriteRender name="s_hand" blend="PREMULTIPLIED_ALPHA" alignment="UPPER_CENTER" />
+    </RenderHandItem>
+  </RenderRules>
+</ItemRenderer>
+

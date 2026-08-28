@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/mtrl_extended_fab_change_size_collapse_motion_spec"
+    android:tileMode="repeat"/>

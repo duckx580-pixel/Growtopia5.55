@@ -1,0 +1,40 @@
+Questlines:
+- Id: 1
+  Info: |
+    Welcome to Growtopia, a place where you can be anyone and do anything you could imagine.
+  Hints:
+  - punch
+  - build
+  - grow
+- Id: 2
+  Info: |
+    The Seed Diary tracks the blocks and seeds that you have collected and planted!
+  Hints:
+  - seed_diary_discover
+  - seed_diary_plant
+- Id: 3
+  Info: |
+    Discover more seeds in Growtopia!
+  Hints:
+  - splice
+- Id: 4
+  Info: |
+    Discover more seeds in Growtopia!
+  Hints:
+  - farming
+- Id: 5
+  Info: |
+    Learn how to use store in Growtopia!
+  Hints:
+  - shop
+- Id: 6
+  Info: |
+    Set your home world!
+  Hints:
+  - set_home
+  - return_home
+- Id: 7
+  Info: |
+    Learn how to interact with tiles in the world!
+  Hints:
+  - wrench

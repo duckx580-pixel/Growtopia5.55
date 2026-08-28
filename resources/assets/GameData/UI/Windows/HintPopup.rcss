@@ -1,0 +1,90 @@
+.window {
+    width: 900dp;
+}
+
+.window .bg {
+    overflow-y: auto;
+}
+
+.hint-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: auto;
+	align-items: center;
+    margin-bottom: 10dp;
+}
+
+.hint-title .hint-icon {
+    width: 50dp;
+    height: 50dp;
+    display: block;
+    flex-shrink: 0;
+    margin: auto 10dp auto 0;
+}
+
+.hint-title .title-text {
+    display: block;
+    line-height: 40dp;
+    margin-left: 10dp;
+	vertical-align: middle;
+}
+
+.hint-banner {
+    display: block;
+    height: 230dp;
+}
+
+.hint-info {
+    display: block;
+    line-height: 30dp;
+    margin-bottom: 20dp;
+}
+
+.hint {
+    height: auto;
+    display: block;
+    margin: 0 0 10dp 0;
+}
+
+#back-button {
+    display: block;
+    bottom: 0;
+    left: 0;
+    width: 100dp;
+    margin: 10dp 0 0 0;
+}
+
+ul li {
+  position: relative;
+  padding: 0;
+    border-radius: 10dp;
+	box-shadow: #000f 2dp 2dp 2dp 0dp;
+    background-color: rgb(80, 157, 188);
+  padding: 15dp 30dp 10dp 20dp;
+}
+
+ul li input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+ul li input:checked ~ .hint-info-panel * {
+  display:none;
+}
+
+ul li i {
+  decorator: image(interface/large/gui_ftue_accordion_arrow.rttex);
+  width: 40dp;
+  height: 40dp;
+  margin-left: auto;
+  transform: rotate(180deg);
+}
+
+ul li input:checked ~ .hint-title i {
+  transform: rotate(0deg);
+}

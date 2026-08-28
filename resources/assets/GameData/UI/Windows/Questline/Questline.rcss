@@ -1,0 +1,159 @@
+.window {
+    width: 700dp;
+}
+
+.window .bg {
+    overflow-y: auto;
+}
+
+@spritesheet ftue_panel_sprite {
+    src: interface/large/ftue_buttons.rttex;
+    /* For high dpi screens, designates the scaling it is intended to be shown at. */
+    resolution: 1x;
+
+    ftue_question: 128px 128px 128px 128px;
+    notification_icon_image: 256px 256px 128px 128px;
+}
+
+@spritesheet ftue_panel_sprite {
+    src: interface/large/ftue_buttons_toggle.rttex;
+    /* For high dpi screens, designates the scaling it is intended to be shown at. */
+    resolution: 1x;
+    ftue_switcher_icon_off: 0px 0px 256px 128px;
+    ftue_switcher_icon_on: 0px 128px 256px 128px;
+}
+
+.sectional {
+    border-radius: 10dp;
+    background-color: rgba(26, 80, 100, 200);
+    padding: 5dp 10dp 10dp 10dp;
+    margin-top: 10dp;
+}
+
+.questline-panel {
+  display: flex;
+  flex-direction: row;     /* default, but explicit */
+  align-items: center;     /* vertically center image and the right column */
+  gap: 8dp;                /* space between image and text column */
+  /* optional padding/margins */
+  padding: 6dp 10dp 6dp 6dp;
+    border-radius: 10dp;
+    background-color: rgba(0, 0, 0, 100);
+    margin: 5dp 0dp 5dp 0dp;
+}
+
+.hint_icon_container {
+    padding: 0dp 0dp 0dp 0dp;
+    width: 64dp;
+    height: 64dp;
+}
+
+.hint_active {
+    decorator: image(ftue_question);
+    width: 64dp;
+    height: 64dp;
+    margin: auto;
+}
+
+.hint_active:active {
+		filter: brightness(0.85);
+		transform: scale(0.95);
+	}
+
+.hint_inactive {
+    decorator: image(ftue_question);
+    width: 64dp;
+    height: 64dp;
+    filter: grayscale(100%);
+    margin: auto;
+}
+
+.hint_inactive:active {
+		filter: brightness(0.85) grayscale(100%);
+		transform: scale(0.95);
+	}
+
+.hint_icon {
+position: block;
+    width: 48dp;
+    height: 48dp;
+    border-radius: 4dp;
+	box-shadow: #000f 2dp 2dp 2dp 0px;
+    background-color: rgb(0, 205, 249);
+    margin: auto;
+    font-size: 40dp;
+    line-height: 48dp;
+    text-align: center;
+}
+
+.hint_icon:active {
+		filter: brightness(0.85);
+		transform: scale(0.95);
+	}
+
+@spritesheet progress_bars_background_sprite
+{
+	src: interface/large/gui_event_progress_bar_bg.rttex;
+    progress-border: 0px 0px 17px 13px;
+    progress-inner: 8px 6px 2px 2px;
+}
+
+@spritesheet progress_bars_foreground_sprite
+{
+	src: interface/large/gui_event_progress_bar_fg.rttex;
+    progress-fill-border: 0px 0px 17px 13px;
+    progress-fill-inner: 8px 6px 2px 2px;
+}
+
+.progressBar { 
+    background-color: rgba(0, 0, 0, 128);
+    border-radius: 2dp;
+	width: 100%;
+	height: 20dp;
+    display: inline-block;
+}
+
+#text_progress_holder {
+    flex-grow: 1;
+}
+
+.progressBar fill {
+	decorator: ninepatch(progress-fill-border, progress-fill-inner);
+	/* padding ensures that the decorator has a minimum width when the value is zero */
+	padding-left: 1dp;
+}
+
+.checkbox {
+    height: 32dp;
+    width: 64dp;
+    display: inline-block;
+    padding: 5dp;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    sound-on-click: true;
+    decorator: image(ftue_switcher_icon_off);
+    sound-on-click: true;
+}
+    .checkbox:checked {
+        decorator: image(ftue_switcher_icon_on);
+    }
+
+.checkbox-panel {
+  display: flex;
+  flex-direction: row;     /* default, but explicit */
+  align-items: center;     /* vertically center image and the right column */
+  gap: 8dp;                /* space between image and text column */
+  /* optional padding/margins */
+  padding: 10dp 0dp 10dp 0dp;
+}
+
+.notification_exclamation {
+    position: absolute;
+    width: 48dp;
+    height: 48dp;
+    decorator: image(notification_icon_image);
+    margin-left: -32dp;
+    margin-top: -70dp;
+}

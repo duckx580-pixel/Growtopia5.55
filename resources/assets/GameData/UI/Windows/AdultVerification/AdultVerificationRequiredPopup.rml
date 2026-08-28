@@ -1,0 +1,36 @@
+<rml>
+  <head>
+    <title>AdultVerificationRequiredPopup</title>
+    <link type="text/template" href="../Base/BasePopup.rml" />
+    <link type="text/rcss" href="AdultVerificationPopup.rcss" />
+
+  </head>
+  <body template="BasePopup" onshow="onShowUI(document, element)">
+    <div id="adult-verification-required-popup" class="font-content">
+      <div id="window-title">
+        <div class="title-text font-title label">
+          Age Verification Required
+        </div>
+      </div>
+
+      <div class="font-content content color_dreamsicle">
+        This feature requires that you verify your age. Please go to the setting to complete the age verification process and enable this feature.
+        <p>
+        For more information, please check our help page. <br/>
+        <span class='color_medium_blue link'
+              href="https://www.ubisoft.com/en-gb/help/ubisoft-account/account/article/information-about-ubisoft-teen-accounts/000107323"
+              onclick="OnEvent(event, 'AdultVerification.Url')"
+        >Information about Ubisoft teen accounts | Ubisoft Help</span>
+        </p>
+      </div>
+      <div class="buttons-panel">
+        <div onclick="OnEvent(event, 'dialog.OnCancel')" class="button button-default-color">
+          <span class="label">Close</span>
+        </div>
+        <div onclick="OnEvent(event, 'AdultVerification.Settings')" class="button button-green-color">
+          <span class="label">Go To Settings</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</rml>

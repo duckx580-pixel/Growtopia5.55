@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer name="CONCERT_LIGHTS">
+	<Data>
+		<Sprite name="s_bg" fileName="game/bg_cl_sky1.rttex"/>
+		<Sprite name="s_dots1" fileName="game/bg_cl_dots1.rttex"/>
+		<Sprite name="s_dots2" fileName="game/bg_cl_dots2.rttex"/>
+		<Sprite name="s_rays1" fileName="game/bg_cl_rays1.rttex"/>
+		<Sprite name="s_rays2" fileName="game/bg_cl_rays2.rttex"/>
+		<Sprite name="s_lights" fileName="game/bg_cl_lights.rttex"/>
+		<Animations>
+			<SpriteCurveAnimation name="a_rays1" isLoop="true" autoPlay="true" sprite="s_rays1" animTime="2000">
+				<Curve name="alpha">
+					<KeyFrame>0,   0</KeyFrame>
+					<KeyFrame>0.25, 0.35</KeyFrame>
+					<KeyFrame>0.5,  1</KeyFrame>
+					<KeyFrame>0.75, 0.35</KeyFrame>
+					<KeyFrame>1,   0</KeyFrame>
+				</Curve>
+			</SpriteCurveAnimation>
+			<SpriteCurveAnimation name="a_rays2" isLoop="true" autoPlay="true" sprite="s_rays2" animTime="2000">
+				<Curve name="alpha">
+					<KeyFrame>0,   1</KeyFrame>
+					<KeyFrame>0.25, 0.35</KeyFrame>
+					<KeyFrame>0.5,  0</KeyFrame>
+					<KeyFrame>0.75, 0.35</KeyFrame>
+					<KeyFrame>1,   1</KeyFrame>
+				</Curve>
+			</SpriteCurveAnimation>
+			<SpriteCurveAnimation name="s_dots1" isLoop="true" autoPlay="true" sprite="s_dots1" animTime="400">
+				<Curve name="alpha">
+					<KeyFrame>0, 0.3</KeyFrame>
+					<KeyFrame>0.49, 0.3</KeyFrame>
+					<KeyFrame>0.5, 0</KeyFrame>
+					<KeyFrame>1, 0</KeyFrame>
+				</Curve>
+			</SpriteCurveAnimation>
+			<SpriteCurveAnimation name="s_dots2" isLoop="true" autoPlay="true" sprite="s_dots2" animTime="400">
+				<Curve name="alpha">
+					<KeyFrame>0, 0.0</KeyFrame>
+					<KeyFrame>0.49, 0.0</KeyFrame>
+					<KeyFrame>0.5, 0.3</KeyFrame>
+					<KeyFrame>1, 0.3</KeyFrame>
+				</Curve>
+			</SpriteCurveAnimation>
+		</Animations>
+		<VariableMap>
+			<Set name="RayColor1">0, 197, 199</Set>
+			<Set name="RayColor2">233, 33, 179</Set>
+			<Set name="DotsColor">84, 4, 159</Set>
+			<Set name="GradientColor1">8, 8, 34</Set>
+			<Set name="GradientColor2">20, 29, 77</Set>
+		</VariableMap>
+	</Data>
+	<RenderRules>
+		<RenderBackground>
+			<ContextUpdate type="ScaleScreenHeight">
+				<Set name="sprite">s_bg</Set>
+			</ContextUpdate>
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0</Set>
+			</ContextUpdate>
+			<ContextUpdate type="SetTint">
+				<Set name="tint">GradientColor1</Set>
+				<Set name="forceTint">true</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_bg" offset="0, 1" blend="ADDITIVE" alignment="DOWN_LEFT" />
+			<ContextUpdate type="SetTint">
+				<Set name="tint">GradientColor2</Set>
+				<Set name="forceTint">true</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_bg" offset="0, 1" flip="0,1" blend="ADDITIVE" alignment="DOWN_LEFT" />
+
+			<ContextUpdate type="ScaleScreenHeight">
+				<Set name="sprite">s_rays1</Set>
+				<Set name="padding">0</Set>
+			</ContextUpdate>
+			
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0.25</Set>
+			</ContextUpdate>
+			
+			<ContextUpdate type="SetTint">
+				<Set name="tint">DotsColor</Set>
+				<Set name="forceTint">true</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_dots1" offset="0, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_dots2" offset="0, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0.45</Set>
+			</ContextUpdate>
+			
+			<ContextUpdate type="SetTint">
+				<Set name="tint">RayColor1</Set>
+				<Set name="forceTint">true</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_rays1" offset="0, 1" blend="ADDITIVE" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_rays1" offset="0.5, 1" blend="ADDITIVE" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_rays1" offset="0.25, 0.5" flip="0,1" blend="ADDITIVE" alignment="LEFT_CENTER" />
+			<SpriteRender name="s_rays1" offset="-0.25, 0.5" flip="0,1" blend="ADDITIVE" alignment="LEFT_CENTER" />
+			
+			<ContextUpdate type="SetTint">
+				<Set name="tint">RayColor2</Set>
+				<Set name="forceTint">true</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_rays2" offset="0, 1" blend="ADDITIVE" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_rays2" offset="0.5, 1" blend="ADDITIVE" alignment="DOWN_LEFT" />
+			<SpriteRender name="s_rays2" offset="0.25, 0.5" flip="0,1" blend="ADDITIVE" alignment="LEFT_CENTER" />
+			<SpriteRender name="s_rays2" offset="-0.25, 0.5" flip="0,1" blend="ADDITIVE" alignment="LEFT_CENTER" />
+			
+			<ContextUpdate type="SetTint">
+				<Set name="tint">255,255,255</Set>
+				<Set name="forceTint">true</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_lights" offset="0.5, 1" blend="ADDITIVE" alignment="DOWN_CENTER" />
+			<SpriteRender name="s_lights" offset="1, 1" blend="ADDITIVE" alignment="DOWN_CENTER" />
+			<SpriteRender name="s_lights" offset="0.75, 0.185" flip="0,1" blend="ADDITIVE" alignment="DOWN_CENTER" />
+			<SpriteRender name="s_lights" offset="-0.75, 0.185" flip="0,1" blend="ADDITIVE" alignment="DOWN_CENTER" />
+		</RenderBackground>
+	</RenderRules>
+</ItemRenderer>

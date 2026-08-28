@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer itemID="ITEM_ID_POTPOURRI_PILE">
+  <Data>
+    <Sprite name="s_tile_sprite" fileName="game/tiles_page17.rttex" textureSize="32" frame="18,15" />
+    <Sprite name="s_petals" fileName="game/particles11.rttex" textureSize="32" frame="14,15"/>
+
+    <Animations>
+      <SpriteAnimation name="a_petals" sprite="s_petals">
+        <Frame>14,15</Frame>
+        <Frame>15,15</Frame>
+        <Frame>16,15</Frame>
+        <Frame>17,15</Frame>
+      </SpriteAnimation>
+    </Animations>
+
+    <ParticleSystems>
+      <ParticleSystem name="ps_petals">
+        <Emitter>
+          <Random name="particlesPerEmission" min="1" max="3"/>
+          <Set name="checkParticleNumToEmit">true</Set>
+          <Set name="particlesPerEmission">4</Set>
+          <Set name="particlesToEmit">1</Set>
+          <Set name="offset">0,16</Set>
+        </Emitter>
+        <Particle randomSpriteFrame="true">
+          <Set name="sprite">s_petals</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="lifeTime">4</Set>
+          <Random name="initialScale" min="0.25" max="0.6"/>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>0.9, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Random name="offset" min="-16,0" max="16,0" />
+          <Random name="initialVelocity" min="20, -120" max="-20, -150" />
+          <Curve name="finalVelocity">
+            <KeyFrame>0.05, -20,600</KeyFrame>
+            <KeyFrame>0.15, 20,600</KeyFrame>
+            <KeyFrame>0.4, -0,200</KeyFrame>
+            <KeyFrame>0.55, 20,200</KeyFrame>
+            <KeyFrame>0.7, -20,40</KeyFrame>
+            <KeyFrame>0.8, 20,40</KeyFrame>
+            <KeyFrame>0.9, -20,40</KeyFrame>
+            <KeyFrame>1, 20,40</KeyFrame>
+          </Curve>
+          <Set name="interpolateVelocity">true</Set>
+          <Random name="initialRotationRate" min="-90" max="90" />
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+  </Data>
+  <RenderRules>
+    <Render>
+      <SpriteRender name="s_tile_sprite" blend="PREMULTIPLIED_ALPHA" />
+    </Render>
+    <OnTileEnter>
+      <ParticleSystemUpdate name="ps_petals"/>
+    </OnTileEnter>
+  </RenderRules>
+</ItemRenderer>

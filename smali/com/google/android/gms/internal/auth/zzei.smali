@@ -1,0 +1,4 @@
+###### Class com.google.android.gms.internal.auth.zzei (com.google.android.gms.internal.auth.zzei)
+.class public final synthetic Lcom/google/android/gms/internal/auth/zzei;
+.super Ljava/lang/Object;
+.source "com.google.android.gms:play-services-auth-base@@18.0.10"

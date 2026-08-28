@@ -1,0 +1,30 @@
+
+.window {
+    min-width: 400dp;
+    min-height: 100dp;
+}
+
+#generic-popup {
+}
+
+    #generic-popup .content {
+        margin-bottom: 24dp;
+    }
+
+    #generic-popup .buttons-panel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36dp;
+        margin-top: 20dp;
+        column-gap: 20dp;
+    }
+
+    #generic-popup.dungeon-info-popup .buttons-panel {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+#generic-popup .button {
+    min-width: 150dp;
+}

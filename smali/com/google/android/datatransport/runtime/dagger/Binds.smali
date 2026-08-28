@@ -1,0 +1,22 @@
+###### Class com.google.android.datatransport.runtime.dagger.Binds (com.google.android.datatransport.runtime.dagger.Binds)
+.class public interface abstract annotation Lcom/google/android/datatransport/runtime/dagger/Binds;
+.super Ljava/lang/Object;
+.source "Binds.java"
+
+# interfaces
+.implements Ljava/lang/annotation/Annotation;
+
+
+# annotations
+.annotation runtime Ljava/lang/annotation/Documented;
+.end annotation
+
+.annotation runtime Ljava/lang/annotation/Retention;
+    value = .enum Ljava/lang/annotation/RetentionPolicy;->RUNTIME:Ljava/lang/annotation/RetentionPolicy;
+.end annotation
+
+.annotation runtime Ljava/lang/annotation/Target;
+    value = {
+        .enum Ljava/lang/annotation/ElementType;->METHOD:Ljava/lang/annotation/ElementType;
+    }
+.end annotation

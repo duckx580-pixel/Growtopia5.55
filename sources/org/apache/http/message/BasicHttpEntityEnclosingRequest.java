@@ -1,0 +1,43 @@
+package org.apache.http.message;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpEntityEnclosingRequest;
+import org.apache.http.ProtocolVersion;
+import org.apache.http.RequestLine;
+
+/* JADX INFO: loaded from: classes3.dex */
+@Deprecated
+public class BasicHttpEntityEnclosingRequest extends BasicHttpRequest implements HttpEntityEnclosingRequest {
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public BasicHttpEntityEnclosingRequest(String str, String str2) {
+        super(null);
+        throw new RuntimeException("Stub!");
+    }
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public BasicHttpEntityEnclosingRequest(String str, String str2, ProtocolVersion protocolVersion) {
+        super(null);
+        throw new RuntimeException("Stub!");
+    }
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public BasicHttpEntityEnclosingRequest(RequestLine requestLine) {
+        super(null);
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override // org.apache.http.HttpEntityEnclosingRequest
+    public HttpEntity getEntity() {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override // org.apache.http.HttpEntityEnclosingRequest
+    public void setEntity(HttpEntity httpEntity) {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override // org.apache.http.HttpEntityEnclosingRequest
+    public boolean expectContinue() {
+        throw new RuntimeException("Stub!");
+    }
+}

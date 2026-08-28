@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer name="BEDAWANG_NALA">
+	<Data>
+		<Sprite name="s_bg" fileName="game/bg_BN_sky.rttex"/>
+		<Sprite name="s_clouds" fileName="game/bg_BN_layer3.rttex"/>
+		<Sprite name="s_turtle" fileName="game/bg_BN_layer2.rttex"/>
+		<Sprite name="s_water" fileName="game/bg_BN_layer1.rttex"/>
+	</Data>
+	<RenderRules>
+		<RenderBackground>
+			<ContextUpdate type="ScaleScreenHeight">
+				<Set name="sprite">s_bg</Set>
+			</ContextUpdate>
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_bg" offset="0, 1" blend="ADDITIVE" alignment="DOWN_LEFT" />
+
+			<ContextUpdate type="ScaleScreenHeight">
+				<Set name="sprite">s_clouds</Set>
+				<Set name="padding">0</Set>
+			</ContextUpdate>
+
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0.1</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_clouds" offset="0, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0.175</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_water" scale="0.3,0.3" offset="0, 0.7" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0.22</Set>
+				<Set name="wrapHorizontal">false</Set>
+				<Set name="worldAttachmentType">Center</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_turtle" offset="0, 1" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0.35</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_water" scale="0.5,0.5" offset="0, 0.83" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+
+			<ContextUpdate type="PositionParallax">
+				<Set name="scale">0.7</Set>
+			</ContextUpdate>
+			<SpriteRender name="s_water" offset="0, 1.11" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_LEFT" />
+		</RenderBackground>
+	</RenderRules>
+</ItemRenderer>

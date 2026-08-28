@@ -1,0 +1,63 @@
+###### Class com.facebook.ads.redexgen.core.AbstractC03718x (com.facebook.ads.redexgen.X.8x)
+.class public abstract Lcom/facebook/ads/redexgen/X/8x;
+.super Ljava/lang/Object;
+.source ""
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<T:",
+        "Lcom/facebook/ads/redexgen/X/8v;",
+        ">",
+        "Ljava/lang/Object;"
+    }
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    .line 19106
+    .local p0, "this":Lcom/facebook/ads/redexgen/X/8x;, "Lcom/facebook/ads/internal/events/EventSubscriber<TT;>;"
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final A00(Lcom/facebook/ads/redexgen/X/8v;)Z
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;)Z"
+        }
+    .end annotation
+
+    .line 19107
+    .local p0, "this":Lcom/facebook/ads/redexgen/X/8x;, "Lcom/facebook/ads/internal/events/EventSubscriber<TT;>;"
+    .local p1, "event":Lcom/facebook/ads/redexgen/X/8v;, "TT;"
+    const/4 v0, 0x1
+
+    return v0
+.end method
+
+.method public abstract A01()Ljava/lang/Class;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/lang/Class<",
+            "TT;>;"
+        }
+    .end annotation
+.end method
+
+.method public abstract A03(Lcom/facebook/ads/redexgen/X/8v;)V
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;)V"
+        }
+    .end annotation
+.end method

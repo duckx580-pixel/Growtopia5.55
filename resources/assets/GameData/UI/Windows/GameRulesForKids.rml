@@ -1,0 +1,36 @@
+<rml>
+    <head>
+        <title>GameRulesForKids</title>
+        <link type="text/template" href="Base/BasePopup.rml" />
+        <link type="text/rcss" href="Base/WindowTitle.rcss" />
+        <link type="text/rcss" href="GameRules.rcss" />
+    </head>
+    <body template="BasePopup" class="show-scrollbar wondow-content-full wondow-content-horizontal">
+        <div id="gamerules-popup" class="font-content">
+            <div>
+<p><span class='color_white'>By confirming, you:</span></p>
+ 
+<p>
+<span class='color_white'>1) agree that you have read our 
+<span class='color_medium_blue link'
+                          href="https://www.ubisoft.com/legal/documents/privacypolicy"
+                          onclick="OnEvent(event, 'gamerules.OnOpenLink')"
+                          >Privacy Policy</span> and accept our 
+<span class='color_medium_blue link'
+                          href="https://www.ubisoft.com/legal/documents/termsofuse"
+                          onclick="OnEvent(event, 'gamerules.OnOpenLink')"
+                          >
+                          Legal Docs</span>.</span></p>
+ 
+<p><span class='color_white'>2) consent to our use of cookies for necessary features such as improving the game experience or handling issues, fraud, and online payments.</span></p>
+
+                    
+                <div class="top-padding buttons-panel" >
+                        <div onclick="OnEvent(event, 'gamerules.OnAccept')" class="button button-green-color">
+                            <span class="label">Accept & Play!</span>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</rml>

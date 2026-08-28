@@ -1,0 +1,132 @@
+###### Class com.google.android.material.color.HarmonizedColorAttributes (com.google.android.material.color.HarmonizedColorAttributes)
+.class public final Lcom/google/android/material/color/HarmonizedColorAttributes;
+.super Ljava/lang/Object;
+.source "HarmonizedColorAttributes.java"
+
+
+# static fields
+.field private static final HARMONIZED_MATERIAL_ATTRIBUTES:[I
+
+
+# instance fields
+.field private final attributes:[I
+
+.field private final themeOverlay:I
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .registers 4
+
+    .line 34
+    sget v0, Lcom/google/android/material/R$attr;->colorError:I
+
+    sget v1, Lcom/google/android/material/R$attr;->colorOnError:I
+
+    sget v2, Lcom/google/android/material/R$attr;->colorErrorContainer:I
+
+    sget v3, Lcom/google/android/material/R$attr;->colorOnErrorContainer:I
+
+    filled-new-array {v0, v1, v2, v3}, [I
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/android/material/color/HarmonizedColorAttributes;->HARMONIZED_MATERIAL_ATTRIBUTES:[I
+
+    return-void
+.end method
+
+.method private constructor <init>([II)V
+    .registers 4
+
+    .line 89
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    if-eqz p2, :cond_11
+
+    .line 90
+    array-length v0, p1
+
+    if-eqz v0, :cond_9
+
+    goto :goto_11
+
+    .line 91
+    :cond_9
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    const-string p2, "Theme overlay should be used with the accompanying int[] attributes."
+
+    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+
+    .line 94
+    :cond_11
+    :goto_11
+    iput-object p1, p0, Lcom/google/android/material/color/HarmonizedColorAttributes;->attributes:[I
+
+    .line 95
+    iput p2, p0, Lcom/google/android/material/color/HarmonizedColorAttributes;->themeOverlay:I
+
+    return-void
+.end method
+
+.method public static create([I)Lcom/google/android/material/color/HarmonizedColorAttributes;
+    .registers 3
+
+    .line 50
+    new-instance v0, Lcom/google/android/material/color/HarmonizedColorAttributes;
+
+    const/4 v1, 0x0
+
+    invoke-direct {v0, p0, v1}, Lcom/google/android/material/color/HarmonizedColorAttributes;-><init>([II)V
+
+    return-object v0
+.end method
+
+.method public static create([II)Lcom/google/android/material/color/HarmonizedColorAttributes;
+    .registers 3
+
+    .line 64
+    new-instance v0, Lcom/google/android/material/color/HarmonizedColorAttributes;
+
+    invoke-direct {v0, p0, p1}, Lcom/google/android/material/color/HarmonizedColorAttributes;-><init>([II)V
+
+    return-object v0
+.end method
+
+.method public static createMaterialDefaults()Lcom/google/android/material/color/HarmonizedColorAttributes;
+    .registers 2
+
+    .line 85
+    sget-object v0, Lcom/google/android/material/color/HarmonizedColorAttributes;->HARMONIZED_MATERIAL_ATTRIBUTES:[I
+
+    sget v1, Lcom/google/android/material/R$style;->ThemeOverlay_Material3_HarmonizedColors:I
+
+    invoke-static {v0, v1}, Lcom/google/android/material/color/HarmonizedColorAttributes;->create([II)Lcom/google/android/material/color/HarmonizedColorAttributes;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public getAttributes()[I
+    .registers 2
+
+    .line 101
+    iget-object v0, p0, Lcom/google/android/material/color/HarmonizedColorAttributes;->attributes:[I
+
+    return-object v0
+.end method
+
+.method public getThemeOverlay()I
+    .registers 2
+
+    .line 107
+    iget v0, p0, Lcom/google/android/material/color/HarmonizedColorAttributes;->themeOverlay:I
+
+    return v0
+.end method

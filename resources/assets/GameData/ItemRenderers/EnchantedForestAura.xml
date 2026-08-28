@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer>
+  <Data>
+    <Sprite name="s_foot1" fileName="game/player_feet16.rttex" textureSize="32" frame="9,26" />
+    <Sprite name="s_foot2" fileName="game/player_feet16.rttex" textureSize="32" frame="9,27" />
+    <Sprite name="s_moon" fileName="game/particles12.rttex" textureSize="32" frame="25,16" />
+    <Sprite name="s_trees" fileName="game/particles_large17.rttex" textureSize="64" frame="12,10" />
+    <Sprite name="s_grass" fileName="game/particles_large17.rttex" textureSize="64" frame="15,9" />
+    <Sprite name="s_firefly" fileName="game/particles12.rttex" textureSize="32" frame="24,16" />
+
+    <Animations>
+      <SpriteAnimation name="a_trees" autoPlay="true" isLoop="true" sprite="s_trees"  animTime="800">
+        <Frame>12,10</Frame>
+        <Frame>13,10</Frame>
+        <Frame>14,10</Frame>
+        <Frame>15,10</Frame>
+      </SpriteAnimation>
+      <SpriteAnimation name="a_firefly" autoPlay="true" isLoop="true" sprite="s_firefly"  animTime="600">
+        <Frame>23,16</Frame>
+        <Frame>24,16</Frame>
+      </SpriteAnimation>
+      <SpriteCurveAnimation name="a_grass" isLoop="true" autoPlay="true" sprite="s_grass" animTime="10000">
+        <Curve name="alpha">
+          <KeyFrame>0.f, 0.75f</KeyFrame>
+          <KeyFrame>1.f, 0.75f</KeyFrame>
+        </Curve>
+      </SpriteCurveAnimation>
+    </Animations>
+
+    <ParticleSystems>
+      <ParticleSystem name="ps_fireflies_back">
+        <Emitter>
+          <Set name="offset">0, -16</Set>
+          <Set name="emissionInterval">2.3</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="infLifeTime">true</Set>
+          <Set name="particlesPerEmission">2</Set>
+        </Emitter>
+        <Particle>
+          <Random name="offset" min="-16,-32" max="16,-16" />
+          <Set name="sprite">s_firefly</Set>
+          <Set name="relativeToEmitter">true</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="isBackgroundParticle">false</Set>
+          <Set name="lifeTime">5</Set>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 0</KeyFrame>
+            <KeyFrame>0.25, 1</KeyFrame>
+            <KeyFrame>0.9, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Random name="initialScale" min="1" max="1.5"/>
+          <Select name="initialVelocity" input="randomNumber">
+            <Item>5,5</Item>
+            <Item>5,-5</Item>
+            <Item>-5,5</Item>
+            <Item>-5,-5</Item>
+          </Select>
+          <Select name="finalVelocity" input="randomNumber">
+            <Item>5,5</Item>
+            <Item>5,-5</Item>
+            <Item>-5,5</Item>
+            <Item>-5,-5</Item>
+          </Select>
+          <Set name="interpolateVelocity">true</Set>
+        </Particle>
+      </ParticleSystem>
+      <ParticleSystem name="ps_fireflies_front">
+        <Emitter>
+          <Set name="offset">0, -16</Set>
+          <Set name="emissionInterval">2.3</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="infLifeTime">true</Set>
+          <Set name="particlesPerEmission">2</Set>
+        </Emitter>
+        <Particle>
+          <Random name="offset" min="-16,-32" max="16,-16" />
+          <Set name="sprite">s_firefly</Set>
+          <Set name="relativeToEmitter">true</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="isBackgroundParticle">false</Set>
+          <Set name="lifeTime">5</Set>
+          <Random name="initialScale" min="1" max="1.5"/>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 0</KeyFrame>
+            <KeyFrame>0.25, 1</KeyFrame>
+            <KeyFrame>0.9, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Select name="initialVelocity" input="randomNumber">
+            <Item>5,5</Item>
+            <Item>5,-5</Item>
+            <Item>-5,5</Item>
+            <Item>-5,-5</Item>
+          </Select>
+          <Select name="finalVelocity" input="randomNumber">
+            <Item>5,5</Item>
+            <Item>5,-5</Item>
+            <Item>-5,5</Item>
+            <Item>-5,-5</Item>
+          </Select>
+          <Set name="interpolateVelocity">true</Set>
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+    
+    <VariableMap>
+      <Set name="leftFootYPos">0,0,0</Set>
+      <Set name="rightFootYPos">0,0,0</Set>
+    </VariableMap>
+    <RenderOptions>
+      <Default>
+        <Set name="UserNameOffset">20</Set>
+        <Set name="IgnorePunchTypeCheck">true</Set>
+      </Default>
+    </RenderOptions>
+  </Data>
+  <RenderRules>
+    <AddClothingParticles>
+      <ParticleSystemUpdate name="ps_fireflies_back"/>
+      <ParticleSystemUpdate name="ps_fireflies_front"/>
+    </AddClothingParticles>
+    <RenderBehind value="playerGround">
+      <StopIf>
+        <IsZombified>true</IsZombified>
+        <IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+      </StopIf>
+      <ContextUpdate type="SetFlip">
+        <Set name="flip">0,0</Set>
+      </ContextUpdate>
+      <SpriteRender name="s_moon" offset="16,-52" blend="PREMULTIPLIED_ALPHA" drawShadow="false"/>
+      <ParticleSystemRender name="ps_fireflies_back"/>
+      <SpriteRender name="s_trees" offset="0,-28" blend="PREMULTIPLIED_ALPHA" drawShadow="false"/>
+      <ParticleSystemRender name="ps_fireflies_front"/>
+    </RenderBehind>
+    <RenderShoes>
+      <Group>
+        <Translate>leftFootYPos</Translate>
+        <SpriteRender name="s_foot1" alignment="DOWN_CENTER" />
+      </Group>
+      <Group>
+        <Translate>rightFootYPos</Translate>
+        <SpriteRender name="s_foot2" alignment="DOWN_CENTER" />
+      </Group>
+    </RenderShoes>
+    <RenderInFront value="playerGround">
+      <StopIf>
+        <IsZombified>true</IsZombified>
+        <IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+      </StopIf>
+      <ContextUpdate type="SetFlip">
+        <Set name="flip">0,0</Set>
+      </ContextUpdate>
+      <SpriteRender name="s_grass" offset="0,5" blend="PREMULTIPLIED_ALPHA" drawShadow="false" alignment="DOWN_CENTER"/>
+    </RenderInFront>
+  </RenderRules>
+</ItemRenderer>
+

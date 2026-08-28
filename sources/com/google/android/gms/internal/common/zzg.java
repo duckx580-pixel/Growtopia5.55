@@ -1,0 +1,18 @@
+package com.google.android.gms.internal.common;
+
+/* JADX INFO: compiled from: com.google.android.gms:play-services-basement@@18.5.0 */
+/* JADX INFO: loaded from: classes2.dex */
+public final class zzg {
+    private static final zzd zza;
+    private static volatile zzd zzb;
+
+    static {
+        zze zzeVar = new zze(null);
+        zza = zzeVar;
+        zzb = zzeVar;
+    }
+
+    public static zzd zza() {
+        return zzb;
+    }
+}

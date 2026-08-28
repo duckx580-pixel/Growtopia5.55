@@ -1,0 +1,241 @@
+<?xml version="1.0" ?>
+<ItemRenderer>
+  <Data>
+    <Sprite name="s_wings" fileName="game/particles_large17.rttex" textureSize="64" frame="4,6" />
+    <Sprite name="s_flare" fileName="game/particles_large17.rttex" textureSize="64" frame="8,6" />
+    <Sprite name="s_bokeh" fileName="game/particles_large17.rttex" textureSize="64" frame="9,6" />
+
+    <Animations>
+      <SpriteAnimation name="a_wings" sprite="s_wings">
+        <Frame>4,6</Frame>
+        <Frame>5,6</Frame>
+        <Frame>6,6</Frame>
+        <Frame>7,6</Frame>
+      </SpriteAnimation>
+
+      <SequenceAnimation name="flash_sequence" playOnState="SelfieTake.Max">
+        
+        <InterpolationFloatAnimation name="saturationValueTo" variableName="saturationValue" targetVariableName="saturationValueMax" animTime="0"/>
+
+        <InterpolationFloatAnimation name="contrastValueTo" variableName="contrastValue" targetVariableName="contrastValueMax" animTime="0"/>
+
+        <InterpolationFloatAnimation name="brightnessValueTo" variableName="brightnessValue" targetVariableName="brightnessValueWhite" animTime="0"/>
+
+        <DelayAnimation delayTime="200" />
+
+        <InterpolationFloatAnimation name="brightnessValueTo" variableName="brightnessValue" targetVariableName="brightnessValueBlack" animTime="0"/>
+
+        <DelayAnimation delayTime="100" />
+
+        <InterpolationFloatAnimation name="brightnessValueTo" variableName="brightnessValue" targetVariableName="brightnessValueWhite" animTime="0"/>
+        
+      </SequenceAnimation>
+      
+      <InterpolationFloatAnimation name="saturationValueFrom" variableName="saturationValue" playOnState="SelfieTake.Default" targetVariableName="saturationValueDefault" animTime="600"/>
+
+      <InterpolationFloatAnimation name="contrastValueFrom" variableName="contrastValue" playOnState="SelfieTake.Default" targetVariableName="contrastValueDefault" animTime="600"/>
+
+      <InterpolationFloatAnimation name="brightnessValueFrom" variableName="brightnessValue" playOnState="SelfieTake.Default" targetVariableName="brightnessValueDefault" animTime="600"/>
+    </Animations>
+
+    <ParticleSystems>
+      <ParticleSystem name="ps_wingsLeft" updateStage="AddClothingParticles">
+        <Emitter>
+          <Set name="offset">0,-16</Set>
+          <Set name="emissionInterval">0.2</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="infLifeTime">true</Set>
+          <Set name="particlesPerEmission">1</Set>
+        </Emitter>
+        <Particle particleIndexSpriteFrame="true">
+          <Set name="sprite">s_wings</Set>
+          <Set name="relativeToEmitter">true</Set>
+          <Set name="blendingMode">ADDITIVE</Set>
+          <Set name="lifeTime">1.0</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="renderAlignment">RIGHT_CENTER</Set>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>0.45, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Curve name="initialScale">
+            <KeyFrame>0, 0.3, 0.3</KeyFrame>
+            <KeyFrame>1, 1.1, 1.1</KeyFrame>
+          </Curve>
+        </Particle>
+      </ParticleSystem>
+      <ParticleSystem name="ps_wingsRight" updateStage="AddClothingParticles">
+        <Emitter>
+          <Set name="offset">0,-16</Set>
+          <Set name="emissionInterval">0.2</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="infLifeTime">true</Set>
+          <Set name="particlesPerEmission">1</Set>
+        </Emitter>
+        <Particle particleIndexSpriteFrame="true">
+          <Set name="sprite">s_wings</Set>
+          <Set name="relativeToEmitter">true</Set>
+          <Set name="blendingMode">ADDITIVE</Set>
+          <Set name="lifeTime">1.0</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="flipX">true</Set>
+          <Set name="renderAlignment">LEFT_CENTER</Set>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>0.45, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Curve name="initialScale">
+            <KeyFrame>0, 0.3, 0.3</KeyFrame>
+            <KeyFrame>1, 1.1, 1.1</KeyFrame>
+          </Curve>
+        </Particle>
+      </ParticleSystem>
+      <ParticleSystem name="ps_flare">
+        <Emitter>
+          <Set name="particlesPerEmission">3</Set>
+          <Set name="offset">0,-16</Set>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_flare</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="blendingMode">ADDITIVE</Set>
+          <Set name="relativeToEmitter">true</Set>
+          <Random name="offset" min="-10,-10" max="10,10" />
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Curve name="initialScale">
+            <KeyFrame>0, 0.5,0.5</KeyFrame>
+            <KeyFrame>1, 2.6,2.6</KeyFrame>
+          </Curve>
+          <Set name="lifeTime">0.5</Set>
+          <Random name="initialAngle" min="0" max="360"/>
+        </Particle>
+      </ParticleSystem>
+      <ParticleSystem name="ps_bokeh" renderStage="RenderInFront">
+        <Emitter>
+          <Set name="particlesPerEmission">1</Set>
+          <Set name="offset">0,-16</Set>
+        </Emitter>
+        <Particle>
+          <Set name="sprite">s_bokeh</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="blendingMode">ADDITIVE</Set>
+          <Set name="relativeToEmitter">true</Set>
+          <Random name="offset" min="-10,-10" max="10,10" />
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Curve name="initialScale">
+            <KeyFrame>0, 0.5,0.5</KeyFrame>
+            <KeyFrame>1, 1.5,1.5</KeyFrame>
+          </Curve>
+          <Random name="lifeTime" min="0.5" max="2" />
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+    <VariableMap>
+      <Set name="saturationValue">1</Set>
+      <Set name="saturationValueMax">0</Set>
+      <Set name="brightnessValue">1</Set>
+      <Set name="brightnessValueWhite">100</Set>
+      <Set name="brightnessValueBlack">0</Set>
+      <Set name="contrastValue">0</Set>
+      <Set name="contrastValueMax">0</Set>
+
+      <Set name="saturationValueDefault">1</Set>
+      <Set name="contrastValueDefault">0</Set>
+      <Set name="brightnessValueDefault">1</Set>
+
+      <Set name="flashTimer">0</Set>
+    </VariableMap>
+    <StateMachines>
+      <StateMachine name="SelfieTake">
+        <States>
+          <State name="Default" />
+          <State name="Max" ExitTime="0.6" />
+        </States>
+        <Transitions>
+          <Transition to="Default" from="Max"/>
+          <Transition to="Max" from="Default">
+            <Condition  type="and">
+              <IsAction>JUMPDOUBLE</IsAction>
+            </Condition>
+          </Transition>
+        </Transitions>
+      </StateMachine>
+    </StateMachines>
+  </Data>
+  <RenderRules>
+    <AddClothingParticles>
+      <StopIf type="or">
+        <IsRenderMod>RENDER_MOD_SPIRIT_GUIDE</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_RAINBOW_GUY</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_PLAYER_SHADOW</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+      </StopIf>
+      <ParticleSystemUpdate name="ps_flare" onAction="JUMPDOUBLE"/>
+      <ParticleSystemUpdate name="ps_bokeh" onAction="JUMPDOUBLE"/>
+    </AddClothingParticles>
+    <OnDrawCustomOutline>
+      <StopIf type="or">
+        <IsRenderMod>RENDER_MOD_SPIRIT_GUIDE</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_RAINBOW_GUY</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_PLAYER_SHADOW</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+      </StopIf>
+      <AvatarTransform class="RenderData">
+        <Set name="saturation">getCurrent</Set>
+        <Set name="brightness">getCurrent</Set>
+        <Set name="contrast">getCurrent</Set>
+      </AvatarTransform>
+      <AvatarTransform class="Scale">
+        <Set name="targetScale">getCurrent</Set>
+      </AvatarTransform>
+      <AvatarTransform class="RenderData">
+        <Set name="saturation">1.5</Set>
+        <Set name="brightness">0.8</Set>
+        <Set name="contrast">0.15</Set>
+      </AvatarTransform>
+      <AvatarOutline duration="1500" startScale="1.1,1.1" endScale="1.1,1.1">
+        <Colours>
+          <Colour>255,80,0,255</Colour>
+        </Colours>
+      </AvatarOutline>
+      <AvatarTransform class="RenderData">
+        <Set name="saturation">reset</Set>
+        <Set name="brightness">reset</Set>
+        <Set name="contrast">reset</Set>
+      </AvatarTransform>
+      <AvatarTransform class="Scale">
+        <Set name="targetScale">reset</Set>
+      </AvatarTransform>
+    </OnDrawCustomOutline>
+    <RenderBackpack>
+      <StopIf type="or">
+        <IsRenderMod>RENDER_MOD_SPIRIT_GUIDE</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_RAINBOW_GUY</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_PLAYER_SHADOW</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+      </StopIf>
+      <ParticleSystemRender name="ps_wingsLeft"/>
+      <ParticleSystemRender name="ps_wingsRight"/>
+      <ParticleSystemRender name="ps_flare"/>
+      <AvatarTransform class="RenderData">
+        <Set name="saturation">saturationValue</Set>
+        <Set name="brightness">brightnessValue</Set>
+        <Set name="contrast">contrastValue</Set>
+      </AvatarTransform>
+      <StopIf>
+        <IsVariableBool name="isMannequin">false</IsVariableBool>
+      </StopIf>
+      <SpriteRender name="s_wings" offset="0,-16" alignmentLeft="LEFT_CENTER" alignmentRight="RIGHT_CENTER" blend="ADDITIVE"/>
+      <SpriteRender name="s_wings" offset="0,-16" flip="1,0" alignmentLeft="RIGHT_CENTER" alignmentRight="LEFT_CENTER" blend="ADDITIVE"/>
+    </RenderBackpack>
+  </RenderRules>
+</ItemRenderer>
+

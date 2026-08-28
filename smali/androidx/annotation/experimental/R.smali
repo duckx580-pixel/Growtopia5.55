@@ -1,0 +1,13 @@
+###### Class androidx.annotation.experimental.R (androidx.annotation.experimental.R)
+.class public final Landroidx/annotation/experimental/R;
+.super Ljava/lang/Object;
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method

@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<ItemRenderer>
+    <Data>
+        <Sprite name="Sprite27" textureSize="128,128" frame="0,0" />
+        <Animations/>
+        <ParticleSystems />
+		<StateMachines>
+			<StateMachine name="Punch">
+				<States>
+					<State name="No" />
+					<State name="Yes" />
+				</States>
+				<Transitions>
+					<Transition to="No" from="Yes">
+						<Condition>
+							<IsAction operatorType="NotEqual">PUNCH</IsAction>
+						</Condition>
+					</Transition>
+					<Transition to="Yes" from="No">
+						<Condition>
+							<IsAction>PUNCH</IsAction>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+		</StateMachines>
+        <RenderOptions>
+            <Default>
+
+            </Default>
+        </RenderOptions>
+        <VariableMap>
+	        <Set name="saturationValue">0.5</Set>
+	        <Set name="brightnessValue">4</Set>
+	        <Set name="contrastValue">-0.75</Set>
+	        <Set name="sittingOffset">0, 0, 0</Set>
+	        <Set name="sittingOffsetTemp">-1, -1, -1</Set>
+        </VariableMap>
+    </Data>
+    <RenderRules>
+	    <RenderInFront value="playerCenter">
+		    <StopIf type="or">
+			    <IsRenderMod>RENDER_MOD_SPIRIT_GUIDE</IsRenderMod>
+			    <IsRenderMod>RENDER_MOD_RAINBOW_GUY</IsRenderMod>
+			    <IsRenderMod>RENDER_MOD_PLAYER_SHADOW</IsRenderMod>
+			    <IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+			    <IsRenderMod>RENDER_MOD_COLORED_SHADOW</IsRenderMod>
+			    <IsRenderMod>RENDER_MOD_RENDER_TARGET</IsRenderMod>
+			    <IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+			    <IsWearing slot="SHIRT">ITEM_ID_ENCHANTED_ROBE</IsWearing>
+			    <IsWearing slot="BACKPACK">ITEM_ID_WINGS_OF_INFINITY</IsWearing>
+			    <IsSitting ItemID="ITEM_ID_THEATER_SEAT">true</IsSitting>
+			    <IsZombified>true</IsZombified>
+			    <IsVariableBool name="isMannequin">true</IsVariableBool>
+		    </StopIf>
+		    <AvatarTransform class="RenderData">
+			    <Set name="saturation">saturationValue</Set>
+			    <Set name="brightness">brightnessValue</Set>
+			    <Set name="contrast">contrastValue</Set>
+		    </AvatarTransform>
+
+	    </RenderInFront>
+        <RenderBehind value="playerCenter">
+	        <StopIf type="or">
+		        <IsRenderMod>RENDER_MOD_SPIRIT_GUIDE</IsRenderMod>
+		        <IsRenderMod>RENDER_MOD_RAINBOW_GUY</IsRenderMod>
+		        <IsRenderMod>RENDER_MOD_PLAYER_SHADOW</IsRenderMod>
+		        <IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+		        <IsRenderMod>RENDER_MOD_COLORED_SHADOW</IsRenderMod>
+		        <IsRenderMod>RENDER_MOD_RENDER_TARGET</IsRenderMod>
+		        <IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+		        <IsWearing slot="SHIRT">ITEM_ID_ENCHANTED_ROBE</IsWearing>
+		        <IsWearing slot="BACKPACK">ITEM_ID_WINGS_OF_INFINITY</IsWearing>
+		        <IsSitting ItemID="ITEM_ID_THEATER_SEAT">true</IsSitting>
+		        <IsZombified>true</IsZombified>
+		        <IsVariableBool name="isMannequin">true</IsVariableBool>
+	        </StopIf>
+
+	        <ContextUpdate type="SetTintFromSlot">
+		        <Set name="slot">CHESTITEM</Set>
+		        <Set name="seedFG">false</Set>
+	        </ContextUpdate>
+
+	        <ContextUpdate type="SetTintFromSlot">
+		        <Set name="slot">SHIRT</Set>
+		        <Set name="seedFG">false</Set>
+	        </ContextUpdate>	       
+
+        </RenderBehind>
+    </RenderRules>
+</ItemRenderer>
+

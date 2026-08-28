@@ -1,0 +1,104 @@
+###### Class com.google.android.gms.internal.ads.zzaev (com.google.android.gms.internal.ads.zzaev)
+.class final Lcom/google/android/gms/internal/ads/zzaev;
+.super Ljava/lang/Object;
+.source "com.google.android.gms:play-services-ads@@23.4.0"
+
+# interfaces
+.implements Lcom/google/android/gms/internal/ads/zzaep;
+
+
+# instance fields
+.field public final zza:I
+
+.field public final zzb:I
+
+.field public final zzc:I
+
+.field public final zzd:I
+
+.field public final zze:I
+
+
+# direct methods
+.method private constructor <init>(IIIIII)V
+    .registers 7
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput p1, p0, Lcom/google/android/gms/internal/ads/zzaev;->zza:I
+
+    iput p3, p0, Lcom/google/android/gms/internal/ads/zzaev;->zzb:I
+
+    iput p4, p0, Lcom/google/android/gms/internal/ads/zzaev;->zzc:I
+
+    iput p5, p0, Lcom/google/android/gms/internal/ads/zzaev;->zzd:I
+
+    iput p6, p0, Lcom/google/android/gms/internal/ads/zzaev;->zze:I
+
+    return-void
+.end method
+
+.method public static zzb(Lcom/google/android/gms/internal/ads/zzek;)Lcom/google/android/gms/internal/ads/zzaev;
+    .registers 8
+
+    .line 1
+    invoke-virtual {p0}, Lcom/google/android/gms/internal/ads/zzek;->zzi()I
+
+    move-result v1
+
+    const/16 v0, 0xc
+
+    .line 2
+    invoke-virtual {p0, v0}, Lcom/google/android/gms/internal/ads/zzek;->zzM(I)V
+
+    .line 3
+    invoke-virtual {p0}, Lcom/google/android/gms/internal/ads/zzek;->zzi()I
+
+    move-result v2
+
+    .line 4
+    invoke-virtual {p0}, Lcom/google/android/gms/internal/ads/zzek;->zzi()I
+
+    move-result v3
+
+    .line 5
+    invoke-virtual {p0}, Lcom/google/android/gms/internal/ads/zzek;->zzi()I
+
+    move-result v4
+
+    const/4 v0, 0x4
+
+    .line 6
+    invoke-virtual {p0, v0}, Lcom/google/android/gms/internal/ads/zzek;->zzM(I)V
+
+    .line 7
+    invoke-virtual {p0}, Lcom/google/android/gms/internal/ads/zzek;->zzi()I
+
+    move-result v5
+
+    .line 8
+    invoke-virtual {p0}, Lcom/google/android/gms/internal/ads/zzek;->zzi()I
+
+    move-result v6
+
+    const/16 v0, 0x8
+
+    .line 9
+    invoke-virtual {p0, v0}, Lcom/google/android/gms/internal/ads/zzek;->zzM(I)V
+
+    new-instance v0, Lcom/google/android/gms/internal/ads/zzaev;
+
+    invoke-direct/range {v0 .. v6}, Lcom/google/android/gms/internal/ads/zzaev;-><init>(IIIIII)V
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public final zza()I
+    .registers 2
+
+    const v0, 0x68727473
+
+    return v0
+.end method

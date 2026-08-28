@@ -1,0 +1,77 @@
+<rml>
+    <head>
+        <title>Questline</title>
+        <link type="text/template" href="../Base/BasePopup.rml" />
+        <link type="text/rcss" href="../Base/WindowTitle.rcss" />
+        <link type="text/rcss" href="Questline.rcss" />
+    </head>
+    <body template="BasePopup" class="show-scrollbar wondow-content-full wondow-content-horizontal">
+		<div data-model="QuestlineModel" id="questline-popup" class="font-content">
+			<div class="font-contentnormal">
+				<div class="top-panel">
+					<div id="window-title">
+						<div class="title-icon" data-style-decorator="'itemidimage(' + QuestlineModel.Icon +')'"/>
+						<div class="title-text font-title label">
+							Questline Progression
+						</div>
+					</div>
+				</div>
+				<div class="font-contentnormal color_dreamsicle">
+					<div data-rml="ToRMLText(Localize('[QUESTLINE_DESCRIPTION]'))"/>
+				</div>
+        <div class="sectional">
+          <div data-if="QuestlineModel.ActiveQuestlines.size == 0">Congratulations! You have currently completed all the available tasks. Check the Quest for more activities.</div>
+          <div data-if="QuestlineModel.ActiveQuestlines.size > 0">
+          <div class="font-contentnormal color_dreamsicle">Active Quests</div>
+          <div data-for="item : QuestlineModel.ActiveQuestlines">
+            <div data-class-hidden="item.Counter >= item.CounterMax">
+                <div class="questline-panel">
+                  <div class="hint_icon_container">
+                    <div class="hint_active" data-class-hidden="QuestlineModel.HintID != item.ID || !QuestlineModel.EnableHints"/>
+                    <div class="hint_inactive" data-class-hidden="QuestlineModel.HintID == item.ID && QuestlineModel.EnableHints"
+                       data-attr-item_id="item.ID" onclick="OnEvent(event, 'questline.OnSelectHintID')"/>
+                  </div>
+                  <div id="text_progress_holder">
+                    <div class="color_white">{{item.Name}}</div>
+                    <progress class="progressBar" data-attr-value="item.Counter" data-attr-max="item.CounterMax" />
+                  </div>
+                </div>
+            </div>
+          </div>
+				<div class="checkbox-panel">
+					<input type="checkbox" data-checked="QuestlineModel.EnableHints" onchange="OnEvent(event, 'questline.OnEnableHintsChanged')"/>
+					<div class="color_dreamsicle">Enable Hints</div>
+				</div>
+          </div>
+				<div class="top-padding">
+					<div onclick="OnEvent(event, 'questline.OnDailyQuests')" class="button button-light-default-color">
+						<span class="label">Quests</span>
+						<div data-model="FTUEPanelModel">
+							<div class="notification_exclamation" data-visible="FTUEPanelModel.notification" < 0"></div>
+						</div>
+					</div>
+      </div>
+					
+				</div>
+				<div class="sectional" data-class-hidden="!QuestlineModel.HasRefreshers">
+					<div class="font-contentnormal color_dreamsicle">Refresher</div>
+					<div data-for="item : QuestlineModel.CompletedQuestlines">
+						<div data-class-hidden="item.Counter < item.CounterMax">
+							<div class="questline-panel">
+								<div class="hint_icon_container">
+                  <div class="hint_icon" data-attr-item_id="item.ID" onclick="OnEvent(event, 'questline.OnShowHintID')">i</div>
+								</div>
+              <div class="color_white">{{item.Name}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="top-padding">
+					<div onclick="OnEvent(event, 'questline.OnClose')" class="button button-yellow-color">
+						<span class="label">Close</span>
+					</div>
+				</div>
+			</div>
+		</div>
+    </body>
+</rml>

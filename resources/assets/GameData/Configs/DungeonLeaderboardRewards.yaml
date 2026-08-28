@@ -1,0 +1,721 @@
+Rewards:
+- Name: Bronze_1
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_BRONZE
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_BRONZE_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_HAT_OF_LOCKSLEY
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 10000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 5000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 1000
+- Name: Bronze_2
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_BRONZE
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_BRONZE_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_HAT_OF_LOCKSLEY
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 10000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 5000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 1000
+- Name: Bronze_3
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_BRONZE
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_BRONZE_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_HAT_OF_LOCKSLEY
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 10000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 5000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 1000
+- Name: Silver_1
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_SILVER
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_SILVER_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_MOON_GREATSWORD
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 15000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 7000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 1500
+- Name: Silver_2
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_SILVER
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_SILVER_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_MOON_GREATSWORD
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 15000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 7000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 1500
+- Name: Silver_3
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_SILVER
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_SILVER_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_MOON_GREATSWORD
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 15000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 7000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 1500
+- Name: Gold_1
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_GOLD
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_GOLD_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_RIDING_AXEBEAK
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 20000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 10000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 2000
+- Name: Gold_2
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_GOLD
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_GOLD_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_RIDING_AXEBEAK
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 20000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 10000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 2000
+- Name: Gold_3
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_GOLD
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_GOLD_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_RIDING_AXEBEAK
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 20000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 10000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 2000
+- Name: Ruby_1
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_RUBY
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_RUBY_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_CHIGGALAMS_HACHIMAKI
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 25000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 12000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 2500
+- Name: Ruby_2
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_RUBY
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_RUBY_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_CHIGGALAMS_HACHIMAKI
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 25000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 12000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 2500
+- Name: Ruby_3
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_RUBY
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_RUBY_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_CHIGGALAMS_HACHIMAKI
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 25000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 12000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 2500
+- Name: Emerald_1
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_EMERALD
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_EMERALD_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_OOOPSIS_ANCIENT_LICH
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 30000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 15000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 3000
+- Name: Emerald_2
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_EMERALD
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_EMERALD_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_OOOPSIS_ANCIENT_LICH
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 30000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 15000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 3000
+- Name: Emerald_3
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_EMERALD
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_EMERALD_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_OOOPSIS_ANCIENT_LICH
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 30000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 15000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 3000
+- Name: Sapphire_1
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_SAPPHIRE
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_SAPPHIRE_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_FREAKERS_TORMENTED_GRASP
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 50000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 20000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 4000
+- Name: Sapphire_2
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_SAPPHIRE
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_SAPPHIRE_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_FREAKERS_TORMENTED_GRASP
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 50000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 20000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 4000
+- Name: Sapphire_3
+  ConditionalItems:
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 1
+    Items:
+    - ItemID: ITEM_ID_DUNGEONS_BADGE_SAPPHIRE
+      Count: 1
+    Achievements:
+    - EventID: WIN_DUNGEON_SAPPHIRE_RANK
+      Points: 1
+  - Condition:
+      Type: Rank
+      Min: 1
+      Max: 5
+    Items:
+    - ItemID: ITEM_ID_FREAKERS_TORMENTED_GRASP
+      Count: 1
+  - Condition:
+      Type: Percent
+      Min: 0
+      Max: 10
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 50000
+  - Condition:
+      Type: Percent
+      Min: 10
+      Max: 20
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 20000
+  - Condition:
+      Type: Percent
+      Min: 20
+      Max: 30
+    Items:
+    - ItemID: ITEM_ID_GEMS
+      Count: 4000

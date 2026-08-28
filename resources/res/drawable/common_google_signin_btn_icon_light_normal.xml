@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/m3_motion_fade_enter"/>
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/m3_side_sheet_exit_to_left"/>
+    </item>
+</layer-list>

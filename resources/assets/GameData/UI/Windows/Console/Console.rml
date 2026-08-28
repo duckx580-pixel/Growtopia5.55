@@ -1,0 +1,123 @@
+<template name="Console">
+    <head>
+        <title>Console</title>
+		<link type="text/rcss" href="../../BaseStyles.rcss" />
+		<link type="text/template" href="../Base/BasePopup.rml" />
+        <link type="text/rcss" href="Console.rcss" />
+	</head>
+	<body>
+		<div id="chat_window" class="chat_region" data-model="ConsoleModel" data-class-hidden="!ConsoleModel.IsShown">
+
+			<!-- Special Characters Preview -->
+			<div class="preview-panel" data-class-hidden="!ConsoleModel.InputSpecialChars">
+				<div id="preview-content">
+					<div id="preview-text" data-rml="ToRMLText(ConsoleModel.PreviewText)"/>
+				</div>
+			</div>
+			
+			<!-- Empty input hint -->
+			<div class="message-hint-panel" data-class-hidden="len(ConsoleModel.InputText) > 0">
+				<div id="message-hint-text">Enter Message Here</div>
+			</div>
+
+			<!-- Filter Buttons -->
+			<form id="filter" name="duration" data-value="ConsoleModel.Filter" onclick="OnEvent(event, 'Console.OnFilter')">
+				<input type="radio" id="filter_all" value="0" data-checked="ConsoleModel.Filter" data-disabled="ConsoleModel.AccountAgeType == 3"/>
+				<label for="filter_all" class="filter_btn filter_all_clr">
+					<span class="icon filter_all"></span>
+					<div class="filter_name" data-class-hidden="ConsoleModel.Filter != 0">All</div>
+				</label>
+
+				<input type="radio" id="filter_world" value="1" data-checked="ConsoleModel.Filter"  data-disabled="ConsoleModel.AccountAgeType == 3"/>
+				<label for="filter_world" class="filter_btn filter_world_clr">
+					<span class="icon filter_world"></span>
+					<div class="filter_name" data-class-hidden="ConsoleModel.Filter != 1">World</div>
+				</label>
+
+				<input type="radio" id="filter_private" value="2" data-checked="ConsoleModel.Filter" />
+				<label for="filter_private" class="filter_btn filter_private_clr">
+					<span class="icon filter_private"></span>
+					<div class="filter_name" data-class-hidden="ConsoleModel.Filter != 2">Private</div>
+				</label>
+
+				<input type="radio" id="filter_system" value="3" data-checked="ConsoleModel.Filter" />
+				<label for="filter_system" class="filter_btn filter_system_clr">
+					<span class="icon filter_system"></span>
+					<div class="filter_name" data-class-hidden="ConsoleModel.Filter != 3">System</div>
+				</label>
+
+				<input type="radio" id="filter_custom" value="4" data-checked="ConsoleModel.Filter"  data-disabled="ConsoleModel.AccountAgeType == 3"/>
+				<label for="filter_custom" class="filter_btn filter_custom_clr">
+					<span class="icon filter_custom"></span>
+					<div class="filter_name" data-class-hidden="ConsoleModel.Filter != 4">Custom</div>
+				</label>
+
+				<div class="chat_settings" data-class-hidden="ConsoleModel.Filter != 4" onclick="OnEvent(element, 'Console.OnClickCustomSettings')">
+					<div id="chat_image"/>
+				</div>
+			</form>
+
+			<!-- Custom Settings Popup -->
+			<div id="custom-settings-popup" class="popup hidden">
+				<div style="padding: 8dp;">Select the content to be shown on the Custom tab</div>
+				<form id="custom-settings" class="checkbox-group" onchange="OnEvent(event, 'Console.OnCustomSettingsChange')">
+					<label class="checkbox-row">
+						<input type="checkbox" filter-type="Global" value="0" data-checked="ConsoleModel.GlobalMessages"/>
+						<span class="label">Global Messages</span>
+					</label>
+					<label class="checkbox-row">
+						<input type="checkbox" filter-type="Global" value="1" data-checked="ConsoleModel.WorldMessages"/>
+						<span class="label">World Messages</span>
+					</label>
+					<label class="checkbox-row">
+						<input type="checkbox" filter-type="Global" value="2" data-checked="ConsoleModel.PrivateMessages"/>
+						<span class="label">Private Messages</span>
+					</label>
+					<label class="checkbox-row">
+						<input type="checkbox" filter-type="Global" value="3" data-checked="ConsoleModel.FriendMessages"/>
+						<span class="label">Friend Messages</span>
+					</label>
+					<label class="checkbox-row">
+						<input type="checkbox" filter-type="Global" value="4" data-checked="ConsoleModel.GuildMessages"/>
+						<span class="label">Guild Messages</span>
+					</label>
+					<label class="checkbox-row">
+						<input type="checkbox" filter-type="Global" value="5" data-checked="ConsoleModel.SystemMessages"/>
+						<span class="label">Game/System Messages</span>
+					</label>
+				</form>
+			</div>
+
+			<!-- Input Panel -->
+			<div class="input-panel">
+				<div id="input-content"  style="width:100%;">
+					<input id="input-text" type="text" maxlength="120" data-value="ConsoleModel.InputText"
+							onkeyup="OnEvent(event, 'Console.HandleInput')"
+							onblur="OnEvent(event, 'Console.HandleInputFocusEnd')"
+							onfocus="OnEvent(event, 'Console.HandleInputFocusBegin')"/>
+					<div id="input-info" data-rml="len(ConsoleModel.InputText)+'/120'"/>
+				</div>
+				<handle id="move_handle" move_target="chat_window" edge_margin="10dp 20dp 10dp 10dp"/>
+			</div>
+
+			<!-- Log Panel -->
+			<div class="log-panel" id="log-top">
+				<div class="show-scrollbar wondow-content-full wondow-content-horizontal" id="log-content">
+					<div data-for="Line : ConsoleModel.ShowLogLines">
+						<div class="chat_padding" data-class-alternate="IsOdd(Line)">
+							<div id="text-line" data-rml="ToRMLText(ConsoleLogText(Line))" data-class-hidden="ConsoleLogDisplayType(Line) != 0"/>
+							<div class="crazy_jim_panel" data-class-hidden="ConsoleLogDisplayType(Line) != 1">
+								<div id="image" />
+								<div id="text" data-rml="ToRMLText(ConsoleLogText(Line))" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Resize Handle -->
+				<customhandle id="resize_bl" class="resize_handle handle_bl" size_target="chat_window" edge_margin="10dp 20dp 10dp 10dp"/>
+			
+		</div>
+	</body>
+</template>

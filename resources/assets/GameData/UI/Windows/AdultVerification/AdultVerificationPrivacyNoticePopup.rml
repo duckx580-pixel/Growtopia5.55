@@ -1,0 +1,33 @@
+<rml>
+  <head>
+    <title>AdultVerificationPrivacyNoticePopup</title>
+    <link type="text/template" href="../Base/BasePopup.rml" />
+    <link type="text/rcss" href="AdultVerificationPopup.rcss" />
+
+  </head>
+  <body template="BasePopup" onshow="onShowUI(document, element)">
+    <div id="adult-verification-privacy-notice-popup" class="font-content">
+      <div id="window-title">
+        <div class="title-text font-title label">
+          Age Verification Required
+        </div>
+      </div>
+
+      <div class="font-content content color_dreamsicle">
+        You are in a region that requires age verification before public chat can be used. Your account settings have been updated to disable this feature. If you would like to enable it, you will need to complete the age verification. Go to the personal settings to complete the age verification and enable this feature.
+        <p>
+          For more information, please check our help page. <br/>
+          <span class='color_medium_blue link'
+                href="https://www.ubisoft.com/en-gb/help/ubisoft-account/account/article/information-about-ubisoft-teen-accounts/000107323"
+                onclick="OnEvent(event, 'AdultVerificationPrivacy.Url')"
+          >Information about Ubisoft teen accounts | Ubisoft Help</span>
+        </p>
+      </div>
+      <div class="buttons-panel">
+        <div onclick="OnEvent(event, 'dialog.OnCancel')" class="button button-default-color">
+          <span class="label">Close</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</rml>

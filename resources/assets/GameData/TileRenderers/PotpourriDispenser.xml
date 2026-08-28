@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer itemID="ITEM_ID_POTPOURRI_SCATTERER">
+  <Data>
+    <Sprite name="s_tile" fileName="game/tiles_page17.rttex" textureSize="32" frame="15,15" />
+    <Sprite name="s_particle" fileName="game/particles11.rttex" textureSize="32" frame="14,15"/>
+
+    <Animations>
+        <SpriteAnimation name="a_particle" autoPlay="false" sprite="s_particle">
+            <Frame>14,15</Frame>
+            <Frame>15,15</Frame>
+            <Frame>16,15</Frame>
+            <Frame>17,15</Frame>
+        </SpriteAnimation>
+		<SpriteAnimation name="a_tile1" sprite="s_tile" isLoop="true" animTime="400" playOnState="IsOn.True">
+	        <Frame>15,15</Frame>
+	        <Frame>16,15</Frame>
+        </SpriteAnimation>
+		<SpriteAnimation name="a_tile2" playOnState="IsOn.False" sprite="s_tile">
+			<Frame>14,15</Frame>
+		</SpriteAnimation>
+		<SpriteSinPulseAnimation name="a_tile_floatx" sprite="s_tile" autoPlay="true">
+			<Parameter name="pos.x">
+				<Set name="period">2700</Set>
+				<Set name="scale">0.005</Set>
+			</Parameter>
+		</SpriteSinPulseAnimation>
+		<SpriteSinPulseAnimation name="a_tile_floaty" sprite="s_tile" autoPlay="true">
+			<Parameter name="pos.y">
+				<Set name="period">1700</Set>
+				<Set name="scale">0.005</Set>
+			</Parameter>
+		</SpriteSinPulseAnimation>
+    </Animations>
+    
+    <StateMachines>
+      <StateMachine name="IsOn">
+        <States>
+          <State name="False"/>
+          <State name="True"/>
+        </States>
+        <Transitions>
+          <Transition to="True" from="False">
+            <Condition>
+              <IsTileFlagActive operatorType="Equal">TILE_FLAG_IS_ON</IsTileFlagActive>
+            </Condition>
+          </Transition>
+
+          <Transition to="False" from="True">
+            <Condition>
+              <IsTileFlagActive operatorType="NotEqual">TILE_FLAG_IS_ON</IsTileFlagActive>
+            </Condition>
+          </Transition>
+        </Transitions>
+      </StateMachine>
+      <StateMachine name="Facing">
+        <States>
+          <State name="Left"/>
+          <State name="Right"/>
+        </States>
+        <Transitions>
+          <Transition to="Right" from="Left">
+            <Condition>
+              <IsFacingLeft>false</IsFacingLeft>
+            </Condition>
+          </Transition>
+
+          <Transition to="Left" from="Right">
+            <Condition>
+              <IsFacingLeft>true</IsFacingLeft>
+            </Condition>
+          </Transition>
+        </Transitions>
+      </StateMachine>
+    </StateMachines>
+
+    <ParticleSystems>
+      <ParticleSystem name="particle_right">
+        <Emitter>
+		  <Random name="particlesPerEmission" min="3" max="6"/>
+          <Set name="infParticles">true</Set>
+          <Set name="lifeTime">1.2</Set>
+          <Set name="offset">15,0</Set>
+		  <Set name="emissionInterval">0.4</Set>
+		  <Set name="rgbTint">1, 1, 1, 1</Set>
+        </Emitter>
+        <Particle randomSpriteFrame="true">
+          <Set name="sprite">s_particle</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="lifeTime">4</Set>
+		  <Random name="initialScale" min="0.25" max="0.6"/>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>0.9, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Random name="initialVelocity" min="25, -120" max="85, -150" />
+          <Curve name="finalVelocity">
+            <KeyFrame>0.05, 20,600</KeyFrame>
+            <KeyFrame>0.15, -20,600</KeyFrame>
+            <KeyFrame>0.4, 20,200</KeyFrame>
+            <KeyFrame>0.55, -20,200</KeyFrame>
+            <KeyFrame>0.7, 20,40</KeyFrame>
+            <KeyFrame>0.8, -20,40</KeyFrame>
+            <KeyFrame>0.9, 20,40</KeyFrame>
+            <KeyFrame>1, -20,40</KeyFrame>
+          </Curve>
+          <Set name="interpolateVelocity">true</Set>
+          <Random name="initialRotationRate" min="-90" max="90" />
+        </Particle>
+      </ParticleSystem>
+      <ParticleSystem name="particle_left">
+        <Emitter>
+          <Random name="particlesPerEmission" min="3" max="6"/>
+          <Set name="infParticles">true</Set>
+          <Set name="lifeTime">1.2</Set>
+          <Set name="offset">15,0</Set>
+		  <Set name="emissionInterval">0.4</Set>
+		  <Set name="rgbTint">1, 1, 1, 1</Set>
+        </Emitter>
+        <Particle randomSpriteFrame="true">
+          <Set name="sprite">s_particle</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Set name="lifeTime">4</Set>
+		  <Random name="initialScale" min="0.25" max="0.6"/>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>0.9, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Random name="initialVelocity" min="-25, -120" max="-85, -150" />
+          <Curve name="finalVelocity">
+            <KeyFrame>0.05, -20,600</KeyFrame>
+            <KeyFrame>0.15, 20,600</KeyFrame>
+            <KeyFrame>0.4, -0,200</KeyFrame>
+            <KeyFrame>0.55, 20,200</KeyFrame>
+            <KeyFrame>0.7, -20,40</KeyFrame>
+            <KeyFrame>0.8, 20,40</KeyFrame>
+            <KeyFrame>0.9, -20,40</KeyFrame>
+            <KeyFrame>1, 20,40</KeyFrame>
+          </Curve>
+          <Set name="interpolateVelocity">true</Set>
+          <Random name="initialRotationRate" min="-90" max="90" />
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+  </Data>
+  <RenderRules>
+    <Render>
+      <SpriteRender name="s_tile" blend="PREMULTIPLIED_ALPHA" />
+    </Render>
+    <RenderInWorldSpaceFront>
+      <Group onState="Facing.Right">
+        <ParticleSystemUpdate name="particle_right" onState="IsOn.True"/>
+      </Group>
+      <Group onState="Facing.Left">
+        <ParticleSystemUpdate name="particle_left" onState="IsOn.True"/>
+      </Group>
+    </RenderInWorldSpaceFront>
+  </RenderRules>
+</ItemRenderer>

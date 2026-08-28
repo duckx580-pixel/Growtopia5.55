@@ -1,0 +1,835 @@
+###### Class com.json.rm (com.ironsource.rm)
+.class public final Lcom/ironsource/rm;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u00008\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\u0008\u0010\n\u0002\u0018\u0002\n\u0002\u0008\u0004\n\u0002\u0010$\n\u0002\u0008\u0007\n\u0002\u0010\u000b\n\u0002\u0008\u0005\n\u0002\u0018\u0002\n\u0002\u0008\u000c\u0018\u00002\u00020\u0001B\u0017\u0012\u0006\u0010\n\u001a\u00020\u0005\u0012\u0006\u00102\u001a\u00020\u0016\u00a2\u0006\u0004\u00083\u00104J\u0010\u0010\u0004\u001a\u00020\u00032\u0008\u0010\u0002\u001a\u0004\u0018\u00010\u0000R\u0017\u0010\n\u001a\u00020\u00058\u0006\u00a2\u0006\u000c\n\u0004\u0008\u0006\u0010\u0007\u001a\u0004\u0008\u0008\u0010\tR\u0017\u0010\u000c\u001a\u00020\u00058\u0006\u00a2\u0006\u000c\n\u0004\u0008\u0004\u0010\u0007\u001a\u0004\u0008\u000b\u0010\tR\u0017\u0010\u000f\u001a\u00020\u00058\u0006\u00a2\u0006\u000c\n\u0004\u0008\r\u0010\u0007\u001a\u0004\u0008\u000e\u0010\tR\u0017\u0010\u0012\u001a\u00020\u00058\u0006\u00a2\u0006\u000c\n\u0004\u0008\u0010\u0010\u0007\u001a\u0004\u0008\u0011\u0010\tR\u0019\u0010\u0015\u001a\u0004\u0018\u00010\u00058\u0006\u00a2\u0006\u000c\n\u0004\u0008\u0013\u0010\u0007\u001a\u0004\u0008\u0014\u0010\tR\u0019\u0010\u001a\u001a\u0004\u0018\u00010\u00168\u0006\u00a2\u0006\u000c\n\u0004\u0008\u0017\u0010\u0018\u001a\u0004\u0008\r\u0010\u0019R%\u0010\u001f\u001a\u0010\u0012\u0004\u0012\u00020\u0005\u0012\u0006\u0012\u0004\u0018\u00010\u00160\u001b8\u0006\u00a2\u0006\u000c\n\u0004\u0008\u001c\u0010\u001d\u001a\u0004\u0008\u0006\u0010\u001eR\u0017\u0010!\u001a\u00020\u00058\u0006\u00a2\u0006\u000c\n\u0004\u0008\u0011\u0010\u0007\u001a\u0004\u0008 \u0010\tR\u0017\u0010\"\u001a\u00020\u00058\u0006\u00a2\u0006\u000c\n\u0004\u0008\u000b\u0010\u0007\u001a\u0004\u0008\u0004\u0010\tR\u0017\u0010\'\u001a\u00020#8\u0006\u00a2\u0006\u000c\n\u0004\u0008\u0008\u0010$\u001a\u0004\u0008%\u0010&R\u0018\u0010\u0002\u001a\u0004\u0018\u00010\u00008\u0002@\u0002X\u0082\u000e\u00a2\u0006\u0006\n\u0004\u0008\u0014\u0010(R\u001b\u0010,\u001a\u00020)8FX\u0086\u0084\u0002\u00a2\u0006\u000c\n\u0004\u0008\u000e\u0010*\u001a\u0004\u0008\u0017\u0010+R\u0011\u0010.\u001a\u00020\u00168F\u00a2\u0006\u0006\u001a\u0004\u0008-\u0010\u0019R\u0011\u0010/\u001a\u00020\u00168F\u00a2\u0006\u0006\u001a\u0004\u0008\u0013\u0010\u0019R\u0011\u00100\u001a\u00020\u00168F\u00a2\u0006\u0006\u001a\u0004\u0008\u0010\u0010\u0019R\u0011\u00101\u001a\u00020\u00168F\u00a2\u0006\u0006\u001a\u0004\u0008\u001c\u0010\u0019\u00a8\u00065"
+    }
+    d2 = {
+        "Lcom/ironsource/rm;",
+        "",
+        "parentProvider",
+        "",
+        "b",
+        "",
+        "a",
+        "Ljava/lang/String;",
+        "j",
+        "()Ljava/lang/String;",
+        "providerName",
+        "i",
+        "providerInstanceName",
+        "c",
+        "l",
+        "providerTypeForReflection",
+        "d",
+        "h",
+        "providerDefaultInstance",
+        "e",
+        "k",
+        "providerNetworkKey",
+        "Lorg/json/JSONObject;",
+        "f",
+        "Lorg/json/JSONObject;",
+        "()Lorg/json/JSONObject;",
+        "applicationSettings",
+        "",
+        "g",
+        "Ljava/util/Map;",
+        "()Ljava/util/Map;",
+        "adFormatSettings",
+        "n",
+        "subProviderId",
+        "adSourceNameForEvents",
+        "",
+        "Z",
+        "o",
+        "()Z",
+        "isMultipleInstances",
+        "Lcom/ironsource/rm;",
+        "Lcom/ironsource/mediationsdk/model/NetworkSettings;",
+        "Lkotlin/Lazy;",
+        "()Lcom/ironsource/mediationsdk/model/NetworkSettings;",
+        "legacyNetworkSettings",
+        "m",
+        "rewardedSettings",
+        "interstitialSettings",
+        "bannerSettings",
+        "nativeAdSettings",
+        "networkSettings",
+        "<init>",
+        "(Ljava/lang/String;Lorg/json/JSONObject;)V",
+        "mediationsdk_release"
+    }
+    k = 0x1
+    mv = {
+        0x1,
+        0x8,
+        0x0
+    }
+.end annotation
+
+
+# instance fields
+.field private final a:Ljava/lang/String;
+
+.field private final b:Ljava/lang/String;
+
+.field private final c:Ljava/lang/String;
+
+.field private final d:Ljava/lang/String;
+
+.field private final e:Ljava/lang/String;
+
+.field private final f:Lorg/json/JSONObject;
+
+.field private final g:Ljava/util/Map;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Lorg/json/JSONObject;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private final h:Ljava/lang/String;
+
+.field private final i:Ljava/lang/String;
+
+.field private final j:Z
+
+.field private k:Lcom/ironsource/rm;
+
+.field private final l:Lkotlin/Lazy;
+
+
+# direct methods
+.method public constructor <init>(Ljava/lang/String;Lorg/json/JSONObject;)V
+    .registers 9
+
+    const-string v0, "providerName"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "networkSettings"
+
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/ironsource/rm;->a:Ljava/lang/String;
+
+    iput-object p1, p0, Lcom/ironsource/rm;->b:Ljava/lang/String;
+
+    const-string v0, "providerLoadName"
+
+    invoke-virtual {p2, v0, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    const-string v0, "networkSettings.optStrin\u2026,\n          providerName)"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iput-object p1, p0, Lcom/ironsource/rm;->c:Ljava/lang/String;
+
+    const-string v0, "providerDefaultInstance"
+
+    invoke-virtual {p2, v0, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    const-string v0, "networkSettings.optStrin\u2026roviderTypeForReflection)"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iput-object p1, p0, Lcom/ironsource/rm;->d:Ljava/lang/String;
+
+    const-string p1, "providerNetworkKey"
+
+    invoke-virtual {p2, p1}, Lorg/json/JSONObject;->opt(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    instance-of v0, p1, Ljava/lang/String;
+
+    const/4 v1, 0x0
+
+    if-eqz v0, :cond_39
+
+    check-cast p1, Ljava/lang/String;
+
+    goto :goto_3a
+
+    :cond_39
+    move-object p1, v1
+
+    :goto_3a
+    iput-object p1, p0, Lcom/ironsource/rm;->e:Ljava/lang/String;
+
+    const-string p1, "application"
+
+    invoke-virtual {p2, p1}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lcom/ironsource/rm;->f:Lorg/json/JSONObject;
+
+    invoke-static {}, Lcom/unity3d/mediation/LevelPlay$AdFormat;->values()[Lcom/unity3d/mediation/LevelPlay$AdFormat;
+
+    move-result-object p1
+
+    new-instance v0, Ljava/util/ArrayList;
+
+    array-length v2, p1
+
+    invoke-direct {v0, v2}, Ljava/util/ArrayList;-><init>(I)V
+
+    array-length v2, p1
+
+    const/4 v3, 0x0
+
+    move v4, v3
+
+    :goto_51
+    if-ge v4, v2, :cond_5f
+
+    aget-object v5, p1, v4
+
+    invoke-static {v5}, Lcom/ironsource/ks;->a(Lcom/unity3d/mediation/LevelPlay$AdFormat;)Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-interface {v0, v5}, Ljava/util/Collection;->add(Ljava/lang/Object;)Z
+
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_51
+
+    :cond_5f
+    new-instance p1, Ljava/util/LinkedHashMap;
+
+    const/16 v2, 0xa
+
+    invoke-static {v0, v2}, Lkotlin/collections/CollectionsKt;->collectionSizeOrDefault(Ljava/lang/Iterable;I)I
+
+    move-result v2
+
+    invoke-static {v2}, Lkotlin/collections/MapsKt;->mapCapacity(I)I
+
+    move-result v2
+
+    const/16 v4, 0x10
+
+    invoke-static {v2, v4}, Lkotlin/ranges/RangesKt;->coerceAtLeast(II)I
+
+    move-result v2
+
+    invoke-direct {p1, v2}, Ljava/util/LinkedHashMap;-><init>(I)V
+
+    invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v0
+
+    :goto_78
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_9e
+
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    move-object v4, v2
+
+    check-cast v4, Ljava/lang/String;
+
+    const-string v5, "adFormats"
+
+    invoke-virtual {p2, v5}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    move-result-object v5
+
+    if-eqz v5, :cond_92
+
+    invoke-virtual {v5, v4}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    move-result-object v4
+
+    goto :goto_93
+
+    :cond_92
+    move-object v4, v1
+
+    :goto_93
+    if-nez v4, :cond_9a
+
+    new-instance v4, Lorg/json/JSONObject;
+
+    invoke-direct {v4}, Lorg/json/JSONObject;-><init>()V
+
+    :cond_9a
+    invoke-interface {p1, v2, v4}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    goto :goto_78
+
+    :cond_9e
+    iput-object p1, p0, Lcom/ironsource/rm;->g:Ljava/util/Map;
+
+    const-string p1, "spId"
+
+    const-string v0, "0"
+
+    invoke-virtual {p2, p1, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    const-string v0, "networkSettings.optStrin\u2026B_PROVIDER_ID_FIELD, \"0\")"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iput-object p1, p0, Lcom/ironsource/rm;->h:Ljava/lang/String;
+
+    const-string p1, "adSourceName"
+
+    invoke-virtual {p2, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    const-string v0, "networkSettings.optString(AD_SOURCE_NAME_FIELD)"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iput-object p1, p0, Lcom/ironsource/rm;->i:Ljava/lang/String;
+
+    const-string p1, "mpis"
+
+    invoke-virtual {p2, p1, v3}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;Z)Z
+
+    move-result p1
+
+    iput-boolean p1, p0, Lcom/ironsource/rm;->j:Z
+
+    new-instance p1, Lcom/ironsource/rm$a;
+
+    invoke-direct {p1, p0}, Lcom/ironsource/rm$a;-><init>(Lcom/ironsource/rm;)V
+
+    invoke-static {p1}, Lkotlin/LazyKt;->lazy(Lkotlin/jvm/functions/Function0;)Lkotlin/Lazy;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lcom/ironsource/rm;->l:Lkotlin/Lazy;
+
+    return-void
+.end method
+
+.method public static final synthetic a(Lcom/ironsource/rm;)Lcom/ironsource/rm;
+    .registers 1
+
+    iget-object p0, p0, Lcom/ironsource/rm;->k:Lcom/ironsource/rm;
+
+    return-object p0
+.end method
+
+
+# virtual methods
+.method public final a()Ljava/util/Map;
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Lorg/json/JSONObject;",
+            ">;"
+        }
+    .end annotation
+
+    iget-object v0, p0, Lcom/ironsource/rm;->g:Ljava/util/Map;
+
+    return-object v0
+.end method
+
+.method public final b()Ljava/lang/String;
+    .registers 2
+
+    iget-object v0, p0, Lcom/ironsource/rm;->i:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final b(Lcom/ironsource/rm;)V
+    .registers 2
+
+    iput-object p1, p0, Lcom/ironsource/rm;->k:Lcom/ironsource/rm;
+
+    return-void
+.end method
+
+.method public final c()Lorg/json/JSONObject;
+    .registers 2
+
+    iget-object v0, p0, Lcom/ironsource/rm;->f:Lorg/json/JSONObject;
+
+    return-object v0
+.end method
+
+.method public final d()Lorg/json/JSONObject;
+    .registers 3
+
+    iget-object v0, p0, Lcom/ironsource/rm;->g:Ljava/util/Map;
+
+    const-string v1, "banner"
+
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lorg/json/JSONObject;
+
+    iget-object v1, p0, Lcom/ironsource/rm;->f:Lorg/json/JSONObject;
+
+    invoke-static {v0, v1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mergeJsons(Lorg/json/JSONObject;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+
+    move-result-object v0
+
+    const-string v1, "mergeJsons(\n            \u2026EY], applicationSettings)"
+
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    return-object v0
+.end method
+
+.method public final e()Lorg/json/JSONObject;
+    .registers 3
+
+    iget-object v0, p0, Lcom/ironsource/rm;->g:Ljava/util/Map;
+
+    const-string v1, "interstitial"
+
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lorg/json/JSONObject;
+
+    iget-object v1, p0, Lcom/ironsource/rm;->f:Lorg/json/JSONObject;
+
+    invoke-static {v0, v1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mergeJsons(Lorg/json/JSONObject;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+
+    move-result-object v0
+
+    const-string v1, "mergeJsons(\n            \u2026EY], applicationSettings)"
+
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    return-object v0
+.end method
+
+.method public final f()Lcom/ironsource/mediationsdk/model/NetworkSettings;
+    .registers 2
+
+    iget-object v0, p0, Lcom/ironsource/rm;->l:Lkotlin/Lazy;
+
+    invoke-interface {v0}, Lkotlin/Lazy;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/ironsource/mediationsdk/model/NetworkSettings;
+
+    return-object v0
+.end method
+
+.method public final g()Lorg/json/JSONObject;
+    .registers 3
+
+    iget-object v0, p0, Lcom/ironsource/rm;->g:Ljava/util/Map;
+
+    const-string v1, "nativeAd"
+
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lorg/json/JSONObject;
+
+    iget-object v1, p0, Lcom/ironsource/rm;->f:Lorg/json/JSONObject;
+
+    invoke-static {v0, v1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mergeJsons(Lorg/json/JSONObject;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+
+    move-result-object v0
+
+    const-string v1, "mergeJsons(\n            \u2026EY], applicationSettings)"
+
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    return-object v0
+.end method
+
+.method public final h()Ljava/lang/String;
+    .registers 2
+
+    iget-object v0, p0, Lcom/ironsource/rm;->d:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final i()Ljava/lang/String;
+    .registers 2
+
+    iget-object v0, p0, Lcom/ironsource/rm;->b:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final j()Ljava/lang/String;
+    .registers 2
+
+    iget-object v0, p0, Lcom/ironsource/rm;->a:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final k()Ljava/lang/String;
+    .registers 2
+
+    iget-object v0, p0, Lcom/ironsource/rm;->e:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final l()Ljava/lang/String;
+    .registers 2
+
+    iget-object v0, p0, Lcom/ironsource/rm;->c:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final m()Lorg/json/JSONObject;
+    .registers 3
+
+    iget-object v0, p0, Lcom/ironsource/rm;->g:Ljava/util/Map;
+
+    const-string v1, "rewarded"
+
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lorg/json/JSONObject;
+
+    iget-object v1, p0, Lcom/ironsource/rm;->f:Lorg/json/JSONObject;
+
+    invoke-static {v0, v1}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mergeJsons(Lorg/json/JSONObject;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+
+    move-result-object v0
+
+    const-string v1, "mergeJsons(\n            \u2026     applicationSettings)"
+
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    return-object v0
+.end method
+
+.method public final n()Ljava/lang/String;
+    .registers 2
+
+    iget-object v0, p0, Lcom/ironsource/rm;->h:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final o()Z
+    .registers 2
+
+    iget-boolean v0, p0, Lcom/ironsource/rm;->j:Z
+
+    return v0
+.end method
+
+###### Class com.ironsource.rm.a (com.ironsource.rm$a)
+.class final Lcom/ironsource/rm$a;
+.super Lkotlin/jvm/internal/Lambda;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/ironsource/rm;-><init>(Ljava/lang/String;Lorg/json/JSONObject;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x18
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lkotlin/jvm/internal/Lambda;",
+        "Lkotlin/jvm/functions/Function0<",
+        "Lcom/ironsource/mediationsdk/model/NetworkSettings;",
+        ">;"
+    }
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000\u0008\n\u0002\u0018\u0002\n\u0002\u0008\u0002\u0010\u0001\u001a\u00020\u0000H\n\u00a2\u0006\u0004\u0008\u0001\u0010\u0002"
+    }
+    d2 = {
+        "Lcom/ironsource/mediationsdk/model/NetworkSettings;",
+        "a",
+        "()Lcom/ironsource/mediationsdk/model/NetworkSettings;"
+    }
+    k = 0x3
+    mv = {
+        0x1,
+        0x8,
+        0x0
+    }
+.end annotation
+
+
+# instance fields
+.field final synthetic a:Lcom/ironsource/rm;
+
+
+# direct methods
+.method constructor <init>(Lcom/ironsource/rm;)V
+    .registers 2
+
+    iput-object p1, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    const/4 p1, 0x0
+
+    invoke-direct {p0, p1}, Lkotlin/jvm/internal/Lambda;-><init>(I)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()Lcom/ironsource/mediationsdk/model/NetworkSettings;
+    .registers 14
+
+    new-instance v0, Lcom/ironsource/mediationsdk/model/NetworkSettings;
+
+    iget-object v1, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-virtual {v1}, Lcom/ironsource/rm;->j()Ljava/lang/String;
+
+    move-result-object v1
+
+    iget-object v2, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-virtual {v2}, Lcom/ironsource/rm;->l()Ljava/lang/String;
+
+    move-result-object v2
+
+    iget-object v3, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-virtual {v3}, Lcom/ironsource/rm;->h()Ljava/lang/String;
+
+    move-result-object v3
+
+    iget-object v4, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-virtual {v4}, Lcom/ironsource/rm;->k()Ljava/lang/String;
+
+    move-result-object v4
+
+    iget-object v5, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-virtual {v5}, Lcom/ironsource/rm;->c()Lorg/json/JSONObject;
+
+    move-result-object v5
+
+    iget-object v6, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-static {v6}, Lcom/ironsource/rm;->a(Lcom/ironsource/rm;)Lcom/ironsource/rm;
+
+    move-result-object v6
+
+    const/4 v7, 0x0
+
+    if-eqz v6, :cond_2e
+
+    invoke-virtual {v6}, Lcom/ironsource/rm;->c()Lorg/json/JSONObject;
+
+    move-result-object v6
+
+    goto :goto_2f
+
+    :cond_2e
+    move-object v6, v7
+
+    :goto_2f
+    invoke-static {v5, v6}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mergeJsons(Lorg/json/JSONObject;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+
+    move-result-object v5
+
+    iget-object v6, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-virtual {v6}, Lcom/ironsource/rm;->m()Lorg/json/JSONObject;
+
+    move-result-object v6
+
+    iget-object v8, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-static {v8}, Lcom/ironsource/rm;->a(Lcom/ironsource/rm;)Lcom/ironsource/rm;
+
+    move-result-object v8
+
+    if-eqz v8, :cond_46
+
+    invoke-virtual {v8}, Lcom/ironsource/rm;->m()Lorg/json/JSONObject;
+
+    move-result-object v8
+
+    goto :goto_47
+
+    :cond_46
+    move-object v8, v7
+
+    :goto_47
+    invoke-static {v6, v8}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mergeJsons(Lorg/json/JSONObject;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+
+    move-result-object v6
+
+    iget-object v8, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-virtual {v8}, Lcom/ironsource/rm;->e()Lorg/json/JSONObject;
+
+    move-result-object v8
+
+    iget-object v9, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-static {v9}, Lcom/ironsource/rm;->a(Lcom/ironsource/rm;)Lcom/ironsource/rm;
+
+    move-result-object v9
+
+    if-eqz v9, :cond_5e
+
+    invoke-virtual {v9}, Lcom/ironsource/rm;->e()Lorg/json/JSONObject;
+
+    move-result-object v9
+
+    goto :goto_5f
+
+    :cond_5e
+    move-object v9, v7
+
+    :goto_5f
+    invoke-static {v8, v9}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mergeJsons(Lorg/json/JSONObject;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+
+    move-result-object v8
+
+    iget-object v9, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-virtual {v9}, Lcom/ironsource/rm;->d()Lorg/json/JSONObject;
+
+    move-result-object v9
+
+    iget-object v10, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-static {v10}, Lcom/ironsource/rm;->a(Lcom/ironsource/rm;)Lcom/ironsource/rm;
+
+    move-result-object v10
+
+    if-eqz v10, :cond_76
+
+    invoke-virtual {v10}, Lcom/ironsource/rm;->d()Lorg/json/JSONObject;
+
+    move-result-object v10
+
+    goto :goto_77
+
+    :cond_76
+    move-object v10, v7
+
+    :goto_77
+    invoke-static {v9, v10}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mergeJsons(Lorg/json/JSONObject;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+
+    move-result-object v9
+
+    iget-object v10, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-virtual {v10}, Lcom/ironsource/rm;->g()Lorg/json/JSONObject;
+
+    move-result-object v10
+
+    iget-object v11, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-static {v11}, Lcom/ironsource/rm;->a(Lcom/ironsource/rm;)Lcom/ironsource/rm;
+
+    move-result-object v11
+
+    if-eqz v11, :cond_8d
+
+    invoke-virtual {v11}, Lcom/ironsource/rm;->g()Lorg/json/JSONObject;
+
+    move-result-object v7
+
+    :cond_8d
+    invoke-static {v10, v7}, Lcom/ironsource/mediationsdk/utils/IronSourceUtils;->mergeJsons(Lorg/json/JSONObject;Lorg/json/JSONObject;)Lorg/json/JSONObject;
+
+    move-result-object v7
+
+    move-object v12, v9
+
+    move-object v9, v7
+
+    move-object v7, v8
+
+    move-object v8, v12
+
+    invoke-direct/range {v0 .. v9}, Lcom/ironsource/mediationsdk/model/NetworkSettings;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;Lorg/json/JSONObject;Lorg/json/JSONObject;Lorg/json/JSONObject;)V
+
+    iget-object v1, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-virtual {v1}, Lcom/ironsource/rm;->o()Z
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Lcom/ironsource/mediationsdk/model/NetworkSettings;->setIsMultipleInstances(Z)V
+
+    iget-object v1, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-virtual {v1}, Lcom/ironsource/rm;->n()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lcom/ironsource/mediationsdk/model/NetworkSettings;->setSubProviderId(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/ironsource/rm$a;->a:Lcom/ironsource/rm;
+
+    invoke-virtual {v1}, Lcom/ironsource/rm;->b()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lcom/ironsource/mediationsdk/model/NetworkSettings;->setAdSourceNameForEvents(Ljava/lang/String;)V
+
+    return-object v0
+.end method
+
+.method public bridge synthetic invoke()Ljava/lang/Object;
+    .registers 2
+
+    invoke-virtual {p0}, Lcom/ironsource/rm$a;->a()Lcom/ironsource/mediationsdk/model/NetworkSettings;
+
+    move-result-object v0
+
+    return-object v0
+.end method

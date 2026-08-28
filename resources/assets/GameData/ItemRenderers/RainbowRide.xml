@@ -1,0 +1,147 @@
+<?xml version="1.0" ?>
+<ItemRenderer>
+    <Data>
+        <Sprite name="s_car1" fileName="game/player_feet16.rttex" textureSize="32,32" frame="0,26" />
+        <Sprite name="s_car2" fileName="game/player_feet16.rttex" textureSize="32,32" frame="0,27" />
+		<Sprite name="s_trail" fileName="game/particles6.rttex" textureSize="32" frame="13,11"/>
+		<Animations>
+			<SpriteAnimation name="s_Idle1" playOnState="Movement.Idle" sprite="s_car1">
+				<Frame>0,26</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="s_Idle2" playOnState="Movement.Idle" sprite="s_car2">
+				<Frame>0,27</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="s_Move1" playOnState="Movement.Move|Movement.Jump|Movement.Fall" sprite="s_car1" isLoop="true" animTime="200">
+				<Frame>0,26</Frame>
+				<Frame>1,26</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="s_Move2" playOnState="Movement.Move|Movement.Jump|Movement.Fall" sprite="s_car2" isLoop="true" animTime="200">
+				<Frame>0,27</Frame>
+				<Frame>1,27</Frame>
+			</SpriteAnimation>
+        </Animations>
+		<ParticleSystems>
+			<ParticleSystem name="ps_trail">
+				<Emitter>
+					<Set name="offset">-30, -2</Set>
+					<Set name="emissionInterval">0.05</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Set name="particlesPerEmission">2</Set>
+				</Emitter>
+				<Particle velocityRelativeToPlayerSpeed="true">
+					<Set name="sprite">s_trail</Set>
+					<Random name="offset" min="0, -4" max="0, 4"/>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Curve name="initialScale">
+						<KeyFrame>0, 0.5, 0.5</KeyFrame>
+						<KeyFrame>1, 1.25, 1.25</KeyFrame>
+					</Curve>
+					<Set name="lifeTime">1</Set>
+					<Random name="initialVelocity" min="-30, 0" max="-40, 0"/>
+					<Random name="initialAngle" min="-45" max="45"/>
+					<Set name="initialRotationRate">90</Set>
+				</Particle>
+			</ParticleSystem>
+		</ParticleSystems>
+        <VariableMap />
+        <StateMachines>
+            <StateMachine name="Facing">
+                <States>
+                    <State name="Left" />
+                    <State name="Right" />
+                </States>
+                <Transitions>
+                    <Transition to="Left" from="Right">
+                        <Condition>
+                            <IsFacingLeft>true</IsFacingLeft>
+                        </Condition>
+                    </Transition>
+                    <Transition to="Right" from="Left">
+                        <Condition>
+                            <IsFacingLeft>false</IsFacingLeft>
+                        </Condition>
+                    </Transition>
+                </Transitions>
+            </StateMachine>
+            <StateMachine name="Movement">
+                <States>
+                    <State name="Idle" />
+                    <State name="Move" />
+                    <State name="Jump" />
+                    <State name="Fall" />
+                </States>
+                <Transitions>
+                    <Transition to="Idle" from="Fall|Move">
+                        <Condition type="and">
+                            <IsVariableBool name="onGround">true</IsVariableBool>
+                            <IsVariableFloat name="speed.length" operator="Less" abs="true">0.1</IsVariableFloat>
+                        </Condition>
+                    </Transition>
+                    <Transition to="Move" from="Jump|Fall|Idle">
+                        <Condition type="and">
+                            <IsVariableBool name="onGround">true</IsVariableBool>
+                            <IsVariableFloat name="speed.length" operator="Greater" abs="true">0.1</IsVariableFloat>
+                        </Condition>
+                    </Transition>
+                    <Transition to="Jump" from="Idle|Move|Fall">
+                        <Condition type="and">
+                            <IsVariableBool name="onGround">false</IsVariableBool>
+                            <IsVariableFloat name="speed.y" operator="Less">-0.1</IsVariableFloat>
+                        </Condition>
+                    </Transition>
+                    <Transition to="Fall" from="Jump|Idle|Move">
+                        <Condition type="and">
+                            <IsVariableBool name="onGround">false</IsVariableBool>
+                            <IsVariableFloat name="speed.y" operator="Greater">0.1</IsVariableFloat>
+                        </Condition>
+                    </Transition>
+                </Transitions>
+            </StateMachine>
+        </StateMachines>
+        <RenderOptions>
+            <Default>
+				<Set name="ClothingOffsetFromShoes">-3</Set>
+				<Set name="IgnoreDefaultDamagedTileEffect">false</Set>
+				<Set name="IsToRenderPants">false</Set>
+				<Set name="RenderShoesWithMermaidTail">true</Set>
+				<Set name="IsCar">true</Set>
+				<Set name="CarCastSmokeParticle">false</Set>
+				<Set name="ShoesShouldIgnoreRaptorLegsOffset">true</Set>
+				<Set name="IsRidingBird">true</Set>
+            </Default>
+        </RenderOptions>
+    </Data>
+    <RenderRules>
+        <RenderShoes>
+            <Translate forceValue="false">0,6,0</Translate>
+            <Group onState="Facing.Left">
+                <SpriteRender name="s_car2" blend="NORMAL" alignment="DOWN_RIGHT" drawShadow="true" />
+                <SpriteRender name="s_car1" blend="NORMAL" alignment="DOWN_LEFT" drawShadow="true" />
+            </Group>
+            <Group onState="Facing.Right">
+                <SpriteRender name="s_car2" blend="NORMAL" alignment="DOWN_LEFT" drawShadow="true" />
+                <SpriteRender name="s_car1" blend="NORMAL" alignment="DOWN_RIGHT" drawShadow="true" />
+            </Group>
+        </RenderShoes>
+        <Update>
+            <Group onState="Movement.Idle" />
+            <Group onState="Movement.Move">
+                <AvatarTransform class="ArmAngle">
+                    <Set name="armName">arm2Angle</Set>
+                    <Set name="armAngle">290</Set>
+                </AvatarTransform>
+            </Group>
+            <Group onState="Movement.Jump" />
+            <Group onState="Movement.Fall" />
+        </Update>
+		<AddClothingParticles>
+			<ParticleSystemUpdate name="ps_trail" onState="Movement.Move|Movement.Jump|Movement.Fall"/>
+		</AddClothingParticles>
+    </RenderRules>
+</ItemRenderer>
+

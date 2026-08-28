@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<ItemRenderer>
+	<Data>
+		<Sprite name="s_BaseMantle" fileName="game/particles_large17.rttex" textureSize="64" frame="7,13" />
+		<Sprite name="s_Shoulderpiece" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="19,9" />
+		<Sprite name="s_Rainbow" fileName="game/particles12.rttex" textureSize="32" frame="27,12" />
+		<Sprite name="s_LensFlare" fileName="game/particles_large17.rttex" textureSize="64" frame="8,13" />
+		<ParticleSystems>
+			<ParticleSystem name="ps_Rainbow">
+				<Emitter>
+					<Set name="offset">-2,-32</Set>
+					<Set name="emissionInterval">1.5</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_Rainbow</Set>
+					<Set name="relativeToEmitter">true</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Set name="initialScale">1,1</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 0</KeyFrame>
+						<KeyFrame>0.25, 1</KeyFrame>
+						<KeyFrame>0.75, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Set name="lifeTime">2</Set>
+					<Set name="inSpecificOrder">true</Set>
+					<Random name="initialRotationRate" min="30" max="45"/>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_LensFlare">
+				<Emitter>
+					<Set name="particlesPerEmission">3</Set>
+					<Set name="offset">8,-22</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_LensFlare</Set>
+					<Set name="inSpecificOrder">true</Set>
+					<Set name="blendingMode">ADDITIVE</Set>
+					<Set name="relativeToEmitter">true</Set>
+					<Random name="offset" min="-10,-10" max="10,10" />
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Curve name="initialScale">
+						<KeyFrame>0, 0.5,0.5</KeyFrame>
+						<KeyFrame>1, 2.6,2.6</KeyFrame>
+					</Curve>
+					<Set name="lifeTime">0.5</Set>
+					<Random name="initialAngle" min="0" max="360"/>
+				</Particle>
+			</ParticleSystem>
+		</ParticleSystems>
+	</Data>
+	<RenderRules>
+		<AddClothingParticles>
+			<StopIf type="or">
+				<IsRenderMod>RENDER_MOD_SPIRIT_GUIDE</IsRenderMod>
+				<IsRenderMod>RENDER_MOD_RAINBOW_GUY</IsRenderMod>
+				<IsRenderMod>RENDER_MOD_PLAYER_SHADOW</IsRenderMod>
+				<IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+			</StopIf>
+			<ParticleSystemUpdate name="ps_Rainbow"/>
+			<ParticleSystemUpdate name="ps_LensFlare" onAction="JUMPDOUBLE"/>
+		</AddClothingParticles>
+		<RenderBehind value="playerCenter">
+			<StopIf>
+				<IsWearing slot="SHIRT">ITEM_ID_TACTICAL_STEALTH_DEVICE</IsWearing>
+				<IsWearing slot="SHOES">ITEM_ID_STAR_FIGHTER_REBEL_RAIDER</IsWearing>
+				<IsWearing slot="SHOES">ITEM_ID_STAR_FIGHTER_IMPERIAL_ENFORCER</IsWearing>
+			</StopIf>
+			<SpriteRender name="s_BaseMantle" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_CENTER" />
+			<StopIf type="or">
+				<IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+			</StopIf>
+			<ParticleSystemRender name="ps_Rainbow" />
+			<ParticleSystemRender name="ps_LensFlare"/>
+		</RenderBehind>
+		<RenderChestItem>
+			<SpriteRender name="s_Shoulderpiece" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_CENTER" />
+		</RenderChestItem>
+	</RenderRules>
+</ItemRenderer>
+

@@ -1,0 +1,105 @@
+###### Class com.google.android.material.shape.AbsoluteCornerSize (com.google.android.material.shape.AbsoluteCornerSize)
+.class public final Lcom/google/android/material/shape/AbsoluteCornerSize;
+.super Ljava/lang/Object;
+.source "AbsoluteCornerSize.java"
+
+# interfaces
+.implements Lcom/google/android/material/shape/CornerSize;
+
+
+# instance fields
+.field private final size:F
+
+
+# direct methods
+.method public constructor <init>(F)V
+    .registers 2
+
+    .line 28
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 29
+    iput p1, p0, Lcom/google/android/material/shape/AbsoluteCornerSize;->size:F
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public equals(Ljava/lang/Object;)Z
+    .registers 5
+
+    const/4 v0, 0x1
+
+    if-ne p0, p1, :cond_4
+
+    return v0
+
+    .line 49
+    :cond_4
+    instance-of v1, p1, Lcom/google/android/material/shape/AbsoluteCornerSize;
+
+    const/4 v2, 0x0
+
+    if-nez v1, :cond_a
+
+    return v2
+
+    .line 52
+    :cond_a
+    check-cast p1, Lcom/google/android/material/shape/AbsoluteCornerSize;
+
+    .line 53
+    iget v1, p0, Lcom/google/android/material/shape/AbsoluteCornerSize;->size:F
+
+    iget p1, p1, Lcom/google/android/material/shape/AbsoluteCornerSize;->size:F
+
+    cmpl-float p1, v1, p1
+
+    if-nez p1, :cond_15
+
+    return v0
+
+    :cond_15
+    return v2
+.end method
+
+.method public getCornerSize()F
+    .registers 2
+
+    .line 41
+    iget v0, p0, Lcom/google/android/material/shape/AbsoluteCornerSize;->size:F
+
+    return v0
+.end method
+
+.method public getCornerSize(Landroid/graphics/RectF;)F
+    .registers 2
+
+    .line 34
+    iget p1, p0, Lcom/google/android/material/shape/AbsoluteCornerSize;->size:F
+
+    return p1
+.end method
+
+.method public hashCode()I
+    .registers 2
+
+    .line 58
+    iget v0, p0, Lcom/google/android/material/shape/AbsoluteCornerSize;->size:F
+
+    invoke-static {v0}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+
+    move-result-object v0
+
+    filled-new-array {v0}, [Ljava/lang/Object;
+
+    move-result-object v0
+
+    .line 59
+    invoke-static {v0}, Ljava/util/Arrays;->hashCode([Ljava/lang/Object;)I
+
+    move-result v0
+
+    return v0
+.end method

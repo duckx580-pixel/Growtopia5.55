@@ -1,0 +1,25 @@
+package com.google.android.gms.internal.common;
+
+/* JADX INFO: compiled from: com.google.android.gms:play-services-basement@@18.5.0 */
+/* JADX INFO: loaded from: classes2.dex */
+public class zzj {
+    private final Class zza;
+    private final Object zzb;
+
+    private zzj(Class cls, Object obj) {
+        this.zza = cls;
+        this.zzb = obj;
+    }
+
+    public static zzj zzb(Class cls, Object obj) {
+        return new zzj(cls, obj);
+    }
+
+    public final Class zzc() {
+        return this.zza;
+    }
+
+    public final Object zzd() {
+        return this.zzb;
+    }
+}

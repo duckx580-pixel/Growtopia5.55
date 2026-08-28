@@ -1,0 +1,19 @@
+Error decode manifest
+java.lang.IndexOutOfBoundsException
+	at java.base/java.nio.Buffer$1.apply(Buffer.java:757)
+	at java.base/java.nio.Buffer$1.apply(Buffer.java:754)
+	at java.base/jdk.internal.util.Preconditions$4.apply(Preconditions.java:213)
+	at java.base/jdk.internal.util.Preconditions$4.apply(Preconditions.java:210)
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:98)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:106)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:302)
+	at java.base/java.nio.Buffer.checkIndex(Buffer.java:779)
+	at java.base/java.nio.HeapByteBuffer.getInt(HeapByteBuffer.java:502)
+	at jadx.core.xmlgen.BinaryXMLStrings.get(BinaryXMLStrings.java:48)
+	at jadx.core.xmlgen.entry.ValuesParser.decodeValue(ValuesParser.java:89)
+	at jadx.core.xmlgen.BinaryXMLParser.decodeAttribute(BinaryXMLParser.java:434)
+	at jadx.core.xmlgen.BinaryXMLParser.parseAttribute(BinaryXMLParser.java:326)
+	at jadx.core.xmlgen.BinaryXMLParser.parseElement(BinaryXMLParser.java:282)
+	at jadx.core.xmlgen.BinaryXMLParser.decode(BinaryXMLParser.java:121)
+	at jadx.core.xmlgen.BinaryXMLParser.parse(BinaryXMLParser.java:76)
+

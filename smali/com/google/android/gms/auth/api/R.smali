@@ -1,0 +1,1272 @@
+###### Class com.google.android.gms.auth.api.R (com.google.android.gms.auth.api.R)
+.class public final Lcom/google/android/gms/auth/api/R;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/google/android/gms/auth/api/R$anim;,
+        Lcom/google/android/gms/auth/api/R$animator;,
+        Lcom/google/android/gms/auth/api/R$attr;,
+        Lcom/google/android/gms/auth/api/R$color;,
+        Lcom/google/android/gms/auth/api/R$dimen;,
+        Lcom/google/android/gms/auth/api/R$drawable;,
+        Lcom/google/android/gms/auth/api/R$id;,
+        Lcom/google/android/gms/auth/api/R$integer;,
+        Lcom/google/android/gms/auth/api/R$layout;,
+        Lcom/google/android/gms/auth/api/R$string;,
+        Lcom/google/android/gms/auth/api/R$style;,
+        Lcom/google/android/gms/auth/api/R$styleable;
+    }
+.end annotation
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+###### Class com.google.android.gms.auth.api.R.anim (com.google.android.gms.auth.api.R$anim)
+.class public final Lcom/google/android/gms/auth/api/R$anim;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/auth/api/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "anim"
+.end annotation
+
+
+# static fields
+.field public static final fragment_fast_out_extra_slow_in:I = 0x7f01001c
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+###### Class com.google.android.gms.auth.api.R.animator (com.google.android.gms.auth.api.R$animator)
+.class public final Lcom/google/android/gms/auth/api/R$animator;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/auth/api/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "animator"
+.end annotation
+
+
+# static fields
+.field public static final fragment_close_enter:I = 0x7f020003
+
+.field public static final fragment_close_exit:I = 0x7f020004
+
+.field public static final fragment_fade_enter:I = 0x7f020005
+
+.field public static final fragment_fade_exit:I = 0x7f020006
+
+.field public static final fragment_open_enter:I = 0x7f020007
+
+.field public static final fragment_open_exit:I = 0x7f020008
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+###### Class com.google.android.gms.auth.api.R.attr (com.google.android.gms.auth.api.R$attr)
+.class public final Lcom/google/android/gms/auth/api/R$attr;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/auth/api/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "attr"
+.end annotation
+
+
+# static fields
+.field public static final alpha:I = 0x7f040033
+
+.field public static final buttonSize:I = 0x7f04009b
+
+.field public static final circleCrop:I = 0x7f0400d8
+
+.field public static final colorScheme:I = 0x7f040122
+
+.field public static final coordinatorLayoutStyle:I = 0x7f040152
+
+.field public static final drawerLayoutStyle:I = 0x7f04019e
+
+.field public static final elevation:I = 0x7f0401a7
+
+.field public static final font:I = 0x7f040208
+
+.field public static final fontProviderAuthority:I = 0x7f04020a
+
+.field public static final fontProviderCerts:I = 0x7f04020b
+
+.field public static final fontProviderFetchStrategy:I = 0x7f04020c
+
+.field public static final fontProviderFetchTimeout:I = 0x7f04020d
+
+.field public static final fontProviderPackage:I = 0x7f04020e
+
+.field public static final fontProviderQuery:I = 0x7f04020f
+
+.field public static final fontProviderSystemFontFamily:I = 0x7f040210
+
+.field public static final fontStyle:I = 0x7f040211
+
+.field public static final fontVariationSettings:I = 0x7f040212
+
+.field public static final fontWeight:I = 0x7f040213
+
+.field public static final imageAspectRatio:I = 0x7f04023d
+
+.field public static final imageAspectRatioAdjust:I = 0x7f04023e
+
+.field public static final keylines:I = 0x7f040273
+
+.field public static final lStar:I = 0x7f040274
+
+.field public static final layout_anchor:I = 0x7f040280
+
+.field public static final layout_anchorGravity:I = 0x7f040281
+
+.field public static final layout_behavior:I = 0x7f040282
+
+.field public static final layout_dodgeInsetEdges:I = 0x7f0402b3
+
+.field public static final layout_insetEdge:I = 0x7f0402c0
+
+.field public static final layout_keyline:I = 0x7f0402c1
+
+.field public static final nestedScrollViewStyle:I = 0x7f04036c
+
+.field public static final queryPatterns:I = 0x7f0403a8
+
+.field public static final scopeUris:I = 0x7f0403bf
+
+.field public static final shortcutMatchRequired:I = 0x7f0403d8
+
+.field public static final statusBarBackground:I = 0x7f040412
+
+.field public static final ttcIndex:I = 0x7f0404dc
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+###### Class com.google.android.gms.auth.api.R.color (com.google.android.gms.auth.api.R$color)
+.class public final Lcom/google/android/gms/auth/api/R$color;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/auth/api/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "color"
+.end annotation
+
+
+# static fields
+.field public static final androidx_core_ripple_material_light:I = 0x7f060020
+
+.field public static final androidx_core_secondary_text_default_material_light:I = 0x7f060021
+
+.field public static final call_notification_answer_color:I = 0x7f060032
+
+.field public static final call_notification_decline_color:I = 0x7f060033
+
+.field public static final common_google_signin_btn_text_dark:I = 0x7f060038
+
+.field public static final common_google_signin_btn_text_dark_default:I = 0x7f060039
+
+.field public static final common_google_signin_btn_text_dark_disabled:I = 0x7f06003a
+
+.field public static final common_google_signin_btn_text_dark_focused:I = 0x7f06003b
+
+.field public static final common_google_signin_btn_text_dark_pressed:I = 0x7f06003c
+
+.field public static final common_google_signin_btn_text_light:I = 0x7f06003d
+
+.field public static final common_google_signin_btn_text_light_default:I = 0x7f06003e
+
+.field public static final common_google_signin_btn_text_light_disabled:I = 0x7f06003f
+
+.field public static final common_google_signin_btn_text_light_focused:I = 0x7f060040
+
+.field public static final common_google_signin_btn_text_light_pressed:I = 0x7f060041
+
+.field public static final common_google_signin_btn_tint:I = 0x7f060042
+
+.field public static final notification_action_color_filter:I = 0x7f060301
+
+.field public static final notification_icon_bg_color:I = 0x7f060302
+
+.field public static final notification_material_background_media_default_color:I = 0x7f060303
+
+.field public static final primary_text_default_material_dark:I = 0x7f060308
+
+.field public static final secondary_text_default_material_dark:I = 0x7f06030e
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+###### Class com.google.android.gms.auth.api.R.dimen (com.google.android.gms.auth.api.R$dimen)
+.class public final Lcom/google/android/gms/auth/api/R$dimen;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/auth/api/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "dimen"
+.end annotation
+
+
+# static fields
+.field public static final compat_button_inset_horizontal_material:I = 0x7f070068
+
+.field public static final compat_button_inset_vertical_material:I = 0x7f070069
+
+.field public static final compat_button_padding_horizontal_material:I = 0x7f07006a
+
+.field public static final compat_button_padding_vertical_material:I = 0x7f07006b
+
+.field public static final compat_control_corner_material:I = 0x7f07006c
+
+.field public static final compat_notification_large_icon_max_height:I = 0x7f07006d
+
+.field public static final compat_notification_large_icon_max_width:I = 0x7f07006e
+
+.field public static final def_drawer_elevation:I = 0x7f07006f
+
+.field public static final notification_action_icon_size:I = 0x7f07031e
+
+.field public static final notification_action_text_size:I = 0x7f07031f
+
+.field public static final notification_big_circle_margin:I = 0x7f070320
+
+.field public static final notification_content_margin_start:I = 0x7f070321
+
+.field public static final notification_large_icon_height:I = 0x7f070322
+
+.field public static final notification_large_icon_width:I = 0x7f070323
+
+.field public static final notification_main_column_padding_top:I = 0x7f070324
+
+.field public static final notification_media_narrow_margin:I = 0x7f070325
+
+.field public static final notification_right_icon_size:I = 0x7f070326
+
+.field public static final notification_right_side_padding_top:I = 0x7f070327
+
+.field public static final notification_small_icon_background_padding:I = 0x7f070328
+
+.field public static final notification_small_icon_size_as_large:I = 0x7f070329
+
+.field public static final notification_subtext_size:I = 0x7f07032a
+
+.field public static final notification_top_pad:I = 0x7f07032b
+
+.field public static final notification_top_pad_large_text:I = 0x7f07032c
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+###### Class com.google.android.gms.auth.api.R.drawable (com.google.android.gms.auth.api.R$drawable)
+.class public final Lcom/google/android/gms/auth/api/R$drawable;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/auth/api/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "drawable"
+.end annotation
+
+
+# static fields
+.field public static final common_full_open_on_phone:I = 0x7f080089
+
+.field public static final common_google_signin_btn_icon_dark:I = 0x7f08008a
+
+.field public static final common_google_signin_btn_icon_dark_focused:I = 0x7f08008b
+
+.field public static final common_google_signin_btn_icon_dark_normal:I = 0x7f08008c
+
+.field public static final common_google_signin_btn_icon_dark_normal_background:I = 0x7f08008d
+
+.field public static final common_google_signin_btn_icon_disabled:I = 0x7f08008e
+
+.field public static final common_google_signin_btn_icon_light:I = 0x7f08008f
+
+.field public static final common_google_signin_btn_icon_light_focused:I = 0x7f080090
+
+.field public static final common_google_signin_btn_icon_light_normal:I = 0x7f080091
+
+.field public static final common_google_signin_btn_icon_light_normal_background:I = 0x7f080092
+
+.field public static final common_google_signin_btn_text_dark:I = 0x7f080093
+
+.field public static final common_google_signin_btn_text_dark_focused:I = 0x7f080094
+
+.field public static final common_google_signin_btn_text_dark_normal:I = 0x7f080095
+
+.field public static final common_google_signin_btn_text_dark_normal_background:I = 0x7f080096
+
+.field public static final common_google_signin_btn_text_disabled:I = 0x7f080097
+
+.field public static final common_google_signin_btn_text_light:I = 0x7f080098
+
+.field public static final common_google_signin_btn_text_light_focused:I = 0x7f080099
+
+.field public static final common_google_signin_btn_text_light_normal:I = 0x7f08009a
+
+.field public static final common_google_signin_btn_text_light_normal_background:I = 0x7f08009b
+
+.field public static final googleg_disabled_color_18:I = 0x7f0800a1
+
+.field public static final googleg_standard_color_18:I = 0x7f0800a2
+
+.field public static final ic_call_answer:I = 0x7f0800a9
+
+.field public static final ic_call_answer_low:I = 0x7f0800aa
+
+.field public static final ic_call_answer_video:I = 0x7f0800ab
+
+.field public static final ic_call_answer_video_low:I = 0x7f0800ac
+
+.field public static final ic_call_decline:I = 0x7f0800ad
+
+.field public static final ic_call_decline_low:I = 0x7f0800ae
+
+.field public static final notification_action_background:I = 0x7f080109
+
+.field public static final notification_bg:I = 0x7f08010a
+
+.field public static final notification_bg_low:I = 0x7f08010b
+
+.field public static final notification_bg_low_normal:I = 0x7f08010c
+
+.field public static final notification_bg_low_pressed:I = 0x7f08010d
+
+.field public static final notification_bg_normal:I = 0x7f08010e
+
+.field public static final notification_bg_normal_pressed:I = 0x7f08010f
+
+.field public static final notification_icon_background:I = 0x7f080110
+
+.field public static final notification_oversize_large_icon_bg:I = 0x7f080111
+
+.field public static final notification_template_icon_bg:I = 0x7f080112
+
+.field public static final notification_template_icon_low_bg:I = 0x7f080113
+
+.field public static final notification_tile_bg:I = 0x7f080114
+
+.field public static final notify_panel_notification_icon_bg:I = 0x7f080115
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+###### Class com.google.android.gms.auth.api.R.id (com.google.android.gms.auth.api.R$id)
+.class public final Lcom/google/android/gms/auth/api/R$id;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/auth/api/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "id"
+.end annotation
+
+
+# static fields
+.field public static final accessibility_action_clickable_span:I = 0x7f0a000f
+
+.field public static final accessibility_custom_action_0:I = 0x7f0a0010
+
+.field public static final accessibility_custom_action_1:I = 0x7f0a0011
+
+.field public static final accessibility_custom_action_10:I = 0x7f0a0012
+
+.field public static final accessibility_custom_action_11:I = 0x7f0a0013
+
+.field public static final accessibility_custom_action_12:I = 0x7f0a0014
+
+.field public static final accessibility_custom_action_13:I = 0x7f0a0015
+
+.field public static final accessibility_custom_action_14:I = 0x7f0a0016
+
+.field public static final accessibility_custom_action_15:I = 0x7f0a0017
+
+.field public static final accessibility_custom_action_16:I = 0x7f0a0018
+
+.field public static final accessibility_custom_action_17:I = 0x7f0a0019
+
+.field public static final accessibility_custom_action_18:I = 0x7f0a001a
+
+.field public static final accessibility_custom_action_19:I = 0x7f0a001b
+
+.field public static final accessibility_custom_action_2:I = 0x7f0a001c
+
+.field public static final accessibility_custom_action_20:I = 0x7f0a001d
+
+.field public static final accessibility_custom_action_21:I = 0x7f0a001e
+
+.field public static final accessibility_custom_action_22:I = 0x7f0a001f
+
+.field public static final accessibility_custom_action_23:I = 0x7f0a0020
+
+.field public static final accessibility_custom_action_24:I = 0x7f0a0021
+
+.field public static final accessibility_custom_action_25:I = 0x7f0a0022
+
+.field public static final accessibility_custom_action_26:I = 0x7f0a0023
+
+.field public static final accessibility_custom_action_27:I = 0x7f0a0024
+
+.field public static final accessibility_custom_action_28:I = 0x7f0a0025
+
+.field public static final accessibility_custom_action_29:I = 0x7f0a0026
+
+.field public static final accessibility_custom_action_3:I = 0x7f0a0027
+
+.field public static final accessibility_custom_action_30:I = 0x7f0a0028
+
+.field public static final accessibility_custom_action_31:I = 0x7f0a0029
+
+.field public static final accessibility_custom_action_4:I = 0x7f0a002a
+
+.field public static final accessibility_custom_action_5:I = 0x7f0a002b
+
+.field public static final accessibility_custom_action_6:I = 0x7f0a002c
+
+.field public static final accessibility_custom_action_7:I = 0x7f0a002d
+
+.field public static final accessibility_custom_action_8:I = 0x7f0a002e
+
+.field public static final accessibility_custom_action_9:I = 0x7f0a002f
+
+.field public static final action0:I = 0x7f0a0030
+
+.field public static final action_container:I = 0x7f0a003b
+
+.field public static final action_divider:I = 0x7f0a003d
+
+.field public static final action_image:I = 0x7f0a003e
+
+.field public static final action_text:I = 0x7f0a0044
+
+.field public static final actions:I = 0x7f0a0045
+
+.field public static final adjust_height:I = 0x7f0a004f
+
+.field public static final adjust_width:I = 0x7f0a0050
+
+.field public static final all:I = 0x7f0a0053
+
+.field public static final async:I = 0x7f0a005c
+
+.field public static final auto:I = 0x7f0a005d
+
+.field public static final blocking:I = 0x7f0a0066
+
+.field public static final bottom:I = 0x7f0a0067
+
+.field public static final cancel_action:I = 0x7f0a0074
+
+.field public static final center:I = 0x7f0a0077
+
+.field public static final center_horizontal:I = 0x7f0a007a
+
+.field public static final center_vertical:I = 0x7f0a007b
+
+.field public static final chronometer:I = 0x7f0a0081
+
+.field public static final clip_horizontal:I = 0x7f0a0084
+
+.field public static final clip_vertical:I = 0x7f0a0085
+
+.field public static final dark:I = 0x7f0a009d
+
+.field public static final dialog_button:I = 0x7f0a00aa
+
+.field public static final edit_text_id:I = 0x7f0a00c1
+
+.field public static final end:I = 0x7f0a00c4
+
+.field public static final end_padder:I = 0x7f0a00c6
+
+.field public static final fill:I = 0x7f0a00ce
+
+.field public static final fill_horizontal:I = 0x7f0a00cf
+
+.field public static final fill_vertical:I = 0x7f0a00d0
+
+.field public static final forever:I = 0x7f0a00dc
+
+.field public static final fragment_container_view_tag:I = 0x7f0a00dd
+
+.field public static final hide_ime_id:I = 0x7f0a00e9
+
+.field public static final icon:I = 0x7f0a00fd
+
+.field public static final icon_group:I = 0x7f0a00fe
+
+.field public static final icon_only:I = 0x7f0a00ff
+
+.field public static final info:I = 0x7f0a0107
+
+.field public static final italic:I = 0x7f0a010a
+
+.field public static final left:I = 0x7f0a0110
+
+.field public static final light:I = 0x7f0a0113
+
+.field public static final line1:I = 0x7f0a0114
+
+.field public static final line3:I = 0x7f0a0115
+
+.field public static final media_actions:I = 0x7f0a0139
+
+.field public static final none:I = 0x7f0a0169
+
+.field public static final normal:I = 0x7f0a016a
+
+.field public static final notification_background:I = 0x7f0a016c
+
+.field public static final notification_main_column:I = 0x7f0a016d
+
+.field public static final notification_main_column_container:I = 0x7f0a016e
+
+.field public static final report_drawn:I = 0x7f0a019d
+
+.field public static final right:I = 0x7f0a019f
+
+.field public static final right_icon:I = 0x7f0a01a1
+
+.field public static final right_side:I = 0x7f0a01a2
+
+.field public static final special_effects_controller_view_tag:I = 0x7f0a01d2
+
+.field public static final standard:I = 0x7f0a01dc
+
+.field public static final start:I = 0x7f0a01dd
+
+.field public static final status_bar_latest_event_content:I = 0x7f0a01e3
+
+.field public static final tag_accessibility_actions:I = 0x7f0a01eb
+
+.field public static final tag_accessibility_clickable_spans:I = 0x7f0a01ec
+
+.field public static final tag_accessibility_heading:I = 0x7f0a01ed
+
+.field public static final tag_accessibility_pane_title:I = 0x7f0a01ee
+
+.field public static final tag_on_apply_window_listener:I = 0x7f0a01ef
+
+.field public static final tag_on_receive_content_listener:I = 0x7f0a01f0
+
+.field public static final tag_on_receive_content_mime_types:I = 0x7f0a01f1
+
+.field public static final tag_screen_reader_focusable:I = 0x7f0a01f2
+
+.field public static final tag_state_description:I = 0x7f0a01f3
+
+.field public static final tag_transition_group:I = 0x7f0a01f4
+
+.field public static final tag_unhandled_key_event_manager:I = 0x7f0a01f5
+
+.field public static final tag_unhandled_key_listeners:I = 0x7f0a01f6
+
+.field public static final tag_window_insets_animation_callback:I = 0x7f0a01f7
+
+.field public static final text:I = 0x7f0a01f8
+
+.field public static final text2:I = 0x7f0a01f9
+
+.field public static final time:I = 0x7f0a0208
+
+.field public static final title:I = 0x7f0a0209
+
+.field public static final top:I = 0x7f0a020e
+
+.field public static final view_tree_lifecycle_owner:I = 0x7f0a0270
+
+.field public static final view_tree_on_back_pressed_dispatcher_owner:I = 0x7f0a0271
+
+.field public static final view_tree_saved_state_registry_owner:I = 0x7f0a0272
+
+.field public static final view_tree_view_model_store_owner:I = 0x7f0a0273
+
+.field public static final visible_removing_fragment_view_tag:I = 0x7f0a0275
+
+.field public static final wide:I = 0x7f0a0278
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+###### Class com.google.android.gms.auth.api.R.integer (com.google.android.gms.auth.api.R$integer)
+.class public final Lcom/google/android/gms/auth/api/R$integer;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/auth/api/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "integer"
+.end annotation
+
+
+# static fields
+.field public static final cancel_button_image_alpha:I = 0x7f0b0005
+
+.field public static final google_play_services_version:I = 0x7f0b000f
+
+.field public static final status_bar_notification_info_maxnum:I = 0x7f0b004d
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+###### Class com.google.android.gms.auth.api.R.layout (com.google.android.gms.auth.api.R$layout)
+.class public final Lcom/google/android/gms/auth/api/R$layout;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/auth/api/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "layout"
+.end annotation
+
+
+# static fields
+.field public static final custom_dialog:I = 0x7f0d0023
+
+.field public static final ime_base_split_test_activity:I = 0x7f0d0038
+
+.field public static final ime_secondary_split_test_activity:I = 0x7f0d0039
+
+.field public static final notification_action:I = 0x7f0d006f
+
+.field public static final notification_action_tombstone:I = 0x7f0d0070
+
+.field public static final notification_media_action:I = 0x7f0d0071
+
+.field public static final notification_media_cancel_action:I = 0x7f0d0072
+
+.field public static final notification_template_big_media:I = 0x7f0d0073
+
+.field public static final notification_template_big_media_custom:I = 0x7f0d0074
+
+.field public static final notification_template_big_media_narrow:I = 0x7f0d0075
+
+.field public static final notification_template_big_media_narrow_custom:I = 0x7f0d0076
+
+.field public static final notification_template_custom_big:I = 0x7f0d0077
+
+.field public static final notification_template_icon_group:I = 0x7f0d0078
+
+.field public static final notification_template_lines_media:I = 0x7f0d0079
+
+.field public static final notification_template_media:I = 0x7f0d007a
+
+.field public static final notification_template_media_custom:I = 0x7f0d007b
+
+.field public static final notification_template_part_chronometer:I = 0x7f0d007c
+
+.field public static final notification_template_part_time:I = 0x7f0d007d
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+###### Class com.google.android.gms.auth.api.R.string (com.google.android.gms.auth.api.R$string)
+.class public final Lcom/google/android/gms/auth/api/R$string;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/auth/api/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "string"
+.end annotation
+
+
+# static fields
+.field public static final call_notification_answer_action:I = 0x7f12002b
+
+.field public static final call_notification_answer_video_action:I = 0x7f12002c
+
+.field public static final call_notification_decline_action:I = 0x7f12002d
+
+.field public static final call_notification_hang_up_action:I = 0x7f12002e
+
+.field public static final call_notification_incoming_text:I = 0x7f12002f
+
+.field public static final call_notification_ongoing_text:I = 0x7f120030
+
+.field public static final call_notification_screening_text:I = 0x7f120031
+
+.field public static final common_google_play_services_enable_button:I = 0x7f12003a
+
+.field public static final common_google_play_services_enable_text:I = 0x7f12003b
+
+.field public static final common_google_play_services_enable_title:I = 0x7f12003c
+
+.field public static final common_google_play_services_install_button:I = 0x7f12003d
+
+.field public static final common_google_play_services_install_text:I = 0x7f12003e
+
+.field public static final common_google_play_services_install_title:I = 0x7f12003f
+
+.field public static final common_google_play_services_notification_channel_name:I = 0x7f120040
+
+.field public static final common_google_play_services_notification_ticker:I = 0x7f120041
+
+.field public static final common_google_play_services_unknown_issue:I = 0x7f120042
+
+.field public static final common_google_play_services_unsupported_text:I = 0x7f120043
+
+.field public static final common_google_play_services_update_button:I = 0x7f120044
+
+.field public static final common_google_play_services_update_text:I = 0x7f120045
+
+.field public static final common_google_play_services_update_title:I = 0x7f120046
+
+.field public static final common_google_play_services_updating_text:I = 0x7f120047
+
+.field public static final common_google_play_services_wear_update_text:I = 0x7f120048
+
+.field public static final common_open_on_phone:I = 0x7f120049
+
+.field public static final common_signin_button_text:I = 0x7f12004a
+
+.field public static final common_signin_button_text_long:I = 0x7f12004b
+
+.field public static final status_bar_notification_info_overflow:I = 0x7f120102
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+###### Class com.google.android.gms.auth.api.R.style (com.google.android.gms.auth.api.R$style)
+.class public final Lcom/google/android/gms/auth/api/R$style;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/auth/api/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "style"
+.end annotation
+
+
+# static fields
+.field public static final TextAppearance_Compat_Notification:I = 0x7f1301c9
+
+.field public static final TextAppearance_Compat_Notification_Info:I = 0x7f1301ca
+
+.field public static final TextAppearance_Compat_Notification_Info_Media:I = 0x7f1301cb
+
+.field public static final TextAppearance_Compat_Notification_Line2:I = 0x7f1301cc
+
+.field public static final TextAppearance_Compat_Notification_Line2_Media:I = 0x7f1301cd
+
+.field public static final TextAppearance_Compat_Notification_Media:I = 0x7f1301ce
+
+.field public static final TextAppearance_Compat_Notification_Time:I = 0x7f1301cf
+
+.field public static final TextAppearance_Compat_Notification_Time_Media:I = 0x7f1301d0
+
+.field public static final TextAppearance_Compat_Notification_Title:I = 0x7f1301d1
+
+.field public static final TextAppearance_Compat_Notification_Title_Media:I = 0x7f1301d2
+
+.field public static final Widget_Compat_NotificationActionContainer:I = 0x7f13033f
+
+.field public static final Widget_Compat_NotificationActionText:I = 0x7f130340
+
+.field public static final Widget_Support_CoordinatorLayout:I = 0x7f130475
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+###### Class com.google.android.gms.auth.api.R.styleable (com.google.android.gms.auth.api.R$styleable)
+.class public final Lcom/google/android/gms/auth/api/R$styleable;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/auth/api/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "styleable"
+.end annotation
+
+
+# static fields
+.field public static final Capability:[I
+
+.field public static final Capability_queryPatterns:I = 0x0
+
+.field public static final Capability_shortcutMatchRequired:I = 0x1
+
+.field public static final ColorStateListItem:[I
+
+.field public static final ColorStateListItem_alpha:I = 0x3
+
+.field public static final ColorStateListItem_android_alpha:I = 0x1
+
+.field public static final ColorStateListItem_android_color:I = 0x0
+
+.field public static final ColorStateListItem_android_lStar:I = 0x2
+
+.field public static final ColorStateListItem_lStar:I = 0x4
+
+.field public static final CoordinatorLayout:[I
+
+.field public static final CoordinatorLayout_Layout:[I
+
+.field public static final CoordinatorLayout_Layout_android_layout_gravity:I = 0x0
+
+.field public static final CoordinatorLayout_Layout_layout_anchor:I = 0x1
+
+.field public static final CoordinatorLayout_Layout_layout_anchorGravity:I = 0x2
+
+.field public static final CoordinatorLayout_Layout_layout_behavior:I = 0x3
+
+.field public static final CoordinatorLayout_Layout_layout_dodgeInsetEdges:I = 0x4
+
+.field public static final CoordinatorLayout_Layout_layout_insetEdge:I = 0x5
+
+.field public static final CoordinatorLayout_Layout_layout_keyline:I = 0x6
+
+.field public static final CoordinatorLayout_keylines:I = 0x0
+
+.field public static final CoordinatorLayout_statusBarBackground:I = 0x1
+
+.field public static final DrawerLayout:[I
+
+.field public static final DrawerLayout_elevation:I = 0x0
+
+.field public static final FontFamily:[I
+
+.field public static final FontFamilyFont:[I
+
+.field public static final FontFamilyFont_android_font:I = 0x0
+
+.field public static final FontFamilyFont_android_fontStyle:I = 0x2
+
+.field public static final FontFamilyFont_android_fontVariationSettings:I = 0x4
+
+.field public static final FontFamilyFont_android_fontWeight:I = 0x1
+
+.field public static final FontFamilyFont_android_ttcIndex:I = 0x3
+
+.field public static final FontFamilyFont_font:I = 0x5
+
+.field public static final FontFamilyFont_fontStyle:I = 0x6
+
+.field public static final FontFamilyFont_fontVariationSettings:I = 0x7
+
+.field public static final FontFamilyFont_fontWeight:I = 0x8
+
+.field public static final FontFamilyFont_ttcIndex:I = 0x9
+
+.field public static final FontFamily_fontProviderAuthority:I = 0x0
+
+.field public static final FontFamily_fontProviderCerts:I = 0x1
+
+.field public static final FontFamily_fontProviderFetchStrategy:I = 0x2
+
+.field public static final FontFamily_fontProviderFetchTimeout:I = 0x3
+
+.field public static final FontFamily_fontProviderPackage:I = 0x4
+
+.field public static final FontFamily_fontProviderQuery:I = 0x5
+
+.field public static final FontFamily_fontProviderSystemFontFamily:I = 0x6
+
+.field public static final Fragment:[I
+
+.field public static final FragmentContainerView:[I
+
+.field public static final FragmentContainerView_android_name:I = 0x0
+
+.field public static final FragmentContainerView_android_tag:I = 0x1
+
+.field public static final Fragment_android_id:I = 0x1
+
+.field public static final Fragment_android_name:I = 0x0
+
+.field public static final Fragment_android_tag:I = 0x2
+
+.field public static final GradientColor:[I
+
+.field public static final GradientColorItem:[I
+
+.field public static final GradientColorItem_android_color:I = 0x0
+
+.field public static final GradientColorItem_android_offset:I = 0x1
+
+.field public static final GradientColor_android_centerColor:I = 0x7
+
+.field public static final GradientColor_android_centerX:I = 0x3
+
+.field public static final GradientColor_android_centerY:I = 0x4
+
+.field public static final GradientColor_android_endColor:I = 0x1
+
+.field public static final GradientColor_android_endX:I = 0xa
+
+.field public static final GradientColor_android_endY:I = 0xb
+
+.field public static final GradientColor_android_gradientRadius:I = 0x5
+
+.field public static final GradientColor_android_startColor:I = 0x0
+
+.field public static final GradientColor_android_startX:I = 0x8
+
+.field public static final GradientColor_android_startY:I = 0x9
+
+.field public static final GradientColor_android_tileMode:I = 0x6
+
+.field public static final GradientColor_android_type:I = 0x2
+
+.field public static final LoadingImageView:[I
+
+.field public static final LoadingImageView_circleCrop:I = 0x0
+
+.field public static final LoadingImageView_imageAspectRatio:I = 0x1
+
+.field public static final LoadingImageView_imageAspectRatioAdjust:I = 0x2
+
+.field public static final SignInButton:[I
+
+.field public static final SignInButton_buttonSize:I = 0x0
+
+.field public static final SignInButton_colorScheme:I = 0x1
+
+.field public static final SignInButton_scopeUris:I = 0x2
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 5
+
+    const v0, 0x7f0403a8
+
+    const v1, 0x7f0403d8
+
+    filled-new-array {v0, v1}, [I
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/android/gms/auth/api/R$styleable;->Capability:[I
+
+    const v0, 0x7f040033
+
+    const v1, 0x7f040274
+
+    const v2, 0x10101a5
+
+    const v3, 0x101031f
+
+    const v4, 0x1010647
+
+    filled-new-array {v2, v3, v4, v0, v1}, [I
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/android/gms/auth/api/R$styleable;->ColorStateListItem:[I
+
+    const v0, 0x7f040273
+
+    const v1, 0x7f040412
+
+    filled-new-array {v0, v1}, [I
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/android/gms/auth/api/R$styleable;->CoordinatorLayout:[I
+
+    const/4 v0, 0x7
+
+    new-array v1, v0, [I
+
+    fill-array-data v1, :array_94
+
+    sput-object v1, Lcom/google/android/gms/auth/api/R$styleable;->CoordinatorLayout_Layout:[I
+
+    const v1, 0x7f0401a7
+
+    filled-new-array {v1}, [I
+
+    move-result-object v1
+
+    sput-object v1, Lcom/google/android/gms/auth/api/R$styleable;->DrawerLayout:[I
+
+    new-array v0, v0, [I
+
+    fill-array-data v0, :array_a6
+
+    sput-object v0, Lcom/google/android/gms/auth/api/R$styleable;->FontFamily:[I
+
+    const/16 v0, 0xa
+
+    new-array v0, v0, [I
+
+    fill-array-data v0, :array_b8
+
+    sput-object v0, Lcom/google/android/gms/auth/api/R$styleable;->FontFamilyFont:[I
+
+    const v0, 0x1010003
+
+    const v1, 0x10100d0
+
+    const v3, 0x10100d1
+
+    filled-new-array {v0, v1, v3}, [I
+
+    move-result-object v1
+
+    sput-object v1, Lcom/google/android/gms/auth/api/R$styleable;->Fragment:[I
+
+    filled-new-array {v0, v3}, [I
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/android/gms/auth/api/R$styleable;->FragmentContainerView:[I
+
+    const/16 v0, 0xc
+
+    new-array v0, v0, [I
+
+    fill-array-data v0, :array_d0
+
+    sput-object v0, Lcom/google/android/gms/auth/api/R$styleable;->GradientColor:[I
+
+    const v0, 0x1010514
+
+    filled-new-array {v2, v0}, [I
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/android/gms/auth/api/R$styleable;->GradientColorItem:[I
+
+    const v0, 0x7f04023d
+
+    const v1, 0x7f04023e
+
+    const v2, 0x7f0400d8
+
+    filled-new-array {v2, v0, v1}, [I
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/android/gms/auth/api/R$styleable;->LoadingImageView:[I
+
+    const v0, 0x7f040122
+
+    const v1, 0x7f0403bf
+
+    const v2, 0x7f04009b
+
+    filled-new-array {v2, v0, v1}, [I
+
+    move-result-object v0
+
+    sput-object v0, Lcom/google/android/gms/auth/api/R$styleable;->SignInButton:[I
+
+    return-void
+
+    :array_94
+    .array-data 4
+        0x10100b3
+        0x7f040280
+        0x7f040281
+        0x7f040282
+        0x7f0402b3
+        0x7f0402c0
+        0x7f0402c1
+    .end array-data
+
+    :array_a6
+    .array-data 4
+        0x7f04020a
+        0x7f04020b
+        0x7f04020c
+        0x7f04020d
+        0x7f04020e
+        0x7f04020f
+        0x7f040210
+    .end array-data
+
+    :array_b8
+    .array-data 4
+        0x1010532
+        0x1010533
+        0x101053f
+        0x101056f
+        0x1010570
+        0x7f040208
+        0x7f040211
+        0x7f040212
+        0x7f040213
+        0x7f0404dc
+    .end array-data
+
+    :array_d0
+    .array-data 4
+        0x101019d
+        0x101019e
+        0x10101a1
+        0x10101a2
+        0x10101a3
+        0x10101a4
+        0x1010201
+        0x101020b
+        0x1010510
+        0x1010511
+        0x1010512
+        0x1010513
+    .end array-data
+.end method
+
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method

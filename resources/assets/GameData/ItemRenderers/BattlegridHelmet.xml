@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer>
+  <Data>
+    <Sprite name="s_helmet" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="23,4"/>
+
+    <Animations>
+      <SpriteAnimation name="a_helmet" autoPlay="true" sprite="s_helmet" isLoop="true" animTime="2000">
+        <Frame>23,4</Frame>
+        <Frame>23,4</Frame>
+        <Frame>23,4</Frame>
+        <Frame>24,4</Frame>
+        <Frame>25,4</Frame>
+        <Frame>25,4</Frame>
+        <Frame>25,4</Frame>
+        <Frame>26,4</Frame>
+        <Frame>27,4</Frame>
+        <Frame>27,4</Frame>
+        <Frame>27,4</Frame>
+        <Frame>28,4</Frame>
+      </SpriteAnimation>
+    </Animations>
+
+  </Data>
+
+  <RenderRules>
+    <RenderFaceItem>
+      <SpriteRender name="s_helmet" offset="0,0" alignment="DOWN_CENTER" blend="PREMULTIPLIED_ALPHA"/>
+    </RenderFaceItem>
+  </RenderRules>
+</ItemRenderer>

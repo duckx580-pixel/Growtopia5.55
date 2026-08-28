@@ -1,0 +1,209 @@
+<rml>
+  <head>
+    <title>DungeonStartUi</title>
+    <link type="text/template" href="../Base/BasePopup.rml" />
+    <link type="text/rcss" href="../Base/WindowTitle.rcss" />
+    <link type="text/rcss" href="DungeonStartUi.rcss" />
+    <link type="text/template" href="../Templates/DungeonRankBanner.rml" />
+  </head>
+  <body template="BasePopup" class="show-scrollbar wondow-content-full wondow-content-horizontal">
+    <div data-model="DungeonStartUiModel" id="dungeonstartui-popup" class="font-content">
+      <div>
+        <div id="window-title">
+          <div class="title-icon"/>
+          <div class="title-text font-title label">Dungeons</div>
+        </div>
+
+        <div id="main-description" class="color_dreamsicle" data-rml="ToRMLText(Localize('[dungeon_start_ui_desc]'))"/>
+
+        <div id="info-button" class="rounded-section">
+          <input type="checkbox" data-checked="true"/>
+          <div id="info-button-text">
+            <span class="label">Dungeon Information</span>
+            <i/>
+                  </div>
+          <div id="dungeon-info-panel">
+            <p class="color_dreamsicle font-contentnormal" data-rml="ToRMLText(Localize('[dungeon_info_ui_body]'))"/>
+          </div>
+        </div>
+
+        <div id="start-section" class="rounded-section">
+          <div>
+            <!--Dungeon Start Button-->
+            <div id="start-button" onclick="OnEvent(event, 'DungeonStartUi.OnStart')" class="img-button flex-button button-purple-color zero-lr-padding" data-class-disabled="DungeonStartUiModel.DisableStart">
+              <span class="label">
+                Start Dungeon
+              </span>
+              <div class="icon" data-style-decorator="'itemidimage(ITEM_ID_DUNGEONS_SCROLLS)'"/>
+              <span class="label">{{DungeonStartUiModel.EnterCost}}</span>
+            </div>
+
+            <!--Scrolls & invite friends row-->
+            <div class="row-flex">
+              <div class="column-flex">
+                <div id="scrolls-counter" class="label-with-icon">
+                  <div class="icon" data-style-decorator="'itemidimage(ITEM_ID_DUNGEONS_SCROLLS)'"/>
+                  <div class="title font-contentnormal color_dreamsicle">{{ItemName('ITEM_ID_DUNGEONS_SCROLLS')}}: {{DungeonStartUiModel.PiggyProgress}}/{{DungeonStartUiModel.PiggyTarget}}</div>
+                  <i/>
+                </div>
+
+                <!--Display timer if required.-->
+                <div data-if="DungeonStartUiModel.ScrollTimer > 0" class="font-contentnormal color_bright_purple scroll-timer">
+                  <Timer data-attr-seconds="DungeonStartUiModel.ScrollTimer" sec-post-1m="true" onfinish="OnEvent(event, 'DungeonStartUi.OnScrollTimerFinish')">
+                    <active>
+                      <span>More in: </span>
+                      <timertext/>
+                    </active>
+                    <expired/>
+                  </Timer>
+                </div>
+
+                <!--Else show static text.-->
+                <div data-if="DungeonStartUiModel.ScrollTimer == 0" class="font-contentnormal color_bright_purple scroll-timer">
+                  More in: --
+                </div>
+              </div>
+
+
+              <div id="invite-button" onclick="OnEvent(event, 'DungeonStartUi.OnInviteFriends')" class="img-button flex-button button-default-color">
+                <div class="icon" data-style-decorator="'image(dungeon_start_ui_invite_friends_icon)'"/>
+                <span class="label">
+                  Invite Friends
+                </span>
+              </div>
+            </div>
+
+            <!--Buy buttons-->
+            <div class="row-flex">
+              <div id="purchase-scroll-button" onclick="OnEvent(event, 'DungeonStartUi.OnPurchaseScroll')" class="img-button button-green-color">
+                <span class="label">Buy {{ItemName('ITEM_ID_DUNGEONS_SCROLLS')}}</span>
+              </div>
+
+              <!--if dungeon pass is active, show timer till it ends-->
+              <p data-if="DungeonStartUiModel.HasDungeonPass" class="font-contentnormal">
+                <Timer data-attr-seconds="DungeonStartUiModel.PassTimeRemaining"  sec-post-1m="true"  onfinish="OnEvent(event, 'DungeonStartUi.OnPassTimerFinish')">
+                  <active>
+                    <span class="color_dreamsicle">Dungeon Pass: </span>
+                    <timertext class="color_pinky_purple"/>
+                  </active>
+                  <expired>Expired!</expired>
+                </Timer>
+              </p>
+
+              <!--Else show dungeon pass purchase button-->
+              <div id="purchase-pass-button" onclick="OnEvent(event, 'DungeonStartUi.OnPurchasePass')" class="img-button button-green-color" data-if="!DungeonStartUiModel.HasDungeonPass">
+                <span class="label">Buy {{ItemName('ITEM_ID_DUNGEON_PASS_ICON')}}</span>
+              </div>
+            </div>
+
+            <!--3 different warnings based on server/leaderboard state-->
+            <div id="warning-container" class="color_brown font-contentnormal rounded-section">
+              <span data-if="DungeonStartUiModel.WarningType == 0"
+                    data-rml="ToRMLText(Localize('[dungeon_start_ui_normal_warning]'))"/>
+
+              <span data-if="DungeonStartUiModel.WarningType == 1"
+                    data-rml="ToRMLText(Localize('[dungeon_start_ui_shutdown_warning]'))"/>
+
+              <span data-if="DungeonStartUiModel.WarningType == 2">
+                <Timer data-attr-seconds="DungeonStartUiModel.CooldownTimeLeft" sec-post-1m="true" onfinish="OnEvent(event, 'DungeonStartUi.OnCooldownTimerFinish')">
+                  <active>
+                    <span data-rml="ToRMLText(Localize('[dungeon_start_ui_cooldown_warning]'))"/>
+                    <timertext class="color_pinky_purple"/>
+                  </active>
+                  <expired>Expired!</expired>
+                </Timer>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div id="league-section">
+          <div id="league-bg">
+            <div class="row-flex">
+              <div id="league-banner-and-text" class="column-flex">
+                <span class="color_dreamsicle font-contentnormal">Your Rank:</span>
+                <div id="league-banner"
+                     data-alias-file_path="DungeonStartUiModel.BannerPath"
+                     data-alias-tier="DungeonStartUiModel.LeagueTier">
+                  <template src="DungeonRankBanner"/>
+                </div>
+              </div>
+
+              <div id="league-button" onclick="OnEvent(event, 'DungeonStartUi.OnLeagueInfo')" class="img-button button-default-color">
+                <span class="label">League Standings</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="quests-section" class="rounded-section" data-if="DungeonStartUiModel.Challenges.size > 0">
+          <div>
+            <div class="label-with-icon">
+              <div class="icon" data-style-decorator="'itemidimage(ITEM_ID_CRAZY_JIM)'"/>
+              <div class="title">Dungeon Daily Challenges</div>
+              <i/>
+            </div>
+
+            <ul>
+              <div data-for="Challenge : DungeonStartUiModel.Challenges">
+                <li data-attr-class="'challenge ' + 
+                    (Challenge.State == 0 ? 'notstarted' :
+                    (Challenge.State == 1 ? 'inprogress' :
+                    (Challenge.State == 2 ? 'completed' : 'claimed')))">
+                  <input type="checkbox" data-checked="true"/>
+                  <div class="challenge-title">
+                    <div class="icon" data-style-decorator="'itemidimage(' + Challenge.Icon + ')'">
+                      <div data-if="Challenge.State == 3" class="check-mark"/>
+                    </div>
+                    <div class="title-points">
+                      <div class="title color_orange_text">
+                        {{Challenge.Title}}<span data-if="Challenge.State == 0 || Challenge.State == 1">: 
+                          <span class="color_dreamsicle">({{Challenge.Progress}}/{{Challenge.Target}})</span>
+                        </span>
+                      </div>
+                      <span data-if="Challenge.State == 3" class="font-contentnormal color_dreamsicle">(Claimed) </span>
+                      <span data-if="Challenge.Points > 0" class="font-contentnormal color_pinky_purple">{{MoneyString(Challenge.Points)}} {{ItemName('ITEM_ID_DUNGEONS_LEADERBOARD_POINTS')}}</span>
+                    </div>
+                    <i/>
+                  </div>
+                  <div class="challenge-info">
+                    <div style="padding: 10dp;">
+                      <div class="font-contentnormal color_dreamsicle">
+                        {{Challenge.Description}}
+                      </div>
+
+                      <div data-if="Challenge.Rewards.size > 0" data-attr-class="'rewards-panel ' + (Challenge.State == 3 ? 'disabled' : '')">
+                        <div data-for="reward : Challenge.Rewards">
+                          <div class="reward-icon">
+                            <span class="image" data-style-decorator="'itemidimage('+reward.Id+')'"/>
+                            <span class="label">{{reward.Count}}</span>
+                          </div>
+                        </div>
+                      </div>
+                    <div data-if="Challenge.State == 0 ||
+                                  (Challenge.State == 2 && (Challenge.Rewards.size > 0 || Challenge.Points > 0)) ||
+                                  (Challenge.State == 1 && Challenge.IsOptional)"
+                         data-attr-chal_id="Challenge.Id" 
+                         data-attr-is_optional="Challenge.IsOptional" 
+                         onclick="OnEvent(event, 'DungeonStartUi.OnChallengeButtonClicked')" 
+                           data-attr-class="'challenge-button img-button ' + (Challenge.State == 1 ? 'button-yellow-color' : (Challenge.State == 2 ? 'button-green-color' : 'button-default-color'))">
+                      <span data-if="Challenge.State == 0" class="label">Start</span>
+                      <span data-if="Challenge.State == 1 && Challenge.IsOptional" class="label">Give Up</span>
+                        <span data-if="Challenge.State == 2 && (Challenge.Rewards.size > 0  || Challenge.Points > 0)" class="label">Claim</span>
+                      <span data-if="Challenge.State == 3" class="label">Prize Claimed</span>
+                    </div>
+                  </div>
+                  </div>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+
+        <div id="close-button" onclick="OnEvent(event, 'DungeonStartUi.OnClose')" class="img-button button-yellow-color">
+          <span class="label">Close</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</rml>

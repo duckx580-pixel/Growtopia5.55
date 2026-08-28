@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ItemRenderer>
+  <Data>
+    <Sprite name="s_smoke" fileName="game/particles_large17.rttex" textureSize="64" frame="14,12" />
+    <Sprite name="s_shirt" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="15,8" />
+    
+    <Animations>
+      <SpriteAnimation name="a_smoke" sprite="s_smoke">
+        <Frame>14,12</Frame>
+        <Frame>15,12</Frame>
+      </SpriteAnimation>
+      <SequenceAnimation name="a_shirtSequence" autoPlay="true" isLoop="true">
+        <SpriteAnimation name="a_wait" sprite="s_shirt" animTime="2000">
+          <Frame>15,8</Frame>
+        </SpriteAnimation>
+        <SpriteAnimation name="a_anim" sprite="s_shirt" animTime="800">
+          <Frame>15,8</Frame>
+          <Frame>16,8</Frame>
+          <Frame>17,8</Frame>
+          <Frame>18,8</Frame>
+          <Frame>19,8</Frame>
+          <Frame>20,8</Frame>
+          <Frame>21,8</Frame>
+          <Frame>22,8</Frame>
+        </SpriteAnimation>
+      </SequenceAnimation>
+    </Animations>
+    <ParticleSystems>
+      <ParticleSystem name="ps_smoke">
+        <Emitter>
+          <Set name="offset">0, -16</Set>
+          <Set name="emissionInterval">0.5</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="infLifeTime">true</Set>
+          <Set name="particlesPerEmission">1</Set>
+        </Emitter>
+        <Particle particleIndexSpriteFrame="true">
+          <Set name="sprite">s_smoke</Set>
+          <Set name="relativeToEmitter">true</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>0.7, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Curve name="initialScale">
+            <KeyFrame>0, 0.8, 0.8</KeyFrame>
+            <KeyFrame>0.7, 1.1, 1.1</KeyFrame>
+            <KeyFrame>1, 1.1, 1.1</KeyFrame>
+          </Curve>
+          <Set name="lifeTime">1.5</Set>
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+    <RenderOptions>
+      <Default>
+        <Set name="IgnorePunchTypeCheck">true</Set>
+      </Default>
+    </RenderOptions>
+  </Data>
+  <RenderRules>
+    <RenderShirt>
+      <SpriteRender name="s_shirt" offset="0,0" blend="PREMULTIPLIED_ALPHA" alignment="DOWN_CENTER" />
+    </RenderShirt>
+    <RenderAura>
+      <StopIf type="or">
+        <IsRenderMod>RENDER_MOD_SPIRIT_GUIDE</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_RAINBOW_GUY</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_PLAYER_SHADOW</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+      </StopIf>
+      <ParticleSystemRender name="ps_smoke"/>
+    </RenderAura>
+    <AddClothingParticles>
+      <StopIf type="or">
+        <IsRenderMod>RENDER_MOD_SPIRIT_GUIDE</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_RAINBOW_GUY</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_PLAYER_SHADOW</IsRenderMod>
+        <IsRenderMod>RENDER_MOD_MINI_YOU</IsRenderMod>
+      </StopIf>
+      <ParticleSystemUpdate name="ps_smoke"/>
+    </AddClothingParticles>
+  </RenderRules>
+</ItemRenderer>
+

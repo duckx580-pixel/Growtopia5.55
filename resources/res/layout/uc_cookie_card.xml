@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="6dp">
+    <com.usercentrics.sdk.ui.components.UCTextView
+        android:textSize="@dimen/ucFontSmallSize"
+        android:textStyle="bold"
+        android:id="@+id/ucCookieCardTitle"
+        android:background="#f5f5f5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"/>
+    <View
+        android:id="@+id/ucCookieCardTitleDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <com.usercentrics.sdk.ui.components.UCTextView
+        android:textSize="@dimen/ucFontSmallSize"
+        android:id="@+id/ucCardContent"
+        android:paddingTop="8dp"
+        android:paddingBottom="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp"/>
+</LinearLayout>

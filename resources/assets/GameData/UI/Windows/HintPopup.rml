@@ -1,0 +1,39 @@
+<rml>
+  <head>
+    <title>HintPopup</title>
+    <link type="text/template" href="Base/BasePopup.rml" />
+    <link type="text/rcss" href="Base/WindowTitle.rcss" />
+    <link type="text/rcss" href="HintPopup.rcss" />
+  </head>
+  <body template="BasePopup" class="show-scrollbar wondow-content-full wondow-content-horizontal">
+    <div data-model="HintUiModel" id="hintui-popup" class="font-content">
+      <div>
+        <div id="window-title">
+          <div class="title-icon" data-style-decorator="'itemidimage(' + HintUiModel.TitleIcon +')'"/>
+          <div class="title-text font-title label" data-rml="ToRMLText(Localize(HintUiModel.Title))">
+          </div>
+        </div>
+        
+        <p class="color_dreamsicle" data-class-hidden="HintUiModel.BodyText == ''" data-rml="ToRMLText(HintUiModel.BodyText)"/>
+
+        <ul data-for="hint : HintUiModel.Hints">
+          <li class="hint">
+            <input type="checkbox" data-checked="it_index!=0"/>
+            <div class="hint-title" data-class-hidden="hint.Icon == 0">
+              <div class="hint-icon" data-style-decorator="'itemidimage('+hint.Icon+')'"/>
+              <div class="title-text color_dreamsicle">{{hint.DisplayName}}</div>
+              <i/>
+            </div>
+            <div class="hint-info-panel">
+            <div class="hint-banner" data-class-hidden="hint.BannerPath == ''" data-style-decorator="'image('+hint.BannerPath+' contain)'"/>
+            <div class="hint-info color_dreamsicle" data-rml="ToRMLText(hint.Info)"/>
+          </div>
+          </li>
+        </ul>
+        <div id="back-button" onclick="OnEvent(event, 'HintUi.OnBack')" class="img-button button-default-color">
+          <span class="label">Back</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</rml>

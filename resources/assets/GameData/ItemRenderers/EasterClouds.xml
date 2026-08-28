@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<ItemRenderer>
+	<Data>
+		<Sprite name="s_clouds" fileName="game/particles12.rttex" textureSize="32" frame="30,15" />
+		<Sprite name="s_clouds2" fileName="game/particles12.rttex" textureSize="32" frame="30,15" />
+		<Sprite name="s_gardland" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="4, 7" />
+		<Animations>
+			<SpriteAnimation name="a_clouds" sprite="s_clouds" animTime="200" autoPlay="true" isLoop="true">
+				<Frame>30, 15</Frame>
+				<Frame>31, 15</Frame>
+			</SpriteAnimation>
+			<SpriteAnimation name="a_clouds2" sprite="s_clouds2" animTime="200" autoPlay="true" isLoop="true">
+				<Frame>31, 15</Frame>
+				<Frame>30, 15</Frame>
+			</SpriteAnimation>
+		</Animations>
+		<ParticleSystems>
+			<ParticleSystem name="ps_cloud_1" updateStage="AddClothingParticles">
+				<Emitter>
+					<Set name="offset">0, -6</Set>
+					<Set name="enable">true</Set>
+					<Set name="offsetFacing">false</Set>
+					<Set name="emissionInterval">2.3</Set>
+					<Set name="useCharacterPos">false</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+				</Emitter>
+				<Particle randomSpriteFrame="true">
+					<Random name="offset" min="-14, -2" max="14, 5" />
+					<Set name="sprite">s_clouds</Set>
+					<Set name="relativeToEmitter">true</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Set name="isBackgroundParticle">false</Set>
+					<Set name="lifeTime">5</Set>
+					<Random name="initialScale" min="0.75" max="1.25"/>
+					<Random name="initialVelocity" min="-5,-1" max="5,1"/>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 0</KeyFrame>
+						<KeyFrame>0.3, 0.9</KeyFrame>
+						<KeyFrame>0.7, 0.9</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+				</Particle>
+			</ParticleSystem>
+			<ParticleSystem name="ps_cloud_2" updateStage="AddClothingParticles">
+				<Emitter>
+					<Set name="offset">2, -16</Set>
+					<Set name="enable">true</Set>
+					<Set name="offsetFacing">false</Set>
+					<Set name="emissionInterval">2.6</Set>
+					<Set name="useCharacterPos">false</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Set name="particlesPerEmission">1</Set>
+				</Emitter>
+				<Particle randomSpriteFrame="true">
+					<Random name="offset" min="15, -6" max="-15, 6" />
+					<Set name="sprite">s_clouds2</Set>
+					<Set name="relativeToEmitter">true</Set>
+					<Set name="blendingMode">PREMULTIPLIED_ALPHA</Set>
+					<Set name="isBackgroundParticle">true</Set>
+					<Set name="lifeTime">5</Set>
+					<Random name="initialScale" min="0.75" max="1.25"/>
+					<Random name="initialVelocity" min="-5,-1" max="5,1"/>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 0</KeyFrame>
+						<KeyFrame>0.3, 0.9</KeyFrame>
+						<KeyFrame>0.7, 0.9</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+				</Particle>
+			</ParticleSystem>
+		</ParticleSystems>
+	</Data>
+	<RenderRules>
+		<RenderBehind value="playerCenter">
+			<StopIf>
+				<IsZombified>true</IsZombified>
+				<IsRenderMod>RENDER_MOD_PLAYER_SHADOW</IsRenderMod>
+				<IsRenderMod>RENDER_MOD_SPIRIT_GUIDE</IsRenderMod>
+				<IsRenderMod>RENDER_MOD_RAINBOW_GUY</IsRenderMod>
+			</StopIf>
+			<!--<ParticleSystemRender name="ps_cloud_1" />-->
+		</RenderBehind>
+		<RenderChestItem>
+			<SpriteRender name="s_gardland" offset="0,0" alignment="DOWN_CENTER" />
+			<!--<ParticleSystemRender name="ps_cloud_2" />-->
+		</RenderChestItem>
+	</RenderRules>
+</ItemRenderer>
+

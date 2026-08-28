@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<ItemRenderer>
+  <Data>
+    <Sprite name="s_cape" fileName="game/particles12.rttex" textureSize="32" frame="18,15" />
+    <Sprite name="s_mantle" fileName="game/player_cosmetics4.rttex" textureSize="32" frame="22,6" />
+    <Sprite name="s_trail" fileName="game/particles12.rttex" textureSize="32" frame="28,15" />
+    <Animations>
+      <SpriteAnimation name="a_cape" sprite="s_cape" animTime="1000" autoPlay="true" isLoop="true">
+        <Frame>18,15</Frame>
+        <Frame>19,15</Frame>
+        <Frame>20,15</Frame>
+        <Frame>21,15</Frame>
+        <Frame>22,15</Frame>
+        <Frame>23,15</Frame>
+        <Frame>24,15</Frame>
+        <Frame>25,15</Frame>
+        <Frame>26,15</Frame>
+        <Frame>27,15</Frame>
+      </SpriteAnimation>
+      <SpriteAnimation name="a_trail" sprite="s_trail" animTime="200">
+        <Frame>28,15</Frame>
+        <Frame>29,15</Frame>
+      </SpriteAnimation>
+    </Animations>
+    <StateMachines>
+      <StateMachine name="Motion">
+        <States>
+          <State name="Idle" />
+          <State name="Moving" />
+        </States>
+        <Transitions>
+          <Transition to="Idle" from="Moving">
+            <Condition>
+              <IsVariableFloat name="speed.length" operator="Less" abs="true">0.1</IsVariableFloat>
+            </Condition>
+          </Transition>
+          <Transition to="Moving" from="Idle">
+            <Condition>
+              <IsVariableFloat name="speed.length" operator="Greater" abs="true">0.1</IsVariableFloat>
+            </Condition>
+          </Transition>
+        </Transitions>
+      </StateMachine>
+    </StateMachines>
+    <ParticleSystems>
+      <ParticleSystem name="ps_trail" updateStage="AddClothingParticles" renderStage="RenderChestItem" updateState="Motion.Moving">
+        <Emitter>
+          <Set name="offset">0, -8</Set>
+          <Set name="emissionInterval">0.1</Set>
+          <Set name="infParticles">true</Set>
+          <Set name="infLifeTime">true</Set>
+          <Set name="particlesPerEmission">2</Set>
+          <Set name="offset">-20,-8</Set>
+        </Emitter>
+        <Particle randomSpriteFrame="true">
+          <Set name="sprite">s_trail</Set>
+          <Set name="inSpecificOrder">true</Set>
+          <Random name="offset" min="-8,-8" max="8,8" />
+          <Curve name="initialAlpha">
+            <KeyFrame>0, 1</KeyFrame>
+            <KeyFrame>0.6, 1</KeyFrame>
+            <KeyFrame>1, 0</KeyFrame>
+          </Curve>
+          <Set name="useGravity">true</Set>
+          <Set name="initialScale">0.4, 0.4</Set>
+          <Set name="lifeTime">1.5</Set>
+          <RandomRadial name="initialVelocity" angleRange="230,310" radiusRange="5,25" />
+          <Random name="initialAngle" min="0" max="360" />
+          <Random name="gravityVector" min="0, 15" max="0, 30" />
+          <Random name="initialRotationRate" min="-60" max="60" />
+        </Particle>
+      </ParticleSystem>
+    </ParticleSystems>
+  </Data>
+  <RenderRules>
+    <RenderChestItem>
+      <SpriteRender name="s_mantle" offset="0,-16" alignment="CENTER" />
+    </RenderChestItem>
+    <RenderChestBackItem>
+      <SpriteRender name="s_cape" offset="-22,-14" alignment="CENTER" />
+    </RenderChestBackItem>
+  </RenderRules>
+</ItemRenderer>
+

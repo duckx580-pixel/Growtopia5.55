@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<ItemRenderer>
+    <Data>
+        <Sprite name="Sprite10" fileName="game/player_cosmetics4.rttex" textureSize="32,32" frame="9,6" />
+        <Sprite name="Sprite16" fileName="game/player_cosmetics4.rttex" textureSize="32,32" frame="10,6" />
+		<Sprite name="s_punch" fileName="game/particles.rttex" textureSize="32" frame="0,6" />
+        <Animations />
+        <ParticleSystems>
+			<ParticleSystem name="PunchParticle">
+				<Emitter attachment="targetPos">
+					<Set name="emissionInterval">0.05</Set>
+					<Set name="infParticles">true</Set>
+					<Set name="infLifeTime">true</Set>
+					<Set name="particlesPerEmission">2</Set>
+					<Set name="particlesToEmit">1</Set>
+				</Emitter>
+				<Particle>
+					<Set name="sprite">s_punch</Set>
+					<Random name="offset" min="-16,-16" max="16,16" />
+					<Set name="blendingMode">ADDITIVE</Set>
+					<Curve name="initialAlpha">
+						<KeyFrame>0, 1</KeyFrame>
+						<KeyFrame>0.5, 1</KeyFrame>
+						<KeyFrame>1, 0</KeyFrame>
+					</Curve>
+					<Random name="initialScale" min="0.5,0.75" max="0.5,1" />
+					<Set name="lifeTime">0.3</Set>
+					<Random name="initialAngle" min="0" max="360" />
+				</Particle>
+			</ParticleSystem>
+		</ParticleSystems>
+        <VariableMap />
+        <StateMachines>
+			<StateMachine name="Punch">
+				<States>
+					<State name="No"/>
+					<State name="Yes"/>
+				</States>
+				<Transitions>
+					<Transition to="No" from="Yes">
+						<Condition>
+							<IsAction operatorType="NotEqual">PUNCH</IsAction>
+						</Condition>
+					</Transition>
+					<Transition to="Yes" from="No">
+						<Condition>
+							<IsAction>PUNCH</IsAction>
+						</Condition>
+					</Transition>
+				</Transitions>
+			</StateMachine>
+		</StateMachines>
+        <RenderOptions>
+			<Default>
+				<Set name="RenderFrontArmInfected">true</Set>
+				<Set name="RenderBackArmInfected">true</Set>
+				<Set name="DefaultRenderMannequinHandItem">false</Set>
+				<Set name="DefaultPunchSound">audio/slash.wav</Set>
+			</Default>
+		</RenderOptions>
+    </Data>
+    <RenderRules>
+        <RenderHandItem>
+            <Translate forceValue="false">0,16,0</Translate>
+            <SpriteRender name="Sprite10" blend="NORMAL" alignment="CENTER" drawShadow="true" />
+        </RenderHandItem>
+        <RenderBackHandItem>
+            <Translate forceValue="false">-4.5,11,0</Translate>
+            <SpriteRender name="Sprite16" blend="NORMAL" alignment="CENTER" drawShadow="true" />
+        </RenderBackHandItem>
+        <OnPunchUpdate>
+            <AvatarTransform class="ArmAngle">
+                <Set name="armName">arm2Angle</Set>
+                <Set name="Curve">
+                    <KeyFrame>0,0</KeyFrame>
+                    <KeyFrame>1,360</KeyFrame>
+                </Set>
+                <Set name="animTime">250</Set>
+            </AvatarTransform>
+            <AvatarTransform class="ArmAngle">
+                <Set name="armName">arm1Angle</Set>
+                <Set name="Curve">
+                    <KeyFrame>0,180</KeyFrame>
+                    <KeyFrame>1,540</KeyFrame>
+                </Set>
+                <Set name="animTime">250</Set>
+            </AvatarTransform>
+        </OnPunchUpdate>
+		<OnPunchStart>
+			<AvatarTransform class="Face">
+				<Set name="face">MAD</Set>
+			</AvatarTransform>
+		</OnPunchStart>
+		<AddClothingParticles>
+		  <ParticleSystemUpdate name="PunchParticle" onState="Punch.Yes"/>
+		</AddClothingParticles>
+    </RenderRules>
+</ItemRenderer>
+

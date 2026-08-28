@@ -1,0 +1,92 @@
+###### Class com.facebook.ads.redexgen.core.RT (com.facebook.ads.redexgen.X.RT)
+.class public final Lcom/facebook/ads/redexgen/X/RT;
+.super Ljava/lang/Object;
+.source ""
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/facebook/ads/redexgen/X/RW;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+
+# instance fields
+.field public final synthetic A00:Lcom/facebook/ads/redexgen/X/RW;
+
+
+# direct methods
+.method public constructor <init>(Lcom/facebook/ads/redexgen/X/RW;)V
+    .registers 2
+
+    .line 51736
+    iput-object p1, p0, Lcom/facebook/ads/redexgen/X/RT;->A00:Lcom/facebook/ads/redexgen/X/RW;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .registers 5
+
+    invoke-static {p0}, Lcom/facebook/ads/redexgen/X/KQ;->A02(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_7
+
+    return-void
+
+    :cond_7
+    move-object v3, p0
+
+    .line 51737
+    .local v0, "this":Lcom/facebook/ads/redexgen/X/RT;
+    :try_start_8
+    iget-object v0, v3, Lcom/facebook/ads/redexgen/X/RT;->A00:Lcom/facebook/ads/redexgen/X/RW;
+
+    invoke-static {v0}, Lcom/facebook/ads/redexgen/X/RW;->A0D(Lcom/facebook/ads/redexgen/X/RW;)V
+
+    .line 51738
+    iget-object v0, v3, Lcom/facebook/ads/redexgen/X/RT;->A00:Lcom/facebook/ads/redexgen/X/RW;
+
+    invoke-static {v0}, Lcom/facebook/ads/redexgen/X/RW;->A00(Lcom/facebook/ads/redexgen/X/RW;)Landroid/os/Handler;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v3}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+    .line 51739
+    iget-object v0, v3, Lcom/facebook/ads/redexgen/X/RT;->A00:Lcom/facebook/ads/redexgen/X/RW;
+
+    invoke-static {v0}, Lcom/facebook/ads/redexgen/X/RW;->A00(Lcom/facebook/ads/redexgen/X/RW;)Landroid/os/Handler;
+
+    move-result-object v2
+
+    const-wide/16 v0, 0xfa
+
+    invoke-virtual {v2, v3, v0, v1}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    .line 51740
+    return-void
+    :try_end_22
+    .catchall {:try_start_8 .. :try_end_22} :catchall_22
+
+    .end local v0    # "this":Lcom/facebook/ads/redexgen/X/RT;
+    :catchall_22
+    move-exception v0
+
+    invoke-static {v0, v3}, Lcom/facebook/ads/redexgen/X/KQ;->A00(Ljava/lang/Throwable;Ljava/lang/Object;)V
+
+    return-void
+.end method
