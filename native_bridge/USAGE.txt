@@ -1,0 +1,62 @@
+NativeBridge — Diagnostic Native Library
+=========================================
+
+PURPOSE
+-------
+Logs the APK package name and version to Android logcat via JNI_OnLoad.
+No game logic is modified. No memory is written. Read-only diagnostic tool.
+
+WHAT IT LOGS (visible in logcat with tag "NativeBridge")
+---------------------------------------------------------
+D/NativeBridge: ============================================================
+D/NativeBridge: NativeBridge loaded successfully
+D/NativeBridge: Package     : com.rtsoft.growtopia
+D/NativeBridge: Version     : 5.55
+D/NativeBridge: JNI version : JNI_VERSION_1_6
+D/NativeBridge: ============================================================
+
+HOW TO BUILD
+------------
+Prerequisites:
+  - Android NDK r21 or later  (tested with r26/r27)
+  - CMake 3.22+ (preferred) or use ndk-build fallback
+
+  export ANDROID_NDK_HOME=/path/to/your/ndk
+  cd native_bridge/
+  chmod +x build.sh
+  ./build.sh
+
+Output:
+  native_bridge/out/
+  ├── arm64-v8a/libnative_bridge.so
+  ├── armeabi-v7a/libnative_bridge.so
+  ├── x86/libnative_bridge.so
+  └── x86_64/libnative_bridge.so
+
+HOW IT IS LOADED
+----------------
+The existing APK already calls System.loadLibrary("growtopia") in
+com.rtsoft.growtopia.Main.onCreate() (smali line 124, no try-catch wrapper).
+Placing libnative_bridge.so in the correct lib/<abi>/ directory alongside
+libgrowtopia.so is sufficient for the system linker to find it — no APK
+patching or smali edits are required.
+
+The JNI runtime invokes JNI_OnLoad automatically when the .so is loaded.
+
+READING THE OUTPUT
+------------------
+After the app launches on-device:
+  adb logcat -s NativeBridge          # filter to this tag only
+  adb logcat | grep NativeBridge      # alternative
+
+FILE LAYOUT
+-----------
+native_bridge/
+├── src/
+│   └── native_bridge.cpp    ← C++ source (JNI_OnLoad + log_app_info)
+├── CMakeLists.txt            ← CMake build (preferred)
+├── jni/
+│   ├── Android.mk            ← ndk-build alternative
+│   └── Application.mk        ← ABI / STL / platform settings
+├── build.sh                  ← convenience build wrapper
+└── USAGE.txt                 ← this file
