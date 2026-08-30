@@ -8,6 +8,7 @@ add_library(
     native_bridge        # produces libnative_bridge.so
     SHARED
     src/native_bridge.cpp
+    src/class_inspector.cpp
 )
 
 # Link against the NDK-provided log library (always present on Android)

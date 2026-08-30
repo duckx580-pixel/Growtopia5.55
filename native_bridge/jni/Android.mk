@@ -6,7 +6,8 @@ LOCAL_PATH := $(call my-dir)/..
 include $(CLEAR_VARS)
 
 LOCAL_MODULE           := native_bridge
-LOCAL_SRC_FILES        := src/native_bridge.cpp
+LOCAL_SRC_FILES        := src/native_bridge.cpp \
+                          src/class_inspector.cpp
 LOCAL_LDLIBS           := -llog
 LOCAL_CPPFLAGS         := -std=c++17 -Wall -Wextra -fno-exceptions -fno-rtti
 
