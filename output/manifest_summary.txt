@@ -1,0 +1,17 @@
+============================================================
+  APK Manifest Summary
+============================================================
+Generated : 2026-08-30 17:02:46
+Source    : /home/user/Growtopia5.55
+
+--- Manifest ---
+Package ID    : (not found)
+Main Activity : (not found)
+
+[WARNING] Manifest could not be fully parsed: Error decode manifest
+          The binary AXML may not have been decoded by the decompiler.
+
+--- Smali ---
+Total .smali files : 21,505
+
+============================================================
