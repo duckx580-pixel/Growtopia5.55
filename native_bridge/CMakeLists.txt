@@ -9,6 +9,7 @@ add_library(
     SHARED
     src/native_bridge.cpp
     src/class_inspector.cpp
+    src/config_watcher.cpp
 )
 
 # Link against the NDK-provided log library (always present on Android)
