@@ -1,0 +1,7 @@
+library_name,class_name,method_name,in_try_catch,smali_line,file_path
+anzu,com.anzu.sdk.Anzu,public static SetContext(Landroid/content/Context;)V,True,580,com/anzu/sdk/Anzu.smali
+crashlytics,com.google.firebase.crashlytics.ndk.JniNativeApi,static constructor <clinit>()V,True,49,com/google/firebase/crashlytics/ndk/JniNativeApi.smali
+datastore_shared_counter,androidx.datastore.core.SharedCounter,public final loadLib()V,False,57,androidx/datastore/core/SharedCounter.smali
+growtopia,com.rtsoft.growtopia.Main,protected onCreate(Landroid/os/Bundle;)V,False,124,com/rtsoft/growtopia/Main.smali
+tapjoy,com.tapjoy.Tapjoy,public static loadSharedLibrary()V,True,657,com/tapjoy/Tapjoy.smali
+ubiservices,com.ubisoft.bridge.JavaInterface,static constructor <clinit>()V,True,21,com/ubisoft/bridge/JavaInterface.smali
