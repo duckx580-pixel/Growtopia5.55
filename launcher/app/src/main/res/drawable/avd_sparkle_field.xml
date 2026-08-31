@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/vd_sparkle_field">
+    <target android:name="sparkle1" android:animation="@animator/sparkle_alpha_1" />
+    <target android:name="sparkle2" android:animation="@animator/sparkle_alpha_2" />
+    <target android:name="sparkle3" android:animation="@animator/sparkle_alpha_3" />
+    <target android:name="sparkle4" android:animation="@animator/sparkle_alpha_4" />
+    <target android:name="sparkle5" android:animation="@animator/sparkle_alpha_5" />
+</animated-vector>

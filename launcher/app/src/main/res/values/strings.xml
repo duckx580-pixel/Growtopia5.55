@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Premium Launcher</string>
+    <string name="tagline">⚡ Lightning &amp; Unicorn Theme 🦄</string>
+
+    <string name="launch_game">Launch Game</string>
+    <string name="target_app_name">Growtopia</string>
+    <string name="target_not_installed">Growtopia is not installed on this device.</string>
+    <string name="find_on_store">Find on Play Store</string>
+
+    <string name="status_title">Runtime Status</string>
+    <string name="status_label">Status</string>
+    <string name="status_online">Online</string>
+    <string name="status_offline">Offline</string>
+    <string name="ping_label">Ping</string>
+    <string name="ping_placeholder">-- ms</string>
+    <string name="core_version_label">Core Version</string>
+
+    <string name="settings">Settings</string>
+    <string name="theme_selection_title">Theme</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_premium">Premium</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="view_logs">View Launch Log</string>
+    <string name="log_viewer_title">Launch Log</string>
+    <string name="clear_log">Clear Log</string>
+    <string name="log_empty">No launch events recorded yet.</string>
+</resources>

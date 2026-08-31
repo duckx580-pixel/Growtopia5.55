@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Static base for avd_sparkle_field.xml: five small 4-point star shapes
+     scattered across the viewport, each starting fully transparent. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="60dp"
+    android:viewportWidth="120"
+    android:viewportHeight="60">
+
+    <group android:name="sparkleGroup1" android:translateX="10" android:translateY="6">
+        <path android:name="sparkle1" android:fillColor="@color/white" android:fillAlpha="0"
+            android:pathData="M6,0 L7.8,4.2 L12,6 L7.8,7.8 L6,12 L4.2,7.8 L0,6 L4.2,4.2 Z" />
+    </group>
+
+    <group android:name="sparkleGroup2" android:translateX="52" android:translateY="2">
+        <path android:name="sparkle2" android:fillColor="@color/white" android:fillAlpha="0"
+            android:pathData="M6,0 L7.8,4.2 L12,6 L7.8,7.8 L6,12 L4.2,7.8 L0,6 L4.2,4.2 Z" />
+    </group>
+
+    <group android:name="sparkleGroup3" android:translateX="94" android:translateY="16">
+        <path android:name="sparkle3" android:fillColor="@color/white" android:fillAlpha="0"
+            android:pathData="M6,0 L7.8,4.2 L12,6 L7.8,7.8 L6,12 L4.2,7.8 L0,6 L4.2,4.2 Z" />
+    </group>
+
+    <group android:name="sparkleGroup4" android:translateX="28" android:translateY="38">
+        <path android:name="sparkle4" android:fillColor="@color/white" android:fillAlpha="0"
+            android:pathData="M6,0 L7.8,4.2 L12,6 L7.8,7.8 L6,12 L4.2,7.8 L0,6 L4.2,4.2 Z" />
+    </group>
+
+    <group android:name="sparkleGroup5" android:translateX="74" android:translateY="42">
+        <path android:name="sparkle5" android:fillColor="@color/white" android:fillAlpha="0"
+            android:pathData="M6,0 L7.8,4.2 L12,6 L7.8,7.8 L6,12 L4.2,7.8 L0,6 L4.2,4.2 Z" />
+    </group>
+
+</vector>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Six-stop rainbow accent bar. A plain <shape><gradient> only supports
+     start/center/end colors, so this uses a vector fill-gradient (multi
+     <item> stops, requires API 24+, which matches this app's minSdk). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="24dp"
+    android:height="4dp"
+    android:viewportWidth="100"
+    android:viewportHeight="4">
+    <path android:pathData="M0,0 L100,0 L100,4 L0,4 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="100"
+                android:endY="0">
+                <item android:offset="0.0" android:color="@color/rainbow_red" />
+                <item android:offset="0.2" android:color="@color/rainbow_orange" />
+                <item android:offset="0.4" android:color="@color/rainbow_yellow" />
+                <item android:offset="0.6" android:color="@color/rainbow_green" />
+                <item android:offset="0.8" android:color="@color/rainbow_blue" />
+                <item android:offset="1.0" android:color="@color/rainbow_violet" />
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>
