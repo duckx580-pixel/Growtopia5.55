@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Neutral light theme -->
+    <color name="light_background">#FAFAFA</color>
+    <color name="light_surface">#FFFFFF</color>
+    <color name="light_on_surface">#1A1A1A</color>
+    <color name="light_accent">#4C6FFF</color>
+
+    <!-- Neutral dark theme -->
+    <color name="dark_background">#121212</color>
+    <color name="dark_surface">#1E1E1E</color>
+    <color name="dark_on_surface">#F2F2F2</color>
+    <color name="dark_accent">#7C9CFF</color>
+
+    <!-- Premium theme: lightning / unicorn accent palette -->
+    <color name="premium_background">#1B1033</color>
+    <color name="premium_surface">#2A1A4D</color>
+    <color name="premium_on_surface">#FFFFFF</color>
+    <color name="premium_gradient_start">#7B2FF7</color>
+    <color name="premium_gradient_mid">#F72FA1</color>
+    <color name="premium_gradient_end">#2FD8F7</color>
+    <color name="premium_lightning">#FFD93D</color>
+    <color name="premium_unicorn_pink">#FF6FD8</color>
+
+    <color name="status_online">#2ECC71</color>
+    <color name="status_offline">#E74C3C</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>
