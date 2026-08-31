@@ -26,4 +26,17 @@
     <color name="status_offline">#E74C3C</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+
+    <!-- Premium gold border-frame palette -->
+    <color name="gold_light">#FFE9A8</color>
+    <color name="gold_base">#D4AF37</color>
+    <color name="gold_dark">#8A6A11</color>
+
+    <!-- Rainbow accent gradient stops -->
+    <color name="rainbow_red">#FF5C5C</color>
+    <color name="rainbow_orange">#FF9F43</color>
+    <color name="rainbow_yellow">#FFD93D</color>
+    <color name="rainbow_green">#4CD97B</color>
+    <color name="rainbow_blue">#4C9CFF</color>
+    <color name="rainbow_violet">#B36CFF</color>
 </resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Original stylized spiral-horn accent glyph, distinct from ic_unicorn.xml. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="20"
+    android:viewportHeight="20">
+    <path
+        android:fillColor="@color/gold_base"
+        android:pathData="M10,1 L13,7 L10.2,6.2 L12.3,11 L9.3,10.2 L10,19
+                           L7.3,10.4 L9.3,10.8 L7.2,6.4 L9.2,7.1 Z" />
+</vector>

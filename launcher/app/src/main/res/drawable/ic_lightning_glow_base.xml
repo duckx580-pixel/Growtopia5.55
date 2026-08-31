@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Static base for avd_lightning_glow.xml: a soft, wider "glow" silhouette
+     behind a crisp bolt. Vector drawables have no blur filter, so the glow
+     is approximated with a looser, lower-opacity duplicate shape. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="40"
+    android:viewportHeight="40">
+    <path
+        android:name="glow"
+        android:fillColor="@color/premium_lightning"
+        android:fillAlpha="0.15"
+        android:pathData="M22,2 L6,24 L17,24 L14,38 L36,14 L23,14 Z" />
+    <path
+        android:name="bolt"
+        android:fillColor="@color/premium_lightning"
+        android:pathData="M21,7 L11,21 L18,21 L17,32 L30,16 L21,16 Z" />
+</vector>

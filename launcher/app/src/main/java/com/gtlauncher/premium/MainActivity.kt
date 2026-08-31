@@ -3,12 +3,15 @@ package com.gtlauncher.premium
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Animatable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.gtlauncher.premium.databinding.ActivityMainBinding
 import com.gtlauncher.premium.databinding.DialogSettingsBinding
@@ -21,15 +24,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityMainBinding
+    private var currentTheme: LauncherTheme = LauncherTheme.PREMIUM
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(themeStyleRes(ThemePreferences.getTheme(this)))
+        currentTheme = ThemePreferences.getTheme(this)
+        setTheme(themeStyleRes(currentTheme))
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.coreVersionValue.text = BuildConfig.VERSION_NAME
         refreshStatusDisplay()
+        applyThemeDecorations(currentTheme)
 
         binding.launchButton.setOnClickListener { launchGrowtopia() }
         binding.settingsButton.setOnClickListener { showThemeDialog() }
@@ -43,6 +49,43 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         refreshStatusDisplay()
+        startAnimations()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        stopAnimations()
+    }
+
+    /** Toggles the premium-only decorative resource pack (sparkle field,
+     * rainbow accent bar, horn badge, gold borders); the lightning-glow
+     * icon animates in every theme. */
+    private fun applyThemeDecorations(theme: LauncherTheme) {
+        val isPremium = theme == LauncherTheme.PREMIUM
+        binding.sparkleOverlay.visibility = if (isPremium) View.VISIBLE else View.GONE
+        binding.rainbowAccent.visibility = if (isPremium) View.VISIBLE else View.GONE
+        binding.hornBadge.visibility = if (isPremium) View.VISIBLE else View.GONE
+
+        binding.launchButton.foreground =
+            if (isPremium) ContextCompat.getDrawable(this, R.drawable.frame_gold_button) else null
+        binding.settingsButton.foreground =
+            if (isPremium) ContextCompat.getDrawable(this, R.drawable.frame_gold_button) else null
+        binding.statusCard.foreground =
+            if (isPremium) ContextCompat.getDrawable(this, R.drawable.frame_gold_panel) else null
+
+        startAnimations()
+    }
+
+    private fun startAnimations() {
+        (binding.lightningIcon.drawable as? Animatable)?.start()
+        if (binding.sparkleOverlay.visibility == View.VISIBLE) {
+            (binding.sparkleOverlay.drawable as? Animatable)?.start()
+        }
+    }
+
+    private fun stopAnimations() {
+        (binding.lightningIcon.drawable as? Animatable)?.stop()
+        (binding.sparkleOverlay.drawable as? Animatable)?.stop()
     }
 
     private fun refreshStatusDisplay() {

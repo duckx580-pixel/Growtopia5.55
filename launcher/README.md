@@ -22,6 +22,29 @@ if so, opens it via a standard `PackageManager` launch intent.
   (`filesDir/launch_log.txt`, capped at the last 500 lines). Viewable and
   clearable from the in-app log screen. Nothing is sent off the device.
 
+## Theme resource pack
+
+All assets below are bundled inside the APK as ordinary drawable/animator
+resources -- nothing is downloaded at runtime. The Premium theme toggle in
+Settings shows/hides this pack; Light and Dark stay clean, undecorated.
+
+- `avd_lightning_glow.xml` -- animated lightning bolt with a pulsing glow
+  (a wider, low-opacity duplicate silhouette behind a crisp bolt, since
+  `VectorDrawable` has no blur filter); animates in all three themes.
+- `avd_sparkle_field.xml` -- five small star shapes scattered across the
+  header, each twinkling on its own staggered timing via per-path
+  `fillAlpha` animators (`animator/sparkle_alpha_1..5.xml`). Pure vector
+  XML, no bitmap frames.
+- `ic_unicorn.xml` / `ic_unicorn_horn.xml` -- original stylized silhouette
+  and a standalone spiral-horn accent badge.
+- `overlay_rainbow_gradient.xml` -- six-stop rainbow accent bar (vector
+  fill-gradient, since a plain `<shape><gradient>` only supports 3 stops).
+- `frame_gold_button.xml` / `frame_gold_panel.xml` -- gold border frames
+  applied as `View.foreground` on the buttons and status card so the
+  ripple/background underneath is untouched.
+- `colors.xml` -- separate Light / Dark / Premium palettes, plus a
+  dedicated gold border palette and the rainbow gradient stops.
+
 ## What it deliberately does not do
 
 - No decompilation, patching, or repackaging of Growtopia or any other app.
